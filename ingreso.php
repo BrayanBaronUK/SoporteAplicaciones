@@ -1,6 +1,18 @@
 <?php
-//phpinfo(); 
-$conex2 = oci_connect("TIENDA_VIRTUAL", "VIRTUAL", "//192.168.232.69/ISIS");
+//phpinfo();
+$oradbCon = "STC4GDESARROLLO=
+  (DESCRIPTION=
+    (ADDRESS=
+      (PROTOCOL=TCP)
+      (HOST=192.168.232.68)
+      (PORT=1521)
+    )
+    (CONNECT_DATA=
+      (SERVER=dedicated)
+      (SERVICE_NAME=DESSTC4G)
+    )
+  )";
+$conex2 = oci_connect("STCCCDAT", "STCCCDAT", $oradbCon);
 
 
 if (!$conex2) {
