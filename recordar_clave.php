@@ -42,10 +42,10 @@
                   </div>
                   <form class="user">
                     <div class="form-group">
-                      <input type="email" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter Email Address...">
+                      <input type="email" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Ingrese su correo...">
                     </div>
-                    <a href="login.html" class="btn btn-primary btn-user btn-block">
-                      Reset Password
+                    <a href="#" class="btn btn-primary btn-user btn-block">
+                      Resetear clave
                     </a>
                   </form>
                   <hr>

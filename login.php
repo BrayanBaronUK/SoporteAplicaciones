@@ -1,9 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<?php 
-session_start();
-?>
+
 
 <head>
 
@@ -56,9 +54,12 @@ session_start();
                         <label class="custom-control-label" for="customCheck">Remember Me</label>
                       </div>
                     </div>
+                    <input type="submit" href="index.php" class="btn btn-primary btn-user btn-block" value="Enviar">
+                    <!--
                     <a href="index.php" class="btn btn-primary btn-user btn-block">
                       Ingresar
                     </a>
+                    -->
                     <hr>
                  <!---   <a href="index.php" class="btn btn-google btn-user btn-block">
                       <i class="fab fa-google fa-fw"></i> Login with Google
