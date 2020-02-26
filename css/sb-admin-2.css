@@ -10584,11 +10584,7 @@ a:focus {
 }
 
 .bg-login-image {
-<<<<<<< HEAD
   background: url("https://i2.wp.com/losninger.co/wp-content/uploads/2018/06/ElTemplo.jpg?ssl=1");
-=======
-  background: url("https://source.unsplash.com/K4mSJ7kc0As/600x800");
->>>>>>> e100fb102959b390f46a56b7f27a502466df9977
   background-position: center;
   background-size: cover;
 }
