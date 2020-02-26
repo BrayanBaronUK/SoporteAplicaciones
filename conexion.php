@@ -1,5 +1,5 @@
 <?php
-	$user = "TIENDA_VIRTUAL";
-	$pass = "VIRTUAL";
-	$db = "//192.168.232.79/ISIS";
+	$user = "STCCCDAT";
+	$pass = "STCCCDAT";
+	$db = "//192.168.232.68:1521/DESSTC4G";
 ?>
