@@ -449,11 +449,7 @@
               <div class="container-fluid">
 
 <!-- Page Heading -->
-<<<<<<< HEAD
 <h1 class="h3 mb-2 text-gray-800">Soporte Aplicaciones TI - Creación de turnos</h1>
-=======
-<h1 class="h3 mb-2 text-gray-800">Soporte Aplicaciones TI - Creacion de turnos</h1>
->>>>>>> e100fb102959b390f46a56b7f27a502466df9977
 <p class="mb-4"></p>
 
 
@@ -461,11 +457,7 @@
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
   <div class="card-header py-3">
-<<<<<<< HEAD
     <h6 class="m-0 font-weight-bold text-primary">Creación de turnos soporte TI</h6>
-=======
-    <h6 class="m-0 font-weight-bold text-primary">Especialistas TI</h6>
->>>>>>> e100fb102959b390f46a56b7f27a502466df9977
   </div>
 
   
