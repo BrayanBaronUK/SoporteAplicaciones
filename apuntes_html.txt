@@ -1,0 +1,5 @@
+linear-gradient(180deg,#2d2a2b 15%,#eb028b 100%);---> color de fondo degradado
+
+.form_wrap----> tamaño de formulario
+
+form.form_contact input, form.form_contact textarea
