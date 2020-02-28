@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 
-
-
 <head>
 
   <meta charset="utf-8">
@@ -54,7 +52,8 @@
                         <label class="custom-control-label" for="customCheck">Remember Me</label>
                       </div>
                     </div>
-                    <input type="submit" href="index.php" class="btn btn-primary btn-user btn-block" value="Enviar">
+                    <input type="submit" id="v_ingreso" class="btn btn-primary btn-user btn-block" value="Enviar">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" id="mensaje"></div>
                     <!--
                     <a href="index.php" class="btn btn-primary btn-user btn-block">
                       Ingresar
@@ -97,6 +96,8 @@
 
   <!-- Custom scripts for all pages-->
   <script src="js/sb-admin-2.min.js"></script>
+  <!--Script de ingreso-->
+  <script type="text/javascript" src="js/login.js"></script>
 
 </body>
 <!-- historial de cambios-->
