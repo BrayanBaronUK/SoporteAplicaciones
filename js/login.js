@@ -7,14 +7,14 @@ $("#v_ingreso").click(function(){
 			type:"POST",
 			dataType:'json',
 			url:'php/ingreso.php',
-			data:{usuario:usuario, clave:clave},
+			data:{usuario:user, clave:pass},
 			success:function(response){
 				if (response.respuesta==true) {
-					$('#mensaje').html(response.mensaje);
+				//	$('#mensaje').html(response.mensaje);
 					window.location='index.php';
 
 				}else{
-					$('#mensaje').html(response.mensaje);
+					//$('#mensaje').html(response.mensaje);
 				}
 			},error:function(){
 				alert('Error general en el sistema por diosoos');
