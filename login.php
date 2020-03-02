@@ -43,10 +43,10 @@
                   </div>
                   <form class="user" action="ingreso.php" method="POST">
                     <div class="form-group">
-                      <input type="text" class="form-control form-control-user" id="user" name="user" aria-describedby="emailHelp" placeholder="Enter Email Address...">
+                      <input type="text" class="form-control form-control-user" id="user" name="user" aria-describedby="emailHelp" placeholder="Indique su usuario...">
                     </div>
                     <div class="form-group">
-                      <input type="password" class="form-control form-control-user" id="pass" name="pass" placeholder="Password">
+                      <input type="password" class="form-control form-control-user" id="pass" name="pass" placeholder="clave">
                     </div>
                     <div class="form-group">
                       <div class="custom-control custom-checkbox small">
@@ -99,7 +99,7 @@
   <!-- Custom scripts for all pages-->
   <script src="js/sb-admin-2.min.js"></script>
   <!--Script de ingreso-->
-  <script type="text/javascript" src="js/login.js"></script>
+  <!--<script type="text/javascript" src="js/login.js"></script>-->
 
 </body>
 <!-- historial de cambios-->

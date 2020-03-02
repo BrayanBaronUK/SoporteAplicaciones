@@ -1,51 +1,56 @@
+<script language= "javascript" type="text/javascript">
+function MiFuncionJS(){  
+    window.location='index.php';
+}
+function AlertaIngreso(){ 
+    alert("Usuario y/o clave incorrectos");
+    window.location='login.php';
+}
+function AlertaCampos(){  
+    alert('Campo de usuario y/o clave no Indicado');
+    window.location='login.php';
+}   
+</script>
 <?php
 include_once ("conexion.php");
 $conex2 = oci_connect($user, $pass, $db);
-if (!$conex2) {
-    $e = oci_error();
-    trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-}
-$mensajeOk=false;
-$mensajeError='El sistema no se encuentra disponible';
 if (isset($_POST['user'],$_POST['pass'])):
 	if ($_POST['user']!=""):
 		if ($_POST['pass']!=""):
-          //  $var1 = $_POST['user'];
-          //  $var2 = $_POST['pass'];
-           // $var1 = $_POST["user"];
-           // $var2 = $_POST["pass"];
-           // $con1="LILIA";
-          //  $con2="AVANTEL";
-            // $con3="B";
-            $query= oci_parse($conex2, 'select * from stcccdat.v4pretem');
-           //$query= oci_parse($conex2, "insert into usuarios_soporte_seg values ('$var1','$var2','$con3')") or die('Cannot parse query oci');
-           // $query= oci_parse($conex2, ("select * from USUARIOS_SOPORTE_SEG where usuario='$var1' and clave='$var2'")) or die('Cannot parse query oci');
-            OCIExecute($query);
-           // OCICommit($conex2);
-           // OCILogoff($conex2);
-            $var3 = oci_num_rows($query);
-            echo ("filaaaaaaaaas: $var3");
-            if (oci_num_rows($query)>0):
-                    echo "entro al if";
-					$mensajeOk=true;
-					$usua=oci_fetch_array($query);
-					session_start();
-					$_SESSION['usuario']=$usua[0];
-					$_SESSION['clave']=$usua[1];
-                    $mensajeError='Logueado correctamente ok.';
-                else:
-                echo "error al if";
-				$mensajeError='Usuario o contraseña incorrecta.';	
-				endif;
-			else:
-				$mensajeError='Contraseña incorrecta.';
-			endif;
-		else:
-			$mensajeError='Usuario no existe ok.';
-	endif;
-else:
-	$mensajeError='Todos los datos son requeridos.';
-endif; 
-$salidaJson=array('respuesta' => $mensajeOk, 'mensaje' => $mensajeError);
-echo json_encode($salidaJson);
+            $var1 = $_POST['user'];
+            $var2 = $_POST['pass'];
+            $var3="A";
+            //$ddl_qry = "select usuario from usuarios_soporte_seg where usuario='$var1' and clave='$var2'";
+            //$consulta = "EXECUTE IMMEDIATE $ddl_qry";
+            $consulta = "select * from usuarios_soporte_seg";
+           // $consulta = "select * from usuarios_soporte_seg where usuario='$var1' and clave='$var2'";
+            //$consulta = "insert into usuarios_soporte_seg values ('$var1','$var2','$var3')";           
+            $queryf= oci_parse($conex2, $consulta);
+            oci_execute($queryf);
+            oci_commit($conex2);  
+            $filas = oci_num_rows($queryf);
+           // echo ("filaaaaaaaaas: $filas");
+            if ($filas>0):              
+                echo "<script>";
+                echo "MiFuncionJS();";
+                echo "</script>";
+                 else:
+                //echo "error en la autenticacion";
+                echo "<script>";
+                echo "AlertaIngreso()";
+                echo "</script>";            
+            endif;
+            echo "<script>";
+            echo "AlertaCampos()";
+            echo "</script>";      
+        endif;
+        echo "<script>";
+        echo "AlertaCampos()";
+        echo "</script>"; 
+    endif;
+    echo "<script>";
+    echo "AlertaCampos()";
+    echo "</script>"; 
+endif;
+OCILogoff($conex2);
 ?>
