@@ -96,7 +96,8 @@
                     echo "Error modificando: " . $conex2->error;
                 }*/
                 $to = $_POST['email'];//"destinatario@email.com";
-                $from = "From: " . "Masterhouse" ;
+                //$from = "From: " . "Masterhouse" ;
+                $from = "soportetigestion@gmail.com" ;
                 $subject = "Recordar contraseña";
                 $message = "El sistema le asigno la siguiente clave " . $passw;
 
@@ -106,32 +107,55 @@
                
                 OCICommit($conex2);
 
-                require("../class.phpmailer.php");
-                include("../class.phpmailer.php");
-                include("../class.smtp.php");
-                header("Content-type: text/html; charset=utf-8");
-                $mail = new PHPMailer();
-                //  $body             = file_get_contents('contents.html');
-                  //$body             = eregi_replace("[\]",'',$body);
-                 // $mail->Host = "localhost";
-                  
-                  $mail->From = "brayan.baron@email.com";
-                  $mail->FromName = "soporteIT";
-                  $mail->Subject = "Recordar contraseña";
-                  $mail->AddAddress($_POST['email'],"Brayan");
-                  
-                  $body  = "Hola <strong>amigo</strong><br>";
-                  $body  = "probando <i>PHPMailer<i>.<br><br>";
-                  $body  = "<font color='red'>Saludos</font>";
-                  $mail->Body = $body;
-                  $mail->AltBody = "Hola amigo\nprobando PHPMailer\n\nSaludos";
-                  $mail->MsgHTML($body);
-                  $mail->Send();
-                  if(!$mail->Send()) {
+                date_default_timezone_set('Etc/UTC');
+                require '../PHPMailerAutoload.php';
+                //Create a new PHPMailer instance
+                $mail = new PHPMailer;
+                //Tell PHPMailer to use SMTP
+                $mail->isSMTP();
+                //Enable SMTP debugging
+                // 0 = off (for production use)
+                // 1 = client messages
+                // 2 = client and server messages
+                $mail->SMTPDebug = 2;
+                //Ask for HTML-friendly debug output
+                $mail->Debugoutput = 'html';
+                //Set the hostname of the mail server
+                $mail->Host = 'smtp.gmail.com';
+                // use
+                // $mail->Host = gethostbyname('smtp.gmail.com');
+                // if your network does not support SMTP over IPv6
+                //Set the SMTP port number - 587 for authenticated TLS, a.k.a. RFC4409 SMTP submission
+                $mail->Port = 587;
+                //Set the encryption system to use - ssl (deprecated) or tls
+                $mail->SMTPSecure = 'tls';
+                //Whether to use SMTP authentication
+                $mail->SMTPAuth = true;
+                //Username to use for SMTP authentication - use full email address for gmail
+                $mail->Username = "soportetigestion@gmail.com";
+                //Password to use for SMTP authentication
+                $mail->Password = "Avantel2020*";
+                //Set who the message is to be sent from
+                $mail->setFrom('soportetigestion@gmail.com', 'Brayan Baron');
+                //Set who the message is to be sent to
+                $mail->addAddress($_POST['email'], 'Brayan Baron Amaya');
+                //Set the subject line
+                $mail->Subject = 'PHPMailer GMail SMTP test';
+                //Read an HTML message body from an external file, convert referenced images to embedded,
+                //convert HTML into a basic plain-text alternative body
+                $mail->msgHTML(file_get_contents('contents.html'), dirname(__FILE__));
+                //Replace the plain text body with one created manually
+                $mail->AltBody = 'This is a plain-text message body';
+                //Attach an image file
+               // $mail->addAttachment('images/phpmailer_mini.png');
+                //send the message, check for errors
+                if (!$mail->send()) {
                     echo "Mailer Error: " . $mail->ErrorInfo;
-                  } else {
-                    echo 'Correo enviado dos satisfactoriamente a ' . $_POST['email'];
-                  }         
+                } else {
+                    echo "Message sent!";
+                }
+
+    
             }
             else 
                 echo 'Informacion incompleta';

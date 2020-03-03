@@ -22,7 +22,8 @@ if (isset($_POST['user'],$_POST['pass'])):
             $var3="A";
             //$ddl_qry = "select usuario from usuarios_soporte_seg where usuario='$var1' and clave='$var2'";
             //$consulta = "EXECUTE IMMEDIATE $ddl_qry";
-            $consulta = "select * from usuarios_soporte_seg";
+            $consulta="Update usuarios_soporte_seg set usuario='$var1' where usuario='$var1' and clave='$var2'";       
+            //$consulta = "select * from usuarios_soporte_seg";
            // $consulta = "select * from usuarios_soporte_seg where usuario='$var1' and clave='$var2'";
             //$consulta = "insert into usuarios_soporte_seg values ('$var1','$var2','$var3')";           
             $queryf= oci_parse($conex2, $consulta);
