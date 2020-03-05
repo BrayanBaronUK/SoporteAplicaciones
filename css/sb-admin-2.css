@@ -10601,6 +10601,13 @@ a:focus {
   background-size: cover;
 }
 
+.bg-cambio-clave {
+  background: url("https://www.avantel.co/a/img/home_recargas_20191113.jpg");
+  background-position: center;
+  background-size: cover;
+}
+
+
 form.user .custom-checkbox.small label {
   line-height: 1.5rem;
 }

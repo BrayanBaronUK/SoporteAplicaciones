@@ -59,7 +59,7 @@
               <h6 class="collapse-header">Configuraciones:</h6>
               <a class="collapse-item" href="#">Login</a>
               <a class="collapse-item" href="#">Registrar</a>
-              <a class="collapse-item" href="#">Olvido contraseña</a>
+              <a class="collapse-item" href="cambio_contrasena.php">Cambiar contraseña</a>
              <!-- <a class="collapse-item" href="login.php">Login</a>
               <a class="collapse-item" href="register.html">Register</a>
               <a class="collapse-item" href="forgot-password.html">Forgot Password</a>-->
@@ -427,9 +427,9 @@
                   <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                   Perfil
                 </a>
-                <a class="dropdown-item" href="#">
+                <a class="dropdown-item" href="cambio_contrasena.php">
                   <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Configuración
+                  Cambiar clave
                 </a>
                 <a class="dropdown-item" href="#">
                   <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
