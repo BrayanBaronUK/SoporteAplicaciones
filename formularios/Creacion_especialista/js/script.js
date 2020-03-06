@@ -47,11 +47,12 @@ $(document).ready(function(){
                                 '</div>'
 
             $('body').append(mensajeModal);
+
         }
 
         // CERRANDO MODAL ==============================
         $('#btnClose').click(function(){
-            $('.modal_wrap').remove();
+            $('.modal_wrap').remove();         
         });
     });
 

@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 
   <meta charset="utf-8">
@@ -17,9 +16,6 @@
 
   <!-- Custom styles for this template-->
   <link href="css/sb-admin-2.min.css" rel="stylesheet">
-
-  <!-- Custom styles for this page -->
-  <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
 </head>
 
@@ -59,7 +55,7 @@
               <h6 class="collapse-header">Configuraciones:</h6>
               <a class="collapse-item" href="#">Login</a>
               <a class="collapse-item" href="#">Registrar</a>
-              <a class="collapse-item" href="#">Olvido contraseña</a>
+              <a class="collapse-item" href="cambio_contrasena.php">Cambiar contraseña</a>
              <!-- <a class="collapse-item" href="login.php">Login</a>
               <a class="collapse-item" href="register.html">Register</a>
               <a class="collapse-item" href="forgot-password.html">Forgot Password</a>-->
@@ -427,9 +423,9 @@
                   <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                   Perfil
                 </a>
-                <a class="dropdown-item" href="#">
+                <a class="dropdown-item" href="cambio_contrasena.php">
                   <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Configuración
+                  Cambiar clave
                 </a>
                 <a class="dropdown-item" href="#">
                   <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
@@ -442,73 +438,63 @@
                 </a>
               </div>
             </li>
+
           </ul>
+
         </nav>
+        <!-- End of Topbar -->
+      
+        <!-- Begin Page Content -->
+        
+<div class="container-fluid">
+<form>
+ <td colspan="2" align="left"><h3>Especialista Creado correctamente</h3></td>
+<table align="left" width="100" cellspacing="2" cellpadding="2" border="0">
+</form>
 
-              <!-- Begin Page Content -->
-              <div class="container-fluid">
+<?php
 
-<!-- Page Heading -->
-<h1 class="h3 mb-2 text-gray-800">Soporte Aplicaciones TI - Especialistas</h1>
-<p class="mb-4"></p>
+//echo "ingreso a la insersion";
+include_once ("conexion.php");
+$conex2 = oci_connect($user, $pass, $db);
 
-<!-- DataTales Example -->
-<div class="card shadow mb-4">
-  <div class="card-header py-3">
-   <h6 class="m-0 font-weight-bold text-primary">Especialistas TI</h6>
-  </div>
-  <div class="card-body">
-    <div class="table-responsive">
-      <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-        <thead>
-          <tr>
-            <th>Nombres</th>
-            <th>Apellidos</th>
-            <th>Telefono / Celular</th>
-            <th>Correo electronico</th>
-            <th>Telefono dotación</th>
-            <th>Ip Ingeniero</th>
-            <th>Usuario Creado</th>
-          </tr>
-        </thead>
-        <tfoot>
-          <tr>
-          <th>Nombres</th>
-            <th>Apellidos</th>
-            <th>Telefono / Celular</th>
-            <th>Correo electronico</th>
-            <th>Telefono dotación</th>
-            <th>Ip Ingeniero</th>
-            <th>Usuario Creado</th>
-          </tr>
-        </tfoot>
-        <tbody>
-          <tr>
-            <td>Brayan</td>
-            <td>Baron Amaya</td>
-            <td>3507105174</td>
-            <td>bbaron@avantel.com.co</td>
-            <td>3506692063</td>
-            <td>10.100.13.98</td>
-            <td>BBARON</td>
-          </tr>
-          <tr>
-            <td>Gustavo</td>
-            <td>Salazar</td>
-            <td>3507103322</td>
-            <td>gsalazar@avantel.com.co</td>
-            <td>3506692020</td>
-            <td>10.100.13.102</td>
-            <td>GSALAZAR</td>
-          </tr>     
-        </tbody>
-      </table>
-    </div>
-  </div>
-</div>
+   $v_names=$_GET["names"];
+   $v_lastname=$_GET["lastname"];
+   $v_phone=$_GET["phone"];
+   $v_email=$_GET["email"];
+   $v_phone_dotacion=$_GET["phone_dotacion"];
+   $v_ip=$_GET["ip"];
+   $v_fecha_cre ="SYSDATE";
+  
+   //$v_fecha_cre = getdate();
+
+    //$sql ="INSERT INTO reservado(id_usuario, nom_libro,num_dias,fecha_reserva) VALUES($v_cedula, $v_nom_libro,$v_num_dias,CURRENT_DATE)";
+    //$sql ="INSERT INTO USUARIOS_SOPORTE VALUES (SUBSTR($vnames,1,1)||SUBSTR($v_lastname,1,7),$v_names,$v_lastname,$v_phone,$v_email,$v_phone_dotacion,$v_ip,$v_fecha_cre)";
+    //$sql ="INSERT INTO USUARIOS_SOPORTE (NOMBRES,APELLIDOS,CORREO_ELECTRONICO) VALUES ($v_names,$v_lastname,$v_email)";
+    $sql ="INSERT INTO USUARIOS_SOPORTE VALUES (SUBSTR('$v_names',1,1)||SUBSTR('$v_lastname',1,7),'$v_names','$v_lastname',$v_phone,'$v_email',$v_phone_dotacion,'$v_ip',$v_fecha_cre)";
+
+    $queryf= oci_parse($conex2, $sql);
+    oci_execute($queryf);
+    oci_commit($conex2);
+   // echo "hace insert";
+
+    //$sql = "select id_usuario, nom_libro,num_dias from reservado  where id_usuario = $v_cedula and num_dias= $v_num_dias and nom_libro = $v_nom_libro";
+    $sql = "SELECT NOMBRES, APELLIDOS, CORREO_ELECTRONICO,FECHA_CREACION FROM USUARIOS_SOPORTE WHERE NOMBRES= $v_names AND APELLIDOS= $v_lastname and CORREO_ELECTRONICO= $v_email";
+    $queryf= oci_parse($conex2, $sql);
+    oci_execute($queryf);
+    oci_commit($conex2);
+    echo "Se ha creado usuario correctamente, verificar tabla de usuarios...!";
+
+    while ( $row = oci_fetch_array ($queryf)) {
+    echo "Se ha creado el especialista ".$row["NOMBRES"]."  ".$row["APELLIDOS"]." de correo: ".$row["CORREO_ELECTRONICO"]; //."  con fecha: ".$row["FECHA_CREACION"];
+    }
+    echo"<BR>";
+    oci_execute($queryf);
+    oci_commit($conex2);
+
+?>
 
 </div>
-<!-- /.container-fluid -->
 
 
       <!-- Footer -->
@@ -561,14 +547,13 @@
 
   <!-- Custom scripts for all pages-->
   <script src="js/sb-admin-2.min.js"></script>
-  
 
   <!-- Page level plugins -->
-  <script src="vendor/datatables/jquery.dataTables.min.js"></script>
-  <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
+  <script src="vendor/chart.js/Chart.min.js"></script>
 
   <!-- Page level custom scripts -->
-  <script src="js/demo/datatables-demo.js"></script>
+  <script src="js/demo/chart-area-demo.js"></script>
+  <script src="js/demo/chart-pie-demo.js"></script>
 
 </body>
 <!--COMETARIADAS

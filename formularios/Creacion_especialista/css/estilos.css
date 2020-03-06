@@ -169,6 +169,26 @@ form.form_contact input[type="button"]{
 }
 
 form.form_contact input[type="button"]:hover{
+    background:#C019A6;
+}
+
+form.form_contact input[type="submit"]{
+    width: 180px;
+	background: linear-gradient(180deg,#2d2a2b 15%,#eb028b 100%);
+	padding: 10px;
+	border: none;
+	border-radius: 25px;
+
+    align-self: flex-end;
+
+    color: #fff;
+	font-family: 'Open sans';
+	font-size: 16px;
+	font-weight: 600;
+	cursor: pointer;
+}
+
+form.form_contact input[type="submit"]:hover{
     background: #C019A6;
 }
 

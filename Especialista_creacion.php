@@ -465,30 +465,30 @@
             </section>
         </section>
 
-        <form action="" class="form_contact">
+        <form class="form_contact"  method="get" action="confirma_especialista.php">
             <h2>Información del Ingeniero</h2>
 
             <div class="user_info">
 
                 <label for="names">Nombres *</label>
-                <input type="text" id="names">
+                <input type="text" id="names" name="names">
 
                 <label for="lastname">Apellidos *</label>
-                <input type="text" id="lastname">
+                <input type="text" id="lastname" name="lastname">
 
                 <label for="phone">Telefono / Celular</label>
-                <input type="number" id="phone">
+                <input type="number" id="phone" name="phone">
 
                 <label for="email">Correo electronico *</label>
-                <input type="text" id="email">
+                <input type="text" id="email" name="email">
 
                 <label for="phone_dotacion">Telefono dotación</label>
-                <input type="number" id="phone_dotacion">
+                <input type="number" id="phone_dotacion" name="phone_dotacion">
 
                 <label for="ip">Ip Ingeniero</label>
-                <input type="number" id="ip">
+                <input type="text" id="ip" name="ip">
 
-                <input type="button" value="Crear" id="btnSend">
+                <input type="submit"  value="Crear" id="btnSend" class="botonestilo"> <!--tipo button   id="btnSend"--> 
             </div>
         </form>
 
