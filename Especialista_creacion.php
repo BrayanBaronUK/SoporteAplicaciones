@@ -476,11 +476,17 @@
                 <label for="lastname">Apellidos *</label>
                 <input type="text" id="lastname" name="lastname">
 
+                <label for="cedula">Cedula</label>
+                <input type="number" id="cedula" name="cedula">
+
                 <label for="phone">Telefono / Celular</label>
                 <input type="number" id="phone" name="phone">
 
                 <label for="email">Correo electronico *</label>
                 <input type="text" id="email" name="email">
+
+                <label for="cargo">Cargo</label>
+                <input type="text" id="cargo" name="cargo">
 
                 <label for="phone_dotacion">Telefono dotación</label>
                 <input type="number" id="phone_dotacion" name="phone_dotacion">

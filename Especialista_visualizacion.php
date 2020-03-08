@@ -452,6 +452,11 @@
 <h1 class="h3 mb-2 text-gray-800">Soporte Aplicaciones TI - Especialistas</h1>
 <p class="mb-4"></p>
 
+<?php
+include_once ("conexion.php");
+$conex2 = oci_connect($user, $pass, $db);
+?>
+
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
   <div class="card-header py-3">
@@ -464,8 +469,10 @@
           <tr>
             <th>Nombres</th>
             <th>Apellidos</th>
+            <th>Cedula</th>
             <th>Telefono / Celular</th>
             <th>Correo electronico</th>
+            <th>Cargo</th>
             <th>Telefono dotación</th>
             <th>Ip Ingeniero</th>
             <th>Usuario Creado</th>
@@ -475,28 +482,43 @@
           <tr>
           <th>Nombres</th>
             <th>Apellidos</th>
+            <th>Cedula</th>
             <th>Telefono / Celular</th>
             <th>Correo electronico</th>
+            <th>Cargo</th>
             <th>Telefono dotación</th>
             <th>Ip Ingeniero</th>
             <th>Usuario Creado</th>
           </tr>
         </tfoot>
         <tbody>
+        <?php
+                  $sql    ="SELECT NOMBRES,APELLIDOS,CEDULA,TELEFONO,CORREO_ELECTRONICO,CARGO,TELEFONO_DOTACION,IP_INGENIERO,USUARIO FROM USUARIOS_SOPORTE";
+                  $resultado_set = oci_parse($conex2, $sql);
+                  oci_execute($resultado_set);
+                  while($row=oci_fetch_array($resultado_set)){            
+        ?>
           <tr>
-            <td>Brayan</td>
-            <td>Baron Amaya</td>
-            <td>3507105174</td>
-            <td>bbaron@avantel.com.co</td>
-            <td>3506692063</td>
-            <td>10.100.13.98</td>
-            <td>BBARON</td>
+            <td><?php echo $row[0]?></td>
+            <td><?php echo $row[1]?></td>
+            <td><?php echo $row[2]?></td>
+            <td><?php echo $row[3]?></td>
+            <td><?php echo $row[4]?></td>
+            <th><?php echo $row[5]?></th>
+            <td><?php echo $row[6]?></td>
+            <td><?php echo $row[7]?></td>
+            <td><?php echo $row[8]?></td>
           </tr>
+          <?php
+            }
+          ?>
           <tr>
             <td>Gustavo</td>
             <td>Salazar</td>
+            <td>1030640407</td>
             <td>3507103322</td>
             <td>gsalazar@avantel.com.co</td>
+            <th>Jefe</th>
             <td>3506692020</td>
             <td>10.100.13.102</td>
             <td>GSALAZAR</td>

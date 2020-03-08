@@ -18,8 +18,10 @@ $conex2 = oci_connect($user, $pass, $db);
 
   $v_names=$_POST["names"];
   $v_lastname=$_POST["lastname"];
+  $v_cedula=$_POST["cedula"];
   $v_phone=$_POST["phone"];
   $v_email=$_POST["email"];
+  $v_cargo=$_POST["cargo"];
   $v_phone_dotacion=$_POST["phone_dotacion"];
   $v_ip=$_POST["ip"];
   $v_fecha_cre ="SYSDATE";
@@ -29,7 +31,7 @@ $conex2 = oci_connect($user, $pass, $db);
     //$sql ="INSERT INTO reservado(id_usuario, nom_libro,num_dias,fecha_reserva) VALUES($v_cedula, $v_nom_libro,$v_num_dias,CURRENT_DATE)";
     //$sql ="INSERT INTO USUARIOS_SOPORTE VALUES (SUBSTR($vnames,1,1)||SUBSTR($v_lastname,1,7),$v_names,$v_lastname,$v_phone,$v_email,$v_phone_dotacion,$v_ip,$v_fecha_cre)";
     //$sql ="INSERT INTO USUARIOS_SOPORTE (NOMBRES,APELLIDOS,CORREO_ELECTRONICO) VALUES ($v_names,$v_lastname,$v_email)";
-    $sql ="INSERT INTO USUARIOS_SOPORTE VALUES (SUBSTR('$v_names',1,1)||SUBSTR('$v_lastname',1,7),'$v_names','$v_lastname',$v_phone,'$v_email',$v_phone_dotacion,'$v_ip',$v_fecha_cre)";
+    $sql ="INSERT INTO USUARIOS_SOPORTE VALUES (SUBSTR('$v_names',1,1)||REPLACE(SUBSTR('$v_lastname',1,7),' ',''),'$v_names','$v_lastname',$v_cedula,$v_phone,'$v_email','$v_cargo',$v_phone_dotacion,'$v_ip',$v_fecha_cre)";
 
     $queryf= oci_parse($conex2, $sql);
     oci_execute($queryf);
