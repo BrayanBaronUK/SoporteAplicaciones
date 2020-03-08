@@ -20,6 +20,7 @@
 
   <!-- Custom styles for this page -->
   <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/css/bootstrap4-toggle.min.css" rel="stylesheet">
 
 </head>
 
@@ -431,10 +432,6 @@
                   <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
                   Configuración
                 </a>
-                <a class="dropdown-item" href="#">
-                  <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Actividades
-                </a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
                   <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
@@ -449,62 +446,148 @@
               <div class="container-fluid">
 
 <!-- Page Heading -->
-<h1 class="h3 mb-2 text-gray-800">Soporte Aplicaciones TI - Especialistas</h1>
+<h1 class="h3 mb-2 text-gray-800">Soporte Aplicaciones TI - Registro Actividades Turno</h1>
 <p class="mb-4"></p>
+
+
 
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
   <div class="card-header py-3">
-   <h6 class="m-0 font-weight-bold text-primary">Especialistas TI</h6>
+    <h6 class="m-0 font-weight-bold text-primary">Registrar actividad de turno</h6>
   </div>
+
+  
   <div class="card-body">
+  <!--SELECCIONADOR DE CICLO-->
+<div class="small mb-1">Seleccione un ciclo:</div>
+                  <div class="dropdown mb-4">
+                  
+                    <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" 
+                    aria-haspopup="true" aria-expanded="false">Ciclo</button>
+                    
+                    <div class="dropdown-menu animated--fade-in" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="#" >Ciclo A - 1</a>
+                    <a class="dropdown-item" href="#">Ciclo B - 15</a>
+                    <a class="dropdown-item" href="#">Ciclo G - 05</a>
+                    <a class="dropdown-item" href="#">Ciclo H - 10</a>
+                    <a class="dropdown-item" href="#">Ciclo I - 20</a>
+                    <a class="dropdown-item" href="#">Ciclo J - 25</a>
+                    
+                    </div>
+                    <div id="resultbox"></div>
+                  </div>
     <div class="table-responsive">
       <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
         <thead>
           <tr>
-            <th>Nombres</th>
-            <th>Apellidos</th>
-            <th>Telefono / Celular</th>
-            <th>Correo electronico</th>
-            <th>Telefono dotación</th>
-            <th>Ip Ingeniero</th>
-            <th>Usuario Creado</th>
+            <td><strong>Actividad Cierre</strong></td>
+            <td><strong>Hora</strong></td>
+            <td><strong>Realizado SI/NO</strong></td>
+            <td><strong>Observaciones</strong></td>
           </tr>
         </thead>
-        <tfoot>
-          <tr>
-          <th>Nombres</th>
-            <th>Apellidos</th>
-            <th>Telefono / Celular</th>
-            <th>Correo electronico</th>
-            <th>Telefono dotación</th>
-            <th>Ip Ingeniero</th>
-            <th>Usuario Creado</th>
-          </tr>
-        </tfoot>
-        <tbody>
-          <tr>
-            <td>Brayan</td>
-            <td>Baron Amaya</td>
-            <td>3507105174</td>
-            <td>bbaron@avantel.com.co</td>
-            <td>3506692063</td>
-            <td>10.100.13.98</td>
-            <td>BBARON</td>
+ 
+     <tbody>
+
+           <tr>
+           <td>Verificación Procesos DWH </td>
+            <td>2:30:00 a. m.</td>
+            <td><input type="checkbox" checked data-toggle="toggle" data-on="NO" data-off="SI" data-onstyle="danger" data-offstyle="success"></td>
+            <td>Observaciones</td>
           </tr>
           <tr>
-            <td>Gustavo</td>
-            <td>Salazar</td>
-            <td>3507103322</td>
-            <td>gsalazar@avantel.com.co</td>
-            <td>3506692020</td>
-            <td>10.100.13.102</td>
-            <td>GSALAZAR</td>
-          </tr>     
+          <td>Modificacion Numeracion (Portabilidad)</td>
+            <td>6:15:00 a. m.</td>
+            <td><input type="checkbox" checked data-toggle="toggle" data-on="NO" data-off="SI" data-onstyle="danger" data-offstyle="success"></td>
+            <td>Observaciones</td>
+          </tr>
+          <tr>
+          <td>Carga de archivos de operadores  TIGO, MOVISTAR y  CLARO</td>
+            <td>11:00:00 a. m.</td>
+            <td><input type="checkbox" checked data-toggle="toggle" data-on="NO" data-off="SI" data-onstyle="danger" data-offstyle="success"></td>
+            <td>Observaciones</td>
+          </tr>
+          <tr>
+          <td>Reinicio  BTF Venta Express (Sábados), 
+              192.168.231.237 BTF12
+              192.168.231.238 BTF14-15
+              Probar acceso al aplicativo</td>
+            <td>3:00:00 a. m.</td>
+            <td><input type="checkbox" checked data-toggle="toggle" data-on="NO" data-off="SI" data-onstyle="danger" data-offstyle="success"></td>
+            <td>Observaciones</td>
+          </tr>
+          <tr>
+          <td>Consulta de  Abonados  ONE NDS. (Sabados )</td>
+            <td>3:00:00 p. m.</td>
+            <td><input type="checkbox" checked data-toggle="toggle" data-on="NO" data-off="SI" data-onstyle="danger" data-offstyle="success"></td>
+            <td>Observaciones</td>
+          </tr>
+          <tr>
+          <td>Revisión  Proceso de Compensacion IDEN(11 de cada mes )</td>
+            <td>4:00:00 p. m.</td>
+            <td><input type="checkbox" checked data-toggle="toggle" data-on="NO" data-off="SI" data-onstyle="danger" data-offstyle="success"></td>
+            <td>Observaciones</td>
+          </tr>
+          <tr>
+          <td>Revisión Proceso de   Compensacion LTE (18,20,22 y 28 de cada mes )</td>
+            <td>4:00:00 p. m.</td>
+            <td><input type="checkbox" checked data-toggle="toggle" data-on="NO" data-off="SI" data-onstyle="danger" data-offstyle="success"></td>
+            <td>Observaciones</td>
+          </tr>
+          <tr>
+          <td>Consulta de  Abonados  ONE NDS. (Domingos )</td>
+            <td>3:00:00 p. m.</td>
+            <td><input type="checkbox" checked data-toggle="toggle" data-on="NO" data-off="SI" data-onstyle="danger" data-offstyle="success"></td>
+            <td>Observaciones</td>
+          </tr>
+          <tr>
+          <td>Modificacion  Turnos  Aranda de acuerdo al horario (Domingos )</td>
+            <td>10:00:00 p. m.</td>
+            <td><input type="checkbox" checked data-toggle="toggle" data-on="NO" data-off="SI" data-onstyle="danger" data-offstyle="success"></td>
+            <td>Observaciones</td>
+          </tr>
+          <tr>
+          <td>Ejecución Query y  Envio de Correo notificando  ciclo enviado en el cierre. En caso de haberse enviado el incorrecto notificar inmediamentamente a la persona que esta ejecutando el cierre (15 y  1ro de cada mes a la madrugada), </td>
+            <td>1:15:00 a. m.</td>
+            <td><input type="checkbox" checked data-toggle="toggle" data-on="NO" data-off="SI" data-onstyle="danger" data-offstyle="success"></td>
+            <td>Observaciones</td>
+          </tr>
+          <tr>
+          <td>Monitoreo en  OAS </td>
+            <td>Permanente</td>
+            <td><input type="checkbox" checked data-toggle="toggle" data-on="NO" data-off="SI" data-onstyle="danger" data-offstyle="success"></td>
+            <td>Observaciones</td>
+          </tr>
+          <tr>
+          <td>Atención Alarmas por correo</td>
+            <td>Permanente</td>
+            <td><input type="checkbox" checked data-toggle="toggle" data-on="NO" data-off="SI" data-onstyle="danger" data-offstyle="success"></td>
+            <td>Observaciones</td>
+          </tr>
+          <tr>
+          <td>Arandas Pendientes</td>
+            <td>Permanente</td>
+            <td><input type="checkbox" checked data-toggle="toggle" data-on="NO" data-off="SI" data-onstyle="danger" data-offstyle="success"></td>
+            <td>Observaciones</td>
+          </tr>
         </tbody>
       </table>
     </div>
+
+    <div>
+    <a href="#" class="btn btn-primary btn-icon-split"  style="float:right;" >
+                    <span class="icon text-white-50">
+                      <i class="fas fa-flag"></i>
+                    </span>
+                    <span class="text">Guardar</span>
+      </a>
+
+    </div>
+
+
   </div>
+
 </div>
 
 </div>
@@ -564,11 +647,18 @@
   
 
   <!-- Page level plugins -->
-  <script src="vendor/datatables/jquery.dataTables.min.js"></script>
+  <!--<script src="vendor/datatables/jquery.dataTables.min.js"></script>-->
   <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
   <!-- Page level custom scripts -->
   <script src="js/demo/datatables-demo.js"></script>
+
+    <!-- js del dropdown -->
+  <script src="js/demo/dropdown.js"></script>
+  <script src="bootstrap/js/bootstrap.min.js"></script>
+
+<!--JS Para el switch-->
+<script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/js/bootstrap4-toggle.min.js"></script>
 
 </body>
 <!--COMETARIADAS

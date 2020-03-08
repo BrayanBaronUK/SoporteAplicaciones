@@ -471,12 +471,12 @@
                     aria-haspopup="true" aria-expanded="false">Ciclo</button>
                     
                     <div class="dropdown-menu animated--fade-in" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item" href="#" >Ciclo A</a>
-                    <a class="dropdown-item" href="#">Ciclo B</a>
-                    <a class="dropdown-item" href="#">Ciclo G</a>
-                    <a class="dropdown-item" href="#">Ciclo H</a>
-                    <a class="dropdown-item" href="#">Ciclo I</a>
-                    <a class="dropdown-item" href="#">Ciclo J</a>
+                    <a class="dropdown-item" href="#" >Ciclo A - 1</a>
+                    <a class="dropdown-item" href="#">Ciclo B - 15</a>
+                    <a class="dropdown-item" href="#">Ciclo G - 05</a>
+                    <a class="dropdown-item" href="#">Ciclo H - 10</a>
+                    <a class="dropdown-item" href="#">Ciclo I - 20</a>
+                    <a class="dropdown-item" href="#">Ciclo J - 25</a>
                     
                     </div>
                     <div id="resultbox"></div>

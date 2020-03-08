@@ -511,18 +511,7 @@ $conex2 = oci_connect($user, $pass, $db);
           </tr>
           <?php
             }
-          ?>
-          <tr>
-            <td>Gustavo</td>
-            <td>Salazar</td>
-            <td>1030640407</td>
-            <td>3507103322</td>
-            <td>gsalazar@avantel.com.co</td>
-            <th>Jefe</th>
-            <td>3506692020</td>
-            <td>10.100.13.102</td>
-            <td>GSALAZAR</td>
-          </tr>     
+          ?>   
         </tbody>
       </table>
     </div>
