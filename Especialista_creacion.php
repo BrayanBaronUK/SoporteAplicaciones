@@ -465,7 +465,7 @@
             </section>
         </section>
 
-        <form class="form_contact"  method="get" action="confirma_especialista.php">
+        <form class="form_contact"  method="POST" action="confirma_especialista.php">
             <h2>Información del Ingeniero</h2>
 
             <div class="user_info">

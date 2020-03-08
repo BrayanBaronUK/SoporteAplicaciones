@@ -1,8 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-<?php 
-  session_start();
-?>
 
 <head>
 
@@ -20,6 +17,10 @@
 
   <!-- Custom styles for this template-->
   <link href="css/sb-admin-2.min.css" rel="stylesheet">
+
+  <!-- Custom styles for this page -->
+  <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/css/bootstrap4-toggle.min.css" rel="stylesheet">
 
 </head>
 
@@ -59,7 +60,7 @@
               <h6 class="collapse-header">Configuraciones:</h6>
               <a class="collapse-item" href="#">Login</a>
               <a class="collapse-item" href="#">Registrar</a>
-              <a class="collapse-item" href="cambio_contrasena.php">Cambiar contraseña</a>
+              <a class="collapse-item" href="#">Olvido contraseña</a>
              <!-- <a class="collapse-item" href="login.php">Login</a>
               <a class="collapse-item" href="register.html">Register</a>
               <a class="collapse-item" href="forgot-password.html">Forgot Password</a>-->
@@ -156,7 +157,7 @@
       <!-- Nav Item - Pages Collapse Menu -->
       <li class="nav-item">
       <!--  <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">-->
-          <a class="nav-link collapsed" href="RegistroActividadesTurno.php">
+          <a class="nav-link collapsed" href="#">
 
           <i class="fas fa-fw fa-folder"></i>
           <span>Registrar Actividad Turno</span>
@@ -176,7 +177,7 @@
         </div>-->
       </li>
       <li class="nav-item">
-        <a class="nav-link collapsed" href="RegistroActividadesCierre.php">
+        <a class="nav-link collapsed" href="#">
 
           <i class="fas fa-fw fa-folder"></i>
           <span>Registrar Actividad Cierre</span>
@@ -427,9 +428,9 @@
                   <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                   Perfil
                 </a>
-                <a class="dropdown-item" href="cambio_contrasena.php">
+                <a class="dropdown-item" href="#">
                   <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Cambiar clave
+                  Configuración
                 </a>
                 <a class="dropdown-item" href="#">
                   <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
@@ -442,302 +443,226 @@
                 </a>
               </div>
             </li>
-
           </ul>
-
         </nav>
-        <!-- End of Topbar -->
-      
-        <!-- Begin Page Content -->
-        
-       
-      <!--  <div class="container-fluid">
 
-           Page Heading 
-          <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
-            <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
-          </div>
+              <!-- Begin Page Content -->
+              <div class="container-fluid">
 
-           Content Row 
-          <div class="row">
+<!-- Page Heading -->
+<h1 class="h3 mb-2 text-gray-800">Soporte Aplicaciones TI - Registro Actividades Cierre</h1>
+<p class="mb-4"></p>
 
-            Earnings (Monthly) Card Example 
-            <div class="col-xl-3 col-md-6 mb-4">
-              <div class="card border-left-primary shadow h-100 py-2">
-                <div class="card-body">
-                  <div class="row no-gutters align-items-center">
-                    <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Earnings (Monthly)</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800">$40,000</div>
+
+
+<!-- DataTales Example -->
+<div class="card shadow mb-4">
+  <div class="card-header py-3">
+    <h6 class="m-0 font-weight-bold text-primary">Registrar actividad de cierre</h6>
+  </div>
+
+  
+  <div class="card-body">
+  <!--SELECCIONADOR DE CICLO-->
+<div class="small mb-1">Seleccione un ciclo:</div>
+                  <div class="dropdown mb-4">
+                  
+                    <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" 
+                    aria-haspopup="true" aria-expanded="false">Ciclo</button>
+                    
+                    <div class="dropdown-menu animated--fade-in" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="#" >Ciclo A</a>
+                    <a class="dropdown-item" href="#">Ciclo B</a>
+                    <a class="dropdown-item" href="#">Ciclo G</a>
+                    <a class="dropdown-item" href="#">Ciclo H</a>
+                    <a class="dropdown-item" href="#">Ciclo I</a>
+                    <a class="dropdown-item" href="#">Ciclo J</a>
+                    
                     </div>
-                    <div class="col-auto">
-                      <i class="fas fa-calendar fa-2x text-gray-300"></i>
-                    </div>
+                    <div id="resultbox"></div>
                   </div>
-                </div>
-              </div>
-            </div>
+    <div class="table-responsive">
+      <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+        <thead>
+          <tr>
+            <td><strong>Actividad Cierre</strong></td>
+            <td><strong>Hora</strong></td>
+            <td><strong>Realizado SI/NO</strong></td>
+            <td><strong>Descripcion</strong></td>
+            <td><strong>Observaciones</strong></td>
+          </tr>
+        </thead>
+ 
+     <tbody>
 
-             Earnings (Monthly) Card Example 
-            <div class="col-xl-3 col-md-6 mb-4">
-              <div class="card border-left-success shadow h-100 py-2">
-                <div class="card-body">
-                  <div class="row no-gutters align-items-center">
-                    <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Earnings (Annual)</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800">$215,000</div>
-                    </div>
-                    <div class="col-auto">
-                      <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+           <tr>
+            <td>Lanzamiento del Proceso de Paso  de Postpago a Prepago de Lotus</td>
+            <td>4:00:00 p. m.</td>
+            <td><input type="checkbox" checked data-toggle="toggle" data-on="NO" data-off="SI" data-onstyle="danger" data-offstyle="success"></td>
+            <td>Plazo Maximo de ejecucion antes de las 4:30</td>
+            <td>Observaciones</td>
+          </tr>
+          <tr>
+          <td>Lanzamiento del Proceso de Paso  de Postpago a Prepago.</td>
+            <td>5:00:00 p. m.</td>
+            <td><input type="checkbox" checked data-toggle="toggle" data-on="NO" data-off="SI" data-onstyle="danger" data-offstyle="success"></td>
+            <td>Plazo Maximo de ejecución hasta las 18:30</td>
+            <td>Observaciones</td>
+          </tr>
+          <tr>
+          <td>Envio de correo con las lineas que se pasaron de Post  a Pre.</td>
+            <td>9:00:00 p. m.</td>
+            <td><input type="checkbox" checked data-toggle="toggle" data-on="NO" data-off="SI" data-onstyle="danger" data-offstyle="success"></td>
+            <td>Enviar correo adjuntando el archivo con la informacion de las lineas que se pasaron de post a Pre (enviar los tres archivos)
+                1. Archivo de los anexos programados.
+                2. Archivo con las cuentas que se crearon para los anexos que fueron pasados a prepago
+                3. Anexos  Virtuales que se dieron de baja</td>
+            <td>Observaciones</td>
+          </tr>
+          <tr>
+          <td>Validacion del inicio de las cargas de LTE FASE 1</td>
+            <td>10:30:00 p. m.</td>
+            <td><input type="checkbox" checked data-toggle="toggle" data-on="NO" data-off="SI" data-onstyle="danger" data-offstyle="success"></td>
+            <td>Validar que las recargas de la fase 1 de Lte inicien en normalidady validar los logs de las recargas</td>
+            <td>Observaciones</td>
+          </tr>
+          <tr>
+          <td>Validacion del inicio de las cargas de LTE FASE 2</td>
+            <td>12:02:00 a. m.</td>
+            <td><input type="checkbox" checked data-toggle="toggle" data-on="NO" data-off="SI" data-onstyle="danger" data-offstyle="success"></td>
+            <td>Validar que las recargas de la fase 2 de Lte inicien en normalidad y validar los logs de las recargas </td>
+            <td>Observaciones</td>
+          </tr>
+          <tr>
+          <td>Revisa Logs STC</td>
+            <td>Permanente</td>
+            <td><input type="checkbox" checked data-toggle="toggle" data-on="NO" data-off="SI" data-onstyle="danger" data-offstyle="success"></td>
+            <td>Cada intervalo de 30 mins se deben estar revisando los logs. Primera validacion a la 24:00 </td>
+            <td>Observaciones</td>
+          </tr>
+          <tr>
+          <td>Configuracion de Cierre Maestra en la URL de Cierre</td>
+            <td>12:30:00 a. m.</td>
+            <td><input type="checkbox" checked data-toggle="toggle" data-on="NO" data-off="SI" data-onstyle="danger" data-offstyle="success"></td>
+            <td>Revisar y configurar los procesos a ejecutar en el cierre.</td>
+            <td>Observaciones</td>
+          </tr>
+          <tr>
+          <td>Verificar procesos en el STCAPPSERVER</td>
+            <td>Permanente</td>
+            <td><input type="checkbox" checked data-toggle="toggle" data-on="NO" data-off="SI" data-onstyle="danger" data-offstyle="success"></td>
+            <td>Cada intervalo de 30 mins se deben estar revisando la ejecucion de los procesos de STC. Primera validacion 24:00</td>
+            <td>Observaciones</td>
+          </tr>
+          <tr>
+          <td>Envíar Proceso Cierre de Maestra por la URL de Cierre</td>
+            <td>12:45:00 a. m.</td>
+            <td><input type="checkbox" checked data-toggle="toggle" data-on="NO" data-off="SI" data-onstyle="danger" data-offstyle="success"></td>
+            <td>Enviar por STC el proceso de cierre. Verificando que se envie la fecha y ciclo correcto.</td>
+            <td>Observaciones</td>
+          </tr>
+          <tr>
+          <td>Verificar  Correo de Alerta con notificacion confirmando el cierre enviado.</td>
+            <td>12:46:00 a. m.</td>
+            <td><input type="checkbox" checked data-toggle="toggle" data-on="NO" data-off="SI" data-onstyle="danger" data-offstyle="success"></td>
+            <td>Verificar  el correo para confirmar que el cierre configurado  es el correcto.</td>
+            <td>Observaciones</td>
+          </tr>
+          <tr>
+          <td>Envío de Correo indicando Inicio del proceso de Cierre Maestra</td>
+            <td>12:50:00 a. m.</td>
+            <td><input type="checkbox" checked data-toggle="toggle" data-on="NO" data-off="SI" data-onstyle="danger" data-offstyle="success"></td>
+            <td>Redactar el correo indicando el inicio de cierre  maestra.</td>
+            <td>Observaciones</td>
+          </tr>
+          <tr>
+          <td>Notificar el inicio del proceso de Cierre  Maestra al grupo de Facturacion</td>
+            <td>12:50:00 a. m.</td>
+            <td><input type="checkbox" checked data-toggle="toggle" data-on="NO" data-off="SI" data-onstyle="danger" data-offstyle="success"></td>
+            <td>se notifica a las personas por medio de correo que se envia informando el incio de cierre maestra, por que no tienen grupo creado</td>
+            <td>Observaciones</td>
+          </tr>
+          <tr>
+          <td>Seguimiento proceso Cierre de Maestra</td>
+            <td>Permanente</td>
+            <td><input type="checkbox" checked data-toggle="toggle" data-on="NO" data-off="SI" data-onstyle="danger" data-offstyle="success"></td>
+            <td>Realizar las validaciones de cada proceso del cierre con el fin de monitorear la ejecucion del mismo</td>
+            <td>Observaciones</td>
+          </tr>
+          <tr>
+          <td>Envio Correo notificando finalizacion de  las recargas de Lte face 1 y fase 2</td>
+            <td>2:00 a .m. - 3:00 a .m.</td>
+            <td><input type="checkbox" checked data-toggle="toggle" data-on="NO" data-off="SI" data-onstyle="danger" data-offstyle="success"></td>
+            <td>Enviar correo notificando  la finalización del proceso de recargas despues de la validacion de los logs que se hayan realizado en normalidad </td>
+            <td>Observaciones</td>
+          </tr>
+          <tr>
+          <td>Validar las Exoneraciones</td>
+            <td>4:45:00 a. m.</td>
+            <td><input type="checkbox" checked data-toggle="toggle" data-on="NO" data-off="SI" data-onstyle="danger" data-offstyle="success"></td>
+            <td>Revisar la correcta ejecucion del proceso de exoneraciones que se ejecuta finalizando el cierre maestra. Tener encuenta tambien los hilos de las exoneraciones en caso de fallas enviar correo  y notificar inmediatamente a Byte.
+              Nuevo paso para evidenciar que en el momento de la ejecución efectuó todas las actualizaciones de manera  correcta.
+              Ver archivo ""Exonerar anexos con bloqueo temporal.txt"" dentro de la carpeta de cierre maestra ciclo A y B  ejecutar   Query que hay que ejecutar y la instrucción a seguir. 
+              </td>
+            <td>Observaciones</td>
+          </tr>
+          <tr>
+          <td>Activacion  Exoneracion por  Mora</td>
+            <td>4:46:00 a. m.</td>
+            <td><input type="checkbox" checked data-toggle="toggle" data-on="NO" data-off="SI" data-onstyle="danger" data-offstyle="success"></td>
+            <td>ejecutar el update UPDATE V4SERVI SET TCFLA2='S' ,  TCFLA4='S' WHERE TCCSER=808</td>
+            <td>Observaciones</td>
+          </tr>
+          <tr>
+            <td>Envío de Correo indicando Finalización del proceso de Cierre Maestra</td>
+            <td>5:00:00 a. m.</td>
+            <td><input type="checkbox" checked data-toggle="toggle" data-on="NO" data-off="SI" data-onstyle="danger" data-offstyle="success"></td>
+            <td>Redactar y enviar   el correo indicando la finalización de cierre  maestra </td>
+            <td>Observaciones</td>
+          </tr>
+          <tr>
+          <td>Notificar la finalización del proceso de Cierre de Maestra al grupo de Facturacion</td>
+            <td>5:15:00 a. m.</td>
+            <td><input type="checkbox" checked data-toggle="toggle" data-on="NO" data-off="SI" data-onstyle="danger" data-offstyle="success"></td>
+            <td>se notifica a las personas por medio de correo que se envia informando el fin del cierre maestra, por que no tienen grupo creado</td>
+            <td>Observaciones</td>
+          </tr>
+          <tr>
+          <td>Validacion de OAS</td>
+            <td>Permanente</td>
+            <td><input type="checkbox" checked data-toggle="toggle" data-on="NO" data-off="SI" data-onstyle="danger" data-offstyle="success"></td>
+            <td>Validar el procesamiento de OAS.</td>
+            <td>Observaciones</td>
+          </tr>
+          <tr>
+          <td>Validacion de recargas IDEN y  LTE, Hotbilling, eliminación de suplementarios</td>
+            <td>5:30:00 a. m.</td>
+            <td><input type="checkbox" checked data-toggle="toggle" data-on="NO" data-off="SI" data-onstyle="danger" data-offstyle="success"></td>
+            <td>CICLO A Para  IDEN Y LTE CICLO  B  Solo LTE</td>
+            <td>Observaciones</td>
+          </tr>
+     </tbody>
+      </table>
+    </div>
 
-             Earnings (Monthly) Card Example 
-            <div class="col-xl-3 col-md-6 mb-4">
-              <div class="card border-left-info shadow h-100 py-2">
-                <div class="card-body">
-                  <div class="row no-gutters align-items-center">
-                    <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Tasks</div>
-                      <div class="row no-gutters align-items-center">
-                        <div class="col-auto">
-                          <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">50%</div>
-                        </div>
-                        <div class="col">
-                          <div class="progress progress-sm mr-2">
-                            <div class="progress-bar bg-info" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-auto">
-                      <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            Pending Requests Card Example 
-            <div class="col-xl-3 col-md-6 mb-4">
-              <div class="card border-left-warning shadow h-100 py-2">
-                <div class="card-body">
-                  <div class="row no-gutters align-items-center">
-                    <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Pending Requests</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
-                    </div>
-                    <div class="col-auto">
-                      <i class="fas fa-comments fa-2x text-gray-300"></i>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-           Content Row 
-
-          <div class="row">
-
-            Area Chart 
-            <div class="col-xl-8 col-lg-7">
-              <div class="card shadow mb-4">
-                Card Header - Dropdown 
-                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0 font-weight-bold text-primary">Earnings Overview</h6>
-                  <div class="dropdown no-arrow">
-                    <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
-                      <div class="dropdown-header">Dropdown Header:</div>
-                      <a class="dropdown-item" href="#">Action</a>
-                      <a class="dropdown-item" href="#">Another action</a>
-                      <div class="dropdown-divider"></div>
-                      <a class="dropdown-item" href="#">Something else here</a>
-                    </div>
-                  </div>
-                </div>
-                Card Body 
-                <div class="card-body">
-                  <div class="chart-area">
-                    <canvas id="myAreaChart"></canvas>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            Pie Chart 
-            <div class="col-xl-4 col-lg-5">
-              <div class="card shadow mb-4">
-                Card Header - Dropdown 
-                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0 font-weight-bold text-primary">Revenue Sources</h6>
-                  <div class="dropdown no-arrow">
-                    <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
-                      <div class="dropdown-header">Dropdown Header:</div>
-                      <a class="dropdown-item" href="#">Action</a>
-                      <a class="dropdown-item" href="#">Another action</a>
-                      <div class="dropdown-divider"></div>
-                      <a class="dropdown-item" href="#">Something else here</a>
-                    </div>
-                  </div>
-                </div>
-                 Card Body 
-                <div class="card-body">
-                  <div class="chart-pie pt-4 pb-2">
-                    <canvas id="myPieChart"></canvas>
-                  </div>
-                  <div class="mt-4 text-center small">
-                    <span class="mr-2">
-                      <i class="fas fa-circle text-primary"></i> Direct
+    <div>
+    <a href="#" class="btn btn-primary btn-icon-split"  style="float:right;" >
+                    <span class="icon text-white-50">
+                      <i class="fas fa-flag"></i>
                     </span>
-                    <span class="mr-2">
-                      <i class="fas fa-circle text-success"></i> Social
-                    </span>
-                    <span class="mr-2">
-                      <i class="fas fa-circle text-info"></i> Referral
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+                    <span class="text">Guardar</span>
+      </a>
 
-           Content Row 
-          <div class="row">
+    </div>
 
-            Content Column 
-            <div class="col-lg-6 mb-4">
 
-               Project Card Example 
-              <div class="card shadow mb-4">
-                <div class="card-header py-3">
-                  <h6 class="m-0 font-weight-bold text-primary">Projects</h6>
-                </div>
-                <div class="card-body">
-                  <h4 class="small font-weight-bold">Server Migration <span class="float-right">20%</span></h4>
-                  <div class="progress mb-4">
-                    <div class="progress-bar bg-danger" role="progressbar" style="width: 20%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
-                  </div>
-                  <h4 class="small font-weight-bold">Sales Tracking <span class="float-right">40%</span></h4>
-                  <div class="progress mb-4">
-                    <div class="progress-bar bg-warning" role="progressbar" style="width: 40%" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
-                  </div>
-                  <h4 class="small font-weight-bold">Customer Database <span class="float-right">60%</span></h4>
-                  <div class="progress mb-4">
-                    <div class="progress-bar" role="progressbar" style="width: 60%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
-                  </div>
-                  <h4 class="small font-weight-bold">Payout Details <span class="float-right">80%</span></h4>
-                  <div class="progress mb-4">
-                    <div class="progress-bar bg-info" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
-                  </div>
-                  <h4 class="small font-weight-bold">Account Setup <span class="float-right">Complete!</span></h4>
-                  <div class="progress">
-                    <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
-                  </div>
-                </div>
-              </div>
+  </div>
 
-               Color System 
-              <div class="row">
-                <div class="col-lg-6 mb-4">
-                  <div class="card bg-primary text-white shadow">
-                    <div class="card-body">
-                      Primary
-                      <div class="text-white-50 small">#4e73df</div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-lg-6 mb-4">
-                  <div class="card bg-success text-white shadow">
-                    <div class="card-body">
-                      Success
-                      <div class="text-white-50 small">#1cc88a</div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-lg-6 mb-4">
-                  <div class="card bg-info text-white shadow">
-                    <div class="card-body">
-                      Info
-                      <div class="text-white-50 small">#36b9cc</div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-lg-6 mb-4">
-                  <div class="card bg-warning text-white shadow">
-                    <div class="card-body">
-                      Warning
-                      <div class="text-white-50 small">#f6c23e</div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-lg-6 mb-4">
-                  <div class="card bg-danger text-white shadow">
-                    <div class="card-body">
-                      Danger
-                      <div class="text-white-50 small">#e74a3b</div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-lg-6 mb-4">
-                  <div class="card bg-secondary text-white shadow">
-                    <div class="card-body">
-                      Secondary
-                      <div class="text-white-50 small">#858796</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+</div>
 
-            </div>
+</div>
+<!-- /.container-fluid -->
 
-            <div class="col-lg-6 mb-4">
-
-               Illustrations 
-              <div class="card shadow mb-4">
-                <div class="card-header py-3">
-                  <h6 class="m-0 font-weight-bold text-primary">Illustrations</h6>
-                </div>
-                <div class="card-body">
-                  <div class="text-center">
-                    <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;" src="img/undraw_posting_photo.svg" alt="">
-                  </div>
-                  <p>Add some quality, svg illustrations to your project courtesy of <a target="_blank" rel="nofollow" href="https://undraw.co/">unDraw</a>, a constantly updated collection of beautiful svg images that you can use completely free and without attribution!</p>
-                  <a target="_blank" rel="nofollow" href="https://undraw.co/">Browse Illustrations on unDraw &rarr;</a>
-                </div>
-              </div>
-
-               Approach 
-              <div class="card shadow mb-4">
-                <div class="card-header py-3">
-                  <h6 class="m-0 font-weight-bold text-primary">Development Approach</h6>
-                </div>
-                <div class="card-body">
-                  <p>SB Admin 2 makes extensive use of Bootstrap 4 utility classes in order to reduce CSS bloat and poor page performance. Custom CSS classes are used to create custom components and custom utility classes.</p>
-                  <p class="mb-0">Before working with this theme, you should become familiar with the Bootstrap framework, especially the utility classes.</p>
-                </div>
-              </div>
-
-            </div>
-          </div>
-
-        </div>
-      
-         /.container-fluid 
-
-      </div>
-    -->
-      <!-- End of Main Content -->
 
       <!-- Footer -->
       <footer class="sticky-footer bg-white">
@@ -789,13 +714,21 @@
 
   <!-- Custom scripts for all pages-->
   <script src="js/sb-admin-2.min.js"></script>
+  
 
   <!-- Page level plugins -->
-  <script src="vendor/chart.js/Chart.min.js"></script>
+  <!--<script src="vendor/datatables/jquery.dataTables.min.js"></script>-->
+  <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
   <!-- Page level custom scripts -->
-  <script src="js/demo/chart-area-demo.js"></script>
-  <script src="js/demo/chart-pie-demo.js"></script>
+  <script src="js/demo/datatables-demo.js"></script>
+
+    <!-- js del dropdown -->
+  <script src="js/demo/dropdown.js"></script>
+  <script src="bootstrap/js/bootstrap.min.js"></script>
+
+<!--JS Para el switch-->
+<script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/js/bootstrap4-toggle.min.js"></script>
 
 </body>
 <!--COMETARIADAS

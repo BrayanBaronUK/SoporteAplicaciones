@@ -37,6 +37,7 @@ $(document).ready(function(){
         }
 
         // ENVIANDO MENSAJE ============================
+       function camposVacios(){
         if( errores == '' == false){
             var mensajeModal = '<div class="modal_wrap">'+
                                     '<div class="mensaje_modal">'+
@@ -45,10 +46,12 @@ $(document).ready(function(){
                                         '<span id="btnClose">Cerrar</span>'+
                                     '</div>'+
                                 '</div>'
-
+           // setTimeout($('body').append(mensajeModal), 60000);       
             $('body').append(mensajeModal);
 
         }
+    }
+    setTimeout(camposVacios(), 600000); 
 
         // CERRANDO MODAL ==============================
         $('#btnClose').click(function(){
