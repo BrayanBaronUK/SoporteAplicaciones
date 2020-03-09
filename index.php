@@ -790,8 +790,10 @@
   <script src="js/demo/chart-pie-demo.js"></script>
 
 </body>
-<!--COMETARIADAS
-Lineas 450 a 732
+<!--pendiente:
+        *detectar usuario logueado
+            -arreglar el cambio de clave porque se actualizado todos los usuarios
+            -poner el usuario logueado en el header
 -->
 
 </html>

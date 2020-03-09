@@ -500,14 +500,14 @@
             <td>4:00:00 p. m.</td>
             <td><input type="checkbox" checked data-toggle="toggle" data-on="NO" data-off="SI" data-onstyle="danger" data-offstyle="success"></td>
             <td>Plazo Maximo de ejecucion antes de las 4:30</td>
-            <td>Observaciones</td>
+            <td><input type="text" name="observaciones" style="height: 100px;"></td>
           </tr>
           <tr>
           <td>Lanzamiento del Proceso de Paso  de Postpago a Prepago.</td>
             <td>5:00:00 p. m.</td>
             <td><input type="checkbox" checked data-toggle="toggle" data-on="NO" data-off="SI" data-onstyle="danger" data-offstyle="success"></td>
             <td>Plazo Maximo de ejecución hasta las 18:30</td>
-            <td>Observaciones</td>
+            <td><input type="text" name="observaciones" style="height: 100px;"></td>
           </tr>
           <tr>
           <td>Envio de correo con las lineas que se pasaron de Post  a Pre.</td>
@@ -517,84 +517,84 @@
                 1. Archivo de los anexos programados.
                 2. Archivo con las cuentas que se crearon para los anexos que fueron pasados a prepago
                 3. Anexos  Virtuales que se dieron de baja</td>
-            <td>Observaciones</td>
+                <td><input type="text" name="observaciones" style="height: 100px;"></td>
           </tr>
           <tr>
           <td>Validacion del inicio de las cargas de LTE FASE 1</td>
             <td>10:30:00 p. m.</td>
             <td><input type="checkbox" checked data-toggle="toggle" data-on="NO" data-off="SI" data-onstyle="danger" data-offstyle="success"></td>
             <td>Validar que las recargas de la fase 1 de Lte inicien en normalidady validar los logs de las recargas</td>
-            <td>Observaciones</td>
+            <td><input type="text" name="observaciones" style="height: 100px;"></td>
           </tr>
           <tr>
           <td>Validacion del inicio de las cargas de LTE FASE 2</td>
             <td>12:02:00 a. m.</td>
             <td><input type="checkbox" checked data-toggle="toggle" data-on="NO" data-off="SI" data-onstyle="danger" data-offstyle="success"></td>
             <td>Validar que las recargas de la fase 2 de Lte inicien en normalidad y validar los logs de las recargas </td>
-            <td>Observaciones</td>
+            <td><input type="text" name="observaciones" style="height: 100px;"></td>
           </tr>
           <tr>
           <td>Revisa Logs STC</td>
             <td>Permanente</td>
             <td><input type="checkbox" checked data-toggle="toggle" data-on="NO" data-off="SI" data-onstyle="danger" data-offstyle="success"></td>
             <td>Cada intervalo de 30 mins se deben estar revisando los logs. Primera validacion a la 24:00 </td>
-            <td>Observaciones</td>
+            <td><input type="text" name="observaciones" style="height: 100px;"></td>
           </tr>
           <tr>
           <td>Configuracion de Cierre Maestra en la URL de Cierre</td>
             <td>12:30:00 a. m.</td>
             <td><input type="checkbox" checked data-toggle="toggle" data-on="NO" data-off="SI" data-onstyle="danger" data-offstyle="success"></td>
             <td>Revisar y configurar los procesos a ejecutar en el cierre.</td>
-            <td>Observaciones</td>
+            <td><input type="text" name="observaciones" style="height: 100px;"></td>
           </tr>
           <tr>
           <td>Verificar procesos en el STCAPPSERVER</td>
             <td>Permanente</td>
             <td><input type="checkbox" checked data-toggle="toggle" data-on="NO" data-off="SI" data-onstyle="danger" data-offstyle="success"></td>
             <td>Cada intervalo de 30 mins se deben estar revisando la ejecucion de los procesos de STC. Primera validacion 24:00</td>
-            <td>Observaciones</td>
+            <td><input type="text" name="observaciones" style="height: 100px;"></td>
           </tr>
           <tr>
           <td>Envíar Proceso Cierre de Maestra por la URL de Cierre</td>
             <td>12:45:00 a. m.</td>
             <td><input type="checkbox" checked data-toggle="toggle" data-on="NO" data-off="SI" data-onstyle="danger" data-offstyle="success"></td>
             <td>Enviar por STC el proceso de cierre. Verificando que se envie la fecha y ciclo correcto.</td>
-            <td>Observaciones</td>
+            <td><input type="text" name="observaciones" style="height: 100px;"></td>
           </tr>
           <tr>
           <td>Verificar  Correo de Alerta con notificacion confirmando el cierre enviado.</td>
             <td>12:46:00 a. m.</td>
             <td><input type="checkbox" checked data-toggle="toggle" data-on="NO" data-off="SI" data-onstyle="danger" data-offstyle="success"></td>
             <td>Verificar  el correo para confirmar que el cierre configurado  es el correcto.</td>
-            <td>Observaciones</td>
+            <td><input type="text" name="observaciones" style="height: 100px;"></td>
           </tr>
           <tr>
           <td>Envío de Correo indicando Inicio del proceso de Cierre Maestra</td>
             <td>12:50:00 a. m.</td>
             <td><input type="checkbox" checked data-toggle="toggle" data-on="NO" data-off="SI" data-onstyle="danger" data-offstyle="success"></td>
             <td>Redactar el correo indicando el inicio de cierre  maestra.</td>
-            <td>Observaciones</td>
+            <td><input type="text" name="observaciones" style="height: 100px;"></td>
           </tr>
           <tr>
           <td>Notificar el inicio del proceso de Cierre  Maestra al grupo de Facturacion</td>
             <td>12:50:00 a. m.</td>
             <td><input type="checkbox" checked data-toggle="toggle" data-on="NO" data-off="SI" data-onstyle="danger" data-offstyle="success"></td>
             <td>se notifica a las personas por medio de correo que se envia informando el incio de cierre maestra, por que no tienen grupo creado</td>
-            <td>Observaciones</td>
+            <td><input type="text" name="observaciones" style="height: 100px;"></td>
           </tr>
           <tr>
           <td>Seguimiento proceso Cierre de Maestra</td>
             <td>Permanente</td>
             <td><input type="checkbox" checked data-toggle="toggle" data-on="NO" data-off="SI" data-onstyle="danger" data-offstyle="success"></td>
             <td>Realizar las validaciones de cada proceso del cierre con el fin de monitorear la ejecucion del mismo</td>
-            <td>Observaciones</td>
+            <td><input type="text" name="observaciones" style="height: 100px;"></td>
           </tr>
           <tr>
           <td>Envio Correo notificando finalizacion de  las recargas de Lte face 1 y fase 2</td>
             <td>2:00 a .m. - 3:00 a .m.</td>
             <td><input type="checkbox" checked data-toggle="toggle" data-on="NO" data-off="SI" data-onstyle="danger" data-offstyle="success"></td>
             <td>Enviar correo notificando  la finalización del proceso de recargas despues de la validacion de los logs que se hayan realizado en normalidad </td>
-            <td>Observaciones</td>
+            <td><input type="text" name="observaciones" style="height: 100px;"></td>
           </tr>
           <tr>
           <td>Validar las Exoneraciones</td>
@@ -604,42 +604,42 @@
               Nuevo paso para evidenciar que en el momento de la ejecución efectuó todas las actualizaciones de manera  correcta.
               Ver archivo ""Exonerar anexos con bloqueo temporal.txt"" dentro de la carpeta de cierre maestra ciclo A y B  ejecutar   Query que hay que ejecutar y la instrucción a seguir. 
               </td>
-            <td>Observaciones</td>
+              <td><input type="text" name="observaciones" style="height: 100px;"></td>
           </tr>
           <tr>
           <td>Activacion  Exoneracion por  Mora</td>
             <td>4:46:00 a. m.</td>
             <td><input type="checkbox" checked data-toggle="toggle" data-on="NO" data-off="SI" data-onstyle="danger" data-offstyle="success"></td>
             <td>ejecutar el update UPDATE V4SERVI SET TCFLA2='S' ,  TCFLA4='S' WHERE TCCSER=808</td>
-            <td>Observaciones</td>
+            <td><input type="text" name="observaciones" style="height: 100px;"></td>
           </tr>
           <tr>
             <td>Envío de Correo indicando Finalización del proceso de Cierre Maestra</td>
             <td>5:00:00 a. m.</td>
             <td><input type="checkbox" checked data-toggle="toggle" data-on="NO" data-off="SI" data-onstyle="danger" data-offstyle="success"></td>
             <td>Redactar y enviar   el correo indicando la finalización de cierre  maestra </td>
-            <td>Observaciones</td>
+            <td><input type="text" name="observaciones" style="height: 100px;"></td>
           </tr>
           <tr>
           <td>Notificar la finalización del proceso de Cierre de Maestra al grupo de Facturacion</td>
             <td>5:15:00 a. m.</td>
             <td><input type="checkbox" checked data-toggle="toggle" data-on="NO" data-off="SI" data-onstyle="danger" data-offstyle="success"></td>
             <td>se notifica a las personas por medio de correo que se envia informando el fin del cierre maestra, por que no tienen grupo creado</td>
-            <td>Observaciones</td>
+            <td><input type="text" name="observaciones" style="height: 100px;"></td>
           </tr>
           <tr>
           <td>Validacion de OAS</td>
             <td>Permanente</td>
             <td><input type="checkbox" checked data-toggle="toggle" data-on="NO" data-off="SI" data-onstyle="danger" data-offstyle="success"></td>
             <td>Validar el procesamiento de OAS.</td>
-            <td>Observaciones</td>
+            <td><input type="text" name="observaciones" style="height: 100px;"></td>
           </tr>
           <tr>
           <td>Validacion de recargas IDEN y  LTE, Hotbilling, eliminación de suplementarios</td>
             <td>5:30:00 a. m.</td>
             <td><input type="checkbox" checked data-toggle="toggle" data-on="NO" data-off="SI" data-onstyle="danger" data-offstyle="success"></td>
             <td>CICLO A Para  IDEN Y LTE CICLO  B  Solo LTE</td>
-            <td>Observaciones</td>
+            <td><input type="text" name="observaciones" style="height: 100px;"></td>
           </tr>
      </tbody>
       </table>

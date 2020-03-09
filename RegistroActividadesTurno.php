@@ -494,19 +494,19 @@
            <td>Verificación Procesos DWH </td>
             <td>2:30:00 a. m.</td>
             <td><input type="checkbox" checked data-toggle="toggle" data-on="NO" data-off="SI" data-onstyle="danger" data-offstyle="success"></td>
-            <td>Observaciones</td>
+            <td><input type="text" name="observaciones" style="height: 100px;"></td>
           </tr>
           <tr>
           <td>Modificacion Numeracion (Portabilidad)</td>
             <td>6:15:00 a. m.</td>
             <td><input type="checkbox" checked data-toggle="toggle" data-on="NO" data-off="SI" data-onstyle="danger" data-offstyle="success"></td>
-            <td>Observaciones</td>
+            <td><input type="text" name="observaciones" style="height: 100px;"></td>
           </tr>
           <tr>
           <td>Carga de archivos de operadores  TIGO, MOVISTAR y  CLARO</td>
             <td>11:00:00 a. m.</td>
             <td><input type="checkbox" checked data-toggle="toggle" data-on="NO" data-off="SI" data-onstyle="danger" data-offstyle="success"></td>
-            <td>Observaciones</td>
+            <td><input type="text" name="observaciones" style="height: 100px;"></td>
           </tr>
           <tr>
           <td>Reinicio  BTF Venta Express (Sábados), 
@@ -515,61 +515,61 @@
               Probar acceso al aplicativo</td>
             <td>3:00:00 a. m.</td>
             <td><input type="checkbox" checked data-toggle="toggle" data-on="NO" data-off="SI" data-onstyle="danger" data-offstyle="success"></td>
-            <td>Observaciones</td>
+            <td><input type="text" name="observaciones" style="height: 100px;"></td>
           </tr>
           <tr>
           <td>Consulta de  Abonados  ONE NDS. (Sabados )</td>
             <td>3:00:00 p. m.</td>
             <td><input type="checkbox" checked data-toggle="toggle" data-on="NO" data-off="SI" data-onstyle="danger" data-offstyle="success"></td>
-            <td>Observaciones</td>
+            <td><input type="text" name="observaciones" style="height: 100px;"></td>
           </tr>
           <tr>
           <td>Revisión  Proceso de Compensacion IDEN(11 de cada mes )</td>
             <td>4:00:00 p. m.</td>
             <td><input type="checkbox" checked data-toggle="toggle" data-on="NO" data-off="SI" data-onstyle="danger" data-offstyle="success"></td>
-            <td>Observaciones</td>
+            <td><input type="text" name="observaciones" style="height: 100px;"></td>
           </tr>
           <tr>
           <td>Revisión Proceso de   Compensacion LTE (18,20,22 y 28 de cada mes )</td>
             <td>4:00:00 p. m.</td>
             <td><input type="checkbox" checked data-toggle="toggle" data-on="NO" data-off="SI" data-onstyle="danger" data-offstyle="success"></td>
-            <td>Observaciones</td>
+            <td><input type="text" name="observaciones" style="height: 100px;"></td>
           </tr>
           <tr>
           <td>Consulta de  Abonados  ONE NDS. (Domingos )</td>
             <td>3:00:00 p. m.</td>
             <td><input type="checkbox" checked data-toggle="toggle" data-on="NO" data-off="SI" data-onstyle="danger" data-offstyle="success"></td>
-            <td>Observaciones</td>
+            <td><input type="text" name="observaciones" style="height: 100px;"></td>
           </tr>
           <tr>
           <td>Modificacion  Turnos  Aranda de acuerdo al horario (Domingos )</td>
             <td>10:00:00 p. m.</td>
             <td><input type="checkbox" checked data-toggle="toggle" data-on="NO" data-off="SI" data-onstyle="danger" data-offstyle="success"></td>
-            <td>Observaciones</td>
+            <td><input type="text" name="observaciones" style="height: 100px;"></td>
           </tr>
           <tr>
           <td>Ejecución Query y  Envio de Correo notificando  ciclo enviado en el cierre. En caso de haberse enviado el incorrecto notificar inmediamentamente a la persona que esta ejecutando el cierre (15 y  1ro de cada mes a la madrugada), </td>
             <td>1:15:00 a. m.</td>
             <td><input type="checkbox" checked data-toggle="toggle" data-on="NO" data-off="SI" data-onstyle="danger" data-offstyle="success"></td>
-            <td>Observaciones</td>
+            <td><input type="text" name="observaciones" style="height: 100px;"></td>
           </tr>
           <tr>
           <td>Monitoreo en  OAS </td>
             <td>Permanente</td>
             <td><input type="checkbox" checked data-toggle="toggle" data-on="NO" data-off="SI" data-onstyle="danger" data-offstyle="success"></td>
-            <td>Observaciones</td>
+            <td><input type="text" name="observaciones" style="height: 100px;"></td>
           </tr>
           <tr>
           <td>Atención Alarmas por correo</td>
             <td>Permanente</td>
             <td><input type="checkbox" checked data-toggle="toggle" data-on="NO" data-off="SI" data-onstyle="danger" data-offstyle="success"></td>
-            <td>Observaciones</td>
+            <td><input type="text" name="observaciones" style="height: 100px;"></td>
           </tr>
           <tr>
           <td>Arandas Pendientes</td>
             <td>Permanente</td>
             <td><input type="checkbox" checked data-toggle="toggle" data-on="NO" data-off="SI" data-onstyle="danger" data-offstyle="success"></td>
-            <td>Observaciones</td>
+            <td><input type="text" name="observaciones" style="height: 100px;"></td>
           </tr>
         </tbody>
       </table>

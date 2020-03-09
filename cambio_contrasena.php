@@ -40,13 +40,13 @@
                     <h1 class="h4 text-gray-900 mb-2">Cambiar Contraseña</h1>
                     <p class="mb-4">Ingrese su nueva clave!</p>
                   </div>
-                  <form class="user" action="#" method="POST">
+                  <form class="user" action="confirma_cambio_contrasena.php" method="POST">
                   <div class="form-group">
-                      <input type="email" name="email" class="form-control form-control-user" placeholder="Nueva clave"/>                     
+                      <input type="password" name="clave1" class="form-control form-control-user" placeholder="Nueva clave"/>                     
                    </div>
 
                    <div class="form-group">
-                      <input type="email" name="email" class="form-control form-control-user" placeholder="Confirmar clave"/>                     
+                      <input type="password" name="clave2" class="form-control form-control-user" placeholder="Confirmar clave"/>                     
                    </div>
                     <input type="submit" class="btn btn-primary btn-user btn-block" value="Confirmar cambio"/>
                   
