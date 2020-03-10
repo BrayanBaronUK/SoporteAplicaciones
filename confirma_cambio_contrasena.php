@@ -11,9 +11,13 @@ function AlertaClaveAvantel(){
     alert('Su clave no puede ser AVANTEL ingresar una nueva...!');
     window.location='cambio_contrasena.php';
 }
+function AlertaNoCambio(){
+    alert('no hay usuario!');
+    window.location='cambio_contrasena.php';
+}
 </script>
 <?php
-
+session_start();
 include_once ("conexion.php");
 $conex2 = oci_connect($user, $pass, $db);
 
@@ -32,14 +36,16 @@ $conex2 = oci_connect($user, $pass, $db);
           echo "AlertaClaveAvantel()";
           echo "</script>";
 
-      else:
-
-        $sql ="UPDATE USUARIOS_SOPORTE_SEG SET CLAVE = '$v_clave1'";
+    //  elseif ($_SESSION['usuario']):
+    else:
+      $elusuario = $_SESSION['usuario'];
+        echo "usuario:".$elusuario;
+     //   $usuarito = $_GET['user'];
+        $sql ="UPDATE USUARIOS_SOPORTE_SEG SET CLAVE = '$v_clave1' WHERE USUARIO = '$usuarito'";
 
         $queryf= oci_parse($conex2, $sql);
         oci_execute($queryf);
         oci_commit($conex2);
-
         echo "<script>";
         echo "AlertaCambioClave()";
         echo "</script>";

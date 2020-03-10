@@ -31,10 +31,23 @@ if (isset($_POST['user'],$_POST['pass'])):
             oci_commit($conex2);  
             $filas = oci_num_rows($queryf);
            // echo ("filaaaaaaaaas: $filas");
-            if ($filas>0):              
+            if ($filas>0):
+                session_start();
+                session_register('usuario');
+                $_SESSION['usuario'] = $_POST['user'];
+                
+                
+                echo $_SESSION['usuario'];
+                echo "sesion:";
+                print_r($_SESSION);
+                //exit;  
+                
+                
                 echo "<script>";
+                echo "console.log('usuario','".$_SESSION['usuario']."');";
                 echo "MiFuncionJS();";
                 echo "</script>";
+
                  else:
                 //echo "error en la autenticacion";
                 echo "<script>";

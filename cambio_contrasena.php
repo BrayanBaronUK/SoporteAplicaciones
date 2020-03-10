@@ -23,6 +23,24 @@
 <body class="bg-gradient-primary">
 
   <div class="container">
+    <?php
+
+      session_start();
+
+      if (isset($_SESSION['usuario']))
+        {
+          $elusuario = $_SESSION['usuario'];
+          echo "usuario:".$elusuario;
+          echo "sesion:";
+          print_r($_SESSION);
+        }else{
+
+          echo "no hay sesion";
+        }
+
+      
+
+    ?>
 
     <!-- Outer Row -->
     <div class="row justify-content-center">
