@@ -23,20 +23,20 @@
 <body class="bg-gradient-primary">
 
   <div class="container">
-    <?php
+  <?php
 
-      session_start();
+session_start();
 
-      if (isset($_SESSION['usuario']))
-        {
-          $elusuario = $_SESSION['usuario'];
-       //   echo "usuario:".$elusuario;
-       //   echo "sesion:";
-       //   print_r($_SESSION);
-        }else{
-          echo "no hay sesion";
-        }
-    ?>
+if (isset($_SESSION['usuario']))
+  {
+    $elusuario = $_SESSION['usuario'];
+ //   echo "usuario:".$elusuario;
+ //   echo "sesion:";
+ //   print_r($_SESSION);
+  }else{
+    echo "no hay sesion";
+  }
+?>
 
     <!-- Outer Row -->
     <div class="row justify-content-center">
@@ -51,10 +51,10 @@
               <div class="col-lg-6">
                 <div class="p-5">
                   <div class="text-center">
-                    <h1 class="h4 text-gray-900 mb-2">Cambiar Contraseña</h1>
-                    <p class="mb-4">Ingrese su nueva clave!</p>
+                    <h1 class="h4 text-gray-900 mb-2">¡¡¡Bienvenido!!!</h1>
+                    <p class="mb-4">Vemos que eres usuario nuevo, debes cambiar la clave...!</p>
                   </div>
-                  <form class="user" action="confirma_cambio_contrasena.php" method="POST">
+                  <form class="user" action="confirma_cambio_nuevo.php" method="POST">
                   <div class="form-group">
                       <input type="password" name="clave1" class="form-control form-control-user" placeholder="Nueva clave"/>                     
                    </div>
@@ -70,9 +70,9 @@
                   <div class="text-center">
                     <a class="small" href="register.html">Create an Account!</a>
                   </div>-->
-                  <div class="text-center">
+               <!--   <div class="text-center">
                     <a class="small" href="index.php">Volver...!</a>
-                  </div>
+                  </div>-->
                 </div>
               </div>
             </div>

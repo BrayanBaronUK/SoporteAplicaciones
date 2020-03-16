@@ -1,7 +1,7 @@
 <script language= "javascript" type="text/javascript">
 function AlertaCamposDiferentes(){  
     alert('No coinciden los campos verificar de nuevo...!');
-    window.location='cambio_contrasena.php';
+    window.location='Nuevo_usuario.php';
 }
 function AlertaCambioClave(){
     alert('Ok a realizado el cambio de su clave ...!');
@@ -9,11 +9,11 @@ function AlertaCambioClave(){
 }
 function AlertaClaveAvantel(){
     alert('Su clave no puede ser AVANTEL ingresar una nueva...!');
-    window.location='cambio_contrasena.php';
+    window.location='Nuevo_usuario.php';
 }
 function AlertaNoCambio(){
     alert('no hay usuario!');
-    window.location='cambio_contrasena.php';
+    window.location='Nuevo_usuario.php';
 }
 </script>
 <?php

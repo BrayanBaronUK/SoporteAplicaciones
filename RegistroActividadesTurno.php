@@ -460,19 +460,18 @@
   
   <div class="card-body">
   <!--SELECCIONADOR DE CICLO-->
-<div class="small mb-1">Seleccione un ciclo:</div>
+<div class="small mb-1">Indique el turno:</div>
                   <div class="dropdown mb-4">
                   
                     <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" 
-                    aria-haspopup="true" aria-expanded="false">Ciclo</button>
+                    aria-haspopup="true" aria-expanded="false">Turno</button>
                     
                     <div class="dropdown-menu animated--fade-in" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item" href="#" >Ciclo A - 1</a>
-                    <a class="dropdown-item" href="#">Ciclo B - 15</a>
-                    <a class="dropdown-item" href="#">Ciclo G - 05</a>
-                    <a class="dropdown-item" href="#">Ciclo H - 10</a>
-                    <a class="dropdown-item" href="#">Ciclo I - 20</a>
-                    <a class="dropdown-item" href="#">Ciclo J - 25</a>
+                    <a class="dropdown-item" href="#">Turno 1 -> 6am - 2pm</a>
+                    <a class="dropdown-item" href="#">Turno 2 -> 11am - 8pm</a>
+                    <a class="dropdown-item" href="#">Turno 3 -> 2pm - 10pm</a>
+                    <a class="dropdown-item" href="#">Turno 4 -> 10pm - 6am</a>
+                    <a class="dropdown-item" href="#">Turno 5 -> 8am - 5:30pm</a>
                     
                     </div>
                     <div id="resultbox"></div>

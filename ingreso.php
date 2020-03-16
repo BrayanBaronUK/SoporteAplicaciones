@@ -9,7 +9,10 @@ function AlertaIngreso(){
 function AlertaCampos(){  
     alert('Campo de usuario y/o clave no Indicado');
     window.location='login.php';
-}   
+}
+function NuevoUsuario(){  
+    window.location='Nuevo_usuario.php';
+} 
 </script>
 <?php
 include_once ("conexion.php");
@@ -32,19 +35,22 @@ if (isset($_POST['user'],$_POST['pass'])):
             $filas = oci_num_rows($queryf);
            // echo ("filaaaaaaaaas: $filas");
             if ($filas>0):
+                if($_POST['pass']=='AVANTEL'):
                 session_start();
                 session_register('usuario');
-                $_SESSION['usuario'] = $_POST['user'];
-                
-                
-                echo $_SESSION['usuario'];
-                echo "sesion:";
-                print_r($_SESSION);
-                //exit;  
-                
+                $_SESSION['usuario'] = $_POST['user'];  
+
+                echo "<script>";
+                echo "NuevoUsuario();";
+                echo "</script>"; 
+                endif;
+
+                session_start();
+                session_register('usuario');
+                $_SESSION['usuario'] = $_POST['user'];                  
+                 //  echo "console.log('usuario','".$_SESSION['usuario']."');";    
                 
                 echo "<script>";
-                echo "console.log('usuario','".$_SESSION['usuario']."');";
                 echo "MiFuncionJS();";
                 echo "</script>";
 
