@@ -1,0 +1,16 @@
+.del {
+  color: #fff;
+  background-color: #C019A6;
+  border-color: #C019A6;
+}
+
+.guard_comp {
+  color: #fff;
+  background-color: #C019A6;
+  border-color: #C019A6;
+  font-size: .8rem;
+    border-radius: 10rem;
+    padding: .75rem 1rem;
+    display: block;
+    transition: none;
+}
