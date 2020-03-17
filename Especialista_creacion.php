@@ -486,7 +486,14 @@
                 <input type="text" id="email" name="email">
 
                 <label for="cargo">Cargo</label>
-                <input type="text" id="cargo" name="cargo">
+                <input type="text" id="cargo" name="cargo" list="items">
+                <datalist id="items">
+                  <option >INGENIERO SOPORTE TI</option>
+                  <option >INGENIERO APLICACIONES DE GESTIÓN</option>
+                  <option >INGENIERO SOPORTE WEB</option>
+                  <option >DBA</option>
+                  <option >INGENIERO DATA WARE HOUSE</option>
+                </datalist>
 
                 <label for="phone_dotacion">Telefono dotación</label>
                 <input type="number" id="phone_dotacion" name="phone_dotacion">
