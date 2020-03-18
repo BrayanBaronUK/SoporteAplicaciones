@@ -52,7 +52,7 @@ if (isset($_SESSION['usuario']))
                 <div class="p-5">
                   <div class="text-center">
                     <h1 class="h4 text-gray-900 mb-2">¡¡¡Bienvenido!!!</h1>
-                    <p class="mb-4">Vemos que eres usuario nuevo, debes cambiar la clave...!</p>
+                    <p class="mb-4">Vemos que eres un usuario nuevo, debes cambiar la clave...!</p>
                   </div>
                   <form class="user" action="confirma_cambio_nuevo.php" method="POST">
                   <div class="form-group">
