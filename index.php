@@ -57,8 +57,6 @@
           <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
               <h6 class="collapse-header">Configuraciones:</h6>
-              <a class="collapse-item" href="#">Login</a>
-              <a class="collapse-item" href="#">Registrar</a>
               <a class="collapse-item" href="cambio_contrasena.php">Cambiar contraseña</a>
              <!-- <a class="collapse-item" href="login.php">Login</a>
               <a class="collapse-item" href="register.html">Register</a>
