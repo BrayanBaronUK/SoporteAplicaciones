@@ -20,6 +20,24 @@
 
   <!-- Custom styles for this page -->
   <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+  <script type="text/javascript">
+          var d = '<tr>'+
+        '<th>ID</th>'+
+        '<th>Nombres</th>'+
+        '<th>Apellidos</th>'+
+        '</tr>';
+
+        $("#btnCagar").click(function () {
+        for (var i = 1; i < datos.length; i++) {
+        d+= '<tr>'+
+        '<td>'+datos[i].id+'</td>'+
+        '<td>'+datos[i].nombres+'</td>'+
+        '<td>'+datos[i].apellidos+'</td>'+
+        '</tr>';
+        }
+        $("#tabla").append(d);
+        });
+    </script>  
 
 </head>
 
@@ -487,6 +505,26 @@
                     <div id="resultbox"></div>
                   </div>
     <div class="table-responsive">
+
+  <!--  <button id="btnCagar">Cargar</button>
+        <table style="width:100%" border="1" id="tabla">
+          <tr>
+          <th>ID</th>
+          <th>Nombres</th> 
+          <th>Apellidos</th>
+          </tr>
+          <tr>
+          <td>001</td>
+          <td>Jhon</td> 
+          <td>Doe</td>
+          </tr>
+          <tr>
+          <td>002</td>
+          <td>Maria</td> 
+          <td>Doe</td>
+          </tr>
+        </table> -->
+
       <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
         <thead>
           <tr>
@@ -573,13 +611,81 @@
         <tbody>
           <tr>
             <td COLSPAN=2 ALIGN=center>OSCAR RIOS</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td>
+              <select name="combo">
+                <!-- Opciones de la lista -->
+                <option>JL2</option>
+                <option selected>JL</option>
+                <option>M</option>
+                <option>T</option>
+                <option>D</option>
+                <option>N</option>
+              </select>
+            </td>
+            <td>
+            <select name="combo">
+                <!-- Opciones de la lista -->
+                <option>JL2</option>
+                <option selected>JL</option>
+                <option>M</option>
+                <option>T</option>
+                <option>D</option>
+                <option>N</option>
+              </select>
+            </td>
+            <td><select name="combo">
+                <!-- Opciones de la lista -->
+                <option>JL2</option>
+                <option selected>JL</option>
+                <option>M</option>
+                <option>T</option>
+                <option>D</option>
+                <option>N</option>
+              </select></td>
+            <td>
+            <select name="combo">
+                <!-- Opciones de la lista -->
+                <option>JL2</option>
+                <option selected>JL</option>
+                <option>M</option>
+                <option>T</option>
+                <option>D</option>
+                <option>N</option>
+              </select>
+            </td>
+            <td>
+            <select name="combo">
+                <!-- Opciones de la lista -->
+                <option>JL2</option>
+                <option selected>JL</option>
+                <option>M</option>
+                <option>T</option>
+                <option>D</option>
+                <option>N</option>
+              </select>
+            </td>
+            <td>
+            <select name="combo">
+                <!-- Opciones de la lista -->
+                <option>JL2</option>
+                <option selected>JL</option>
+                <option>M</option>
+                <option>T</option>
+                <option>D</option>
+                <option>N</option>
+              </select>
+            </td>
+            <td>
+            <select name="combo">
+                <!-- Opciones de la lista -->
+                <option>JL2</option>
+                <option selected>JL</option>
+                <option>M</option>
+                <option>T</option>
+                <option>D</option>
+                <option>N</option>
+              </select>
+            </td>
             <td></td>
             <td></td>
             <td></td>
@@ -601,13 +707,76 @@
           </tr>
           <tr>
             <td COLSPAN=2 ALIGN=center>GUSTAVO SALAZAR</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td>
+            <select name="combo">
+                <option selected>JL2</option>
+                <option>JL</option>
+                <option>M</option>
+                <option>T</option>
+                <option>D</option>
+                <option>N</option>
+              </select>
+            </td>
+            <td>
+            <select name="combo">
+                <option selected>JL2</option>
+                <option>JL</option>
+                <option>M</option>
+                <option>T</option>
+                <option>D</option>
+                <option>N</option>
+              </select>
+            </td>
+            <td>
+            <select name="combo">
+                <option selected>JL2</option>
+                <option>JL</option>
+                <option>M</option>
+                <option>T</option>
+                <option>D</option>
+                <option>N</option>
+              </select>
+            </td>
+            <td>
+            <select name="combo">
+                <option selected>JL2</option>
+                <option>JL</option>
+                <option>M</option>
+                <option>T</option>
+                <option>D</option>
+                <option>N</option>
+              </select>
+            </td>
+            <td>
+            <select name="combo">
+                <option selected>JL2</option>
+                <option>JL</option>
+                <option>M</option>
+                <option>T</option>
+                <option>D</option>
+                <option>N</option>
+              </select>
+            </td>
+            <td>
+            <select name="combo">
+                <option selected>JL2</option>
+                <option>JL</option>
+                <option>M</option>
+                <option>T</option>
+                <option>D</option>
+                <option>N</option>
+              </select>
+            </td>
+            <td>
+            <select name="combo">
+                <option selected>JL2</option>
+                <option>JL</option>
+                <option>M</option>
+                <option>T</option>
+                <option>D</option>
+                <option>N</option>
+              </select>
+            </td>
             <td></td>
             <td></td>
             <td></td>
@@ -630,13 +799,76 @@
           </tr>
           <tr>
             <td COLSPAN=2 ALIGN=center>WILSON CASTRO</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td>
+            <select name="combo">
+                <option>JL2</option>
+                <option>JL</option>
+                <option selected>M</option>
+                <option>T</option>
+                <option>D</option>
+                <option>N</option>
+              </select>
+            </td>
+            <td>
+            <select name="combo">
+                <option>JL2</option>
+                <option>JL</option>
+                <option selected>M</option>
+                <option>T</option>
+                <option>D</option>
+                <option>N</option>
+              </select>
+            </td>
+            <td>
+            <select name="combo">
+                <option>JL2</option>
+                <option>JL</option>
+                <option selected>M</option>
+                <option>T</option>
+                <option>D</option>
+                <option>N</option>
+              </select>
+            </td>
+            <td>
+            <select name="combo">
+                <option>JL2</option>
+                <option>JL</option>
+                <option selected>M</option>
+                <option>T</option>
+                <option>D</option>
+                <option>N</option>
+              </select>
+            </td>
+            <td>
+            <select name="combo">
+                <option>JL2</option>
+                <option>JL</option>
+                <option selected>M</option>
+                <option>T</option>
+                <option>D</option>
+                <option>N</option>
+              </select>
+            </td>
+            <td>
+            <select name="combo">
+                <option>JL2</option>
+                <option>JL</option>
+                <option selected>M</option>
+                <option>T</option>
+                <option>D</option>
+                <option>N</option>
+              </select>
+            </td>
+            <td>
+            <select name="combo">
+                <option>JL2</option>
+                <option>JL</option>
+                <option selected>M</option>
+                <option>T</option>
+                <option>D</option>
+                <option>N</option>
+              </select>
+            </td>
             <td></td>
             <td></td>
             <td></td>
@@ -658,13 +890,76 @@
           </tr>  
           <tr>
             <td COLSPAN=2 ALIGN=center>MAICOL BALLESTEROS</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td>
+            <select name="combo">
+                <option>JL2</option>
+                <option>JL</option>
+                <option>M</option>
+                <option selected>T</option>
+                <option>D</option>
+                <option>N</option>
+              </select>
+            </td>
+            <td>
+            <select name="combo">
+                <option>JL2</option>
+                <option>JL</option>
+                <option>M</option>
+                <option selected>T</option>
+                <option>D</option>
+                <option>N</option>
+              </select>
+            </td>
+            <td>
+            <select name="combo">
+                <option>JL2</option>
+                <option>JL</option>
+                <option>M</option>
+                <option selected>T</option>
+                <option>D</option>
+                <option>N</option>
+              </select>
+            </td>
+            <td>
+            <select name="combo">
+                <option>JL2</option>
+                <option>JL</option>
+                <option>M</option>
+                <option selected>T</option>
+                <option>D</option>
+                <option>N</option>
+              </select>
+            </td>
+            <td>
+            <select name="combo">
+                <option>JL2</option>
+                <option>JL</option>
+                <option>M</option>
+                <option selected>T</option>
+                <option>D</option>
+                <option>N</option>
+              </select>
+            </td>
+            <td>
+            <select name="combo">
+                <option>JL2</option>
+                <option>JL</option>
+                <option>M</option>
+                <option selected>T</option>
+                <option>D</option>
+                <option>N</option>
+              </select>
+            </td>
+            <td>
+            <select name="combo">
+                <option>JL2</option>
+                <option>JL</option>
+                <option>M</option>
+                <option selected>T</option>
+                <option>D</option>
+                <option>N</option>
+              </select>
+            </td>
             <td></td>
             <td></td>
             <td></td>
@@ -691,13 +986,76 @@
           </tr>  
           <tr>
             <td COLSPAN=2 ALIGN=center>GUSTAVO GONZALEZ</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td>
+            <select name="combo">
+                <option>JL2</option>
+                <option>JL</option>
+                <option>M</option>
+                <option>T</option>
+                <option selected>D</option>
+                <option>N</option>
+              </select>
+            </td>
+            <td>
+            <select name="combo">
+                <option>JL2</option>
+                <option>JL</option>
+                <option>M</option>
+                <option>T</option>
+                <option selected>D</option>
+                <option>N</option>
+              </select>
+            </td>
+            <td>
+            <select name="combo">
+                <option>JL2</option>
+                <option>JL</option>
+                <option>M</option>
+                <option>T</option>
+                <option selected>D</option>
+                <option>N</option>
+              </select>
+            </td>
+            <td>
+            <select name="combo">
+                <option>JL2</option>
+                <option>JL</option>
+                <option>M</option>
+                <option>T</option>
+                <option selected>D</option>
+                <option>N</option>
+              </select>
+            </td>
+            <td>
+                <select name="combo">
+                <option>JL2</option>
+                <option>JL</option>
+                <option>M</option>
+                <option>T</option>
+                <option selected>D</option>
+                <option>N</option>
+              </select>
+            </td>
+            <td>
+            <select name="combo">
+                <option>JL2</option>
+                <option>JL</option>
+                <option>M</option>
+                <option>T</option>
+                <option selected>D</option>
+                <option>N</option>
+              </select>
+            </td>
+            <td>
+            <select name="combo">
+                <option>JL2</option>
+                <option>JL</option>
+                <option>M</option>
+                <option>T</option>
+                <option selected>D</option>
+                <option>N</option>
+              </select>
+            </td>
             <td></td>
             <td></td>
             <td></td>
@@ -724,6 +1082,77 @@
           </tr>  
           <tr>
             <td COLSPAN=2 ALIGN=center>DANIEL MENDEZ</td>
+            <td>
+            <select name="combo">
+                <option>JL2</option>
+                <option>JL</option>
+                <option>M</option>
+                <option>T</option>
+                <option>D</option>
+                <option selected>N</option>
+              </select>
+            </td>
+            <td>
+            <select name="combo">
+                <option>JL2</option>
+                <option>JL</option>
+                <option>M</option>
+                <option>T</option>
+                <option>D</option>
+                <option selected>N</option>
+              </select>
+            </td>
+            <td>
+            <select name="combo">
+                <option>JL2</option>
+                <option>JL</option>
+                <option>M</option>
+                <option>T</option>
+                <option>D</option>
+                <option selected>N</option>
+              </select>
+            </td>
+            <td>
+            <select name="combo">
+                <option>JL2</option>
+                <option>JL</option>
+                <option>M</option>
+                <option>T</option>
+                <option>D</option>
+                <option selected>N</option>
+              </select>
+            </td>
+            <td>
+            <select name="combo">
+                <option>JL2</option>
+                <option>JL</option>
+                <option>M</option>
+                <option>T</option>
+                <option>D</option>
+                <option selected>N</option>
+              </select>
+            </td>
+            <td>
+            <select name="combo">
+                <option>JL2</option>
+                <option>JL</option>
+                <option>M</option>
+                <option>T</option>
+                <option>D</option>
+                <option selected>N</option>
+              </select>
+            </td>
+            <td>
+            <select name="combo">
+                <option>JL2</option>
+                <option>JL</option>
+                <option>M</option>
+                <option>T</option>
+                <option>D</option>
+                <option selected>N</option>
+              </select>
+            </td>
+            <td></td>
             <td></td>
             <td></td>
             <td></td>
