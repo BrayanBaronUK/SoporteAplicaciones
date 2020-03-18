@@ -411,15 +411,27 @@
           <a class="dropdown-item text-center small text-gray-500" href="#">Mensajes</a>
         </div>
       </li>
-
       <div class="topbar-divider d-none d-sm-block"></div>
+            <?php session_start();
+            include_once ("conexion.php");
+            $conex2 = oci_connect($user, $pass, $db); 
+             $elusuario = $_SESSION['usuario'];
+             $sql= "SELECT NOMBRES||' '||APELLIDOS FROM USUARIOS_SOPORTE WHERE USUARIO = '$elusuario'";
+             $resultado_set= oci_parse($conex2, $sql);
+             oci_execute($resultado_set);
+             while($row=oci_fetch_array($resultado_set)){
+            ?>
+          
 
-      <!-- Nav Item - User Information -->
-      <li class="nav-item dropdown no-arrow">
-        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <span class="mr-2 d-none d-lg-inline text-gray-600 small">Brayan Baron</span>
-          <img class="img-profile rounded-circle" src="./img/imagen1.jpg">
-        </a>
+            <!-- Nav Item - User Information -->
+            <li class="nav-item dropdown no-arrow">
+              <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $row[0]?></span>
+                <img class="img-profile rounded-circle" src="./img/imagen1.jpg">
+              </a>
+              <?php
+                 }
+                ?> 
         <!-- Dropdown - User Information -->
         <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
           <a class="dropdown-item" href="cambio_contrasena.php">
