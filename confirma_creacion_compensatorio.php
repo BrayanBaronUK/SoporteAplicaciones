@@ -1,54 +1,44 @@
-<script language= "javascript" type="text/javascript">
-function AlertaCamposDiferentes(){  
-    alert('No coinciden los campos verificar de nuevo...!');
-    window.location='cambio_contrasena.php';
-}
-function AlertaCambioClave(){
-    alert('Ok a realizado el cambio de su clave ...!');
-    window.location='index.php';
-}
-function AlertaClaveAvantel(){
-    alert('Su clave no puede ser AVANTEL ingresar una nueva...!');
-    window.location='cambio_contrasena.php';
-}
-function AlertaNoCambio(){
-    alert('no hay usuario!');
-    window.location='cambio_contrasena.php';
-}
+<script language="javascript" type="text/javascript">
+  function AlertaCreaCompensatorio() {
+    alert('Ok se realizo registro del compensatorio...!');
+    window.location = 'Creacion_compensatorio.php';
+  }
+
+  function AlertaNoCompensatorio() {
+    alert('No se puso crear compensatorio...!');
+    window.location = 'Creacion_compensatorio.php';
+  }
 </script>
 <?php
 session_start();
-include_once ("conexion.php");
+include_once("conexion.php");
 $conex2 = oci_connect($user, $pass, $db);
 
-  $v_clave1=$_POST["clave1"];
-  $v_clave2=$_POST["clave2"];
+$v_fecha = $_POST["dia"];
+$v_especialista = $_POST["especialista"];
+$v_prueba = $_POST["prueba"];
 
-  if ($v_clave1 <> $v_clave2):
+//$sql = "INSERT INTO COMPENSATORIOS VALUES ('$v_especialista','$v_fecha')";
+$sql = "INSERT INTO COMPENSATORIOS SELECT USUARIO, '$v_especialista','$v_fecha' FROM USUARIOS_SOPORTE WHERE (NOMBRES||' '||APELLIDOS) = '$v_especialista'";
+$queryf = oci_parse($conex2, $sql);
+oci_execute($queryf);
+oci_commit($conex2);
 
-    echo "<script>";
-    echo "AlertaCamposDiferentes()";
-    echo "</script>";
+$filas = oci_num_rows($queryf);
 
-  elseif($v_clave1=='AVANTEL' or $v_clave1=='avantel'):
+if ($filas > 0) :
 
-          echo "<script>";
-          echo "AlertaClaveAvantel()";
-          echo "</script>";
+  echo "<script>";
+  echo "AlertaCreaCompensatorio()";
+  echo "</script>";
 
-    //  elseif ($_SESSION['usuario']):
-    else:
-      $elusuario = $_SESSION['usuario'];
-      //  echo "usuario:".$elusuario;
-     //   $usuarito = $_GET['user'];
-        $sql ="UPDATE USUARIOS_SOPORTE_SEG SET CLAVE = '$v_clave1' WHERE USUARIO = '$elusuario'";
 
-        $queryf= oci_parse($conex2, $sql);
-        oci_execute($queryf);
-        oci_commit($conex2);
-        echo "<script>";
-        echo "AlertaCambioClave()";
-        echo "</script>";
+else :
 
-  endif;
+  echo "<script>";
+  echo "AlertaNoCompensatorio()";
+  echo "</script>";
+
+endif;
+
 ?>

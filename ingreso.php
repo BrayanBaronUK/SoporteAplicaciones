@@ -37,7 +37,7 @@ if (isset($_POST['user'],$_POST['pass'])):
             if ($filas>0):
                 if($_POST['pass']=='AVANTEL'):
                 session_start();
-                session_register('usuario');
+              //  session_register('usuario');
                 $_SESSION['usuario'] = $_POST['user'];  
 
                 echo "<script>";
@@ -46,7 +46,7 @@ if (isset($_POST['user'],$_POST['pass'])):
                 endif;
 
                 session_start();
-                session_register('usuario');
+              //  session_register('usuario');
                 $_SESSION['usuario'] = $_POST['user'];                  
                  //  echo "console.log('usuario','".$_SESSION['usuario']."');";    
                 

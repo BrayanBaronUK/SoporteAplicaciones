@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php
-  session_start();
+session_start();
 ?>
+
 <head>
 
   <meta charset="utf-8">
@@ -62,7 +63,7 @@
                     </a>
                     -->
                     <hr>
-                 <!---   <a href="index.php" class="btn btn-google btn-user btn-block">
+                    <!---   <a href="index.php" class="btn btn-google btn-user btn-block">
                       <i class="fab fa-google fa-fw"></i> Login with Google
                     </a>
                     <a href="index.php" class="btn btn-facebook btn-user btn-block">
@@ -106,4 +107,5 @@
 <!-- Linea 4 agregada conexion
 linea 45 agregada
 -->
+
 </html>

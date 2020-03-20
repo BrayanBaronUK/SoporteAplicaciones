@@ -473,19 +473,21 @@ $conex2 = oci_connect($user, $pass, $db);
       <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
         <thead>
           <tr>
+            <th>Usuario</th>
             <th>Especialista</th>
-            <th>Fecha</th>
+            <th>Fecha Compensatorio</th>
           </tr>
         </thead>
         <tfoot>
           <tr>
+          <th>Usuario</th>
           <th>Especialista</th>
-            <th>Fecha</th>
+            <th>Fecha Compensatorio</th>
           </tr>
         </tfoot>
         <tbody>
         <?php
-                  $sql    ="SELECT NOMBRES,APELLIDOS,CEDULA,TELEFONO,CORREO_ELECTRONICO,CARGO,TELEFONO_DOTACION,IP_INGENIERO,USUARIO FROM USUARIOS_SOPORTE";
+                  $sql    ="SELECT USUARIO, ESPECIALISTA, FECHA FROM COMPENSATORIOS";
                   $resultado_set = oci_parse($conex2, $sql);
                   oci_execute($resultado_set);
                   while($row=oci_fetch_array($resultado_set)){            
@@ -493,6 +495,7 @@ $conex2 = oci_connect($user, $pass, $db);
           <tr>
             <td><?php echo $row[0]?></td>
             <td><?php echo $row[1]?></td>
+            <td><?php echo $row[2]?></td>
           </tr>
           <?php
             }
