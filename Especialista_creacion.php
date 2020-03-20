@@ -19,7 +19,7 @@
   <link href="css/sb-admin-2.min.css" rel="stylesheet">
 
   <!--Estilo de formilario-->
-  <link rel="stylesheet" href="./formularios/Creacion_especialista/css/estilos.css">
+ <link rel="stylesheet" href="./formularios/Creacion_especialista/css/estilos.css">
   <link rel="stylesheet" href="./formularios/Creacion_especialista/css/font-awesome.css">
 
 </head>
@@ -452,9 +452,6 @@
   </nav>
   <!-- End of Topbar -->
 
-      
-  
-
 <!-- Begin Page Content -->
 
 
@@ -513,8 +510,6 @@
 
     </section>
 
-        
-       
       <!-- End of Main Content -->
 
       <!-- Footer -->

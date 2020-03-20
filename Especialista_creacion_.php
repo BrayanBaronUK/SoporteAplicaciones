@@ -20,30 +20,11 @@
 
   <!-- Custom styles for this page -->
   <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/css/bootstrap4-toggle.min.css" rel="stylesheet">
-  <link href="tabla_dinamica/estilos_tab/botones_estilos.css" rel="stylesheet">
-<!--	<link rel="stylesheet" href="./tabla_dinamica/css/bootstrap.css">  -->
-<script src="http://code.jquery.com/jquery-latest.js"></script>
-<script type="text/javascript">
-	$(document).ready(function(){
-		/**
-		 * Funcion para añadir una nueva fila en la tabla
-		 */
-		$("#add").click(function(){
-			var nuevaFila="<tr> \
-				<td><select name='especialista[]'><option>Carlos Palacios</option><option>Brayan Baron</option><option>Wilson Castro</option></select></td> \
-				<td><input type='date' name='dia[]'></td> \
-				<td><input type='button' class='del' value='Eliminar Fila'></td> \
-			</tr>";
-			$("#tabla tbody").append(nuevaFila);
-		});
- 
-		// evento para eliminar la fila
-		$("#tabla").on("click", ".del", function(){
-			$(this).parents("tr").remove();
-		});
-	});
-	</script>
+
+    <!--Estilo de formilario-->
+  <link rel="stylesheet" href="./formularios/Creacion_especialista/css/estilos.css">
+  <link rel="stylesheet" href="./formularios/Creacion_especialista/css/font-awesome.css">
+
 </head>
 
 <body id="page-top">
@@ -472,66 +453,65 @@
 
   </nav>
   <!-- End of Topbar -->
-  
 
 <!-- Begin Page Content -->
-              <div class="container-fluid">
-
-<!-- Page Heading -->
-<h1 class="h3 mb-2 text-gray-800">Soporte Aplicaciones TI - Creación de compensatorio por Especialista</h1>
-<p class="mb-4"></p>
 
 
+<section class="form_wrap">
 
-<!-- DataTales Example -->
-<div class="card shadow mb-4">
-  <div class="card-header py-3">
-    <h6 class="m-0 font-weight-bold text-primary">Registrar compensatorio</h6>
-  </div>
+<section class="cantact_info">
+    <section class="info_title">
+        <span class="fa fa-user-circle"></span>
+        <h3 text-align= "center">INGRESE INFORMACIÓN<br>&nbsp &nbsp &nbsp DEL ESPECIALISTA</h3>
+    </section>
+    <section class="info_items">
+        <p><span class="fa fa-envelope"></span>jefe@avantel.com.co</p>
+        <p><span class="fa fa-mobile"></span>3507105174</p>
+    </section>
+</section>
 
+<form class="form_contact"  method="POST" action="confirma_especialista.php">
+    <h2>Información del Ingeniero</h2>
 
-  
-<div class="card-body">
-<!--tabla compensatorio-->
-<p>
-  <form action="confirma_creacion_compensatorio.php" method="post">
-	<form action="<?php echo $_SERVER["PHP_SELF"]?>" method="post">
-		<table id="tabla" border=1>
-			<thead>
-				<tr>
-					<th>Especialista</th>
-					<th>Dia</th>
-					<th><input type="button" id="add" class="btn-primary"value="añadir fila"></th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-          <td>
-          <select name='especialista[]'>
-            <option>Carlos Palacios</option>
-            <option>Brayan Baron</option>
-            <option>Wilson Castro</option>
-          </select>
-        </td>
-					<td><input type="date" name='dia[]'></td>
-					<td><input type='button' class='del' value='Eliminar Fila'></td>
-				</tr>
-			</tbody>
-		</table>
-	
-          </form>
-          </form>
-                 </p>
-              <div>
-              <input type="submit" value="Guardar" style="float:right;"  class="guard_comp">
-              </div>
-       </div>
+    <div class="user_info">
 
-  </div>
+        <label for="names">Nombres *</label>
+        <input type="text" id="names" name="names">
 
-</div>
+        <label for="lastname">Apellidos *</label>
+        <input type="text" id="lastname" name="lastname">
 
-<!-- /.container-fluid -->
+        <label for="cedula">Cedula</label>
+        <input type="number" id="cedula" name="cedula">
+
+        <label for="phone">Telefono / Celular</label>
+        <input type="number" id="phone" name="phone">
+
+        <label for="email">Correo electronico *</label>
+        <input type="text" id="email" name="email">
+
+        <label for="cargo">Cargo</label>
+        <input type="text" id="cargo" name="cargo" list="items">
+        <datalist id="items">
+          <option >INGENIERO SOPORTE TI</option>
+          <option >INGENIERO APLICACIONES DE GESTIÓN</option>
+          <option >INGENIERO SOPORTE WEB</option>
+          <option >DBA</option>
+          <option >INGENIERO DATA WARE HOUSE</option>
+        </datalist>
+
+        <label for="phone_dotacion">Telefono dotación</label>
+        <input type="number" id="phone_dotacion" name="phone_dotacion">
+
+        <label for="ip">Ip Ingeniero</label>
+        <input type="text" id="ip" name="ip">
+
+        <input type="submit"  value="Crear" id="btnSend" class="botonestilo"> <!--tipo button   id="btnSend"--> 
+    </div>
+</form>
+
+</section>
+
 
 
       <!-- Footer -->
@@ -587,22 +567,11 @@
   
 
   <!-- Page level plugins -->
-  <!--<script src="vendor/datatables/jquery.dataTables.min.js"></script>-->
+  <script src="vendor/datatables/jquery.dataTables.min.js"></script>
   <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
   <!-- Page level custom scripts -->
   <script src="js/demo/datatables-demo.js"></script>
-
-    <!-- js del dropdown -->
-  <script src="js/demo/dropdown.js"></script>
-  <script src="bootstrap/js/bootstrap.min.js"></script>
-
-  <!--js de la tabla-->
-  <!--<script src="./tabla_dinamica/js/jquery-2.1.1.min.js"></script>
-	<script src="./tabla_dinamica/js/bootstrap.js"></script> -->
-
-<!--JS Para el switch-->
-<script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/js/bootstrap4-toggle.min.js"></script>
 
 </body>
 <!--COMETARIADAS

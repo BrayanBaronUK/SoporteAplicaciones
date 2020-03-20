@@ -204,7 +204,7 @@
           <span>Consulta de Turnos</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="Consulta_compensatorio.php">
           <i class="fas fa-fw fa-table"></i>
           <span>Consulta de Compensatorios</span></a>
       </li>
