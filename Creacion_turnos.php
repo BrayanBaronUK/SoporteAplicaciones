@@ -469,8 +469,7 @@
                 </div>
                 <div id="resultbox"></div>
               </div>
-              <div class="table-responsive" action="genera_tabla()">
-
+              <div class="table-responsive">
                 <div id="metric_results">
                   <input type="button" value="Crear turnos del mes" onclick="genera_tabla();" id="generador_tab">
                 </div>
