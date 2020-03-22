@@ -20,25 +20,6 @@
 
   <!-- Custom styles for this page -->
   <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
-  <script type="text/javascript">
-          var d = '<tr>'+
-        '<th>ID</th>'+
-        '<th>Nombres</th>'+
-        '<th>Apellidos</th>'+
-        '</tr>';
-
-        $("#btnCagar").click(function () {
-        for (var i = 1; i < datos.length; i++) {
-        d+= '<tr>'+
-        '<td>'+datos[i].id+'</td>'+
-        '<td>'+datos[i].nombres+'</td>'+
-        '<td>'+datos[i].apellidos+'</td>'+
-        '</tr>';
-        }
-        $("#tabla").append(d);
-        });
-    </script>  
-
 </head>
 
 <body id="page-top">
@@ -177,19 +158,6 @@
     <i class="fas fa-fw fa-folder"></i>
     <span>Registrar Actividad Turno</span>
   </a>
-  <!--
-  <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-    <div class="bg-white py-2 collapse-inner rounded">
-      <h6 class="collapse-header">Login Screens:</h6>
-      <a class="collapse-item" href="login.php">Login</a>
-      <a class="collapse-item" href="register.html">Register</a>
-      <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
-      <div class="collapse-divider"></div>
-      <h6 class="collapse-header">Other Pages:</h6>
-      <a class="collapse-item" href="404.html">404 Page</a>
-      <a class="collapse-item" href="blank.html">Blank Page</a>
-    </div>
-  </div>-->
 </li>
 <li class="nav-item">
   <a class="nav-link collapsed" href="RegistroActividadesCierre.php">
@@ -206,14 +174,6 @@
    <div class="sidebar-heading">
      CONSULTAS
    </div>
-
-<!-- Nav Item - Charts -->
-<!--
-<li class="nav-item">
-  <a class="nav-link" href="charts.html">
-    <i class="fas fa-fw fa-chart-area"></i>
-    <span>Charts</span></a>
-</li>-->
 
 <!-- Nav Item - Tables -->
 <li class="nav-item">
@@ -511,25 +471,6 @@
                     <div id="resultbox"></div>
                   </div>
     <div class="table-responsive">
-
-  <!--  <button id="btnCagar">Cargar</button>
-        <table style="width:100%" border="1" id="tabla">
-          <tr>
-          <th>ID</th>
-          <th>Nombres</th> 
-          <th>Apellidos</th>
-          </tr>
-          <tr>
-          <td>001</td>
-          <td>Jhon</td> 
-          <td>Doe</td>
-          </tr>
-          <tr>
-          <td>002</td>
-          <td>Maria</td> 
-          <td>Doe</td>
-          </tr>
-        </table> -->
 
       <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
         <thead>
@@ -1168,8 +1109,13 @@
         </tbody>
       </table>
     </div>
+        <div id="metric_results">
+        <h2>CARGANDO DATOS DINAMICAMENTE</h2>
+        <input type="button" value="Genera una tabla" onclick="genera_tabla();">
+        </div>
   </div>
 </div>
+
 
 </div>
 <!-- /.container-fluid -->
@@ -1237,6 +1183,7 @@
     <!-- js del dropdown -->
   <script src="js/demo/dropdown.js"></script>
   <script src="bootstrap/js/bootstrap.min.js"></script>
+  <script src="js/llenar_tabla.js"></script>
 
 </body>
 <!--COMETARIADAS
