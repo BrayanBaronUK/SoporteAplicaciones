@@ -65,6 +65,15 @@ function genera_tabla() {
         }
         tr.appendChild(th);        
     }
+
+    
+<select name="lista" size="1">
+<option value="coleccion.html">Mi colección de fotos</option>
+<option value="http://alirburia.8m.com">Halloween.com</option>
+<option value="http://www.halloween.com">Alirburia</option>
+<option value="http://www.museoceramadrid.com">Museo de cera de Madrid</option>
+</select>
+
     
     //FILAS DE LA TABLA
     for (i = 0; i < ingeniero.length; i++) {
@@ -76,7 +85,11 @@ function genera_tabla() {
                 td.appendChild(document.createTextNode(ingeniero[i]));
                 m++;
             }else{
-            td.appendChild(document.createTextNode("D"));
+            
+           // var capa = document.getElementById("capa");
+           // capa.innerHTML = "MM";
+           // td.appendChild(location=document.lista.options[document.lista.selectedIndex].value);
+                 td.appendChild(document.createTextNode("D"));
             }
             tr.appendChild(td)
         }
