@@ -8,16 +8,6 @@ function genera_tabla() {
     
     var heading = new Array();
     heading[0] = "Especialista"
-    heading[1] = "1"
-    heading[2] = "2"
-    heading[3] = "3"
-    heading[4] = "4"
-    heading[5] = "5"
-    heading[6] = "6"
-    heading[7] = "7"
-    heading[8] = "8"
-    heading[9] = "9"
-    heading[10] = "10"
 
     var heading2 = new Array();
     heading2[0] = " "
@@ -30,8 +20,13 @@ function genera_tabla() {
     heading2[7] = "D"
     
     
-    var stock = new Array()
-    stock[0] = new Array("Juan","M","M")
+    var ingeniero = new Array()
+    ingeniero[0] = "JUAN MANUEL"
+    ingeniero[1] = "BRAYAN BARON"
+    ingeniero[2] = "WILSON CASTRO"
+    ingeniero[3] = "MAICOL BALLESTEROS"
+    ingeniero[4] = "DANIEL MENDEZ"
+    ingeniero[5] = "CARLOS PALACIOS"
     
     
     //ENCABEZADO DE FILAS DE DIAS DEL MES
@@ -39,37 +34,54 @@ function genera_tabla() {
     tableBody.appendChild(tr);
     var dia=1;
     var esp="Especialista"
-    for (i = 0; i < 10; i++) {
+    for (i = 0; i < 32; i++) {
         var th = document.createElement('TH')
         th.width = '75';
-        th.appendChild(document.createTextNode(heading[i]));
-        tr.appendChild(th);    
-        dia++;
+        if (i==0){
+            th.appendChild(document.createTextNode(heading[0]));
+        }else{
+            th.appendChild(document.createTextNode(i));
+        }
+        tr.appendChild(th);
     }
     //ENCABEZADO DE FILAS DE LUNES A VIERNES DEL MES
     var tr = document.createElement('TR');
     tableBody.appendChild(tr);
     var dia=1;
     var esp="Especialista"
-    for (i = 0; i < 10; i++) {
-        var th = document.createElement('TH')
+    k=1;
+    for (i = 0; i < 32; i++) {   
+        var th = document.createElement('TH') 
         th.width = '75';
-        th.appendChild(document.createTextNode(heading2[i]));
-        if(i=7) {
-            i=0;
-        }  
-        tr.appendChild(th);     
+        if(i>=8) {
+            th.appendChild(document.createTextNode(heading2[k]));
+            k++;
+            if(k==8){
+                  k=1;  
+            }
+        } else{
+        
+            th.appendChild(document.createTextNode(heading2[i]));
+        }
+        tr.appendChild(th);        
     }
     
     //FILAS DE LA TABLA
-    for (i = 0; i < 10; i++) {
+    for (i = 0; i < ingeniero.length; i++) {
         var tr = document.createElement('TR');
-        for (j = 0; j < 10; j++) {
+        m=0;
+        for (j = 0; j < 32; j++) {
             var td = document.createElement('TD')
+            if(j==0){
+                td.appendChild(document.createTextNode(ingeniero[i]));
+                m++;
+            }else{
             td.appendChild(document.createTextNode("D"));
+            }
             tr.appendChild(td)
         }
         tableBody.appendChild(tr);
     }  
     myTableDiv.appendChild(table)
+    document.getElementById("generador_tab").disabled=true;
     }
