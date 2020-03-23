@@ -455,7 +455,7 @@
   <div class="container-fluid">
 
 <!-- Page Heading -->
-<h1 class="h3 mb-2 text-gray-800">Soporte Aplicaciones TI - Consulta compensatorios</h1>
+<h1 class="h3 mb-2 text-gray-800">Soporte Aplicaciones TI - Consulta programación Soporte Unidad </h1>
 <p class="mb-4"></p>
 
 <?php
@@ -466,7 +466,7 @@ $conex2 = oci_connect($user, $pass, $db);
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
   <div class="card-header py-3">
-   <h6 class="m-0 font-weight-bold text-primary">Consulta compensatorios</h6>
+   <h6 class="m-0 font-weight-bold text-primary">Consulta programación Soporte Unidad</h6>
   </div>
   <div class="card-body">
     <div class="table-responsive">
@@ -476,20 +476,22 @@ $conex2 = oci_connect($user, $pass, $db);
             <th>Usuario</th>
             <th>Especialista</th>
             <th>Fecha Creación</th>
-            <th>Fecha Compensatorio</th>
+            <th>Fecha inicio soporte</th>
+            <th>Fecha fin soporte</th>        
           </tr>
         </thead>
         <tfoot>
           <tr>
           <th>Usuario</th>
-          <th>Especialista</th>
+            <th>Especialista</th>
             <th>Fecha Creación</th>
-            <th>Fecha Compensatorio</th>
+            <th>Fecha inicio soporte</th>
+            <th>Fecha fin soporte</th>
           </tr>
         </tfoot>
         <tbody>
         <?php
-                  $sql    ="SELECT USUARIO, ESPECIALISTA, FECHA_CREADO,FECHA_COMPENSATORIO FROM COMPENSATORIOS";
+                  $sql    ="SELECT USUARIO, ESPECIALISTA, FECHA_CREADO,FECHA_INICIO,FECHA_FIN FROM SOPORTE_UNIDAD";
                   $resultado_set = oci_parse($conex2, $sql);
                   oci_execute($resultado_set);
                   while($row=oci_fetch_array($resultado_set)){            
@@ -499,6 +501,7 @@ $conex2 = oci_connect($user, $pass, $db);
             <td><?php echo $row[1]?></td>
             <td><?php echo $row[2]?></td>
             <td><?php echo $row[3]?></td>
+            <td><?php echo $row[4]?></td>
           </tr>
           <?php
             }

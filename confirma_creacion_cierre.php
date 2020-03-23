@@ -1,12 +1,12 @@
 <script language="javascript" type="text/javascript">
-  function AlertaCreaCompensatorio() {
-    alert('Ok se realizo registro del compensatorio...!');
-    window.location = 'Creacion_compensatorio.php';
+  function AlertaCreaCierre() {
+    alert('Ok se realizo registro de programacion de Cierre Maestra...!');
+    window.location = 'Creacion_horarios_cierre.php';
   }
 
-  function AlertaNoCompensatorio() {
-    alert('No se puso crear compensatorio...!');
-    window.location = 'Creacion_compensatorio.php';
+  function AlertaNoCierre() {
+    alert('No se puso crear cierre...!');
+    window.location = 'Creacion_horarios_cierre.php';
   }
 </script>
 <?php
@@ -18,7 +18,7 @@ $v_especialista = $_POST["especialista"];
 $v_fecha_cre ="SYSDATE";
 
 //$sql = "INSERT INTO COMPENSATORIOS VALUES ('$v_especialista','$v_fecha')";
-$sql = "INSERT INTO COMPENSATORIOS SELECT USUARIO, '$v_especialista',$v_fecha_cre,'$v_fecha' FROM USUARIOS_SOPORTE WHERE (NOMBRES||' '||APELLIDOS) = '$v_especialista'";
+$sql = "INSERT INTO CIERRES SELECT USUARIO, '$v_especialista',$v_fecha_cre,'$v_fecha' FROM USUARIOS_SOPORTE WHERE (NOMBRES||' '||APELLIDOS) = '$v_especialista'";
 $queryf = oci_parse($conex2, $sql);
 oci_execute($queryf);
 oci_commit($conex2);
@@ -28,14 +28,14 @@ $filas = oci_num_rows($queryf);
 if ($filas > 0) :
 
   echo "<script>";
-  echo "AlertaCreaCompensatorio()";
+  echo "AlertaCreaCierre()";
   echo "</script>";
 
 
 else :
 
   echo "<script>";
-  echo "AlertaNoCompensatorio()";
+  echo "AlertaNoCierre()";
   echo "</script>";
 
 endif;

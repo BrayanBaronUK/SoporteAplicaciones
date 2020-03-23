@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php 
-  session_start();
+ session_start();
 ?>
 
 <head>
@@ -218,7 +218,16 @@
           <i class="fas fa-fw fa-table"></i>
           <span>Consulta de Variable</span></a>
       </li>
-
+      <li class="nav-item">
+        <a class="nav-link" href="Consulta_cierres.php">
+          <i class="fas fa-fw fa-table"></i>
+          <span>Consulta de Cierres</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="Consulta_soporte_unidad.php">
+          <i class="fas fa-fw fa-table"></i>
+          <span>Consulta de Soporte Unidad</span></a>
+      </li>
       <li class="nav-item">
         <a class="nav-link" href="#">
           <i class="fas fa-fw fa-table"></i>

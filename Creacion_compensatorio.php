@@ -494,7 +494,7 @@
               <h6 class="m-0 font-weight-bold text-primary">Registrar compensatorio</h6>
             </div>
 
-            <?php session_start();
+            <?php
             include_once("conexion.php");
             $conex2 = oci_connect($user, $pass, $db);
             ?>
