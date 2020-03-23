@@ -173,7 +173,7 @@
 
       <!-- Nav Item - Tables -->
       <li class="nav-item">
-        <a class="nav-link" href="Consulta_vacaciones.php">
+        <a class="nav-link" href="Consulta_turnos.php">
           <i class="fas fa-fw fa-table"></i>
           <span>Consulta de Turnos</span></a>
       </li>
