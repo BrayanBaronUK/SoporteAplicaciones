@@ -413,7 +413,7 @@
       </li>
 
       <div class="topbar-divider d-none d-sm-block"></div>
-            <?php session_start();
+            <?php @session_start();
             include_once ("conexion.php");
             $conex2 = oci_connect($user, $pass, $db); 
              $elusuario = $_SESSION['usuario'];

@@ -17,7 +17,7 @@ function AlertaNoCambio(){
 }
 </script>
 <?php
-session_start();
+@session_start();
 include_once ("conexion.php");
 $conex2 = oci_connect($user, $pass, $db);
 

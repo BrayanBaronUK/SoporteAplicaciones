@@ -1,11 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-<?php 
- session_start();
-?>
-
 <head>
-
+  
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -401,7 +397,7 @@
             </li>
 
             <div class="topbar-divider d-none d-sm-block"></div>
-            <?php session_start();
+            <?php @session_start();
             include_once ("conexion.php");
             $conex2 = oci_connect($user, $pass, $db); 
              $elusuario = $_SESSION['usuario'];
