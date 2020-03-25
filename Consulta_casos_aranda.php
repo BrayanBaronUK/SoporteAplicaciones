@@ -20,6 +20,7 @@
 
   <!-- Custom styles for this page -->
   <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+
 </head>
 
 <body id="page-top">
@@ -37,7 +38,6 @@
         </div>
         <div class="sidebar-brand-text mx-3">SOPORTE IT<sup>1.0</sup></div>
       </a>
-
       <!-- Divider -->
       <hr class="sidebar-divider my-0">
 
@@ -123,7 +123,6 @@
 
 
 
-
       <!-- Divider -->
       <hr class="sidebar-divider">
 
@@ -140,6 +139,7 @@
           <i class="fas fa-fw fa-folder"></i>
           <span>Registrar Actividad Turno</span>
         </a>
+
       </li>
       <li class="nav-item">
         <a class="nav-link collapsed" href="RegistroActividadesCierre.php">
@@ -174,7 +174,7 @@
           <span>Consulta de horas extra</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="Consulta_casos_aranda.php">
           <i class="fas fa-fw fa-table"></i>
           <span>Consulta de Variable</span></a>
       </li>
@@ -411,317 +411,74 @@
         </nav>
         <!-- End of Topbar -->
 
+
         <!-- Begin Page Content -->
         <div class="container-fluid">
 
           <!-- Page Heading -->
-          <h1 class="h3 mb-2 text-gray-800">Soporte Aplicaciones TI - Consulta de turnos</h1>
+          <h1 class="h3 mb-2 text-gray-800">Soporte Aplicaciones TI - Consulta Gestion casos ARANDA</h1>
           <p class="mb-4"></p>
 
-
+          <?php
+          include_once("conexion_aranda.php");
+          $conex2 = oci_connect($user, $pass, $db);
+          ?>
 
           <!-- DataTales Example -->
           <div class="card shadow mb-4">
             <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">Consulta de turnos por especialista</h6>
+              <h6 class="m-0 font-weight-bold text-primary">Consulta casos por especialista</h6>
             </div>
-
-
             <div class="card-body">
-              <!--SELECCIONADOR DE MES-->
-              <div class="small mb-1">Seleccione un mes:</div>
-              <div class="dropdown mb-4">
-
-                <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Mes</button>
-
-
-                <div id="resultbox"></div>
-              </div>
               <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                   <thead>
                     <tr>
-                      <th rowspan="2" ALIGN=center >Especialista</th>
-                      <th>1</th>
-                      <th>2</th>
-                      <th>3</th>
-                      <th>4</th>
-                      <th>5</th>
-                      <th>6</th>
-                      <th>7</th>
-                      <th>8</th>
-                      <th>9</th>
-                      <th>10</th>
-                      <th>11</th>
-                      <th>12</th>
-                      <th>13</th>
-                      <th>14</th>
-                      <th>15</th>
-                      <th>16</th>
-                      <th>17</th>
-                      <th>18</th>
-                      <th>19</th>
-                      <th>20</th>
-                      <th>21</th>
-                      <th>22</th>
-                      <th>23</th>
-                      <th>24</th>
-                      <th>25</th>
-                      <th>26</th>
-                      <th>27</th>
-                      <th>28</th>
-                      <th>29</th>
-                      <th>30</th>
-                      <th>31</th>
-                    </tr>
-                    <tr>
-                      <th>L</th>
-                      <th>M</th>
-                      <th>M</th>
-                      <th>J</th>
-                      <th>V</th>
-                      <th>S</th>
-                      <th>D</th>
-                      <th>L</th>
-                      <th>M</th>
-                      <th>M</th>
-                      <th>J</th>
-                      <th>V</th>
-                      <th>S</th>
-                      <th>D</th>
-                      <th>L</th>
-                      <th>M</th>
-                      <th>M</th>
-                      <th>J</th>
-                      <th>V</th>
-                      <th>S</th>
-                      <th>D</th>
-                      <th>L</th>
-                      <th>M</th>
-                      <th>M</th>
-                      <th>J</th>
-                      <th>V</th>
-                      <th>S</th>
-                      <th>D</th>
-                      <th>L</th>
-                      <th>M</th>
-                      <th>M</th>
+                      <th>Codigo Grupo</th>
+                      <th>Especialista</th>
+                      <th>Casos pendientes</th>
+                      <th>Casos cerrados</th>
+                      <th>Total Casos</th>
+                      <th>Cumplimiento</th>
                     </tr>
                   </thead>
+                  <tfoot>
+                    <tr>
+                      <th>Codigo Grupo</th>
+                      <th>Especialista</th>
+                      <th>Casos pendientes</th>
+                      <th>Casos cerrados</th>
+                      <th>Total Casos</th>
+                      <th>Cumplimiento</th>
+                    </tr>
+                  </tfoot>
                   <tbody>
-                    <tr>
-                      <td ALIGN=center>OSCAR RIOS</td>
-                      <td>T</td>
-                      <td>T</td>
-                      <td>T</td>
-                      <td>T</td>
-                      <td>T</td>
-                      <td>T</td>
-                      <td>T</td>
-                      <td>M</td>
-                      <td>M</td>
-                      <td>M</td>
-                      <td>M</td>
-                      <td>M</td>
-                      <td>M</td>
-                      <td>M</td>
-                      <td>N</td>
-                      <td>N</td>
-                      <td>N</td>
-                      <td>N</td>
-                      <td>N</td>
-                      <td>N</td>
-                      <td>N</td>
-                      <td>JL</td>
-                      <td>JL</td>
-                      <td>JL</td>
-                      <td>JL</td>
-                      <td>JL</td>
-                      <td>JL</td>
-                      <td>JL</td>
-                      <td>JL2</td>
-                      <td>JL2</td>
-                      <td>JL2</td>
+                    <?php
+                    $sql = "SELECT GRP_ID, RESPONSABLE,COUNT(*) as CANTIDAD FROM ARANDA.V_ARA_CASOS_2
+                  WHERE GRP_ID IN (64,73) AND ESTADO  IN ('SOLUCIONADO','CERRADO') 
+                    AND TRUNC(FECHA_REGISTRO) BETWEEN TRUNC (SYSDATE,'MONTH')AND TRUNC(LAST_DAY (SYSDATE))
+                      GROUP BY GRP_ID,RESPONSABLE";
+                    $resultado_set = oci_parse($conex2, $sql);
+                    oci_execute($resultado_set);
+                    while ($row = oci_fetch_array($resultado_set)) {
+                    ?>
+                      <tr>
+                        <td><?php echo $row[0] ?></td>
+                        <td><?php echo $row[1] ?></td>
+                        <td>300</td>
+                        <td>200</td>
+                        <td><?php echo $row[2] ?></td>
+                        <td>75%</td>
 
-                    </tr>
-                    <tr>
-                      <td  ALIGN=center>GUSTAVO SALAZAR</td>
-                      <td>N</td>
-                      <td>N</td>
-                      <td>N</td>
-                      <td>N</td>
-                      <td>N</td>
-                      <td>N</td>
-                      <td>N</td>
-                      <td>T</td>
-                      <td>T</td>
-                      <td>T</td>
-                      <td>T</td>
-                      <td>T</td>
-                      <td>T</td>
-                      <td>T</td>
-                      <td>M</td>
-                      <td>M</td>
-                      <td>M</td>
-                      <td>M</td>
-                      <td>M</td>
-                      <td>M</td>
-                      <td>M</td>
-                      <td>JL2</td>
-                      <td>JL2</td>
-                      <td>JL2</td>
-                      <td>JL2</td>
-                      <td>JL2</td>
-                      <td>JL2</td>
-                      <td>JL2</td>
-                      <td>JL</td>
-                      <td>JL</td>
-                      <td>JL</td>
-                    </tr>
-                    <tr>
-                      <td ALIGN=center>WILSON CASTRO</td>
-                      <td>M</td>
-                      <td>M</td>
-                      <td>M</td>
-                      <td>M</td>
-                      <td>M</td>
-                      <td>M</td>
-                      <td>M</td>
-                      <td>JL</td>
-                      <td>JL</td>
-                      <td>JL</td>
-                      <td>JL</td>
-                      <td>JL</td>
-                      <td>JL</td>
-                      <td>JL</td>
-                      <td>T</td>
-                      <td>T</td>
-                      <td>T</td>
-                      <td>T</td>
-                      <td>T</td>
-                      <td>T</td>
-                      <td>T</td>
-                      <td>N</td>
-                      <td>N</td>
-                      <td>N</td>
-                      <td>N</td>
-                      <td>N</td>
-                      <td>N</td>
-                      <td>N</td>
-                      <td>D</td>
-                      <td>D</td>
-                      <td>D</td>
-                    </tr>
-                    <tr>
-                      <td ALIGN=center>MAICOL BALLESTEROS</td>
-                      <td>N</td>
-                      <td>N</td>
-                      <td>N</td>
-                      <td>N</td>
-                      <td>N</td>
-                      <td>N</td>
-                      <td>N</td>
-                      <td>T</td>
-                      <td>T</td>
-                      <td>T</td>
-                      <td>T</td>
-                      <td>T</td>
-                      <td>T</td>
-                      <td>T</td>
-                      <td>M</td>
-                      <td>M</td>
-                      <td>M</td>
-                      <td>M</td>
-                      <td>M</td>
-                      <td>M</td>
-                      <td>M</td>
-                      <td>JL2</td>
-                      <td>JL2</td>
-                      <td>JL2</td>
-                      <td>JL2</td>
-                      <td>JL2</td>
-                      <td>JL2</td>
-                      <td>JL2</td>
-                      <td>JL</td>
-                      <td>JL</td>
-                      <td>JL</td>
-
-                    </tr>
-                    <tr>
-                      <td  ALIGN=center>GUSTAVO GONZALEZ</td>
-                      <td>T</td>
-                      <td>T</td>
-                      <td>T</td>
-                      <td>T</td>
-                      <td>T</td>
-                      <td>T</td>
-                      <td>T</td>
-                      <td>M</td>
-                      <td>M</td>
-                      <td>M</td>
-                      <td>M</td>
-                      <td>M</td>
-                      <td>M</td>
-                      <td>M</td>
-                      <td>N</td>
-                      <td>N</td>
-                      <td>N</td>
-                      <td>N</td>
-                      <td>N</td>
-                      <td>N</td>
-                      <td>N</td>
-                      <td>JL</td>
-                      <td>JL</td>
-                      <td>JL</td>
-                      <td>JL</td>
-                      <td>JL</td>
-                      <td>JL</td>
-                      <td>JL</td>
-                      <td>JL2</td>
-                      <td>JL2</td>
-                      <td>JL2</td>
-                    </tr>
-                    <tr>
-                      <td  ALIGN=center>DANIEL MENDEZ</td>
-                      <td>M</td>
-                      <td>M</td>
-                      <td>M</td>
-                      <td>M</td>
-                      <td>M</td>
-                      <td>M</td>
-                      <td>M</td>
-                      <td>JL</td>
-                      <td>JL</td>
-                      <td>JL</td>
-                      <td>JL</td>
-                      <td>JL</td>
-                      <td>JL</td>
-                      <td>JL</td>
-                      <td>T</td>
-                      <td>T</td>
-                      <td>T</td>
-                      <td>T</td>
-                      <td>T</td>
-                      <td>T</td>
-                      <td>T</td>
-                      <td>N</td>
-                      <td>N</td>
-                      <td>N</td>
-                      <td>N</td>
-                      <td>N</td>
-                      <td>N</td>
-                      <td>N</td>
-                      <td>D</td>
-                      <td>D</td>
-                      <td>D</td>
-                    </tr>
+                      </tr>
+                    <?php
+                    }
+                    ?>
                   </tbody>
                 </table>
               </div>
-
             </div>
           </div>
-
 
         </div>
         <!-- /.container-fluid -->
@@ -780,16 +537,11 @@
 
 
     <!-- Page level plugins -->
-  <!--  <script src="vendor/datatables/jquery.dataTables.min.js"></script>-->
+    <script src="vendor/datatables/jquery.dataTables.min.js"></script>
     <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
     <!-- Page level custom scripts -->
     <script src="js/demo/datatables-demo.js"></script>
-
-    <!-- js del dropdown -->
-    <script src="js/demo/dropdown.js"></script>
-    <script src="bootstrap/js/bootstrap.min.js"></script>
-    <script src="js/llenar_tabla.js"></script>
 
 </body>
 <!--COMETARIADAS

@@ -184,7 +184,7 @@
           <span>Consulta de horas extra</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="Consulta_casos_aranda.php">
           <i class="fas fa-fw fa-table"></i>
           <span>Consulta de Variable</span></a>
       </li>
