@@ -37,7 +37,7 @@ function genera_tabla() {
     for (i = 0; i < 32; i++) {
         var th = document.createElement('TH')
        th.width = '75';
-       th.rowspan='2';
+      // th.rowspan='2';
         if (i == 0) {
             th.rowspan='2';
             th.appendChild(document.createTextNode(heading[0]));
@@ -69,15 +69,6 @@ function genera_tabla() {
         tr.appendChild(th);
     }
 
-    /*  
-  <select name="lista" size="1">
-  <option value="coleccion.html">Mi colección de fotos</option>
-  <option value="http://alirburia.8m.com">Halloween.com</option>
-  <option value="http://www.halloween.com">Alirburia</option>
-  <option value="http://www.museoceramadrid.com">Museo de cera de Madrid</option>
-  </select>*/
-
-
     //FILAS DE LA TABLA
     var tr;
     var td;
@@ -87,6 +78,8 @@ function genera_tabla() {
     var opt2;
     var opt3;
     var opt4;
+    var opt5;
+    var opt6;
     for (i = 0; i < ingeniero.length; i++) {
         tr = document.createElement('TR');
         m = 0;
@@ -104,28 +97,39 @@ function genera_tabla() {
                
 
                 opt1 = document.createElement('OPTION');
-                opt1.value = 'A';
-                opt1.text = 'A';
+                opt1.value = 'T';
+                opt1.text = 'T';
 
                 opt2 = document.createElement('OPTION');
-                opt2.value = 'B';
-                opt2.text = 'B';
+                opt2.value = 'M';
+                opt2.text = 'M';
                 
                 opt3 = document.createElement('OPTION');
-                opt3.value = 'C';
-                opt3.text = 'C';
+                opt3.value = 'N';
+                opt3.text = 'N';
 
                 opt4 = document.createElement('OPTION');
-                opt4.value = 'D';
-                opt4.text = 'D';
+                opt4.value = 'JL';
+                opt4.text = 'JL';
+
+                opt5 = document.createElement('OPTION');
+                opt5.value = 'JL2';
+                opt5.text = 'JL2';
+
+                opt6 = document.createElement('OPTION');
+                opt6.value = 'D';
+                opt6.text = 'D';
+
 
                 select = document.createElement('SELECT');
                 select.id = i + "_" + '01' + "_" + j;
-               // select.appendChild(opt0);
+             
                 select.appendChild(opt1);
                 select.appendChild(opt2);
                 select.appendChild(opt3);
                 select.appendChild(opt4);
+                select.appendChild(opt5);
+                select.appendChild(opt6);
                 td.appendChild(select);
             }
             tr.appendChild(td)

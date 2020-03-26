@@ -120,7 +120,12 @@
           <span>Creación soporte de unidad</span>
         </a>
       </li>
-
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="Creacion_vacaciones.php">
+          <i class="fas fa-fw fa-cog"></i>
+          <span>Creación de vacaciones</span>
+        </a>
+      </li>
 
 
       <!-- Divider -->
@@ -157,14 +162,22 @@
         CONSULTAS
       </div>
 
+      <!-- Nav Item - Charts -->
+      <!--
+<li class="nav-item">
+  <a class="nav-link" href="charts.html">
+    <i class="fas fa-fw fa-chart-area"></i>
+    <span>Charts</span></a>
+</li>-->
+
       <!-- Nav Item - Tables -->
       <li class="nav-item">
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="Consulta_turnos.php">
           <i class="fas fa-fw fa-table"></i>
           <span>Consulta de Turnos</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="Consulta_compensatorio.php">
           <i class="fas fa-fw fa-table"></i>
           <span>Consulta de Compensatorios</span></a>
       </li>
@@ -178,12 +191,28 @@
           <i class="fas fa-fw fa-table"></i>
           <span>Consulta de Variable</span></a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link" href="Consulta_cierres.php">
+          <i class="fas fa-fw fa-table"></i>
+          <span>Consulta de Cierres</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="Consulta_soporte_unidad.php">
+          <i class="fas fa-fw fa-table"></i>
+          <span>Consulta de Soporte Unidad</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="Consulta_vacaciones.php">
+          <i class="fas fa-fw fa-table"></i>
+          <span>Consulta de vacaciones</span></a>
+      </li>
 
       <li class="nav-item">
         <a class="nav-link" href="#">
           <i class="fas fa-fw fa-table"></i>
           <span>Repositorio de claves</span></a>
       </li>
+
 
       <!-- Divider -->
       <hr class="sidebar-divider d-none d-md-block">
@@ -427,7 +456,7 @@
           <!-- DataTales Example -->
           <div class="card shadow mb-4">
             <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">Consulta casos por especialista</h6>
+              <h6 class="m-0 font-weight-bold text-primary">Consulta casos por especialista por Mes</h6>
             </div>
             <div class="card-body">
               <div class="table-responsive">
@@ -457,7 +486,7 @@
                     $sql = "SELECT GRP_ID, RESPONSABLE,COUNT(*) as CANTIDAD FROM ARANDA.V_ARA_CASOS_2
                   WHERE GRP_ID IN (64,73) AND ESTADO  IN ('SOLUCIONADO','CERRADO') 
                     AND TRUNC(FECHA_REGISTRO) BETWEEN TRUNC (SYSDATE,'MONTH')AND TRUNC(LAST_DAY (SYSDATE))
-                      GROUP BY GRP_ID,RESPONSABLE";
+                      GROUP BY GRP_ID,RESPONSABLE ORDER BY 3 DESC";
                     $resultado_set = oci_parse($conex2, $sql);
                     oci_execute($resultado_set);
                     while ($row = oci_fetch_array($resultado_set)) {
@@ -467,6 +496,63 @@
                         <td><?php echo $row[1] ?></td>
                         <td>300</td>
                         <td>200</td>
+                        <td><?php echo $row[2] ?></td>
+                        <td>75%</td>
+
+                      </tr>
+                    <?php
+                    }
+                    ?>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+
+          <!--Consuta de casos por dia-->
+          <div class="card shadow mb-4">
+            <div class="card-header py-3">
+              <h6 class="m-0 font-weight-bold text-primary">Consulta casos por especialista por Día</h6>
+            </div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                  <thead>
+                    <tr>
+                      <th>Codigo Grupo</th>
+                      <th>Especialista</th>
+                      <th>Casos pendientes</th>
+                      <th>Casos cerrados</th>
+                      <th>Total Casos</th>
+                      <th>Cumplimiento</th>
+                    </tr>
+                  </thead>
+                  <tfoot>
+                    <tr>
+                      <th>Codigo Grupo</th>
+                      <th>Especialista</th>
+                      <th>Casos pendientes</th>
+                      <th>Casos cerrados</th>
+                      <th>Total Casos</th>
+                      <th>Cumplimiento</th>
+                    </tr>
+                  </tfoot>
+                  <tbody>
+                    <?php
+                    $sql = "SELECT GRP_ID,RESPONSABLE,count(*) as CANTIDAD FROM ARANDA.V_ARA_CASOS_2  WHERE GRP_ID IN (64,73)
+                    AND FECHA_SOLUCION  BETWEEN TO_DATE ( '25-MAR-2020 00:00:00', 'DD-MON-YYYY HH24:MI:SS' ) 
+                    AND TO_DATE ( '25-MAR-2020 23:59:59', 'DD-MON-YYYY HH24:MI:SS' ) 
+                    GROUP BY GRP_ID,RESPONSABLE ORDER BY 3 DESC";
+                    $resultado_set = oci_parse($conex2, $sql);
+                    oci_execute($resultado_set);
+                    while ($row = oci_fetch_array($resultado_set)) {
+                    ?>
+                      <tr>
+                        <td><?php echo $row[0] ?></td>
+                        <td><?php echo $row[1] ?></td>
+                        <td>50</td>
+                        <td>30</td>
                         <td><?php echo $row[2] ?></td>
                         <td>75%</td>
 

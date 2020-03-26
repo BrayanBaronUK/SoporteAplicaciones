@@ -120,8 +120,12 @@
           <span>Creación soporte de unidad</span>
         </a>
       </li>
-
-
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="Creacion_vacaciones.php">
+          <i class="fas fa-fw fa-cog"></i>
+          <span>Creación de vacaciones</span>
+        </a>
+      </li>
 
 
       <!-- Divider -->
@@ -140,6 +144,7 @@
           <i class="fas fa-fw fa-folder"></i>
           <span>Registrar Actividad Turno</span>
         </a>
+
       </li>
       <li class="nav-item">
         <a class="nav-link collapsed" href="RegistroActividadesCierre.php">
@@ -157,14 +162,22 @@
         CONSULTAS
       </div>
 
+      <!-- Nav Item - Charts -->
+      <!--
+<li class="nav-item">
+  <a class="nav-link" href="charts.html">
+    <i class="fas fa-fw fa-chart-area"></i>
+    <span>Charts</span></a>
+</li>-->
+
       <!-- Nav Item - Tables -->
       <li class="nav-item">
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="Consulta_turnos.php">
           <i class="fas fa-fw fa-table"></i>
           <span>Consulta de Turnos</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="Consulta_compensatorio.php">
           <i class="fas fa-fw fa-table"></i>
           <span>Consulta de Compensatorios</span></a>
       </li>
@@ -174,9 +187,24 @@
           <span>Consulta de horas extra</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="Consulta_casos_aranda.php">
           <i class="fas fa-fw fa-table"></i>
           <span>Consulta de Variable</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="Consulta_cierres.php">
+          <i class="fas fa-fw fa-table"></i>
+          <span>Consulta de Cierres</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="Consulta_soporte_unidad.php">
+          <i class="fas fa-fw fa-table"></i>
+          <span>Consulta de Soporte Unidad</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="Consulta_vacaciones.php">
+          <i class="fas fa-fw fa-table"></i>
+          <span>Consulta de vacaciones</span></a>
       </li>
 
       <li class="nav-item">
@@ -184,6 +212,7 @@
           <i class="fas fa-fw fa-table"></i>
           <span>Repositorio de claves</span></a>
       </li>
+
 
       <!-- Divider -->
       <hr class="sidebar-divider d-none d-md-block">
@@ -441,7 +470,7 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                   <thead>
                     <tr>
-                      <th rowspan="2" ALIGN=center >Especialista</th>
+                      <th rowspan="2" ALIGN=center>Especialista</th>
                       <th>1</th>
                       <th>2</th>
                       <th>3</th>
@@ -545,7 +574,7 @@
 
                     </tr>
                     <tr>
-                      <td  ALIGN=center>GUSTAVO SALAZAR</td>
+                      <td ALIGN=center>GUSTAVO SALAZAR</td>
                       <td>N</td>
                       <td>N</td>
                       <td>N</td>
@@ -648,7 +677,7 @@
 
                     </tr>
                     <tr>
-                      <td  ALIGN=center>GUSTAVO GONZALEZ</td>
+                      <td ALIGN=center>GUSTAVO GONZALEZ</td>
                       <td>T</td>
                       <td>T</td>
                       <td>T</td>
@@ -682,7 +711,7 @@
                       <td>JL2</td>
                     </tr>
                     <tr>
-                      <td  ALIGN=center>DANIEL MENDEZ</td>
+                      <td ALIGN=center>DANIEL MENDEZ</td>
                       <td>M</td>
                       <td>M</td>
                       <td>M</td>
@@ -780,7 +809,7 @@
 
 
     <!-- Page level plugins -->
-  <!--  <script src="vendor/datatables/jquery.dataTables.min.js"></script>-->
+    <!--  <script src="vendor/datatables/jquery.dataTables.min.js"></script>-->
     <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
     <!-- Page level custom scripts -->

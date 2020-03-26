@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  
+
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -47,22 +48,22 @@
 
       <li class="nav-item active">
         <a class="nav-link" href="index.php" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
-          <i class="fas fa-fw fa-cog" ></i>
+          <i class="fas fa-fw fa-cog"></i>
           <span>Contraseña</span></a>
 
-          <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-              <h6 class="collapse-header">Configuraciones:</h6>
-              <a class="collapse-item" href="cambio_contrasena.php">Cambiar contraseña</a>
-             <!-- <a class="collapse-item" href="login.php">Login</a>
+        <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Configuraciones:</h6>
+            <a class="collapse-item" href="cambio_contrasena.php">Cambiar contraseña</a>
+            <!-- <a class="collapse-item" href="login.php">Login</a>
               <a class="collapse-item" href="register.html">Register</a>
               <a class="collapse-item" href="forgot-password.html">Forgot Password</a>-->
-              <div class="collapse-divider"></div>
-             <!-- <h6 class="collapse-header">Other Pages:</h6>
+            <div class="collapse-divider"></div>
+            <!-- <h6 class="collapse-header">Other Pages:</h6>
               <a class="collapse-item" href="404.html">404 Page</a>
               <a class="collapse-item" href="blank.html">Blank Page</a> -->
-            </div>
           </div>
+        </div>
 
       </li>
 
@@ -85,8 +86,8 @@
             <h6 class="collapse-header">Configuración:</h6>
             <a class="collapse-item" href="Especialista_creacion.php">Creación</a>
             <a class="collapse-item" href="Especialista_visualizacion.php">Visualización</a>
-         <!--  <a class="collapse-item" href="buttons.html">Buttons</a>
-            <a class="collapse-item" href="cards.html">Cards</a> --> 
+            <!--  <a class="collapse-item" href="buttons.html">Buttons</a>
+            <a class="collapse-item" href="cards.html">Cards</a> -->
           </div>
         </div>
       </li>
@@ -123,7 +124,7 @@
           <span>Creación de vacaciones</span>
         </a>
       </li>
-      
+
 
       <!-- Divider -->
       <hr class="sidebar-divider">
@@ -135,13 +136,13 @@
 
       <!-- Nav Item - Pages Collapse Menu -->
       <li class="nav-item">
-      <!--  <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">-->
-          <a class="nav-link collapsed" href="RegistroActividadesTurno.php">
+        <!--  <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">-->
+        <a class="nav-link collapsed" href="RegistroActividadesTurno.php">
 
           <i class="fas fa-fw fa-folder"></i>
           <span>Registrar Actividad Turno</span>
         </a>
-      
+
       </li>
       <li class="nav-item">
         <a class="nav-link collapsed" href="RegistroActividadesCierre.php">
@@ -151,13 +152,13 @@
         </a>
       </li>
 
-         <!-- Divider -->
-         <hr class="sidebar-divider">
+      <!-- Divider -->
+      <hr class="sidebar-divider">
 
-         <!-- Heading -->
-         <div class="sidebar-heading">
-           CONSULTAS
-         </div>
+      <!-- Heading -->
+      <div class="sidebar-heading">
+        CONSULTAS
+      </div>
 
       <!-- Nav Item - Charts -->
       <!--
@@ -209,7 +210,7 @@
           <i class="fas fa-fw fa-table"></i>
           <span>Repositorio de claves</span></a>
       </li>
-     
+
       <!-- Divider -->
       <hr class="sidebar-divider d-none d-md-block">
 
@@ -220,7 +221,7 @@
 
       <li class="nav-item">
         <a class="nav-link" href="#">
-      <!--<a class="nav-link" href="charts.html">-->
+          <!--<a class="nav-link" href="charts.html">-->
           <i class="fas fa-fw fa-chart-area"></i>
           <span>Reporte de Casos</span></a>
       </li>
@@ -398,25 +399,25 @@
 
             <div class="topbar-divider d-none d-sm-block"></div>
             <?php @session_start();
-            include_once ("conexion.php");
-            $conex2 = oci_connect($user, $pass, $db); 
-             $elusuario = $_SESSION['usuario'];
-             $sql= "SELECT NOMBRES||' '||APELLIDOS FROM USUARIOS_SOPORTE WHERE USUARIO = '$elusuario'";
-             $resultado_set= oci_parse($conex2, $sql);
-             oci_execute($resultado_set);
-             while($row=oci_fetch_array($resultado_set)){
+            include_once("conexion.php");
+            $conex2 = oci_connect($user, $pass, $db);
+            $elusuario = $_SESSION['usuario'];
+            $sql = "SELECT NOMBRES||' '||APELLIDOS FROM USUARIOS_SOPORTE WHERE USUARIO = '$elusuario'";
+            $resultado_set = oci_parse($conex2, $sql);
+            oci_execute($resultado_set);
+            while ($row = oci_fetch_array($resultado_set)) {
             ?>
-          
 
-            <!-- Nav Item - User Information -->
-            <li class="nav-item dropdown no-arrow">
-              <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $row[0]?></span>
-                <img class="img-profile rounded-circle" src="./img/imagen1.jpg">
-              </a>
+
+              <!-- Nav Item - User Information -->
+              <li class="nav-item dropdown no-arrow">
+                <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $row[0] ?></span>
+                  <img class="img-profile rounded-circle" src="./img/imagen1.jpg">
+                </a>
               <?php
-                 }
-                ?>  
+            }
+              ?>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
                 <a class="dropdown-item" href="cambio_contrasena.php">
@@ -429,17 +430,17 @@
                   Salir
                 </a>
               </div>
-            </li>
+              </li>
 
           </ul>
 
         </nav>
         <!-- End of Topbar -->
-      
+
         <!-- Begin Page Content -->
-        
-       
-      <!--  <div class="container-fluid">
+
+
+        <!--  <div class="container-fluid">
 
            Page Heading 
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
@@ -725,65 +726,65 @@
 
       </div>
     -->
-      <!-- End of Main Content -->
+        <!-- End of Main Content -->
 
-      <!-- Footer -->
-      <footer class="sticky-footer bg-white">
-        <div class="container my-auto">
-          <div class="copyright text-center my-auto">
-            <span>Copyright &copy; Website 2020 by Brayan Baron</span>
+        <!-- Footer -->
+        <footer class="sticky-footer bg-white">
+          <div class="container my-auto">
+            <div class="copyright text-center my-auto">
+              <span>Copyright &copy; Website 2020 by Brayan Baron</span>
+            </div>
           </div>
-        </div>
-      </footer>
-      <!-- End of Footer -->
+        </footer>
+        <!-- End of Footer -->
+
+      </div>
+      <!-- End of Content Wrapper -->
 
     </div>
-    <!-- End of Content Wrapper -->
+    <!-- End of Page Wrapper -->
 
-  </div>
-  <!-- End of Page Wrapper -->
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+      <i class="fas fa-angle-up"></i>
+    </a>
 
-  <!-- Scroll to Top Button-->
-  <a class="scroll-to-top rounded" href="#page-top">
-    <i class="fas fa-angle-up"></i>
-  </a>
-
-  <!-- Logout Modal-->
-  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">¿Seguro quiere salir?</h5>
-          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">×</span>
-          </button>
-        </div>
-        <div class="modal-body">Seleccione "Salir" si desea cerrar la aplicación si no seleccione "Cancelar"</div>
-        <div class="modal-footer">
-          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-          <a class="btn btn-primary" href="login.php">Salir</a>
-        <!--  <a class="btn btn-primary" href="login.php">Logout</a>-->
+    <!-- Logout Modal-->
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">¿Seguro quiere salir?</h5>
+            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+          <div class="modal-body">Seleccione "Salir" si desea cerrar la aplicación si no seleccione "Cancelar"</div>
+          <div class="modal-footer">
+            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
+            <a class="btn btn-primary" href="login.php">Salir</a>
+            <!--  <a class="btn btn-primary" href="login.php">Logout</a>-->
+          </div>
         </div>
       </div>
     </div>
-  </div>
 
-  <!-- Bootstrap core JavaScript-->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- Bootstrap core JavaScript-->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-  <!-- Core plugin JavaScript-->
-  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+    <!-- Core plugin JavaScript-->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 
-  <!-- Custom scripts for all pages-->
-  <script src="js/sb-admin-2.min.js"></script>
+    <!-- Custom scripts for all pages-->
+    <script src="js/sb-admin-2.min.js"></script>
 
-  <!-- Page level plugins -->
-  <script src="vendor/chart.js/Chart.min.js"></script>
+    <!-- Page level plugins -->
+    <script src="vendor/chart.js/Chart.min.js"></script>
 
-  <!-- Page level custom scripts -->
-  <script src="js/demo/chart-area-demo.js"></script>
-  <script src="js/demo/chart-pie-demo.js"></script>
+    <!-- Page level custom scripts -->
+    <script src="js/demo/chart-area-demo.js"></script>
+    <script src="js/demo/chart-pie-demo.js"></script>
 
 </body>
 <!--pendiente:
