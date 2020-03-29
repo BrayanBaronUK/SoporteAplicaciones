@@ -541,8 +541,8 @@
                   <tbody>
                     <?php
                     $sql = "SELECT GRP_ID,RESPONSABLE,count(*) as CANTIDAD FROM ARANDA.V_ARA_CASOS_2  WHERE GRP_ID IN (64,73)
-                    AND FECHA_SOLUCION  BETWEEN TO_DATE ( '25-MAR-2020 00:00:00', 'DD-MON-YYYY HH24:MI:SS' ) 
-                    AND TO_DATE ( '25-MAR-2020 23:59:59', 'DD-MON-YYYY HH24:MI:SS' ) 
+                    AND FECHA_SOLUCION  BETWEEN TO_DATE ( TO_CHAR(TRUNC(SYSDATE), 'DD')||'-'||TO_CHAR(TRUNC(SYSDATE), 'MON')||','||TO_CHAR(TRUNC(SYSDATE), 'YYYY')||'00:00:00', 'DD-MON-YYYY HH24:MI:SS' ) 
+                    AND TO_DATE ( TO_CHAR(TRUNC(SYSDATE), 'DD')||'-'||TO_CHAR(TRUNC(SYSDATE), 'MON')||','||TO_CHAR(TRUNC(SYSDATE), 'YYYY')||'23:59:59', 'DD-MON-YYYY HH24:MI:SS' )
                     GROUP BY GRP_ID,RESPONSABLE ORDER BY 3 DESC";
                     $resultado_set = oci_parse($conex2, $sql);
                     oci_execute($resultado_set);

@@ -12,8 +12,8 @@ $mail = new PHPMailer();
 
 try {
     //Server settings
-   // $mail->SMTPDebug = 0;                                       // Enable verbose debug output
-   // $mail->isSMTP();                                            // Send using SMTP
+    $mail->SMTPDebug = 0;                                       // Enable verbose debug output
+    $mail->isSMTP();                                            // Send using SMTP
     $mail->Host       = 'smtp.office365.com';                     // Set the SMTP server to send through, dominio
     $mail->SMTPAuth   =  true;                                   // Enable SMTP authentication
     $mail->Username   = 'brayan.baron@hotmail.com';                    // SMTP username
