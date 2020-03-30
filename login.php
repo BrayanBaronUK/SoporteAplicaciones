@@ -44,7 +44,8 @@
                   </div>
                   <form class="user" action="ingreso.php" method="POST">
                     <div class="form-group">
-                      <input type="text" class="form-control form-control-user" id="user" name="user" aria-describedby="emailHelp" placeholder="Indique su usuario...">
+                      <input type="text" class="form-control form-control-user" onKeyUp="document.getElementById(this.id).value=document.getElementById(this.id).value.toUpperCase()"
+                       id="user" name="user" aria-describedby="emailHelp" placeholder="Indique su usuario...">
                     </div>
                     <div class="form-group">
                       <input type="password" class="form-control form-control-user" id="pass" name="pass" placeholder="clave">

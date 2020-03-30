@@ -483,7 +483,7 @@
                       <td><strong>Reporte casos por Día</strong></td>
                       <td>En este reporte podrá observar la cantidad de casos por especialista, tanto sus casos pendientes,
                         cerrados y total de casos durante el día. Así mismo, el porcentaje de cumplimiento.</td>
-                      <td><input type='button' class="rep" value='Reporte' onclick="location.href='ExcelCasosDia.php'"></td>
+                      <td><input type='button' class="rep" value='Reporte' onclick="location.href='ExcelCasosDiacp.php'"></td>
                     </tr>
                     <tr>
                       <td><strong>Reporte Detallado casos por mes</strong></td>
