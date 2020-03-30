@@ -231,7 +231,7 @@
       </li>
 
       <li class="nav-item">
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="Reporte_actividades.php">
           <i class="fas fa-fw fa-chart-area"></i>
           <span>Reporte de Actividades</span></a>
       </li>
@@ -446,7 +446,7 @@
         <div class="container-fluid">
 
           <!-- Page Heading -->
-          <h1 class="h3 mb-2 text-gray-800">Soporte Aplicaciones TI - Reportes Gestión casos Aranda</h1>
+          <h1 class="h3 mb-2 text-gray-800">Soporte Aplicaciones TI - Reportes Gestión de Actividades</h1>
           <p class="mb-4"></p>
 
           <!-- DataTales Example -->
@@ -472,34 +472,39 @@
                     </tr>
                   </tfoot>
                   <tbody>
-
                     <tr>
-                      <td><strong>Reporte casos por mes</strong></td>
-                      <td>En este reporte podrá observar la cantidad de casos por especialista, tanto sus casos pendientes,
-                        cerrados y total de casos durante el mes. Así mismo, el porcentaje de cumplimiento.</td>
-                      <td><input type='button' class="rep" value='Reporte' onclick="location.href='ExcelCasosMes.php'"></td>
+                      <td><strong>Reporte Programación Compensatorios</strong></td>
+                      <td>En este reporte podrá evidenciar el histórico de compensatorios que se han generado para el grupo de 
+                        soporte aplicaciones TI. Podrá observar el especialista, fecha de registro del compensatorio y el día
+                         otorgado del descanso.</td>
+                      <td><input type='button' class="rep" value='Reporte' onclick="location.href='ExcelCompensatorios.php'"></td>
                     </tr>
                     <tr>
-                      <td><strong>Reporte casos por Día</strong></td>
-                      <td>En este reporte podrá observar la cantidad de casos por especialista, tanto sus casos pendientes,
-                        cerrados y total de casos durante el día. Así mismo, el porcentaje de cumplimiento.</td>
-                      <td><input type='button' class="rep" value='Reporte' onclick="location.href='ExcelCasosDia.php'"></td>
+                      <td><strong>Reporte Horas extra</strong></td>
+                      <td>En este reporte podrá visualizar las horas extra realizadas por el grupo de aplicaciones de TI , 
+                        puntualmente del personal que realiza turnos.</td>
+                      <td><input type='button' class="rep" value='Reporte' onclick="location.href='ExcelHorasExtra.php'"></td>
                     </tr>
                     <tr>
-                      <td><strong>Reporte Detallado casos por mes</strong></td>
-                      <td>En este reporte podrá observar el detalle de casos gestionados en el mes, como también los casos pendientes
-                        por gestionar, para los casos solucionados y cerrados podrá evidenciar la respuesta dada por el especialista,
-                        de la misma forma el autor que lo genero y fecha de solución.
-                      </td>
-                      <td><input type='button' class="rep" value='Reporte' onclick="location.href='ExcelCasosDetalleMes.php'"></td>
+                      <td><strong>Reporte Programación Cierres</strong></td>
+                      <td>En este reporte podrá evidenciar todas las programaciones realizadas para la realización de cierres
+                         de los cortes de Cierre Maestra. Observara el especialista asignado, fecha de registro y la fecha de
+                          programación.</td>
+                      <td><input type='button' class="rep" value='Reporte' onclick="location.href='ExcelCierres.php'"></td>
                     </tr>
                     <tr>
-                      <td><strong>Reporte Detallado casos por día</strong></td>
-                      <td>En este reporte podrá observar el detalle de casos gestionados en el día, como también los casos pendientes
-                        por gestionar, para los casos solucionados y cerrados podrá evidenciar la respuesta dada por el especialista,
-                        de la misma forma el autor que lo genero y fecha de solución.
-                      </td>
-                      <td><input type='button' class="rep" value='Reporte' onclick="location.href='ExcelCasosDetalleDia.php'"></td>
+                      <td><strong>Reporte Programación Soporte Unidad</strong></td>
+                      <td>En este reporte podrá observar las programaciones realizadas para el soporte de la unidad del grupo el
+                         cual se realiza de forma semanal, se refleja el especialista asignado, fecha de registro, el día
+                          inicio del soporte y el día fin de soporte.</td>
+                      <td><input type='button' class="rep" value='Reporte' onclick="location.href='ExcelSoporteUnidad.php'"></td>
+                    </tr>
+                    <tr>
+                      <td><strong>Reporte Programación Vacaciones</strong></td>
+                      <td>En este reporte está plasmado toda la información con respecto a las programaciones de vacaciones de 
+                        los ingenieros del grupo, el cual se evidencia el especialista, el usuario , el registro de la programación,
+                         fecha inicio y fin de las vacaciones.</td>
+                      <td><input type='button' class="rep" value='Reporte' onclick="location.href='ExcelVacaciones.php'"></td>
                     </tr>
                   </tbody>
                 </table>
