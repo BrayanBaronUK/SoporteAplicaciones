@@ -17,6 +17,7 @@
 
   <!-- Custom styles for this template-->
   <link href="css/sb-admin-2.min.css" rel="stylesheet">
+  <link href="tabla_dinamica/estilos_tab/botones_estilos.css" rel="stylesheet">
 
 </head>
 
@@ -41,11 +42,11 @@
                     <p class="mb-4">Por favor ingrese el correo electronico registrado...su contraseña llegara a su correo!</p>
                   </div>
                   <form class="user" action="recordar_clave.php" method="POST">
-                  <div class="form-group">
-                      <input type="email" name="email" class="form-control form-control-user" placeholder="Ingrese su correo..."/>
-                   </div>
-                    <input type="submit" class="btn btn-primary btn-user btn-block" value="Recordar contraseña"/>
-                  
+                    <div class="form-group">
+                      <input type="email" name="email" class="form-control form-control-user" placeholder="Ingrese su correo..." />
+                    </div>
+                    <input type="submit" class="btn btn-primary btn-user btn-block" value="Recordar contraseña" />
+
                   </form>
                   <hr>
                   <!--
@@ -68,92 +69,84 @@
   </div>
 
   <?php
+  echo '<link href="botones_estilos.css" type="text/css" rel="stylesheet">';
+
   use PHPMailer\PHPMailer\PHPMailer;
   use PHPMailer\PHPMailer\Exception;
-  
+
   require './PHPMailer/Exception.php';
   require './PHPMailer/PHPMailer.php';
   require './PHPMailer/SMTP.php';
   $mail = new PHPMailer();
-  
 
-		try{
-			if(isset($_POST['email']) && !empty($_POST['email'])){
-                //Conexion con la base
-                include_once("conexion.php");
-                $conex2 = oci_connect($user, $pass, $db);
-               // $varexi=0;
-                $varcorr=$_POST['email'];
-                $sql = "SELECT * FROM USUARIOS_SOPORTE WHERE CORREO_ELECTRONICO = '$varcorr'";
-              //  echo 'resultadooooo '.$varexi;
-                $consulta= oci_parse($conex2,$sql);
-                oci_execute($consulta);
-                oci_commit($conex2);
 
-                if($row=oci_fetch_array($consulta)){
-                        
+  try {
+    if (isset($_POST['email']) && !empty($_POST['email'])) {
+      //Conexion con la base
+      include_once("conexion.php");
+      $conex2 = oci_connect($user, $pass, $db);
+      // $varexi=0;
+      $varcorr = $_POST['email'];
+      $sql = "SELECT * FROM USUARIOS_SOPORTE WHERE CORREO_ELECTRONICO = '$varcorr'";
+      //  echo 'resultadooooo '.$varexi;
+      $consulta = oci_parse($conex2, $sql);
+      oci_execute($consulta);
+      oci_commit($conex2);
 
-                      $passw = substr( md5(microtime()), 1, 10);
-                      $maile = $_POST['email'];
+      if ($row = oci_fetch_array($consulta)) {
 
-                      //Conexion con la base
-                      include_once("conexion.php");
-                      $conex2 = oci_connect($user, $pass, $db);
 
-                      //$sql = "Update usuarios_soporte_seg set clave = '$var3'";
-                      $sql = "Update usuarios_soporte_seg set clave = '$passw' where usuario in (select usuario from usuarios_soporte where correo_electronico = '$maile')";
+        $passw = substr(md5(microtime()), 1, 10);
+        $maile = $_POST['email'];
 
-                      $query= oci_parse($conex2,$sql);
-                      oci_execute($query);
-                      oci_commit($conex2);
-                      
-                      
-                      $mail->SMTPDebug = 0;                                 // Enable verbose debug output
-                      $mail->isSMTP();                                            // Send using SMTP
-                      $mail->Host       = 'smtp.office365.com';                     // Set the SMTP server to send through, dominio
-                      $mail->SMTPAuth   =  true;                                   // Enable SMTP authentication
-                      $mail->Username   = 'brayan.baron@hotmail.com';                    // SMTP username
-                      $mail->Password   = 'skkiper9405';                               // SMTP password
-                      $mail->SMTPSecure = 'tls';         // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` also accepted
-                      $mail->Port       =  587;                                 // TCP port to connect to
-                  
-                      //Recipients
-                      $mail->setFrom('brayan.baron@hotmail.com', 'Soporte');
-                      $mail->addAddress($_POST['email']);    // Add a recipient-- aca el destino
-                  
-                  
-                      // Content
-                      //$mail->isHTML(true);                               // Set email format to HTML
-                      $mail->Subject = 'Correo muy importante!!';  //Asunto
-                      $mail->Body    = "El sistema le asigno la siguiente clave " . $passw;
-                  
-                      $mail->send();
-                      echo 'Correo enviado satisfactoriamente a ' . $_POST['email'];
-                      /*
-                    
-                      $to = $_POST['email'];//"destinatario@email.com";
-                      //$from = "From: " . "Masterhouse" ;
-                      $from = "soportetigestion@gmail.com" ;
-                      $subject = "Recordar contraseña";
-                      $message = "El sistema le asigno la siguiente clave " . $passw;
+        //Conexion con la base
+        include_once("conexion.php");
+        $conex2 = oci_connect($user, $pass, $db);
 
-                      mail($to, $subject, $message, $from);
-                      echo 'Correo enviado satisfactoriamente a ' . $_POST['email'];
-                        */
-                    
-                      OCICommit($conex2);
-                   }
-                    else{
-                      echo 'Correo indicado no esta registrado en el sistema';
-                    }
-                }
-                else 
-                    echo 'Indique el correo, debe estar registrado en el sistema';
-        }
-        catch (Exception $e) {
-          echo 'Hubo un error al enviar el mensaje: ',$mail->ErrorInfo;
-        }           
-?>
+        //$sql = "Update usuarios_soporte_seg set clave = '$var3'";
+        $sql = "Update usuarios_soporte_seg set clave = '$passw', estado='P' 
+                      where usuario in (select usuario from usuarios_soporte where correo_electronico = '$maile')";
+
+        $query = oci_parse($conex2, $sql);
+        oci_execute($query);
+        oci_commit($conex2);
+
+
+        $mail->SMTPDebug = 0;                                 // Enable verbose debug output
+        $mail->isSMTP();                                            // Send using SMTP
+        $mail->Host       = 'smtp.office365.com';                     // Set the SMTP server to send through, dominio
+        $mail->SMTPAuth   =  true;                                   // Enable SMTP authentication
+        $mail->Username   = 'brayan.baron@hotmail.com';                    // SMTP username
+        $mail->Password   = 'skkiper9405';                               // SMTP password
+        $mail->SMTPSecure = 'tls';         // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` also accepted
+        $mail->Port       =  587;                                 // TCP port to connect to
+
+        //Recipients
+        $mail->setFrom('brayan.baron@hotmail.com', 'Soporte');
+        $mail->addAddress($_POST['email']);    // Add a recipient-- aca el destino
+
+
+        // Content
+        //$mail->isHTML(true);                               // Set email format to HTML
+        $mail->Subject = 'Correo muy importante!!';  //Asunto
+        $mail->Body    = "El sistema le asigno la siguiente clave " . $passw;
+
+        $mail->send();
+        //echo 'Correo enviado satisfactoriamente a ' . $_POST['email'];
+        echo "<p class='avisoclave'style='color:#EEDAD5' align='center'>Correo enviado satisfactoriamente a $maile </p>";
+
+        OCICommit($conex2);
+      } else {
+
+        echo "<p class='avisoclave'style='color:#EEDAD5' align='center'>Correo indicado no esta registrado en el sistema</p>";
+      }
+    } else
+      echo "<p class='avisoclave'style='color:#EEDAD5' align='center'>Indique el correo, debe estar registrado en el sistema</p>";
+  } catch (Exception $e) {
+
+    echo "<p class='avisoclave'style='color:#EEDAD5' align='center'>Hubo un error al enviar el mensaje: </p>", $mail->ErrorInfo;
+  }
+  ?>
 
   <!-- Bootstrap core JavaScript-->
   <script src="vendor/jquery/jquery.min.js"></script>
