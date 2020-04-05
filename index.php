@@ -1,5 +1,12 @@
+<?php
+
+include_once("conexion_aranda.php");
+$conex2 = oci_connect($user, $pass, $db);
+
+?>
 <!DOCTYPE html>
 <html lang="en">
+
 
 <head>
 
@@ -8,19 +15,360 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <title>Soporte IT AVANTEL</title>
 
   <!-- Custom fonts for this template-->
+
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
   <!-- Custom styles for this template-->
   <link href="css/sb-admin-2.min.css" rel="stylesheet">
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+
+  <!--Insercion de pie casos Aranda-->
+  <style type="text/css">
+    /*${demo.css}*/
+  </style>
+  <script type="text/javascript">
+    $(function() {
+      $('#grafico_pie_dia').highcharts({
+        chart: {
+          plotBackgroundColor: null,
+          plotBorderWidth: null,
+          plotShadow: false
+        },
+        title: {
+          text: 'Porcentaje de Casos Aranda - Día'
+        },
+        tooltip: {
+          pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+        },
+        plotOptions: {
+          pie: {
+            allowPointSelect: true,
+            cursor: 'pointer',
+            dataLabels: {
+              enabled: true,
+              format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+              style: {
+                color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+              }
+            }
+          }
+        },
+        series: [{
+          type: 'pie',
+          name: 'Ingeniero',
+          data: [
+
+            <?php
+            $sql = "SELECT GRP_ID,RESPONSABLE,count(*) as CANTIDAD FROM ARANDA.V_ARA_CASOS_2  WHERE GRP_ID IN (64,73)
+                    AND FECHA_SOLUCION  BETWEEN TO_DATE ( TO_CHAR(TRUNC(SYSDATE), 'DD')||'-'||TO_CHAR(TRUNC(SYSDATE), 'MON')||','||TO_CHAR(TRUNC(SYSDATE), 'YYYY')||'00:00:00', 'DD-MON-YYYY HH24:MI:SS' ) 
+                    AND TO_DATE ( TO_CHAR(TRUNC(SYSDATE), 'DD')||'-'||TO_CHAR(TRUNC(SYSDATE), 'MON')||','||TO_CHAR(TRUNC(SYSDATE), 'YYYY')||'23:59:59', 'DD-MON-YYYY HH24:MI:SS' )
+                    GROUP BY GRP_ID,RESPONSABLE ORDER BY 3 DESC";
+            $resultado_set = oci_parse($conex2, $sql);
+            oci_execute($resultado_set);
+            while ($row = oci_fetch_array($resultado_set)) {
+            ?>
+
+              ['<?php echo $row[1] ?>', <?php echo $row[2] ?>],
+
+            <?php
+            }
+            ?>
+
+          ]
+        }]
+      });
+    });
+  </script>
+  <!--insercion pie mes-->
+  <style type="text/css">
+    /*${demo.css}*/
+  </style>
+  <script type="text/javascript">
+    $(function() {
+      $('#grafico_pie_mes').highcharts({
+        chart: {
+          plotBackgroundColor: null,
+          plotBorderWidth: null,
+          plotShadow: false
+        },
+        title: {
+          text: 'Porcentaje de Casos Aranda - Mes'
+        },
+        tooltip: {
+          pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+        },
+        plotOptions: {
+          pie: {
+            allowPointSelect: true,
+            cursor: 'pointer',
+            dataLabels: {
+              enabled: true,
+              format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+              style: {
+                color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+              }
+            }
+          }
+        },
+        series: [{
+          type: 'pie',
+          name: 'Ingeniero',
+          data: [
+
+            <?php
+            $sql = "SELECT GRP_ID, RESPONSABLE,COUNT(*) as CANTIDAD FROM ARANDA.V_ARA_CASOS_2
+            WHERE GRP_ID IN (64,73) AND ESTADO  IN ('SOLUCIONADO','CERRADO') 
+              AND TRUNC(FECHA_REGISTRO) BETWEEN TRUNC (SYSDATE,'MONTH')AND TRUNC(LAST_DAY (SYSDATE))
+                GROUP BY GRP_ID,RESPONSABLE ORDER BY 3 DESC";
+            $resultado_set = oci_parse($conex2, $sql);
+            oci_execute($resultado_set);
+            while ($row = oci_fetch_array($resultado_set)) {
+            ?>
+
+              ['<?php echo $row[1] ?>', <?php echo $row[2] ?>],
+
+            <?php
+            }
+            ?>
+
+          ]
+        }]
+      });
+    });
+  </script>
+
+  <!--insercion de barras mes-->
+  <script type="text/javascript">
+    $(function() {
+      $('#grafico_barras_mes').highcharts({
+        chart: {
+          type: 'bar'
+        },
+        title: {
+          text: 'Cantidad de Casos Aranda - Mes'
+        },
+        subtitle: {
+          text: 'Cantidad de casos por especialista'
+        },
+        xAxis: {
+          categories: [
+            <?php
+            $sql = "SELECT GRP_ID, RESPONSABLE,COUNT(*) as CANTIDAD,94 as CANTIDAD_3 FROM ARANDA.V_ARA_CASOS_2
+                  WHERE GRP_ID IN (64,73) AND ESTADO  IN ('SOLUCIONADO','CERRADO') 
+                    AND TRUNC(FECHA_REGISTRO) BETWEEN TRUNC (SYSDATE,'MONTH')AND TRUNC(LAST_DAY (SYSDATE))
+                      GROUP BY GRP_ID,RESPONSABLE ORDER BY 3 DESC";
+            $resultado_set = oci_parse($conex2, $sql);
+            oci_execute($resultado_set);
+            while ($row = oci_fetch_array($resultado_set)) {
+            ?>
+
+              ['<?php echo $row[1] ?>'],
+
+            <?php
+            }
+            ?>
+
+          ],
+          title: {
+            text: null
+          }
+        },
+        yAxis: {
+          min: 0,
+          title: {
+            text: 'Cantidad casos',
+            align: 'high'
+          },
+          labels: {
+            overflow: 'justify'
+          }
+        },
+        tooltip: {
+          valueSuffix: ' casos'
+        },
+        plotOptions: {
+          bar: {
+            dataLabels: {
+              enabled: true
+            }
+          }
+        },
+        legend: {
+          layout: 'vertical',
+          align: 'right',
+          verticalAlign: 'top',
+          x: -40,
+          y: 100,
+          floating: true,
+          borderWidth: 1,
+          backgroundColor: ((Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF'),
+          shadow: true
+        },
+        credits: {
+          enabled: false
+        },
+        series: [{
+          name: 'cerr',
+          align: 'left',
+          data: [
+            <?php
+            $sql = "SELECT GRP_ID, RESPONSABLE,COUNT(*) as CANTIDAD, 94 as CANTIDAD_3 FROM ARANDA.V_ARA_CASOS_2
+                  WHERE GRP_ID IN (64,73) AND ESTADO  IN ('SOLUCIONADO','CERRADO') 
+                    AND TRUNC(FECHA_REGISTRO) BETWEEN TRUNC (SYSDATE,'MONTH')AND TRUNC(LAST_DAY (SYSDATE))
+                      GROUP BY GRP_ID,RESPONSABLE ORDER BY 3 DESC";
+            $resultado_set = oci_parse($conex2, $sql);
+            oci_execute($resultado_set);
+            while ($row = oci_fetch_array($resultado_set)) {
+            ?>[<?php echo $row[2] ?>],
+
+            <?php
+            }
+            ?>
+          ]
+        }, {
+          name: 'pend',
+          data: [
+            <?php
+            $sql2 = "SELECT GRP_ID, RESPONSABLE,COUNT(*) as CANTIDAD,94 as CANTIDAD_3 FROM ARANDA.V_ARA_CASOS_2
+                WHERE GRP_ID IN (64,73) AND ESTADO  IN ('SOLUCIONADO','CERRADO') 
+                AND TRUNC(FECHA_REGISTRO) BETWEEN TRUNC (SYSDATE,'MONTH')AND TRUNC(LAST_DAY (SYSDATE))
+                GROUP BY GRP_ID,RESPONSABLE ORDER BY 3 DESC";
+            $resultado_set = oci_parse($conex2, $sql2);
+            oci_execute($resultado_set);
+            while ($row = oci_fetch_array($resultado_set)) {
+            ?>[<?php echo $row[3] ?>],
+
+            <?php
+            }
+            ?>
+          ]
+        }]
+      });
+    });
+  </script>
+  <!--insercion de barras dia-->
+  <script type="text/javascript">
+    $(function() {
+      $('#grafico_barras_dia').highcharts({
+        chart: {
+          type: 'bar'
+        },
+        title: {
+          text: 'Cantidad de Casos Aranda - Día'
+        },
+        subtitle: {
+          text: 'Cantidad de casos por especialista'
+        },
+        xAxis: {
+          categories: [
+            <?php
+            $sql = "SELECT GRP_ID,RESPONSABLE,count(*) as CANTIDAD,94 as CANTIDAD_3 FROM ARANDA.V_ARA_CASOS_2  WHERE GRP_ID IN (64,73)
+            AND FECHA_SOLUCION  BETWEEN TO_DATE ( TO_CHAR(TRUNC(SYSDATE), 'DD')||'-'||TO_CHAR(TRUNC(SYSDATE), 'MON')||','||TO_CHAR(TRUNC(SYSDATE), 'YYYY')||'00:00:00', 'DD-MON-YYYY HH24:MI:SS' ) 
+            AND TO_DATE ( TO_CHAR(TRUNC(SYSDATE), 'DD')||'-'||TO_CHAR(TRUNC(SYSDATE), 'MON')||','||TO_CHAR(TRUNC(SYSDATE), 'YYYY')||'23:59:59', 'DD-MON-YYYY HH24:MI:SS' )
+            GROUP BY GRP_ID,RESPONSABLE ORDER BY 3 DESC";
+            $resultado_set = oci_parse($conex2, $sql);
+            oci_execute($resultado_set);
+            while ($row = oci_fetch_array($resultado_set)) {
+            ?>
+
+              ['<?php echo $row[1] ?>'],
+
+            <?php
+            }
+            ?>
+
+          ],
+          title: {
+            text: null
+          }
+        },
+        yAxis: {
+          min: 0,
+          title: {
+            text: 'Cantidad casos',
+            align: 'high'
+          },
+          labels: {
+            overflow: 'justify'
+          }
+        },
+        tooltip: {
+          valueSuffix: ' casos'
+        },
+        plotOptions: {
+          bar: {
+            dataLabels: {
+              enabled: true
+            }
+          }
+        },
+        legend: {
+          layout: 'vertical',
+          align: 'right',
+          verticalAlign: 'top',
+          x: -40,
+          y: 100,
+          floating: true,
+          borderWidth: 1,
+          backgroundColor: ((Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF'),
+          shadow: true
+        },
+        credits: {
+          enabled: false
+        },
+        series: [{
+          name: 'cerr',
+          align: 'left',
+          data: [
+            <?php
+            $sql = "SELECT GRP_ID,RESPONSABLE,count(*) as CANTIDAD, 94 as CANTIDAD_3 FROM ARANDA.V_ARA_CASOS_2  WHERE GRP_ID IN (64,73)
+                    AND FECHA_SOLUCION  BETWEEN TO_DATE ( TO_CHAR(TRUNC(SYSDATE), 'DD')||'-'||TO_CHAR(TRUNC(SYSDATE), 'MON')||','||TO_CHAR(TRUNC(SYSDATE), 'YYYY')||'00:00:00', 'DD-MON-YYYY HH24:MI:SS' ) 
+                    AND TO_DATE ( TO_CHAR(TRUNC(SYSDATE), 'DD')||'-'||TO_CHAR(TRUNC(SYSDATE), 'MON')||','||TO_CHAR(TRUNC(SYSDATE), 'YYYY')||'23:59:59', 'DD-MON-YYYY HH24:MI:SS' )
+                    GROUP BY GRP_ID,RESPONSABLE ORDER BY 3 DESC";
+            $resultado_set = oci_parse($conex2, $sql);
+            oci_execute($resultado_set);
+            while ($row = oci_fetch_array($resultado_set)) {
+            ?>[<?php echo $row[2] ?>],
+
+            <?php
+            }
+            ?>
+          ]
+        }, {
+          name: 'pend',
+          align: 'left',
+          data: [
+            <?php
+            $sql = "SELECT GRP_ID,RESPONSABLE,count(*) as CANTIDAD, 94 as CANTIDAD_3 FROM ARANDA.V_ARA_CASOS_2  WHERE GRP_ID IN (64,73)
+                    AND FECHA_SOLUCION  BETWEEN TO_DATE ( TO_CHAR(TRUNC(SYSDATE), 'DD')||'-'||TO_CHAR(TRUNC(SYSDATE), 'MON')||','||TO_CHAR(TRUNC(SYSDATE), 'YYYY')||'00:00:00', 'DD-MON-YYYY HH24:MI:SS' ) 
+                    AND TO_DATE ( TO_CHAR(TRUNC(SYSDATE), 'DD')||'-'||TO_CHAR(TRUNC(SYSDATE), 'MON')||','||TO_CHAR(TRUNC(SYSDATE), 'YYYY')||'23:59:59', 'DD-MON-YYYY HH24:MI:SS' )
+                    GROUP BY GRP_ID,RESPONSABLE ORDER BY 3 DESC";
+            $resultado_set = oci_parse($conex2, $sql);
+            oci_execute($resultado_set);
+            while ($row = oci_fetch_array($resultado_set)) {
+            ?>[<?php echo $row[3] ?>],
+
+            <?php
+            }
+            ?>
+          ]
+        }]
+      });
+    });
+  </script>
 
 </head>
 
-<body id="page-top">
+<!--<body id="page-top">-->
+
+<body>
 
   <!-- Page Wrapper -->
   <div id="wrapper">
@@ -165,14 +513,6 @@
       <div class="sidebar-heading">
         CONSULTAS
       </div>
-
-      <!-- Nav Item - Charts -->
-      <!--
-      <li class="nav-item">
-        <a class="nav-link" href="charts.html">
-          <i class="fas fa-fw fa-chart-area"></i>
-          <span>Charts</span></a>
-      </li>-->
 
       <!-- Nav Item - Tables -->
       <li class="nav-item">
@@ -446,292 +786,141 @@
         <!-- Begin Page Content -->
 
 
-        <!--  <div class="container-fluid">
-
-           Page Heading 
-          <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
-            <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
-          </div>
-
-           Content Row 
-          <div class="row">
-
-            Earnings (Monthly) Card Example 
-            <div class="col-xl-3 col-md-6 mb-4">
-              <div class="card border-left-primary shadow h-100 py-2">
-                <div class="card-body">
-                  <div class="row no-gutters align-items-center">
-                    <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Earnings (Monthly)</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800">$40,000</div>
-                    </div>
-                    <div class="col-auto">
-                      <i class="fas fa-calendar fa-2x text-gray-300"></i>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-             Earnings (Monthly) Card Example 
-            <div class="col-xl-3 col-md-6 mb-4">
-              <div class="card border-left-success shadow h-100 py-2">
-                <div class="card-body">
-                  <div class="row no-gutters align-items-center">
-                    <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Earnings (Annual)</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800">$215,000</div>
-                    </div>
-                    <div class="col-auto">
-                      <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-             Earnings (Monthly) Card Example 
-            <div class="col-xl-3 col-md-6 mb-4">
-              <div class="card border-left-info shadow h-100 py-2">
-                <div class="card-body">
-                  <div class="row no-gutters align-items-center">
-                    <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Tasks</div>
-                      <div class="row no-gutters align-items-center">
-                        <div class="col-auto">
-                          <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">50%</div>
-                        </div>
-                        <div class="col">
-                          <div class="progress progress-sm mr-2">
-                            <div class="progress-bar bg-info" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-auto">
-                      <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            Pending Requests Card Example 
-            <div class="col-xl-3 col-md-6 mb-4">
-              <div class="card border-left-warning shadow h-100 py-2">
-                <div class="card-body">
-                  <div class="row no-gutters align-items-center">
-                    <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Pending Requests</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
-                    </div>
-                    <div class="col-auto">
-                      <i class="fas fa-comments fa-2x text-gray-300"></i>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-           Content Row 
-
-          <div class="row">
-
-            Area Chart 
-            <div class="col-xl-8 col-lg-7">
-              <div class="card shadow mb-4">
-                Card Header - Dropdown 
-                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0 font-weight-bold text-primary">Earnings Overview</h6>
-                  <div class="dropdown no-arrow">
-                    <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
-                      <div class="dropdown-header">Dropdown Header:</div>
-                      <a class="dropdown-item" href="#">Action</a>
-                      <a class="dropdown-item" href="#">Another action</a>
-                      <div class="dropdown-divider"></div>
-                      <a class="dropdown-item" href="#">Something else here</a>
-                    </div>
-                  </div>
-                </div>
-                Card Body 
-                <div class="card-body">
-                  <div class="chart-area">
-                    <canvas id="myAreaChart"></canvas>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            Pie Chart 
-            <div class="col-xl-4 col-lg-5">
-              <div class="card shadow mb-4">
-                Card Header - Dropdown 
-                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0 font-weight-bold text-primary">Revenue Sources</h6>
-                  <div class="dropdown no-arrow">
-                    <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
-                      <div class="dropdown-header">Dropdown Header:</div>
-                      <a class="dropdown-item" href="#">Action</a>
-                      <a class="dropdown-item" href="#">Another action</a>
-                      <div class="dropdown-divider"></div>
-                      <a class="dropdown-item" href="#">Something else here</a>
-                    </div>
-                  </div>
-                </div>
-                 Card Body 
-                <div class="card-body">
-                  <div class="chart-pie pt-4 pb-2">
-                    <canvas id="myPieChart"></canvas>
-                  </div>
-                  <div class="mt-4 text-center small">
-                    <span class="mr-2">
-                      <i class="fas fa-circle text-primary"></i> Direct
-                    </span>
-                    <span class="mr-2">
-                      <i class="fas fa-circle text-success"></i> Social
-                    </span>
-                    <span class="mr-2">
-                      <i class="fas fa-circle text-info"></i> Referral
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-           Content Row 
-          <div class="row">
-
-            Content Column 
-            <div class="col-lg-6 mb-4">
-
-               Project Card Example 
-              <div class="card shadow mb-4">
-                <div class="card-header py-3">
-                  <h6 class="m-0 font-weight-bold text-primary">Projects</h6>
-                </div>
-                <div class="card-body">
-                  <h4 class="small font-weight-bold">Server Migration <span class="float-right">20%</span></h4>
-                  <div class="progress mb-4">
-                    <div class="progress-bar bg-danger" role="progressbar" style="width: 20%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
-                  </div>
-                  <h4 class="small font-weight-bold">Sales Tracking <span class="float-right">40%</span></h4>
-                  <div class="progress mb-4">
-                    <div class="progress-bar bg-warning" role="progressbar" style="width: 40%" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
-                  </div>
-                  <h4 class="small font-weight-bold">Customer Database <span class="float-right">60%</span></h4>
-                  <div class="progress mb-4">
-                    <div class="progress-bar" role="progressbar" style="width: 60%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
-                  </div>
-                  <h4 class="small font-weight-bold">Payout Details <span class="float-right">80%</span></h4>
-                  <div class="progress mb-4">
-                    <div class="progress-bar bg-info" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
-                  </div>
-                  <h4 class="small font-weight-bold">Account Setup <span class="float-right">Complete!</span></h4>
-                  <div class="progress">
-                    <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
-                  </div>
-                </div>
-              </div>
-
-               Color System 
-              <div class="row">
-                <div class="col-lg-6 mb-4">
-                  <div class="card bg-primary text-white shadow">
-                    <div class="card-body">
-                      Primary
-                      <div class="text-white-50 small">#4e73df</div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-lg-6 mb-4">
-                  <div class="card bg-success text-white shadow">
-                    <div class="card-body">
-                      Success
-                      <div class="text-white-50 small">#1cc88a</div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-lg-6 mb-4">
-                  <div class="card bg-info text-white shadow">
-                    <div class="card-body">
-                      Info
-                      <div class="text-white-50 small">#36b9cc</div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-lg-6 mb-4">
-                  <div class="card bg-warning text-white shadow">
-                    <div class="card-body">
-                      Warning
-                      <div class="text-white-50 small">#f6c23e</div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-lg-6 mb-4">
-                  <div class="card bg-danger text-white shadow">
-                    <div class="card-body">
-                      Danger
-                      <div class="text-white-50 small">#e74a3b</div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-lg-6 mb-4">
-                  <div class="card bg-secondary text-white shadow">
-                    <div class="card-body">
-                      Secondary
-                      <div class="text-white-50 small">#858796</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-            </div>
-
-            <div class="col-lg-6 mb-4">
-
-               Illustrations 
-              <div class="card shadow mb-4">
-                <div class="card-header py-3">
-                  <h6 class="m-0 font-weight-bold text-primary">Illustrations</h6>
-                </div>
-                <div class="card-body">
-                  <div class="text-center">
-                    <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;" src="img/undraw_posting_photo.svg" alt="">
-                  </div>
-                  <p>Add some quality, svg illustrations to your project courtesy of <a target="_blank" rel="nofollow" href="https://undraw.co/">unDraw</a>, a constantly updated collection of beautiful svg images that you can use completely free and without attribution!</p>
-                  <a target="_blank" rel="nofollow" href="https://undraw.co/">Browse Illustrations on unDraw &rarr;</a>
-                </div>
-              </div>
-
-               Approach 
-              <div class="card shadow mb-4">
-                <div class="card-header py-3">
-                  <h6 class="m-0 font-weight-bold text-primary">Development Approach</h6>
-                </div>
-                <div class="card-body">
-                  <p>SB Admin 2 makes extensive use of Bootstrap 4 utility classes in order to reduce CSS bloat and poor page performance. Custom CSS classes are used to create custom components and custom utility classes.</p>
-                  <p class="mb-0">Before working with this theme, you should become familiar with the Bootstrap framework, especially the utility classes.</p>
-                </div>
-              </div>
-
-            </div>
-          </div>
-
+        <!--<div class="container-fluid">-->
+        <div style="width: 1250px; padding:5px;">
+          <div id="grafico_barras_dia" style=" width: 610px; height: 500px; float:left;"></div>
+          <div id="grafico_pie_dia" style="height: 500px; width: 610px; float:right;"></div>
         </div>
-      
-         /.container-fluid 
+        <br></br>
+        <div style="width: 1250px; padding:5px;">
+          <div id="grafico_barras_mes" style=" width: 610px; height: 500px; float:left;"></div>
+          <div id="grafico_pie_mes" style="height: 500px; width: 610px; float:right;"></div>
+        </div>
+        <!--   
+        <script src="reportes_graficos/Highcharts-8.0.4/code/highcharts.js"></script>
+        <script src="reportes_graficos/Highcharts-8.0.4/code/modules/exporting.js"></script>
+        <script src="reportes_graficos/Highcharts-8.0.4/code/modules/export-data.js"></script>
+        <script src="reportes_graficos/Highcharts-8.0.4/code/modules/accessibility.js"></script>
+        <figure class="highcharts-figure">
+          <div id="prueba"></div>
+        </figure> -->
+        <!--prueba-->
+        <!--
+        <script type="text/javascript">
+          Highcharts.chart('prueba', {
+            chart: {
+              type: 'bar'
+            },
+            title: {
+              text: 'Historic World Population by Region'
+            },
+            subtitle: {
+              text: 'Source: <a href="https://en.wikipedia.org/wiki/World_population">Wikipedia.org</a>'
+            },
+            xAxis: {
+              
+              categories: [
+                <?php
+                include_once("conexion_aranda.php");
+                $conex2 = oci_connect($user, $pass, $db);
+                $sql3 = "SELECT GRP_ID, RESPONSABLE,COUNT(*) as CANTIDAD,94 as CANTIDAD_3 FROM ARANDA.V_ARA_CASOS_2
+                  WHERE GRP_ID IN (64,73) AND ESTADO  IN ('SOLUCIONADO','CERRADO') 
+                    AND TRUNC(FECHA_REGISTRO) BETWEEN TRUNC (SYSDATE,'MONTH')AND TRUNC(LAST_DAY (SYSDATE))
+                      GROUP BY GRP_ID,RESPONSABLE ORDER BY 3 DESC";
+                $resultado_set = oci_parse($conex2, $sql3);
+                oci_execute($resultado_set);
+                while ($row = oci_fetch_array($resultado_set)) {
+                ?>
 
-      </div>
-    -->
+                  ['<?php echo $row["RESPONSABLE"] ?>'],
+
+                <?php
+                }
+                ?>
+
+              ],
+              title: {
+                text: null
+              }
+            },
+            yAxis: {
+              min: 0,
+              title: {
+                text: 'Population (millions)',
+                align: 'high'
+              },
+              labels: {
+                overflow: 'justify'
+              }
+            },
+            tooltip: {
+              valueSuffix: ' millions'
+            },
+            plotOptions: {
+              bar: {
+                dataLabels: {
+                  enabled: true
+                }
+              }
+            },
+            legend: {
+              layout: 'vertical',
+              align: 'right',
+              verticalAlign: 'top',
+              x: -40,
+              y: 80,
+              floating: true,
+              borderWidth: 1,
+              backgroundColor: Highcharts.defaultOptions.legend.backgroundColor || '#FFFFFF',
+              shadow: true
+            },
+            credits: {
+              enabled: false
+            },
+            series: [{
+              name: 'Casos solucionados',
+              data: [
+                <?php
+                include_once("conexion_aranda.php");
+                $conex2 = oci_connect($user, $pass, $db);
+                $sql1 = "SELECT GRP_ID, RESPONSABLE,COUNT(*) as CANTIDAD,94 as CANTIDAD_3 FROM ARANDA.V_ARA_CASOS_2
+                WHERE GRP_ID IN (64,73) AND ESTADO  IN ('SOLUCIONADO','CERRADO') 
+                 AND TRUNC(FECHA_REGISTRO) BETWEEN TRUNC (SYSDATE,'MONTH')AND TRUNC(LAST_DAY (SYSDATE))
+                GROUP BY GRP_ID,RESPONSABLE ORDER BY 3 DESC";
+                $resultado_set = oci_parse($conex2, $sql1);
+                oci_execute($resultado_set);
+                while ($row = oci_fetch_array($resultado_set)) {
+                ?>[<?php echo $row[2] ?>],
+
+                <?php
+                }
+                ?>
+              ]
+            }, {
+              name: 'Casos pendientes',
+              data: [
+                <?php
+                include_once("conexion_aranda.php");
+                $conex2 = oci_connect($user, $pass, $db);
+                $sql2 = "SELECT GRP_ID, RESPONSABLE,COUNT(*) as CANTIDAD,94 as CANTIDAD_3 FROM ARANDA.V_ARA_CASOS_2
+                WHERE GRP_ID IN (64,73) AND ESTADO  IN ('SOLUCIONADO','CERRADO') 
+                AND TRUNC(FECHA_REGISTRO) BETWEEN TRUNC (SYSDATE,'MONTH')AND TRUNC(LAST_DAY (SYSDATE))
+                GROUP BY GRP_ID,RESPONSABLE ORDER BY 3 DESC";
+                $resultado_set = oci_parse($conex2, $sql2);
+                oci_execute($resultado_set);
+                while ($row = oci_fetch_array($resultado_set)) {
+                ?>[<?php echo $row[3] ?>],
+
+                <?php
+                }
+                ?>
+              ]
+            }]
+          });
+        </script> -->
+
+        <!-- </div>-->
+
         <!-- End of Main Content -->
 
         <!-- Footer -->
@@ -776,27 +965,35 @@
     </div>
 
     <!-- Bootstrap core JavaScript-->
+
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <!-- Core plugin JavaScript-->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!--<script src="vendor/jquery-easing/jquery.easing.min.js"></script>-->
 
     <!-- Custom scripts for all pages-->
     <script src="js/sb-admin-2.min.js"></script>
 
     <!-- Page level plugins -->
+
     <script src="vendor/chart.js/Chart.min.js"></script>
 
     <!-- Page level custom scripts -->
-    <script src="js/demo/chart-area-demo.js"></script>
-    <script src="js/demo/chart-pie-demo.js"></script>
+    <!-- <script src="reportes_graficos/Highcharts-4.1.5/js/highcharts.js"></script>
+    <script src="reportes_graficos/Highcharts-4.1.5/js/modules/exporting.js"></script>-->
+
+    <!--prueba-->
+
+    <script src="reportes_graficos/Highcharts-8.0.4/code/highcharts.js"></script>
+    <script src="reportes_graficos/Highcharts-8.0.4/code/modules/exporting.js"></script>
+    <script src="reportes_graficos/Highcharts-8.0.4/code/modules/export-data.js"></script>
+    <script src="reportes_graficos/Highcharts-8.0.4/code/modules/accessibility.js"></script>
 
 </body>
-<!--pendiente:
-        *detectar usuario logueado
-            -arreglar el cambio de clave porque se actualizado todos los usuarios
-            -poner el usuario logueado en el header
+<!--comentariadas 
+441 a 726
 -->
 
 </html>

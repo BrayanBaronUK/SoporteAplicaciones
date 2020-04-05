@@ -251,14 +251,14 @@
       </div>
 
       <li class="nav-item">
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="Reporte_casos_aranda.php">
           <!--<a class="nav-link" href="charts.html">-->
           <i class="fas fa-fw fa-chart-area"></i>
           <span>Reporte de Casos</span></a>
       </li>
 
       <li class="nav-item">
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="Reporte_actividades.php">
           <i class="fas fa-fw fa-chart-area"></i>
           <span>Reporte de Actividades</span></a>
       </li>
