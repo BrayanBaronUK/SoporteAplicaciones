@@ -458,7 +458,7 @@ $conex2 = oci_connect($user, $pass, $db);
             name: ['<?php $estado = oci_result($resultado_set, 'MES') ?>'];
             <?php
             }
-            ?>*/   
+            ?>*/
           
           name: 'Mes Anterior',
           data: [
