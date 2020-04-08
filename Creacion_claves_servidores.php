@@ -27,9 +27,9 @@
   <script type="text/javascript">
     $(document).ready(function() {
       <?php @session_start();
-            include_once("conexion.php");
-            $conex2 = oci_connect($user, $pass, $db);
-            ?>
+      include_once("conexion.php");
+      $conex2 = oci_connect($user, $pass, $db);
+      ?>
       /**
        * Funcion para añadir una nueva fila en la tabla
        */
@@ -98,6 +98,7 @@
         </div>
 
       </li>
+
       <!-- Divider -->
       <hr class="sidebar-divider">
 
@@ -155,6 +156,12 @@
           <span>Creación de vacaciones</span>
         </a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="Creacion_claves_servidores.php">
+          <i class="fas fa-fw fa-cog"></i>
+          <span>Creación claves de servidores</span>
+        </a>
+      </li>
 
 
       <!-- Divider -->
@@ -190,14 +197,6 @@
       <div class="sidebar-heading">
         CONSULTAS
       </div>
-
-      <!-- Nav Item - Charts -->
-      <!--
-<li class="nav-item">
-  <a class="nav-link" href="charts.html">
-    <i class="fas fa-fw fa-chart-area"></i>
-    <span>Charts</span></a>
-</li>-->
 
       <!-- Nav Item - Tables -->
       <li class="nav-item">
@@ -237,7 +236,7 @@
       </li>
 
       <li class="nav-item">
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="Consulta_claves_servidores.php">
           <i class="fas fa-fw fa-table"></i>
           <span>Repositorio de claves</span></a>
       </li>
@@ -501,7 +500,7 @@
                       </thead>
                       <tbody>
                         <tr>
-                          <td><input type="text" id="nombreser"  name="nombreser"></td>
+                          <td><input type="text" id="nombreser" name="nombreser"></td>
                           <td><input type="text" name='ip' id="ip"></td>
                           <td><input type="text" name='usua' id="usua"></td>
                           <td><input type="text" name='clave' id="clave"></td>

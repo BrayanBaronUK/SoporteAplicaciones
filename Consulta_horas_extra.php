@@ -90,7 +90,7 @@
             <a class="collapse-item" href="Especialista_creacion.php">Creación</a>
             <a class="collapse-item" href="Especialista_visualizacion.php">Visualización</a>
             <!--  <a class="collapse-item" href="buttons.html">Buttons</a>
-      <a class="collapse-item" href="cards.html">Cards</a> -->
+            <a class="collapse-item" href="cards.html">Cards</a> -->
           </div>
         </div>
       </li>
@@ -125,6 +125,12 @@
         <a class="nav-link collapsed" href="Creacion_vacaciones.php">
           <i class="fas fa-fw fa-cog"></i>
           <span>Creación de vacaciones</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="Creacion_claves_servidores.php">
+          <i class="fas fa-fw fa-cog"></i>
+          <span>Creación claves de servidores</span>
         </a>
       </li>
 
@@ -162,14 +168,6 @@
       <div class="sidebar-heading">
         CONSULTAS
       </div>
-
-      <!-- Nav Item - Charts -->
-      <!--
-<li class="nav-item">
-  <a class="nav-link" href="charts.html">
-    <i class="fas fa-fw fa-chart-area"></i>
-    <span>Charts</span></a>
-</li>-->
 
       <!-- Nav Item - Tables -->
       <li class="nav-item">
@@ -209,11 +207,10 @@
       </li>
 
       <li class="nav-item">
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="Consulta_claves_servidores.php">
           <i class="fas fa-fw fa-table"></i>
           <span>Repositorio de claves</span></a>
       </li>
-
 
       <!-- Divider -->
       <hr class="sidebar-divider d-none d-md-block">
@@ -224,14 +221,14 @@
       </div>
 
       <li class="nav-item">
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="Reporte_casos_aranda.php">
           <!--<a class="nav-link" href="charts.html">-->
           <i class="fas fa-fw fa-chart-area"></i>
           <span>Reporte de Casos</span></a>
       </li>
 
       <li class="nav-item">
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="Reporte_actividades.php">
           <i class="fas fa-fw fa-chart-area"></i>
           <span>Reporte de Actividades</span></a>
       </li>
