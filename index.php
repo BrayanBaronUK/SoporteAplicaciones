@@ -160,7 +160,7 @@ $conex2 = oci_connect($user, $pass, $db);
         xAxis: {
           categories: [
             <?php
-            $sql = "SELECT GRP_ID, RESPONSABLE,COUNT(*) as CANTIDAD,94 as CANTIDAD_3 FROM ARANDA.V_ARA_CASOS_2
+            $sql = "SELECT GRP_ID, RESPONSABLE,COUNT(*) as CANTIDAD,TRUNC(DBMS_RANDOM.VALUE(1,count(*))) as CANTIDAD_3 FROM ARANDA.V_ARA_CASOS_2
                   WHERE GRP_ID IN (64,73) AND ESTADO  IN ('SOLUCIONADO','CERRADO') 
                     AND TRUNC(FECHA_REGISTRO) BETWEEN TRUNC (SYSDATE,'MONTH')AND TRUNC(LAST_DAY (SYSDATE))
                       GROUP BY GRP_ID,RESPONSABLE ORDER BY 3 DESC";
@@ -219,7 +219,7 @@ $conex2 = oci_connect($user, $pass, $db);
           align: 'left',
           data: [
             <?php
-            $sql = "SELECT GRP_ID, RESPONSABLE,COUNT(*) as CANTIDAD, 94 as CANTIDAD_3 FROM ARANDA.V_ARA_CASOS_2
+            $sql = "SELECT GRP_ID, RESPONSABLE,COUNT(*) as CANTIDAD, TRUNC(DBMS_RANDOM.VALUE(1,count(*))) as CANTIDAD_3 FROM ARANDA.V_ARA_CASOS_2
                   WHERE GRP_ID IN (64,73) AND ESTADO  IN ('SOLUCIONADO','CERRADO') 
                     AND TRUNC(FECHA_REGISTRO) BETWEEN TRUNC (SYSDATE,'MONTH')AND TRUNC(LAST_DAY (SYSDATE))
                       GROUP BY GRP_ID,RESPONSABLE ORDER BY 3 DESC";
@@ -236,7 +236,7 @@ $conex2 = oci_connect($user, $pass, $db);
           name: 'pend',
           data: [
             <?php
-            $sql2 = "SELECT GRP_ID, RESPONSABLE,COUNT(*) as CANTIDAD,94 as CANTIDAD_3 FROM ARANDA.V_ARA_CASOS_2
+            $sql2 = "SELECT GRP_ID, RESPONSABLE,COUNT(*) as CANTIDAD,TRUNC(DBMS_RANDOM.VALUE(1,count(*))) as CANTIDAD_3 FROM ARANDA.V_ARA_CASOS_2
                 WHERE GRP_ID IN (64,73) AND ESTADO  IN ('SOLUCIONADO','CERRADO') 
                 AND TRUNC(FECHA_REGISTRO) BETWEEN TRUNC (SYSDATE,'MONTH')AND TRUNC(LAST_DAY (SYSDATE))
                 GROUP BY GRP_ID,RESPONSABLE ORDER BY 3 DESC";
@@ -269,7 +269,7 @@ $conex2 = oci_connect($user, $pass, $db);
         xAxis: {
           categories: [
             <?php
-            $sql = "SELECT GRP_ID,RESPONSABLE,count(*) as CANTIDAD,94 as CANTIDAD_3 FROM ARANDA.V_ARA_CASOS_2  WHERE GRP_ID IN (64,73)
+            $sql = "SELECT GRP_ID,RESPONSABLE,count(*) as CANTIDAD,TRUNC(DBMS_RANDOM.VALUE(1,count(*))) as CANTIDAD_3 FROM ARANDA.V_ARA_CASOS_2  WHERE GRP_ID IN (64,73)
             AND FECHA_SOLUCION  BETWEEN TO_DATE ( TO_CHAR(TRUNC(SYSDATE), 'DD')||'-'||TO_CHAR(TRUNC(SYSDATE), 'MON')||','||TO_CHAR(TRUNC(SYSDATE), 'YYYY')||'00:00:00', 'DD-MON-YYYY HH24:MI:SS' ) 
             AND TO_DATE ( TO_CHAR(TRUNC(SYSDATE), 'DD')||'-'||TO_CHAR(TRUNC(SYSDATE), 'MON')||','||TO_CHAR(TRUNC(SYSDATE), 'YYYY')||'23:59:59', 'DD-MON-YYYY HH24:MI:SS' )
             GROUP BY GRP_ID,RESPONSABLE ORDER BY 3 DESC";
@@ -328,7 +328,7 @@ $conex2 = oci_connect($user, $pass, $db);
           align: 'left',
           data: [
             <?php
-            $sql = "SELECT GRP_ID,RESPONSABLE,count(*) as CANTIDAD, 94 as CANTIDAD_3 FROM ARANDA.V_ARA_CASOS_2  WHERE GRP_ID IN (64,73)
+            $sql = "SELECT GRP_ID,RESPONSABLE,count(*) as CANTIDAD, TRUNC(DBMS_RANDOM.VALUE(1,count(*))) as CANTIDAD_3 FROM ARANDA.V_ARA_CASOS_2  WHERE GRP_ID IN (64,73)
                     AND FECHA_SOLUCION  BETWEEN TO_DATE ( TO_CHAR(TRUNC(SYSDATE), 'DD')||'-'||TO_CHAR(TRUNC(SYSDATE), 'MON')||','||TO_CHAR(TRUNC(SYSDATE), 'YYYY')||'00:00:00', 'DD-MON-YYYY HH24:MI:SS' ) 
                     AND TO_DATE ( TO_CHAR(TRUNC(SYSDATE), 'DD')||'-'||TO_CHAR(TRUNC(SYSDATE), 'MON')||','||TO_CHAR(TRUNC(SYSDATE), 'YYYY')||'23:59:59', 'DD-MON-YYYY HH24:MI:SS' )
                     GROUP BY GRP_ID,RESPONSABLE ORDER BY 3 DESC";
@@ -346,7 +346,7 @@ $conex2 = oci_connect($user, $pass, $db);
           align: 'left',
           data: [
             <?php
-            $sql = "SELECT GRP_ID,RESPONSABLE,count(*) as CANTIDAD, 94 as CANTIDAD_3 FROM ARANDA.V_ARA_CASOS_2  WHERE GRP_ID IN (64,73)
+            $sql = "SELECT GRP_ID,RESPONSABLE,count(*) as CANTIDAD, TRUNC(DBMS_RANDOM.VALUE(1,count(*))) as CANTIDAD_3 FROM ARANDA.V_ARA_CASOS_2  WHERE GRP_ID IN (64,73)
                     AND FECHA_SOLUCION  BETWEEN TO_DATE ( TO_CHAR(TRUNC(SYSDATE), 'DD')||'-'||TO_CHAR(TRUNC(SYSDATE), 'MON')||','||TO_CHAR(TRUNC(SYSDATE), 'YYYY')||'00:00:00', 'DD-MON-YYYY HH24:MI:SS' ) 
                     AND TO_DATE ( TO_CHAR(TRUNC(SYSDATE), 'DD')||'-'||TO_CHAR(TRUNC(SYSDATE), 'MON')||','||TO_CHAR(TRUNC(SYSDATE), 'YYYY')||'23:59:59', 'DD-MON-YYYY HH24:MI:SS' )
                     GROUP BY GRP_ID,RESPONSABLE ORDER BY 3 DESC";
@@ -359,6 +359,149 @@ $conex2 = oci_connect($user, $pass, $db);
             }
             ?>
           ]
+        }]
+      });
+    });
+  </script>
+  <script type="text/javascript">
+    $(function() {
+      $('#linea_meses').highcharts({
+        title: {
+          text: 'Historico de casos ultimos 3 Meses',
+          x: -20 //center
+        },
+        subtitle: {
+          text: 'Historico por especialista',
+          x: -20
+        },
+        xAxis: {
+          categories: [
+            <?php
+            $sql2 = "SELECT DISTINCT(RESPONSABLE) FROM ARANDA.V_ARA_CASOS_2 A
+            INNER JOIN USUARIOS B ON B.UNAME = A.RESPONSABLE
+            WHERE GRP_ID IN (64,73)
+            AND CODUSUARIO NOT IN (687,10698,3277,3229,2236,3670,2786,2857,3066,3560,3218,2106,3323) ORDER BY 1 ASC";
+            $resultado_set = oci_parse($conex2, $sql2);
+            oci_execute($resultado_set);
+            while ($row = oci_fetch_array($resultado_set)) {
+            ?>['<?php echo $row[0] ?>'],
+
+            <?php
+            }
+            ?>
+
+          ]
+        },
+        yAxis: {
+          title: {
+            text: 'Cantidad de casos'
+          },
+          plotLines: [{
+            value: 0,
+            width: 1,
+            color: '#808080'
+          }]
+        },
+        tooltip: {
+          valueSuffix: ' casos'
+        },
+        legend: {
+          layout: 'vertical',
+          align: 'right',
+          verticalAlign: 'middle',
+          borderWidth: 0
+        },
+        series: [{
+          name: 'Mes Actual',
+          data: [
+            <?php
+            $sql2 = "SELECT  RESPONSABLE,COUNT(*) AS CANTIDAD 
+            FROM ARANDA.V_ARA_CASOS_2 A
+            LEFT JOIN USUARIOS B ON B.UNAME = A.RESPONSABLE
+            WHERE GRP_ID IN (64,73) AND ESTADO  IN ('SOLUCIONADO','CERRADO')
+            AND CODUSUARIO NOT IN (687,10698,3277,3229,2236,3670,2786,2857,3066,3560,3218,2106,3323)
+            AND TRUNC(FECHA_REGISTRO) BETWEEN TRUNC (SYSDATE,'MONTH')AND TRUNC(LAST_DAY (SYSDATE))
+            GROUP BY RESPONSABLE
+            UNION ALL
+            SELECT DISTINCT(RESPONSABLE),0 FROM ARANDA.V_ARA_CASOS_2 A
+            INNER JOIN USUARIOS B ON B.UNAME = A.RESPONSABLE
+            WHERE GRP_ID IN (64,73)
+            AND CODUSUARIO NOT IN (687,10698,3277,3229,2236,3670,2786,2857,3066,3560,3218,2106,3323)
+            MINUS
+            SELECT  RESPONSABLE,0 
+            FROM ARANDA.V_ARA_CASOS_2 A
+            LEFT JOIN USUARIOS B ON B.UNAME = A.RESPONSABLE
+            WHERE GRP_ID IN (64,73) AND ESTADO  IN ('SOLUCIONADO','CERRADO')
+            AND CODUSUARIO NOT IN (687,10698,3277,3229,2236,3670,2786,2857,3066,3560,3218,2106,3323)
+            AND TRUNC(FECHA_REGISTRO) BETWEEN TRUNC (SYSDATE,'MONTH')AND TRUNC(LAST_DAY (SYSDATE))
+            GROUP BY RESPONSABLE ORDER BY 1 ASC";
+            $resultado_set = oci_parse($conex2, $sql2);
+            oci_execute($resultado_set);
+            while ($row = oci_fetch_array($resultado_set)) {
+            ?>[<?php echo $row[1] ?>],
+
+            <?php
+            }
+            ?>
+
+          ]
+
+        }, {
+          
+          /*
+          <?php
+            $sql2 = "SELECT MES FROM V_MES_ACTUAL";
+            $resultado_set = oci_parse($conex2, $sql2);
+            oci_execute($resultado_set);
+            while (oci_fetch($resultado_set)) {
+              ?>
+            name: ['<?php $estado = oci_result($resultado_set, 'MES') ?>'];
+            <?php
+            }
+            ?>*/   
+          
+          name: 'Mes Anterior',
+          data: [
+            <?php
+            $sql2 = "SELECT RESPONSABLE,COUNT(*) as CANTIDAD FROM ARANDA.V_ARA_CASOS_2 A
+            INNER JOIN USUARIOS B ON B.UNAME = A.RESPONSABLE
+                WHERE GRP_ID IN (64,73) AND ESTADO  IN ('SOLUCIONADO','CERRADO') 
+                AND CODUSUARIO NOT IN (687,10698,3277,3229,2236,3670,2786,2857,3066,3560,3218,2106,3323)
+                AND TRUNC(FECHA_REGISTRO) BETWEEN TRUNC(ADD_MONTHS(SYSDATE,-1),'MONTH') AND TRUNC(LAST_DAY(ADD_MONTHS(SYSDATE,-1)))
+                GROUP BY RESPONSABLE ORDER BY 1 ASC";
+            $resultado_set = oci_parse($conex2, $sql2);
+            oci_execute($resultado_set);
+            while ($row = oci_fetch_array($resultado_set)) {
+            ?>[<?php echo $row[1] ?>],
+
+            <?php
+            }
+            ?>
+
+          ]
+
+
+        }, {
+          name: 'Dos meses antes',
+          data: [
+            <?php
+            $sql2 = "SELECT RESPONSABLE,COUNT(*) as CANTIDAD FROM ARANDA.V_ARA_CASOS_2 A
+            INNER JOIN USUARIOS B ON B.UNAME = A.RESPONSABLE
+                WHERE GRP_ID IN (64,73) AND ESTADO  IN ('SOLUCIONADO','CERRADO') 
+                AND CODUSUARIO NOT IN (687,10698,3277,3229,2236,3670,2786,2857,3066,3560,3218,2106,3323)
+                AND TRUNC(FECHA_REGISTRO) BETWEEN TRUNC(ADD_MONTHS(SYSDATE,-2),'MONTH') AND TRUNC(LAST_DAY(ADD_MONTHS(SYSDATE,-2)))
+                GROUP BY RESPONSABLE ORDER BY 1 ASC";
+            $resultado_set = oci_parse($conex2, $sql2);
+            oci_execute($resultado_set);
+            while ($row = oci_fetch_array($resultado_set)) {
+            ?>[<?php echo $row[1] ?>],
+
+            <?php
+            }
+            ?>
+
+          ]
+
         }]
       });
     });
@@ -787,15 +930,20 @@ $conex2 = oci_connect($user, $pass, $db);
 
 
         <!--<div class="container-fluid">-->
-        <div style="width: 1250px; padding:5px;">
-          <div id="grafico_barras_dia" style=" width: 610px; height: 500px; float:left;"></div>
-          <div id="grafico_pie_dia" style="height: 500px; width: 610px; float:right;"></div>
+        <div style="width: 1300px; padding:3px;">
+          <div id="grafico_barras_dia" style=" width: 640px; height: 500px; float:left; padding-bottom: 15px;"></div>
+          <div id="grafico_pie_dia" style="height: 500px; width: 640px; float:right; padding-bottom: 15px;"></div>
         </div>
         <br></br>
-        <div style="width: 1250px; padding:5px;">
-          <div id="grafico_barras_mes" style=" width: 610px; height: 500px; float:left;"></div>
-          <div id="grafico_pie_mes" style="height: 500px; width: 610px; float:right;"></div>
+        <div style="width: 1300px; padding:3px;">
+          <div id="grafico_barras_mes" style=" width: 640px; height: 500px; float:left;"></div>
+          <div id="grafico_pie_mes" style="height: 500px; width: 640px; float:right;"></div>
         </div>
+
+
+        <!-- <div id="linea_meses" style="min-width: 310px; height: 400px; margin: 0 auto"></div>-->
+        <div id="linea_meses" style="width: 1300px; height: 400px; padding-top:15px; "></div>
+
         <!--   
         <script src="reportes_graficos/Highcharts-8.0.4/code/highcharts.js"></script>
         <script src="reportes_graficos/Highcharts-8.0.4/code/modules/exporting.js"></script>
