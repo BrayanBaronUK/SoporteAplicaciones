@@ -480,10 +480,7 @@
                   </tfoot>
                   <tbody>
                     <?php
-                    $sql = "SELECT GRP_ID, RESPONSABLE,COUNT(*) as CANTIDAD FROM ARANDA.V_ARA_CASOS_2
-                  WHERE GRP_ID IN (64,73) AND ESTADO  IN ('SOLUCIONADO','CERRADO') 
-                    AND TRUNC(FECHA_REGISTRO) BETWEEN TRUNC (SYSDATE,'MONTH')AND TRUNC(LAST_DAY (SYSDATE))
-                      GROUP BY GRP_ID,RESPONSABLE ORDER BY 3 DESC";
+                    $sql = "SELECT ID_GRUPO,RESPONSABLE,PENDIENTE,CERRADOS,TOTAL,CUMPLIMIENTO FROM V_GESTION_MES ORDER BY 5 DESC";
                     $resultado_set = oci_parse($conex2, $sql);
                     oci_execute($resultado_set);
                     while ($row = oci_fetch_array($resultado_set)) {
@@ -491,10 +488,10 @@
                       <tr>
                         <td><?php echo $row[0] ?></td>
                         <td><?php echo $row[1] ?></td>
-                        <td>300</td>
-                        <td>200</td>
                         <td><?php echo $row[2] ?></td>
-                        <td>75%</td>
+                        <td><?php echo $row[3] ?></td>
+                        <td><?php echo $row[4] ?></td>
+                        <td><?php echo $row[5] ?></td>
 
                       </tr>
                     <?php
@@ -537,10 +534,7 @@
                   </tfoot>
                   <tbody>
                     <?php
-                    $sql = "SELECT GRP_ID,RESPONSABLE,count(*) as CANTIDAD FROM ARANDA.V_ARA_CASOS_2  WHERE GRP_ID IN (64,73)
-                    AND FECHA_SOLUCION  BETWEEN TO_DATE ( TO_CHAR(TRUNC(SYSDATE), 'DD')||'-'||TO_CHAR(TRUNC(SYSDATE), 'MON')||','||TO_CHAR(TRUNC(SYSDATE), 'YYYY')||'00:00:00', 'DD-MON-YYYY HH24:MI:SS' ) 
-                    AND TO_DATE ( TO_CHAR(TRUNC(SYSDATE), 'DD')||'-'||TO_CHAR(TRUNC(SYSDATE), 'MON')||','||TO_CHAR(TRUNC(SYSDATE), 'YYYY')||'23:59:59', 'DD-MON-YYYY HH24:MI:SS' )
-                    GROUP BY GRP_ID,RESPONSABLE ORDER BY 3 DESC";
+                    $sql = "SELECT ID_GRUPO,RESPONSABLE,PENDIENTE,CERRADOS,TOTAL,CUMPLIMIENTO FROM V_GESTION_DIA ORDER BY 5 DESC";
                     $resultado_set = oci_parse($conex2, $sql);
                     oci_execute($resultado_set);
                     while ($row = oci_fetch_array($resultado_set)) {
@@ -548,10 +542,10 @@
                       <tr>
                         <td><?php echo $row[0] ?></td>
                         <td><?php echo $row[1] ?></td>
-                        <td>50</td>
-                        <td>30</td>
                         <td><?php echo $row[2] ?></td>
-                        <td>75%</td>
+                        <td><?php echo $row[3] ?></td>
+                        <td><?php echo $row[4] ?></td>
+                        <td><?php echo $row[5] ?></td>
 
                       </tr>
                     <?php
