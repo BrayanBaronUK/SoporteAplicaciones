@@ -447,19 +447,19 @@ $conex2 = oci_connect($user, $pass, $db);
           ]
 
         }, {
-          
+
           /*
           <?php
-            $sql2 = "SELECT MES FROM V_MES_ACTUAL";
-            $resultado_set = oci_parse($conex2, $sql2);
-            oci_execute($resultado_set);
-            while (oci_fetch($resultado_set)) {
-              ?>
+          $sql2 = "SELECT MES FROM V_MES_ACTUAL";
+          $resultado_set = oci_parse($conex2, $sql2);
+          oci_execute($resultado_set);
+          while (oci_fetch($resultado_set)) {
+          ?>
             name: ['<?php $estado = oci_result($resultado_set, 'MES') ?>'];
             <?php
-            }
+          }
             ?>*/
-          
+
           name: 'Mes Anterior',
           data: [
             <?php
@@ -944,130 +944,9 @@ $conex2 = oci_connect($user, $pass, $db);
         <!-- <div id="linea_meses" style="min-width: 310px; height: 400px; margin: 0 auto"></div>-->
         <div id="linea_meses" style="width: 1300px; height: 400px; padding-top:15px; "></div>
 
-        <!--   
-        <script src="reportes_graficos/Highcharts-8.0.4/code/highcharts.js"></script>
-        <script src="reportes_graficos/Highcharts-8.0.4/code/modules/exporting.js"></script>
-        <script src="reportes_graficos/Highcharts-8.0.4/code/modules/export-data.js"></script>
-        <script src="reportes_graficos/Highcharts-8.0.4/code/modules/accessibility.js"></script>
-        <figure class="highcharts-figure">
-          <div id="prueba"></div>
-        </figure> -->
-        <!--prueba-->
-        <!--
-        <script type="text/javascript">
-          Highcharts.chart('prueba', {
-            chart: {
-              type: 'bar'
-            },
-            title: {
-              text: 'Historic World Population by Region'
-            },
-            subtitle: {
-              text: 'Source: <a href="https://en.wikipedia.org/wiki/World_population">Wikipedia.org</a>'
-            },
-            xAxis: {
-              
-              categories: [
-                <?php
-                include_once("conexion_aranda.php");
-                $conex2 = oci_connect($user, $pass, $db);
-                $sql3 = "SELECT GRP_ID, RESPONSABLE,COUNT(*) as CANTIDAD,94 as CANTIDAD_3 FROM ARANDA.V_ARA_CASOS_2
-                  WHERE GRP_ID IN (64,73) AND ESTADO  IN ('SOLUCIONADO','CERRADO') 
-                    AND TRUNC(FECHA_REGISTRO) BETWEEN TRUNC (SYSDATE,'MONTH')AND TRUNC(LAST_DAY (SYSDATE))
-                      GROUP BY GRP_ID,RESPONSABLE ORDER BY 3 DESC";
-                $resultado_set = oci_parse($conex2, $sql3);
-                oci_execute($resultado_set);
-                while ($row = oci_fetch_array($resultado_set)) {
-                ?>
 
-                  ['<?php echo $row["RESPONSABLE"] ?>'],
 
-                <?php
-                }
-                ?>
-
-              ],
-              title: {
-                text: null
-              }
-            },
-            yAxis: {
-              min: 0,
-              title: {
-                text: 'Population (millions)',
-                align: 'high'
-              },
-              labels: {
-                overflow: 'justify'
-              }
-            },
-            tooltip: {
-              valueSuffix: ' millions'
-            },
-            plotOptions: {
-              bar: {
-                dataLabels: {
-                  enabled: true
-                }
-              }
-            },
-            legend: {
-              layout: 'vertical',
-              align: 'right',
-              verticalAlign: 'top',
-              x: -40,
-              y: 80,
-              floating: true,
-              borderWidth: 1,
-              backgroundColor: Highcharts.defaultOptions.legend.backgroundColor || '#FFFFFF',
-              shadow: true
-            },
-            credits: {
-              enabled: false
-            },
-            series: [{
-              name: 'Casos solucionados',
-              data: [
-                <?php
-                include_once("conexion_aranda.php");
-                $conex2 = oci_connect($user, $pass, $db);
-                $sql1 = "SELECT GRP_ID, RESPONSABLE,COUNT(*) as CANTIDAD,94 as CANTIDAD_3 FROM ARANDA.V_ARA_CASOS_2
-                WHERE GRP_ID IN (64,73) AND ESTADO  IN ('SOLUCIONADO','CERRADO') 
-                 AND TRUNC(FECHA_REGISTRO) BETWEEN TRUNC (SYSDATE,'MONTH')AND TRUNC(LAST_DAY (SYSDATE))
-                GROUP BY GRP_ID,RESPONSABLE ORDER BY 3 DESC";
-                $resultado_set = oci_parse($conex2, $sql1);
-                oci_execute($resultado_set);
-                while ($row = oci_fetch_array($resultado_set)) {
-                ?>[<?php echo $row[2] ?>],
-
-                <?php
-                }
-                ?>
-              ]
-            }, {
-              name: 'Casos pendientes',
-              data: [
-                <?php
-                include_once("conexion_aranda.php");
-                $conex2 = oci_connect($user, $pass, $db);
-                $sql2 = "SELECT GRP_ID, RESPONSABLE,COUNT(*) as CANTIDAD,94 as CANTIDAD_3 FROM ARANDA.V_ARA_CASOS_2
-                WHERE GRP_ID IN (64,73) AND ESTADO  IN ('SOLUCIONADO','CERRADO') 
-                AND TRUNC(FECHA_REGISTRO) BETWEEN TRUNC (SYSDATE,'MONTH')AND TRUNC(LAST_DAY (SYSDATE))
-                GROUP BY GRP_ID,RESPONSABLE ORDER BY 3 DESC";
-                $resultado_set = oci_parse($conex2, $sql2);
-                oci_execute($resultado_set);
-                while ($row = oci_fetch_array($resultado_set)) {
-                ?>[<?php echo $row[3] ?>],
-
-                <?php
-                }
-                ?>
-              ]
-            }]
-          });
-        </script> -->
-
-        <!-- </div>-->
+      
 
         <!-- End of Main Content -->
 

@@ -20,6 +20,7 @@
 
   <!-- Custom styles for this page -->
   <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+  <link href="tabla_dinamica/estilos_tab/botones_estilos.css" rel="stylesheet">
 </head>
 
 <body id="page-top">
@@ -482,8 +483,11 @@
                   <input type="button" value="Crear turnos del mes" onclick="genera_tabla();" id="generador_tab">
                 </div>
               </div>
-
+              
             </div>
+            <div>
+                <input type="submit" value="Guardar" style="float:right;" class="guard_comp">
+              </div>
           </div>
 
 

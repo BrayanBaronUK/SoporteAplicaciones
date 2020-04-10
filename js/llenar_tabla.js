@@ -33,19 +33,26 @@ function genera_tabla() {
     var tr = document.createElement('TR');
     tableBody.appendChild(tr);
     var dia = 1;
-    var esp = "Especialista"
+    var esp = "Especialista";
     for (i = 0; i < 32; i++) {
-        var th = document.createElement('TH')
-       th.width = '75';
-      // th.rowspan='2';
+        //var th = document.createElement('TH')
+        //th.width = '75';
         if (i == 0) {
-            th.rowspan='2';
+            var th = document.createElement('TH')
+            th.style.color = '#C019A6';
+            th.width = '75';
+            th.rowSpan = '2';
             th.appendChild(document.createTextNode(heading[0]));
-            
+            tr.appendChild(th);
+
         } else {
+            var th = document.createElement('TH')
+            th.width = '75';
             th.appendChild(document.createTextNode(i));
+            tr.appendChild(th);
         }
-        tr.appendChild(th);
+
+        //  tr.appendChild(th);
     }
     //ENCABEZADO DE FILAS DE LUNES A VIERNES DEL MES
     var tr = document.createElement('TR');
@@ -54,19 +61,27 @@ function genera_tabla() {
     var esp = "Especialista"
     k = 1;
     for (i = 0; i < 32; i++) {
-        var th = document.createElement('TH')
-        th.width = '75';
+        //  var th = document.createElement('TH')
+        //  th.width = '75';
         if (i >= 8) {
+            var th = document.createElement('TH')
+            th.width = '75';
             th.appendChild(document.createTextNode(heading2[k]));
             k++;
             if (k == 8) {
                 k = 1;
             }
+            tr.appendChild(th);
         } else {
+            if (i >= 1) {
+                var th = document.createElement('TH')
+                th.width = '75';
+                th.appendChild(document.createTextNode(heading2[i]));
+                tr.appendChild(th);
+            }
 
-            th.appendChild(document.createTextNode(heading2[i]));
         }
-        tr.appendChild(th);
+        //   tr.appendChild(th);
     }
 
     //FILAS DE LA TABLA
@@ -94,7 +109,7 @@ function genera_tabla() {
                 // capa.innerHTML = "MM";
                 // td.appendChild(location=document.lista.options[document.lista.selectedIndex].value);
                 //td.appendChild(document.createTextNode("<select><option value='A'>A</option></select>"));
-               
+
 
                 opt1 = document.createElement('OPTION');
                 opt1.value = 'T';
@@ -103,7 +118,7 @@ function genera_tabla() {
                 opt2 = document.createElement('OPTION');
                 opt2.value = 'M';
                 opt2.text = 'M';
-                
+
                 opt3 = document.createElement('OPTION');
                 opt3.value = 'N';
                 opt3.text = 'N';
@@ -123,7 +138,7 @@ function genera_tabla() {
 
                 select = document.createElement('SELECT');
                 select.id = i + "_" + '01' + "_" + j;
-             
+
                 select.appendChild(opt1);
                 select.appendChild(opt2);
                 select.appendChild(opt3);
