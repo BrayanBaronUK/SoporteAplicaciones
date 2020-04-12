@@ -486,7 +486,7 @@
               
             </div>
             <div>
-                <input type="submit" value="Guardar" style="float:right;" class="guard_comp">
+                <input type="submit" value="Guardar" style="float:right;" onclick="guardar_turnos();" class="guard_comp">
               </div>
           </div>
 

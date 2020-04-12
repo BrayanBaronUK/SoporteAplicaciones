@@ -3,6 +3,7 @@ function genera_tabla() {
     var table = document.createElement('TABLE')
     var tableBody = document.createElement('TBODY')
 
+    table.id = 'tablita'
     table.border = '1'
     table.appendChild(tableBody);
 
@@ -21,12 +22,12 @@ function genera_tabla() {
 
 
     var ingeniero = new Array()
-    ingeniero[0] = "JUAN MANUEL"
-    ingeniero[1] = "BRAYAN BARON"
+    ingeniero[0] = "OSCAR RIOS"
+    ingeniero[1] = "GUSTAVO ADOLFO"
     ingeniero[2] = "WILSON CASTRO"
     ingeniero[3] = "MAICOL BALLESTEROS"
     ingeniero[4] = "DANIEL MENDEZ"
-    ingeniero[5] = "CARLOS PALACIOS"
+    ingeniero[5] = "GUSTAVO SALAZAR"
 
 
     //ENCABEZADO DE FILAS DE DIAS DEL MES
@@ -137,7 +138,18 @@ function genera_tabla() {
 
 
                 select = document.createElement('SELECT');
-                select.id = i + "_" + '01' + "_" + j;
+
+
+              
+               select.id = i + "_" + '01' + "_" + j;
+         
+            //function guardar_turnos(){
+                localStorage.setItem(ingeniero[i]+"_"+j, select.id);
+            
+          //  }
+                
+
+
 
                 select.appendChild(opt1);
                 select.appendChild(opt2);
@@ -146,11 +158,24 @@ function genera_tabla() {
                 select.appendChild(opt5);
                 select.appendChild(opt6);
                 td.appendChild(select);
+
             }
+
             tr.appendChild(td)
         }
+
         tableBody.appendChild(tr);
     }
+    
     myTableDiv.appendChild(table)
     document.getElementById("generador_tab").disabled = true;
+}
+function guardar_turnos(){
+    //localStorage.setItem(ingeniero[i]+"_"+j, select.id);
+  //  document.getElementById('metric_results').disabled= true;
+     // This will disable all the children of the div var nodes 
+     // document.getElementById("tablita").getElementsByTagName('*'); for(var i = 0; i < nodes.length; i++){ nodes[i].disabled = true; } 
+     $("#tablita").find("*").prop("disabled", true); 
+ 
+
 }
