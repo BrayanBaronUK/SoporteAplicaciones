@@ -399,7 +399,8 @@
             </li>
 
             <div class="topbar-divider d-none d-sm-block"></div>
-            <?php @session_start();
+            <?php 
+            @session_start();
             include_once("conexion.php");
             $conex2 = oci_connect($user, $pass, $db);
             $elusuario = $_SESSION['usuario'];
@@ -417,7 +418,7 @@
                   <img class="img-profile rounded-circle" src="./img/imagen1.jpg">
                 </a>
               <?php
-            }
+              }
               ?>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
@@ -455,42 +456,40 @@
 
 
             <div class="card-body">
+              <!--SELECCIONADOR DE AÑO-->
+              <div class="small mb-1">Seleccione un año:</div>
+              <div class="dropdown mb-4">
+                <select class="btn btn-primary" id="selectYear">
+                  <option value="">Año</option>
+                </select>
+              </div>
+
               <!--SELECCIONADOR DE MES-->
               <div class="small mb-1">Seleccione un mes:</div>
               <div class="dropdown mb-4">
-
-                <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Mes</button>
-
-                <div class="dropdown-menu animated--fade-in" aria-labelledby="dropdownMenuButton">
-                  <a class="dropdown-item" href="#">Enero</a>
-                  <a class="dropdown-item" href="#">Febrero</a>
-                  <a class="dropdown-item" href="#">Marzo</a>
-                  <a class="dropdown-item" href="#">Abril</a>
-                  <a class="dropdown-item" href="#">Mayo</a>
-                  <a class="dropdown-item" href="#">Junio</a>
-                  <a class="dropdown-item" href="#">Julio</a>
-                  <a class="dropdown-item" href="#">Agosto</a>
-                  <a class="dropdown-item" href="#">Septiembre</a>
-                  <a class="dropdown-item" href="#">Octubre</a>
-                  <a class="dropdown-item" href="#">Noviembre</a>
-                  <a class="dropdown-item" href="#">Diciembre</a>
-
-                </div>
-                <div id="resultbox"></div>
+                <select class="btn btn-primary" id="selectMonth">
+                  <option value="">Mes</option>
+                  <option value="0">Enero</option>
+                  <option value="1">Febrero</option>
+                  <option value="2">Marzo</option>
+                  <option value="3">Abril</option>
+                  <option value="4">Mayo</option>
+                  <option value="5">Junio</option>
+                  <option value="6">Julio</option>
+                  <option value="7">Agosto</option>
+                  <option value="8">Septiembre</option>
+                  <option value="9">Octubre</option>
+                  <option value="10">Noviembre</option>
+                  <option value="11">Diciembre</option>
+                </select>
               </div>
               <div class="table-responsive">
-                <div id="metric_results">
-                  <input type="button" value="Crear turnos del mes" onclick="genera_tabla();" id="generador_tab">
-                </div>
+                <div id="metric_results"></div>
               </div>
-              
             </div>
-            <div>
-                <input type="submit" value="Guardar" style="float:right;" onclick="guardar_turnos();" class="guard_comp">
-              </div>
+
+
           </div>
-
-
         </div>
         <!-- /.container-fluid -->
 
@@ -556,7 +555,6 @@
 
     <!-- js del dropdown -->
     <script src="js/demo/dropdown.js"></script>
-    <script src="bootstrap/js/bootstrap.min.js"></script>
     <script src="js/llenar_tabla.js"></script>
 
 </body>

@@ -397,14 +397,15 @@
             </li>
 
             <div class="topbar-divider d-none d-sm-block"></div>
-            <?php @session_start();
-            include_once("conexion.php");
-            $conex2 = oci_connect($user, $pass, $db);
-            $elusuario = $_SESSION['usuario'];
-            $sql = "SELECT NOMBRES||' '||APELLIDOS FROM USUARIOS_SOPORTE WHERE USUARIO = '$elusuario'";
-            $resultado_set = oci_parse($conex2, $sql);
-            oci_execute($resultado_set);
-            while ($row = oci_fetch_array($resultado_set)) {
+            <?php 
+              @session_start();
+              include_once("conexion.php");
+              $conex2 = oci_connect($user, $pass, $db);
+              $elusuario = $_SESSION['usuario'];
+              $sql = "SELECT NOMBRES||' '||APELLIDOS FROM USUARIOS_SOPORTE WHERE USUARIO = '$elusuario'";
+              $resultado_set = oci_parse($conex2, $sql);
+              oci_execute($resultado_set);
+              while ($row = oci_fetch_array($resultado_set)) {
             ?>
 
 
@@ -415,7 +416,7 @@
                   <img class="img-profile rounded-circle" src="./img/imagen1.jpg">
                 </a>
               <?php
-            }
+              }
               ?>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
@@ -453,296 +454,38 @@
 
 
             <div class="card-body">
+              <!--SELECCIONADOR DE AÑO-->
+              <div class="small mb-1">Seleccione un año:</div>
+              <div class="dropdown mb-4">
+                <select class="btn btn-primary" id="selectYear">
+                  <option value="">Año</option>
+                </select>
+              </div>
+
               <!--SELECCIONADOR DE MES-->
               <div class="small mb-1">Seleccione un mes:</div>
               <div class="dropdown mb-4">
-
-                <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Mes</button>
-
-
-                <div id="resultbox"></div>
+                <select class="btn btn-primary" id="selectMonth">
+                  <option value="">Mes</option>
+                  <option value="0">Enero</option>
+                  <option value="1">Febrero</option>
+                  <option value="2">Marzo</option>
+                  <option value="3">Abril</option>
+                  <option value="4">Mayo</option>
+                  <option value="5">Junio</option>
+                  <option value="6">Julio</option>
+                  <option value="7">Agosto</option>
+                  <option value="8">Septiembre</option>
+                  <option value="9">Octubre</option>
+                  <option value="10">Noviembre</option>
+                  <option value="11">Diciembre</option>
+                </select>
               </div>
               <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                  <thead>
-                    <tr>
-                      <th rowspan="2" ALIGN=center>Especialista</th>
-                      <th>1</th>
-                      <th>2</th>
-                      <th>3</th>
-                      <th>4</th>
-                      <th>5</th>
-                      <th>6</th>
-                      <th>7</th>
-                      <th>8</th>
-                      <th>9</th>
-                      <th>10</th>
-                      <th>11</th>
-                      <th>12</th>
-                      <th>13</th>
-                      <th>14</th>
-                      <th>15</th>
-                      <th>16</th>
-                      <th>17</th>
-                      <th>18</th>
-                      <th>19</th>
-                      <th>20</th>
-                      <th>21</th>
-                      <th>22</th>
-                      <th>23</th>
-                      <th>24</th>
-                      <th>25</th>
-                      <th>26</th>
-                      <th>27</th>
-                      <th>28</th>
-                      <th>29</th>
-                      <th>30</th>
-                      <th>31</th>
-                    </tr>
-                    <tr>
-                      <th>L</th>
-                      <th>M</th>
-                      <th>M</th>
-                      <th>J</th>
-                      <th>V</th>
-                      <th>S</th>
-                      <th>D</th>
-                      <th>L</th>
-                      <th>M</th>
-                      <th>M</th>
-                      <th>J</th>
-                      <th>V</th>
-                      <th>S</th>
-                      <th>D</th>
-                      <th>L</th>
-                      <th>M</th>
-                      <th>M</th>
-                      <th>J</th>
-                      <th>V</th>
-                      <th>S</th>
-                      <th>D</th>
-                      <th>L</th>
-                      <th>M</th>
-                      <th>M</th>
-                      <th>J</th>
-                      <th>V</th>
-                      <th>S</th>
-                      <th>D</th>
-                      <th>L</th>
-                      <th>M</th>
-                      <th>M</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td ALIGN=center>OSCAR RIOS</td>
-                      <td>T</td>
-                      <td>T</td>
-                      <td>T</td>
-                      <td>T</td>
-                      <td>T</td>
-                      <td>T</td>
-                      <td>T</td>
-                      <td>M</td>
-                      <td>M</td>
-                      <td>M</td>
-                      <td>M</td>
-                      <td>M</td>
-                      <td>M</td>
-                      <td>M</td>
-                      <td>N</td>
-                      <td>N</td>
-                      <td>N</td>
-                      <td>N</td>
-                      <td>N</td>
-                      <td>N</td>
-                      <td>N</td>
-                      <td>JL</td>
-                      <td>JL</td>
-                      <td>JL</td>
-                      <td>JL</td>
-                      <td>JL</td>
-                      <td>JL</td>
-                      <td>JL</td>
-                      <td>JL2</td>
-                      <td>JL2</td>
-                      <td>JL2</td>
-
-                    </tr>
-                    <tr>
-                      <td ALIGN=center>GUSTAVO SALAZAR</td>
-                      <td>N</td>
-                      <td>N</td>
-                      <td>N</td>
-                      <td>N</td>
-                      <td>N</td>
-                      <td>N</td>
-                      <td>N</td>
-                      <td>T</td>
-                      <td>T</td>
-                      <td>T</td>
-                      <td>T</td>
-                      <td>T</td>
-                      <td>T</td>
-                      <td>T</td>
-                      <td>M</td>
-                      <td>M</td>
-                      <td>M</td>
-                      <td>M</td>
-                      <td>M</td>
-                      <td>M</td>
-                      <td>M</td>
-                      <td>JL2</td>
-                      <td>JL2</td>
-                      <td>JL2</td>
-                      <td>JL2</td>
-                      <td>JL2</td>
-                      <td>JL2</td>
-                      <td>JL2</td>
-                      <td>JL</td>
-                      <td>JL</td>
-                      <td>JL</td>
-                    </tr>
-                    <tr>
-                      <td ALIGN=center>WILSON CASTRO</td>
-                      <td>M</td>
-                      <td>M</td>
-                      <td>M</td>
-                      <td>M</td>
-                      <td>M</td>
-                      <td>M</td>
-                      <td>M</td>
-                      <td>JL</td>
-                      <td>JL</td>
-                      <td>JL</td>
-                      <td>JL</td>
-                      <td>JL</td>
-                      <td>JL</td>
-                      <td>JL</td>
-                      <td>T</td>
-                      <td>T</td>
-                      <td>T</td>
-                      <td>T</td>
-                      <td>T</td>
-                      <td>T</td>
-                      <td>T</td>
-                      <td>N</td>
-                      <td>N</td>
-                      <td>N</td>
-                      <td>N</td>
-                      <td>N</td>
-                      <td>N</td>
-                      <td>N</td>
-                      <td>D</td>
-                      <td>D</td>
-                      <td>D</td>
-                    </tr>
-                    <tr>
-                      <td ALIGN=center>MAICOL BALLESTEROS</td>
-                      <td>N</td>
-                      <td>N</td>
-                      <td>N</td>
-                      <td>N</td>
-                      <td>N</td>
-                      <td>N</td>
-                      <td>N</td>
-                      <td>T</td>
-                      <td>T</td>
-                      <td>T</td>
-                      <td>T</td>
-                      <td>T</td>
-                      <td>T</td>
-                      <td>T</td>
-                      <td>M</td>
-                      <td>M</td>
-                      <td>M</td>
-                      <td>M</td>
-                      <td>M</td>
-                      <td>M</td>
-                      <td>M</td>
-                      <td>JL2</td>
-                      <td>JL2</td>
-                      <td>JL2</td>
-                      <td>JL2</td>
-                      <td>JL2</td>
-                      <td>JL2</td>
-                      <td>JL2</td>
-                      <td>JL</td>
-                      <td>JL</td>
-                      <td>JL</td>
-
-                    </tr>
-                    <tr>
-                      <td ALIGN=center>GUSTAVO GONZALEZ</td>
-                      <td>T</td>
-                      <td>T</td>
-                      <td>T</td>
-                      <td>T</td>
-                      <td>T</td>
-                      <td>T</td>
-                      <td>T</td>
-                      <td>M</td>
-                      <td>M</td>
-                      <td>M</td>
-                      <td>M</td>
-                      <td>M</td>
-                      <td>M</td>
-                      <td>M</td>
-                      <td>N</td>
-                      <td>N</td>
-                      <td>N</td>
-                      <td>N</td>
-                      <td>N</td>
-                      <td>N</td>
-                      <td>N</td>
-                      <td>JL</td>
-                      <td>JL</td>
-                      <td>JL</td>
-                      <td>JL</td>
-                      <td>JL</td>
-                      <td>JL</td>
-                      <td>JL</td>
-                      <td>JL2</td>
-                      <td>JL2</td>
-                      <td>JL2</td>
-                    </tr>
-                    <tr>
-                      <td ALIGN=center>DANIEL MENDEZ</td>
-                      <td>M</td>
-                      <td>M</td>
-                      <td>M</td>
-                      <td>M</td>
-                      <td>M</td>
-                      <td>M</td>
-                      <td>M</td>
-                      <td>JL</td>
-                      <td>JL</td>
-                      <td>JL</td>
-                      <td>JL</td>
-                      <td>JL</td>
-                      <td>JL</td>
-                      <td>JL</td>
-                      <td>T</td>
-                      <td>T</td>
-                      <td>T</td>
-                      <td>T</td>
-                      <td>T</td>
-                      <td>T</td>
-                      <td>T</td>
-                      <td>N</td>
-                      <td>N</td>
-                      <td>N</td>
-                      <td>N</td>
-                      <td>N</td>
-                      <td>N</td>
-                      <td>N</td>
-                      <td>D</td>
-                      <td>D</td>
-                      <td>D</td>
-                    </tr>
-                  </tbody>
-                </table>
+                <div id="metric_results"></div>
               </div>
+            </div>
+
 
             </div>
           </div>
@@ -805,7 +548,7 @@
 
 
     <!-- Page level plugins -->
-    <!--  <script src="vendor/datatables/jquery.dataTables.min.js"></script>-->
+    <script src="vendor/datatables/jquery.dataTables.min.js"></script>
     <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
     <!-- Page level custom scripts -->
@@ -813,8 +556,7 @@
 
     <!-- js del dropdown -->
     <script src="js/demo/dropdown.js"></script>
-    <script src="bootstrap/js/bootstrap.min.js"></script>
-    <script src="js/llenar_tabla.js"></script>
+    <script src="js/consulta_turnos.js"></script>
 
 </body>
 <!--COMETARIADAS

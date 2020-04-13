@@ -1,181 +1,145 @@
-function genera_tabla() {
-    var myTableDiv = document.getElementById("metric_results")
-    var table = document.createElement('TABLE')
-    var tableBody = document.createElement('TBODY')
+var engineer = new Array()
+engineer[0] = "OSCAR RIOS"
+engineer[1] = "GUSTAVO ADOLFO"
+engineer[2] = "WILSON CASTRO"
+engineer[3] = "MAICOL BALLESTEROS"
+engineer[4] = "DANIEL MENDEZ"
+engineer[5] = "GUSTAVO SALAZAR"
 
-    table.id = 'tablita'
-    table.border = '1'
-    table.appendChild(tableBody);
+var weekday = new Array(7);
+    weekday[0] = "Dom";
+    weekday[1] = "Lun";
+    weekday[2] = "Mar";
+    weekday[3] = "Mie";
+    weekday[4] = "Jue";
+    weekday[5] = "Vie";
+    weekday[6] = "Sab";
 
-    var heading = new Array();
-    heading[0] = "Especialista"
+var globalYear;
+var globalMonth;
+var globalDaysOfMonth;
 
-    var heading2 = new Array();
-    heading2[0] = " "
-    heading2[1] = "L"
-    heading2[2] = "M"
-    heading2[3] = "M"
-    heading2[4] = "J"
-    heading2[5] = "V"
-    heading2[6] = "S"
-    heading2[7] = "D"
+// START - Set de años al selector
+var years = {
+    "2018": "2018",
+    "2019": "2019",
+    "2020": "2020"
+};
 
+$.each(years, function(key,value) {
+    $('#selectYear').append($("<option></option>").attr("value", value).text(key));
+});
+// END - Set de años
 
-    var ingeniero = new Array()
-    ingeniero[0] = "OSCAR RIOS"
-    ingeniero[1] = "GUSTAVO ADOLFO"
-    ingeniero[2] = "WILSON CASTRO"
-    ingeniero[3] = "MAICOL BALLESTEROS"
-    ingeniero[4] = "DANIEL MENDEZ"
-    ingeniero[5] = "GUSTAVO SALAZAR"
+var getDaysInMonth = function(month,year) {
+    return new Date(year, month+1, 0).getDate();
+};
 
-
-    //ENCABEZADO DE FILAS DE DIAS DEL MES
-    var tr = document.createElement('TR');
-    tableBody.appendChild(tr);
-    var dia = 1;
-    var esp = "Especialista";
-    for (i = 0; i < 32; i++) {
-        //var th = document.createElement('TH')
-        //th.width = '75';
-        if (i == 0) {
-            var th = document.createElement('TH')
-            th.style.color = '#C019A6';
-            th.width = '75';
-            th.rowSpan = '2';
-            th.appendChild(document.createTextNode(heading[0]));
-            tr.appendChild(th);
-
-        } else {
-            var th = document.createElement('TH')
-            th.width = '75';
-            th.appendChild(document.createTextNode(i));
-            tr.appendChild(th);
-        }
-
-        //  tr.appendChild(th);
-    }
-    //ENCABEZADO DE FILAS DE LUNES A VIERNES DEL MES
-    var tr = document.createElement('TR');
-    tableBody.appendChild(tr);
-    var dia = 1;
-    var esp = "Especialista"
-    k = 1;
-    for (i = 0; i < 32; i++) {
-        //  var th = document.createElement('TH')
-        //  th.width = '75';
-        if (i >= 8) {
-            var th = document.createElement('TH')
-            th.width = '75';
-            th.appendChild(document.createTextNode(heading2[k]));
-            k++;
-            if (k == 8) {
-                k = 1;
-            }
-            tr.appendChild(th);
-        } else {
-            if (i >= 1) {
-                var th = document.createElement('TH')
-                th.width = '75';
-                th.appendChild(document.createTextNode(heading2[i]));
-                tr.appendChild(th);
-            }
-
-        }
-        //   tr.appendChild(th);
-    }
-
-    //FILAS DE LA TABLA
-    var tr;
-    var td;
-    var select;
-    //var opt0;
-    var opt1;
-    var opt2;
-    var opt3;
-    var opt4;
-    var opt5;
-    var opt6;
-    for (i = 0; i < ingeniero.length; i++) {
-        tr = document.createElement('TR');
-        m = 0;
-        for (j = 0; j < 32; j++) {
-            td = document.createElement('TD')
-            if (j == 0) {
-                td.appendChild(document.createTextNode(ingeniero[i]));
-                m++;
-            } else {
-
-                // var capa = document.getElementById("capa");
-                // capa.innerHTML = "MM";
-                // td.appendChild(location=document.lista.options[document.lista.selectedIndex].value);
-                //td.appendChild(document.createTextNode("<select><option value='A'>A</option></select>"));
-
-
-                opt1 = document.createElement('OPTION');
-                opt1.value = 'T';
-                opt1.text = 'T';
-
-                opt2 = document.createElement('OPTION');
-                opt2.value = 'M';
-                opt2.text = 'M';
-
-                opt3 = document.createElement('OPTION');
-                opt3.value = 'N';
-                opt3.text = 'N';
-
-                opt4 = document.createElement('OPTION');
-                opt4.value = 'JL';
-                opt4.text = 'JL';
-
-                opt5 = document.createElement('OPTION');
-                opt5.value = 'JL2';
-                opt5.text = 'JL2';
-
-                opt6 = document.createElement('OPTION');
-                opt6.value = 'D';
-                opt6.text = 'D';
-
-
-                select = document.createElement('SELECT');
-
-
-              
-               select.id = i + "_" + '01' + "_" + j;
-         
-            //function guardar_turnos(){
-                localStorage.setItem(ingeniero[i]+"_"+j, select.id);
-            
-          //  }
-                
-
-
-
-                select.appendChild(opt1);
-                select.appendChild(opt2);
-                select.appendChild(opt3);
-                select.appendChild(opt4);
-                select.appendChild(opt5);
-                select.appendChild(opt6);
-                td.appendChild(select);
-
-            }
-
-            tr.appendChild(td)
-        }
-
-        tableBody.appendChild(tr);
-    }
-    
-    myTableDiv.appendChild(table)
-    document.getElementById("generador_tab").disabled = true;
+var getDayName = function(year, month, day) {
+    var d = new Date(year, month, day);
+    return weekday[d.getDay()];
 }
+
+// Function that detect selects is OK
+function validateSelects() {
+    $("#metric_results").empty();
+
+    if( $('#selectYear').val()!='' && $('#selectMonth').val()!='' ) {
+        globalYear = parseInt($('#selectYear').val());
+        globalMonth = parseInt($('#selectMonth').val());
+        genera_tabla(globalYear, globalMonth);
+    }
+}
+
+function genera_tabla(year, month) {
+    globalDaysOfMonth = getDaysInMonth(month, year);
+
+    var myTableDiv = document.getElementById("metric_results");
+    var table = document.createElement('TABLE');
+    var tableBody = document.createElement('TBODY');
+
+    // Construcción de cabecera de la tabla
+    var HTML = `<table id="tablita" border=1><tr><th align="center"  style="color: #C019A6;">Especialista</th>`;
+    for(i = 1; i <= globalDaysOfMonth; i++) {
+        HTML += `<th width="75">` + i + `</br>` + getDayName(year, month, i) + `</th>`;
+    }
+    HTML += `</tr>`;
+
+    // Construcción del cuerpo de la tabla
+    for (h = 0; h < engineer.length; h++) {
+        HTML += `<tr><td>` + engineer[h] + `</td>`;
+        for(i = 1; i <= globalDaysOfMonth; i++) {
+            HTML += `<td>
+                        <select data-day-name="` + getDayName(year, month, i) + `" id="turn-` + year + `-` + month + `-` + i + `-` + h +`">
+                            <option value="T">T</option>
+                            <option value="M">M</option>
+                            <option value="N">N</option>
+                            <option value="JL">JL</option>
+                            <option value="JL2">JL2</option>
+                            <option value="D">D</option>
+                        </select>
+                    </td>`;
+        }
+        HTML += `</tr>`;
+    }
+    HTML += `</table>`;
+
+    HTML += `</br>
+        <div>
+            <input type="submit" value="Guardar" style="float:right;" onclick="guardar_turnos();" class="guard_comp">
+        </div>`;
+
+    myTableDiv.innerHTML = HTML;
+
+    // Detect change turn select
+    $("select[id^='turn-']").change(function() { // Buscar los select de turnos
+        var day = parseInt($(this).attr('id').split('-')[3]);
+        var dayName = $(this).attr('data-day-name');
+        var engineerId = $(this).attr('id').split('-')[4];
+        var valueSelect = $(this).children("option:selected").val();
+
+        if( dayName === weekday[1] ) {
+            for(i=day; i<=(day+6); i++) {
+                try {
+                    $("#turn-"+globalYear+"-"+globalMonth+"-"+i+"-"+engineerId).val(valueSelect);
+                } catch (ex) {
+                    console.log("ERROR", ex);
+                }
+            }
+        }
+    });
+}
+
+// Función que permite guardar los datos en local storage del navegador
 function guardar_turnos(){
-    //localStorage.setItem(ingeniero[i]+"_"+j, select.id);
-  //  document.getElementById('metric_results').disabled= true;
-     // This will disable all the children of the div var nodes 
-     // document.getElementById("tablita").getElementsByTagName('*'); for(var i = 0; i < nodes.length; i++){ nodes[i].disabled = true; } 
-     $("#tablita").find("*").prop("disabled", true); 
- 
+    var dataMonth = [];
+    var days = [];
+    var turns = [];
 
+    $("select[id^='turn-'] option:selected").each(function (i, el) {
+        var idSelect = $(this).parent().attr('id');
+        var optVal = $(this).val();
+        var engineerId = idSelect.split('-')[4];
+
+        days.push(idSelect.split('-')[3]);
+        turns.push(optVal);
+
+        if( globalDaysOfMonth == idSelect.split('-')[3] ) {
+            dataMonth.push({"engineerId":engineerId, "engineerName":engineer[engineerId], "days":days, "turns":turns});
+            days = [];
+            turns = [];
+        }
+    });
+
+    localStorage.setItem(globalYear+"-"+globalMonth, JSON.stringify(dataMonth));
+
+    confirm("Datos guardados exitosamente!");
+    location.reload();
 }
+
+// START - Detect change of selects
+$( "#selectYear,#selectMonth" ).change(function() {
+    validateSelects();
+});
+// END - Detect change of selects
+

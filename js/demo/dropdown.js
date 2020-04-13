@@ -1,4 +1,4 @@
-<script>
+
            // to test if one string contains another string ..
     $(document).ready(function(){
  
@@ -30,4 +30,3 @@
  
         // ...end document ready function
     });
-</script>
