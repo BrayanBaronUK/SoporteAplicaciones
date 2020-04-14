@@ -35,11 +35,11 @@
        */
       //	<td><select name='especialista[]'><option>Carlos Palacios</option><option>Brayan Baron</option><option>Wilson Castro</option></select></td> \
       $("#add").click(function() {
-        var nuevaFila = "<tr> \
+        var nuevaFila = `<tr> \
         <td><select name='especialista' id='especialista'><?php $sql = "SELECT NOMBRES||' '||APELLIDOS FROM USUARIOS_SOPORTE"; $resultado_set = oci_parse($conex2, $sql); oci_execute($resultado_set); while ($row = oci_fetch_array($resultado_set)){ echo '<option value="'.$row[0].'">'.$row[0].'</option>'; } ?></select></td> \
 				<td><input type='date' name='dia'></td> \
 				<td><input type='button' class='del' value='Eliminar Fila'></td> \
-			</tr>";
+			</tr>`;
         $("#tabla tbody").append(nuevaFila);
       });
 
@@ -490,7 +490,7 @@
               <p>
                 <form action="confirma_creacion_compensatorio.php" method="POST">
                   <form action="<?php echo $_SERVER["PHP_SELF"] ?>" method="POST">
-                    <table id="tabla" border=1>
+                    <table id="tabla" class="tabla" border=1>
                       <thead>
                         <tr>
                           <th>Especialista</th>
@@ -518,7 +518,7 @@
                       </tbody>
                     </table>
                     <div>
-                      <input type="submit" value="Guardar" style="float:right;" class="guard_comp">
+                      <input type="submit" value="Guardar" id="enviar" style="float:right;" class="guard_comp">
                     </div>
                   </form>
                 </form>
@@ -594,6 +594,7 @@
     <!-- js del dropdown -->
     <script src="js/demo/dropdown.js"></script>
     <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script src="js/registra_compensatorio.js"></script>
 
     <!--js de la tabla-->
     <!--<script src="./tabla_dinamica/js/jquery-2.1.1.min.js"></script>

@@ -26,15 +26,19 @@
   <script src="http://code.jquery.com/jquery-latest.js"></script>
   <script type="text/javascript">
     $(document).ready(function() {
+      <?php @session_start();
+            include_once("conexion.php");
+            $conex2 = oci_connect($user, $pass, $db);
+            ?>
       /**
        * Funcion para añadir una nueva fila en la tabla
        */
       $("#add").click(function() {
-        var nuevaFila = "<tr> \
-        <td><input type='date' name='dia[]'></td> \
-				<td><select name='especialista[]'><option>Carlos Palacios</option><option>Brayan Baron</option><option>Wilson Castro</option></select></td> \
+        var nuevaFila = `<tr> \
+        <td><input type='date' name='dia'></td> \
+        <td><select name='especialista' id='especialista'><?php $sql = "SELECT NOMBRES||' '||APELLIDOS FROM USUARIOS_SOPORTE"; $resultado_set = oci_parse($conex2, $sql); oci_execute($resultado_set); while ($row = oci_fetch_array($resultado_set)){ echo '<option value="'.$row[0].'">'.$row[0].'</option>'; } ?></select></td> \
 				<td><input type='button' class='del' value='Eliminar Fila'></td> \
-			</tr>";
+			</tr>`;
         $("#tabla tbody").append(nuevaFila);
       });
 
