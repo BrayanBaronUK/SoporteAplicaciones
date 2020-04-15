@@ -29,6 +29,9 @@ $conex2 = oci_connect($user, $pass, $db);
   <link href="css/sb-admin-2.min.css" rel="stylesheet">
   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 
+  <!-- Custom styles for this page -->
+  <!--<link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">-->
+
   <!--Insercion de pie casos Aranda-->
   <style type="text/css">
     /*${demo.css}*/
@@ -943,10 +946,47 @@ $conex2 = oci_connect($user, $pass, $db);
 
         <!-- <div id="linea_meses" style="min-width: 310px; height: 400px; margin: 0 auto"></div>-->
         <div id="linea_meses" style="width: 1300px; height: 400px; padding-top:15px; "></div>
+        <div id="tabla_analisis" style="width: 1300px; padding-top:15px;">
+          <p style="color: #C019A6;" align="center"><strong>Tabla de Analisis del día</strong></p>
+          <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+            <thead>
+              <tr>
+                <th>Cantidad Max Casos</th>
+                <th>Ingeniero Max</th>
+                <th>Cantidad Min Casos</th>
+                <th>Ingeniero Min</th>
+                <th>Diferencia de Max a Min</th>
+                <th>Prom Casos Grupo</th>
+                <th>Porcentaje Rend Grupo</th>
+              </tr>
+            </thead>
+            <tbody>
+
+              <?php
+              $sql    = "SELECT MAXIMO,INGE_MAX,MINIMO,INGE_MIN,DIFERENCIA,PROMEDIO,CUMPLIMIENTO FROM V_ANALISIS_DIA";
+              $resultado_set = oci_parse($conex2, $sql);
+              oci_execute($resultado_set);
+              while ($row = oci_fetch_array($resultado_set)) {
+              ?>
+                <tr>
+                  <td><?php echo $row[0] ?></td>
+                  <td><?php echo $row[1] ?></td>
+                  <td><?php echo $row[2] ?></td>
+                  <td><?php echo $row[3] ?></td>
+                  <td><?php echo $row[4] ?></td>
+                  <td><?php echo $row[5] ?></td>
+                  <td><?php echo $row[6] ?></td>
+                </tr>
+              <?php
+              }
+              ?>
+            </tbody>
+          </table>
+        </div>
 
 
 
-      
+
 
         <!-- End of Main Content -->
 
@@ -1010,6 +1050,13 @@ $conex2 = oci_connect($user, $pass, $db);
     <!-- Page level custom scripts -->
     <!-- <script src="reportes_graficos/Highcharts-4.1.5/js/highcharts.js"></script>
     <script src="reportes_graficos/Highcharts-4.1.5/js/modules/exporting.js"></script>-->
+
+    <!-- Page level plugins -->
+    <!-- <script src="vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>-->
+
+    <!-- Page level custom scripts -->
+    <!--  <script src="js/demo/datatables-demo.js"></script>-->
 
     <!--prueba-->
 
