@@ -1,9 +1,3 @@
-<?php
-
-include_once("conexion_aranda.php");
-$conex2 = oci_connect($user, $pass, $db);
-
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -31,8 +25,8 @@ $conex2 = oci_connect($user, $pass, $db);
 
   <!-- Custom styles for this page -->
   <!--<link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">-->
-
   <!--Insercion de pie casos Aranda-->
+
   <style type="text/css">
     /*${demo.css}*/
   </style>
@@ -69,6 +63,8 @@ $conex2 = oci_connect($user, $pass, $db);
           data: [
 
             <?php
+            include_once("conexion_aranda.php");
+            $conex2 = oci_connect($user, $pass, $db);
             $sql = "SELECT GRP_ID,RESPONSABLE,count(*) as CANTIDAD FROM ARANDA.V_ARA_CASOS_2  WHERE GRP_ID IN (64,73)
                     AND FECHA_SOLUCION  BETWEEN TO_DATE ( TO_CHAR(TRUNC(SYSDATE), 'DD')||'-'||TO_CHAR(TRUNC(SYSDATE), 'MON')||','||TO_CHAR(TRUNC(SYSDATE), 'YYYY')||'00:00:00', 'DD-MON-YYYY HH24:MI:SS' ) 
                     AND TO_DATE ( TO_CHAR(TRUNC(SYSDATE), 'DD')||'-'||TO_CHAR(TRUNC(SYSDATE), 'MON')||','||TO_CHAR(TRUNC(SYSDATE), 'YYYY')||'23:59:59', 'DD-MON-YYYY HH24:MI:SS' )
@@ -126,6 +122,8 @@ $conex2 = oci_connect($user, $pass, $db);
           data: [
 
             <?php
+            include_once("conexion_aranda.php");
+            $conex2 = oci_connect($user, $pass, $db);
             $sql = "SELECT GRP_ID, RESPONSABLE,COUNT(*) as CANTIDAD FROM ARANDA.V_ARA_CASOS_2
             WHERE GRP_ID IN (64,73) AND ESTADO  IN ('SOLUCIONADO','CERRADO') 
               AND TRUNC(FECHA_REGISTRO) BETWEEN TRUNC (SYSDATE,'MONTH')AND TRUNC(LAST_DAY (SYSDATE))
@@ -163,6 +161,8 @@ $conex2 = oci_connect($user, $pass, $db);
         xAxis: {
           categories: [
             <?php
+            include_once("conexion_aranda.php");
+            $conex2 = oci_connect($user, $pass, $db);
             $sql = "SELECT GRP_ID, RESPONSABLE,COUNT(*) as CANTIDAD,TRUNC(DBMS_RANDOM.VALUE(1,count(*))) as CANTIDAD_3 FROM ARANDA.V_ARA_CASOS_2
                   WHERE GRP_ID IN (64,73) AND ESTADO  IN ('SOLUCIONADO','CERRADO') 
                     AND TRUNC(FECHA_REGISTRO) BETWEEN TRUNC (SYSDATE,'MONTH')AND TRUNC(LAST_DAY (SYSDATE))
@@ -222,6 +222,8 @@ $conex2 = oci_connect($user, $pass, $db);
           align: 'left',
           data: [
             <?php
+            include_once("conexion_aranda.php");
+            $conex2 = oci_connect($user, $pass, $db);
             $sql = "SELECT GRP_ID, RESPONSABLE,COUNT(*) as CANTIDAD, TRUNC(DBMS_RANDOM.VALUE(1,count(*))) as CANTIDAD_3 FROM ARANDA.V_ARA_CASOS_2
                   WHERE GRP_ID IN (64,73) AND ESTADO  IN ('SOLUCIONADO','CERRADO') 
                     AND TRUNC(FECHA_REGISTRO) BETWEEN TRUNC (SYSDATE,'MONTH')AND TRUNC(LAST_DAY (SYSDATE))
@@ -239,6 +241,8 @@ $conex2 = oci_connect($user, $pass, $db);
           name: 'pend',
           data: [
             <?php
+            include_once("conexion_aranda.php");
+            $conex2 = oci_connect($user, $pass, $db);
             $sql2 = "SELECT GRP_ID, RESPONSABLE,COUNT(*) as CANTIDAD,TRUNC(DBMS_RANDOM.VALUE(1,count(*))) as CANTIDAD_3 FROM ARANDA.V_ARA_CASOS_2
                 WHERE GRP_ID IN (64,73) AND ESTADO  IN ('SOLUCIONADO','CERRADO') 
                 AND TRUNC(FECHA_REGISTRO) BETWEEN TRUNC (SYSDATE,'MONTH')AND TRUNC(LAST_DAY (SYSDATE))
@@ -272,6 +276,8 @@ $conex2 = oci_connect($user, $pass, $db);
         xAxis: {
           categories: [
             <?php
+            include_once("conexion_aranda.php");
+            $conex2 = oci_connect($user, $pass, $db);
             $sql = "SELECT GRP_ID,RESPONSABLE,count(*) as CANTIDAD,TRUNC(DBMS_RANDOM.VALUE(1,count(*))) as CANTIDAD_3 FROM ARANDA.V_ARA_CASOS_2  WHERE GRP_ID IN (64,73)
             AND FECHA_SOLUCION  BETWEEN TO_DATE ( TO_CHAR(TRUNC(SYSDATE), 'DD')||'-'||TO_CHAR(TRUNC(SYSDATE), 'MON')||','||TO_CHAR(TRUNC(SYSDATE), 'YYYY')||'00:00:00', 'DD-MON-YYYY HH24:MI:SS' ) 
             AND TO_DATE ( TO_CHAR(TRUNC(SYSDATE), 'DD')||'-'||TO_CHAR(TRUNC(SYSDATE), 'MON')||','||TO_CHAR(TRUNC(SYSDATE), 'YYYY')||'23:59:59', 'DD-MON-YYYY HH24:MI:SS' )
@@ -331,6 +337,8 @@ $conex2 = oci_connect($user, $pass, $db);
           align: 'left',
           data: [
             <?php
+            include_once("conexion_aranda.php");
+            $conex2 = oci_connect($user, $pass, $db);
             $sql = "SELECT GRP_ID,RESPONSABLE,count(*) as CANTIDAD, TRUNC(DBMS_RANDOM.VALUE(1,count(*))) as CANTIDAD_3 FROM ARANDA.V_ARA_CASOS_2  WHERE GRP_ID IN (64,73)
                     AND FECHA_SOLUCION  BETWEEN TO_DATE ( TO_CHAR(TRUNC(SYSDATE), 'DD')||'-'||TO_CHAR(TRUNC(SYSDATE), 'MON')||','||TO_CHAR(TRUNC(SYSDATE), 'YYYY')||'00:00:00', 'DD-MON-YYYY HH24:MI:SS' ) 
                     AND TO_DATE ( TO_CHAR(TRUNC(SYSDATE), 'DD')||'-'||TO_CHAR(TRUNC(SYSDATE), 'MON')||','||TO_CHAR(TRUNC(SYSDATE), 'YYYY')||'23:59:59', 'DD-MON-YYYY HH24:MI:SS' )
@@ -349,6 +357,8 @@ $conex2 = oci_connect($user, $pass, $db);
           align: 'left',
           data: [
             <?php
+            include_once("conexion_aranda.php");
+            $conex2 = oci_connect($user, $pass, $db);
             $sql = "SELECT GRP_ID,RESPONSABLE,count(*) as CANTIDAD, TRUNC(DBMS_RANDOM.VALUE(1,count(*))) as CANTIDAD_3 FROM ARANDA.V_ARA_CASOS_2  WHERE GRP_ID IN (64,73)
                     AND FECHA_SOLUCION  BETWEEN TO_DATE ( TO_CHAR(TRUNC(SYSDATE), 'DD')||'-'||TO_CHAR(TRUNC(SYSDATE), 'MON')||','||TO_CHAR(TRUNC(SYSDATE), 'YYYY')||'00:00:00', 'DD-MON-YYYY HH24:MI:SS' ) 
                     AND TO_DATE ( TO_CHAR(TRUNC(SYSDATE), 'DD')||'-'||TO_CHAR(TRUNC(SYSDATE), 'MON')||','||TO_CHAR(TRUNC(SYSDATE), 'YYYY')||'23:59:59', 'DD-MON-YYYY HH24:MI:SS' )
@@ -380,6 +390,8 @@ $conex2 = oci_connect($user, $pass, $db);
         xAxis: {
           categories: [
             <?php
+            include_once("conexion_aranda.php");
+            $conex2 = oci_connect($user, $pass, $db);
             $sql2 = "SELECT DISTINCT(RESPONSABLE) FROM ARANDA.V_ARA_CASOS_2 A
             INNER JOIN USUARIOS B ON B.UNAME = A.RESPONSABLE
             WHERE GRP_ID IN (64,73)
@@ -418,6 +430,8 @@ $conex2 = oci_connect($user, $pass, $db);
           name: 'Mes Actual',
           data: [
             <?php
+            include_once("conexion_aranda.php");
+            $conex2 = oci_connect($user, $pass, $db);
             $sql2 = "SELECT  RESPONSABLE,COUNT(*) AS CANTIDAD 
             FROM ARANDA.V_ARA_CASOS_2 A
             LEFT JOIN USUARIOS B ON B.UNAME = A.RESPONSABLE
@@ -453,6 +467,8 @@ $conex2 = oci_connect($user, $pass, $db);
 
           /*
           <?php
+          include_once("conexion_aranda.php");
+          $conex2 = oci_connect($user, $pass, $db);
           $sql2 = "SELECT MES FROM V_MES_ACTUAL";
           $resultado_set = oci_parse($conex2, $sql2);
           oci_execute($resultado_set);
@@ -466,6 +482,8 @@ $conex2 = oci_connect($user, $pass, $db);
           name: 'Mes Anterior',
           data: [
             <?php
+            include_once("conexion_aranda.php");
+            $conex2 = oci_connect($user, $pass, $db);
             $sql2 = "SELECT RESPONSABLE,COUNT(*) as CANTIDAD FROM ARANDA.V_ARA_CASOS_2 A
             INNER JOIN USUARIOS B ON B.UNAME = A.RESPONSABLE
                 WHERE GRP_ID IN (64,73) AND ESTADO  IN ('SOLUCIONADO','CERRADO') 
@@ -488,6 +506,8 @@ $conex2 = oci_connect($user, $pass, $db);
           name: 'Dos meses antes',
           data: [
             <?php
+            include_once("conexion_aranda.php");
+            $conex2 = oci_connect($user, $pass, $db);
             $sql2 = "SELECT RESPONSABLE,COUNT(*) as CANTIDAD FROM ARANDA.V_ARA_CASOS_2 A
             INNER JOIN USUARIOS B ON B.UNAME = A.RESPONSABLE
                 WHERE GRP_ID IN (64,73) AND ESTADO  IN ('SOLUCIONADO','CERRADO') 
@@ -942,13 +962,11 @@ $conex2 = oci_connect($user, $pass, $db);
           <div id="grafico_barras_mes" style=" width: 640px; height: 500px; float:left;"></div>
           <div id="grafico_pie_mes" style="height: 500px; width: 640px; float:right;"></div>
         </div>
-
-
-        <!-- <div id="linea_meses" style="min-width: 310px; height: 400px; margin: 0 auto"></div>-->
         <div id="linea_meses" style="width: 1300px; height: 400px; padding-top:15px; "></div>
+
         <div id="tabla_analisis" style="width: 1300px; padding-top:15px;">
           <p style="color: #C019A6;" align="center"><strong>Tabla de Analisis del día</strong></p>
-          <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+          <table class="table table-bordered" id="dataTable_" width="100%" cellspacing="0">
             <thead>
               <tr>
                 <th>Cantidad Max Casos</th>
@@ -963,19 +981,23 @@ $conex2 = oci_connect($user, $pass, $db);
             <tbody>
 
               <?php
-              $sql    = "SELECT MAXIMO,INGE_MAX,MINIMO,INGE_MIN,DIFERENCIA,PROMEDIO,CUMPLIMIENTO FROM V_ANALISIS_DIA";
-              $resultado_set = oci_parse($conex2, $sql);
-              oci_execute($resultado_set);
-              while ($row = oci_fetch_array($resultado_set)) {
+              include_once("conexion_aranda_2.php");
+              $conex3 = oci_connect($user, $pass, $db);
+              ini_set('max_execution_time', 300);
+              set_time_limit(300);
+              $consultap = 'SELECT MAXIMO,INGE_MAX,MINIMO,INGE_MIN,DIFERENCIA,PROMEDIO,CUMPLIMIENTO FROM ARANDA.V_ANALISIS_GES';
+              $resultado_tab = oci_parse($conex3, $consultap);
+              oci_execute($resultado_tab);
+              while ($fila = oci_fetch_array($resultado_tab)) {
               ?>
                 <tr>
-                  <td><?php echo $row[0] ?></td>
-                  <td><?php echo $row[1] ?></td>
-                  <td><?php echo $row[2] ?></td>
-                  <td><?php echo $row[3] ?></td>
-                  <td><?php echo $row[4] ?></td>
-                  <td><?php echo $row[5] ?></td>
-                  <td><?php echo $row[6] ?></td>
+                  <td><?php echo $fila[0] ?></td>
+                  <td><?php echo $fila[1] ?></td>
+                  <td><?php echo $fila[2] ?></td>
+                  <td><?php echo $fila[3] ?></td>
+                  <td><?php echo $fila[4] ?></td>
+                  <td><?php echo $fila[5] ?></td>
+                  <td><?php echo $fila[6] ?></td>
                 </tr>
               <?php
               }
@@ -983,10 +1005,6 @@ $conex2 = oci_connect($user, $pass, $db);
             </tbody>
           </table>
         </div>
-
-
-
-
 
         <!-- End of Main Content -->
 
