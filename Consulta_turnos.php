@@ -397,15 +397,15 @@
             </li>
 
             <div class="topbar-divider d-none d-sm-block"></div>
-            <?php 
-              @session_start();
-              include_once("conexion.php");
-              $conex2 = oci_connect($user, $pass, $db);
-              $elusuario = $_SESSION['usuario'];
-              $sql = "SELECT NOMBRES||' '||APELLIDOS FROM USUARIOS_SOPORTE WHERE USUARIO = '$elusuario'";
-              $resultado_set = oci_parse($conex2, $sql);
-              oci_execute($resultado_set);
-              while ($row = oci_fetch_array($resultado_set)) {
+            <?php
+            @session_start();
+            include_once("conexion.php");
+            $conex2 = oci_connect($user, $pass, $db);
+            $elusuario = $_SESSION['usuario'];
+            $sql = "SELECT NOMBRES||' '||APELLIDOS FROM USUARIOS_SOPORTE WHERE USUARIO = '$elusuario'";
+            $resultado_set = oci_parse($conex2, $sql);
+            oci_execute($resultado_set);
+            while ($row = oci_fetch_array($resultado_set)) {
             ?>
 
 
@@ -416,7 +416,7 @@
                   <img class="img-profile rounded-circle" src="./img/imagen1.jpg">
                 </a>
               <?php
-              }
+            }
               ?>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
@@ -454,32 +454,38 @@
 
 
             <div class="card-body">
-              <!--SELECCIONADOR DE AÑO-->
-              <div class="small mb-1">Seleccione un año:</div>
-              <div class="dropdown mb-4">
-                <select class="btn btn-primary" id="selectYear">
-                  <option value="">Año</option>
-                </select>
-              </div>
+              <div style="width: 400px;">
+                <!--SELECCIONADOR DE AÑO-->
+                <div style="float: left;">
+                  <div class="small mb-1">Seleccione un año:</div>
+                  <div class="dropdown mb-4">
+                    <select class="btn btn-primary" id="selectYear">
+                      <option value="">Año</option>
+                    </select>
+                  </div>
+                </div>
 
-              <!--SELECCIONADOR DE MES-->
-              <div class="small mb-1">Seleccione un mes:</div>
-              <div class="dropdown mb-4">
-                <select class="btn btn-primary" id="selectMonth">
-                  <option value="">Mes</option>
-                  <option value="0">Enero</option>
-                  <option value="1">Febrero</option>
-                  <option value="2">Marzo</option>
-                  <option value="3">Abril</option>
-                  <option value="4">Mayo</option>
-                  <option value="5">Junio</option>
-                  <option value="6">Julio</option>
-                  <option value="7">Agosto</option>
-                  <option value="8">Septiembre</option>
-                  <option value="9">Octubre</option>
-                  <option value="10">Noviembre</option>
-                  <option value="11">Diciembre</option>
-                </select>
+                <!--SELECCIONADOR DE MES-->
+                <div style="float: right;">
+                  <div class="small mb-1">Seleccione un mes:</div>
+                  <div class="dropdown mb-4">
+                    <select class="btn btn-primary" id="selectMonth">
+                      <option value="">Mes</option>
+                      <option value="0">Enero</option>
+                      <option value="1">Febrero</option>
+                      <option value="2">Marzo</option>
+                      <option value="3">Abril</option>
+                      <option value="4">Mayo</option>
+                      <option value="5">Junio</option>
+                      <option value="6">Julio</option>
+                      <option value="7">Agosto</option>
+                      <option value="8">Septiembre</option>
+                      <option value="9">Octubre</option>
+                      <option value="10">Noviembre</option>
+                      <option value="11">Diciembre</option>
+                    </select>
+                  </div>
+                </div>
               </div>
               <div class="table-responsive">
                 <div id="metric_results"></div>
@@ -487,76 +493,76 @@
             </div>
 
 
-            </div>
-          </div>
-
-
-        </div>
-        <!-- /.container-fluid -->
-
-
-        <!-- Footer -->
-        <footer class="sticky-footer bg-white">
-          <div class="container my-auto">
-            <div class="copyright text-center my-auto">
-              <span>Copyright &copy; Website 2020 by Brayan Baron</span>
-            </div>
-          </div>
-        </footer>
-        <!-- End of Footer -->
-
-      </div>
-      <!-- End of Content Wrapper -->
-
-    </div>
-    <!-- End of Page Wrapper -->
-
-    <!-- Scroll to Top Button-->
-    <a class="scroll-to-top rounded" href="#page-top">
-      <i class="fas fa-angle-up"></i>
-    </a>
-
-    <!-- Logout Modal-->
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">¿Seguro quiere salir?</h5>
-            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">×</span>
-            </button>
-          </div>
-          <div class="modal-body">Seleccione "Salir" si desea cerrar la aplicación si no seleccione "Cancelar"</div>
-          <div class="modal-footer">
-            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-            <a class="btn btn-primary" href="login.php">Salir</a>
-            <!--  <a class="btn btn-primary" href="login.php">Logout</a>-->
           </div>
         </div>
+
+
+      </div>
+      <!-- /.container-fluid -->
+
+
+      <!-- Footer -->
+      <footer class="sticky-footer bg-white">
+        <div class="container my-auto">
+          <div class="copyright text-center my-auto">
+            <span>Copyright &copy; Website 2020 by Brayan Baron</span>
+          </div>
+        </div>
+      </footer>
+      <!-- End of Footer -->
+
+    </div>
+    <!-- End of Content Wrapper -->
+
+  </div>
+  <!-- End of Page Wrapper -->
+
+  <!-- Scroll to Top Button-->
+  <a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+  </a>
+
+  <!-- Logout Modal-->
+  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">¿Seguro quiere salir?</h5>
+          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">Seleccione "Salir" si desea cerrar la aplicación si no seleccione "Cancelar"</div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
+          <a class="btn btn-primary" href="login.php">Salir</a>
+          <!--  <a class="btn btn-primary" href="login.php">Logout</a>-->
+        </div>
       </div>
     </div>
+  </div>
 
-    <!-- Bootstrap core JavaScript-->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <!-- Bootstrap core JavaScript-->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-    <!-- Core plugin JavaScript-->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+  <!-- Core plugin JavaScript-->
+  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 
-    <!-- Custom scripts for all pages-->
-    <script src="js/sb-admin-2.min.js"></script>
+  <!-- Custom scripts for all pages-->
+  <script src="js/sb-admin-2.min.js"></script>
 
 
-    <!-- Page level plugins -->
-    <script src="vendor/datatables/jquery.dataTables.min.js"></script>
-    <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
+  <!-- Page level plugins -->
+  <script src="vendor/datatables/jquery.dataTables.min.js"></script>
+  <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
-    <!-- Page level custom scripts -->
-    <script src="js/demo/datatables-demo.js"></script>
+  <!-- Page level custom scripts -->
+  <script src="js/demo/datatables-demo.js"></script>
 
-    <!-- js del dropdown -->
-    <script src="js/demo/dropdown.js"></script>
-    <script src="js/consulta_turnos.js"></script>
+  <!-- js del dropdown -->
+  <script src="js/demo/dropdown.js"></script>
+  <script src="js/consulta_turnos.js"></script>
 
 </body>
 <!--COMETARIADAS

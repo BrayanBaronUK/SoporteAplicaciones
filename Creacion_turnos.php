@@ -399,7 +399,7 @@
             </li>
 
             <div class="topbar-divider d-none d-sm-block"></div>
-            <?php 
+            <?php
             @session_start();
             include_once("conexion.php");
             $conex2 = oci_connect($user, $pass, $db);
@@ -418,7 +418,7 @@
                   <img class="img-profile rounded-circle" src="./img/imagen1.jpg">
                 </a>
               <?php
-              }
+            }
               ?>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
@@ -456,32 +456,38 @@
 
 
             <div class="card-body">
-              <!--SELECCIONADOR DE AÑO-->
-              <div class="small mb-1">Seleccione un año:</div>
-              <div class="dropdown mb-4">
-                <select class="btn btn-primary" id="selectYear">
-                  <option value="">Año</option>
-                </select>
-              </div>
+              <div style="width: 400px;">
+                <!--SELECCIONADOR DE AÑO-->
+                <div style="float: left;">
+                  <div class="small mb-1">Seleccione un año:</div>
+                  <div class="dropdown mb-4">
+                    <select class="btn btn-primary" id="selectYear">
+                      <option value="">Año</option>
+                    </select>
+                  </div>
+                </div>
 
-              <!--SELECCIONADOR DE MES-->
-              <div class="small mb-1">Seleccione un mes:</div>
-              <div class="dropdown mb-4">
-                <select class="btn btn-primary" id="selectMonth">
-                  <option value="">Mes</option>
-                  <option value="0">Enero</option>
-                  <option value="1">Febrero</option>
-                  <option value="2">Marzo</option>
-                  <option value="3">Abril</option>
-                  <option value="4">Mayo</option>
-                  <option value="5">Junio</option>
-                  <option value="6">Julio</option>
-                  <option value="7">Agosto</option>
-                  <option value="8">Septiembre</option>
-                  <option value="9">Octubre</option>
-                  <option value="10">Noviembre</option>
-                  <option value="11">Diciembre</option>
-                </select>
+                <!--SELECCIONADOR DE MES-->
+                <div style="float: right;">
+                  <div class="small mb-1">Seleccione un mes:</div>
+                  <div class="dropdown mb-4">
+                    <select class="btn btn-primary" id="selectMonth">
+                      <option value="">Mes</option>
+                      <option value="0">Enero</option>
+                      <option value="1">Febrero</option>
+                      <option value="2">Marzo</option>
+                      <option value="3">Abril</option>
+                      <option value="4">Mayo</option>
+                      <option value="5">Junio</option>
+                      <option value="6">Julio</option>
+                      <option value="7">Agosto</option>
+                      <option value="8">Septiembre</option>
+                      <option value="9">Octubre</option>
+                      <option value="10">Noviembre</option>
+                      <option value="11">Diciembre</option>
+                    </select>
+                  </div>
+                </div>
               </div>
               <div class="table-responsive">
                 <div id="metric_results"></div>
