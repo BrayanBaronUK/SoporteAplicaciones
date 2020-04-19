@@ -474,34 +474,34 @@
                       <td>En este reporte podrá evidenciar el histórico de compensatorios que se han generado para el grupo de
                         soporte aplicaciones TI. Podrá observar el especialista, fecha de registro del compensatorio y el día
                         otorgado del descanso.</td>
-                      <td><input type='button' class="rep" value='Reporte' onclick="location.href='ExcelCompensatorios.php'"></td>
+                      <td><input type='button' class="rep" value='Reporte' onclick="location.href='ExcelCompensatorioscp.php'"></td>
                     </tr>
                     <tr>
                       <td><strong>Reporte Horas extra</strong></td>
                       <td>En este reporte podrá visualizar las horas extra realizadas por el grupo de aplicaciones de TI ,
                         puntualmente del personal que realiza turnos.</td>
-                      <td><input type='button' class="rep" value='Reporte' onclick="location.href='ExcelHorasExtra.php'"></td>
+                      <td><input type='button' class="rep" value='Reporte' onclick="location.href='ExcelHorasExtracp.php'"></td>
                     </tr>
                     <tr>
                       <td><strong>Reporte Programación Cierres</strong></td>
                       <td>En este reporte podrá evidenciar todas las programaciones realizadas para la realización de cierres
                         de los cortes de Cierre Maestra. Observara el especialista asignado, fecha de registro y la fecha de
                         programación.</td>
-                      <td><input type='button' class="rep" value='Reporte' onclick="location.href='ExcelCierres.php'"></td>
+                      <td><input type='button' class="rep" value='Reporte' onclick="location.href='ExcelCierrescp.php'"></td>
                     </tr>
                     <tr>
                       <td><strong>Reporte Programación Soporte Unidad</strong></td>
                       <td>En este reporte podrá observar las programaciones realizadas para el soporte de la unidad del grupo el
                         cual se realiza de forma semanal, se refleja el especialista asignado, fecha de registro, el día
                         inicio del soporte y el día fin de soporte.</td>
-                      <td><input type='button' class="rep" value='Reporte' onclick="location.href='ExcelSoporteUnidad.php'"></td>
+                      <td><input type='button' class="rep" value='Reporte' onclick="location.href='ExcelSoporteUnidadcp.php'"></td>
                     </tr>
                     <tr>
                       <td><strong>Reporte Programación Vacaciones</strong></td>
                       <td>En este reporte está plasmado toda la información con respecto a las programaciones de vacaciones de
                         los ingenieros del grupo, el cual se evidencia el especialista, el usuario , el registro de la programación,
                         fecha inicio y fin de las vacaciones.</td>
-                      <td><input type='button' class="rep" value='Reporte' onclick="location.href='ExcelVacaciones.php'"></td>
+                      <td><input type='button' class="rep" value='Reporte' onclick="location.href='ExcelVacacionescp.php'"></td>
                     </tr>
                   </tbody>
                 </table>

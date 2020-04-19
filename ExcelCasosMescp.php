@@ -12,7 +12,7 @@ require 'Classes/PHPExcel/IOFactory.php';
     include_once("conexion_aranda.php");
     $conex2 = oci_connect($user, $pass, $db);
 
-    $sql = "SELECT ID_GRUPO,RESPONSABLE,PENDIENTE,CERRADOS,TOTAL,CUMPLIMIENTO  FROM V_GESTION_DIA";
+    $sql = "SELECT ID_GRUPO,RESPONSABLE,PENDIENTE,CERRADOS,TOTAL,CUMPLIMIENTO  FROM V_GESTION_MES";
     $resultado_set = oci_parse($conex2, $sql);
     oci_execute($resultado_set);
 
@@ -114,7 +114,7 @@ require 'Classes/PHPExcel/IOFactory.php';
 	$objPHPExcel->getActiveSheet()->getStyle('A1:F4')->applyFromArray($estiloTituloReporte);
     $objPHPExcel->getActiveSheet()->getStyle('A6:F6')->applyFromArray($estiloTituloColumnas);
     
-    $objPHPExcel->getActiveSheet()->setCellValue('B3', 'REPORTE CASOS DEL DIA');
+    $objPHPExcel->getActiveSheet()->setCellValue('B3', 'REPORTE CASOS DEL MES');
     $objPHPExcel->getActiveSheet()->mergeCells('B3:D3');
     
     
@@ -177,7 +177,7 @@ require 'Classes/PHPExcel/IOFactory.php';
 	
 	// definir título de gráfico
 	$title = new PHPExcel_Chart_Title(null, $layout);
-    $title->setCaption('Gráfico Casos del dia');
+    $title->setCaption('Gráfico Casos del Mes');
     
     	// definir posiciondo gráfico y título
 	$chart->setTopLeftPosition('B'.$filaGrafica);
@@ -200,7 +200,7 @@ require 'Classes/PHPExcel/IOFactory.php';
 
 
     header("Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
-	header('Content-Disposition: attachment;filename="ReporteCasosdia.xlsx"');
+	header('Content-Disposition: attachment;filename="ReporteCasosMes.xlsx"');
 	header('Cache-Control: max-age=0');
 	
 	$writer->save('php://output');

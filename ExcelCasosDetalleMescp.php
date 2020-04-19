@@ -12,7 +12,10 @@ require 'Classes/PHPExcel/IOFactory.php';
     include_once("conexion_aranda.php");
     $conex2 = oci_connect($user, $pass, $db);
 
-    $sql = "SELECT ID_GRUPO,RESPONSABLE,PENDIENTE,CERRADOS,TOTAL,CUMPLIMIENTO  FROM V_GESTION_DIA";
+    $sql = "SELECT NO_CASO,AUTOR,FECHA_REGISTRO,RESPONSABLE,DESCRIPCION,ESTADO,CATEGORIA,SOLUCION,FECHA_SOLUCION 
+    FROM ARANDA.V_ARA_CASOS_2 WHERE GRP_ID IN (64,73)
+    AND TRUNC(FECHA_REGISTRO) BETWEEN TRUNC (SYSDATE,'MONTH')AND TRUNC(LAST_DAY (SYSDATE))
+    ORDER BY 3 DESC";
     $resultado_set = oci_parse($conex2, $sql);
     oci_execute($resultado_set);
 
@@ -111,25 +114,31 @@ require 'Classes/PHPExcel/IOFactory.php';
         ));
 
         
-	$objPHPExcel->getActiveSheet()->getStyle('A1:F4')->applyFromArray($estiloTituloReporte);
-    $objPHPExcel->getActiveSheet()->getStyle('A6:F6')->applyFromArray($estiloTituloColumnas);
+	$objPHPExcel->getActiveSheet()->getStyle('A1:I4')->applyFromArray($estiloTituloReporte);
+    $objPHPExcel->getActiveSheet()->getStyle('A6:I6')->applyFromArray($estiloTituloColumnas);
     
-    $objPHPExcel->getActiveSheet()->setCellValue('B3', 'REPORTE CASOS DEL DIA');
-    $objPHPExcel->getActiveSheet()->mergeCells('B3:D3');
+    $objPHPExcel->getActiveSheet()->setCellValue('B3', 'REPORTE CASOS DETALLADO MES');
+    $objPHPExcel->getActiveSheet()->mergeCells('B3:F3');
     
     
 	$objPHPExcel->getActiveSheet()->getColumnDimension('A')->setWidth(10);
-	$objPHPExcel->getActiveSheet()->setCellValue('A6', 'GRUPO ID');
+	$objPHPExcel->getActiveSheet()->setCellValue('A6', 'No CASO');
 	$objPHPExcel->getActiveSheet()->getColumnDimension('B')->setWidth(30);
-	$objPHPExcel->getActiveSheet()->setCellValue('B6', 'RESPONSABLE');
+	$objPHPExcel->getActiveSheet()->setCellValue('B6', 'AUTOR');
 	$objPHPExcel->getActiveSheet()->getColumnDimension('C')->setWidth(10);
-	$objPHPExcel->getActiveSheet()->setCellValue('C6', 'CASOS PENDIENTES');
+	$objPHPExcel->getActiveSheet()->setCellValue('C6', 'FECHA REGISTRO');
 	$objPHPExcel->getActiveSheet()->getColumnDimension('D')->setWidth(10);
-	$objPHPExcel->getActiveSheet()->setCellValue('D6', 'CASOS CERRADOS');
-	$objPHPExcel->getActiveSheet()->getColumnDimension('E')->setWidth(10);
-    $objPHPExcel->getActiveSheet()->setCellValue('E6', 'TOTAL CASOS');
+	$objPHPExcel->getActiveSheet()->setCellValue('D6', 'RESPONSABLE');
+	$objPHPExcel->getActiveSheet()->getColumnDimension('E')->setWidth(50);
+    $objPHPExcel->getActiveSheet()->setCellValue('E6', 'DESCRIPCION');
     $objPHPExcel->getActiveSheet()->getColumnDimension('F')->setWidth(10);
-	$objPHPExcel->getActiveSheet()->setCellValue('F6', 'CUMPLIMIENTO');
+    $objPHPExcel->getActiveSheet()->setCellValue('F6', 'ESTADO');
+    $objPHPExcel->getActiveSheet()->getColumnDimension('G')->setWidth(10);
+    $objPHPExcel->getActiveSheet()->setCellValue('G6', 'CATEGORIA');
+    $objPHPExcel->getActiveSheet()->getColumnDimension('H')->setWidth(50);
+    $objPHPExcel->getActiveSheet()->setCellValue('H6', 'SOLUCION');
+    $objPHPExcel->getActiveSheet()->getColumnDimension('I')->setWidth(10);
+	$objPHPExcel->getActiveSheet()->setCellValue('I6', 'FECHA SOLUCION');
     
 
     //Recorremos los resultados de la consulta y los imprimimos
@@ -141,12 +150,15 @@ require 'Classes/PHPExcel/IOFactory.php';
         $objPHPExcel->getActiveSheet()->setCellValue('D'.$fila, $row[3]);
         $objPHPExcel->getActiveSheet()->setCellValue('E'.$fila, $row[4]);
         $objPHPExcel->getActiveSheet()->setCellValue('F'.$fila, $row[5]);
+        $objPHPExcel->getActiveSheet()->setCellValue('G'.$fila, $row[6]);
+        $objPHPExcel->getActiveSheet()->setCellValue('H'.$fila, $row[7]);
+        $objPHPExcel->getActiveSheet()->setCellValue('I'.$fila, $row[8]);
 
         $fila++; //Sumamos 1 para pasar a la siguiente fila
     }
     $fila = $fila-1;
 	
-	$objPHPExcel->getActiveSheet()->setSharedStyle($estiloInformacion, "A7:F".$fila);
+	$objPHPExcel->getActiveSheet()->setSharedStyle($estiloInformacion, "A7:I".$fila);
 	
     $filaGrafica = $fila+2;  
     
@@ -177,12 +189,12 @@ require 'Classes/PHPExcel/IOFactory.php';
 	
 	// definir título de gráfico
 	$title = new PHPExcel_Chart_Title(null, $layout);
-    $title->setCaption('Gráfico Casos del dia');
+    $title->setCaption('Gráfico Casos del Mes');
     
     	// definir posiciondo gráfico y título
 	$chart->setTopLeftPosition('B'.$filaGrafica);
 	$filaFinal = $filaGrafica + 10;
-	$chart->setBottomRightPosition('F'.$filaFinal);
+	$chart->setBottomRightPosition('I'.$filaFinal);
     $chart->setTitle($title);
     
     	// adicionar o gráfico à folha
@@ -200,7 +212,7 @@ require 'Classes/PHPExcel/IOFactory.php';
 
 
     header("Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
-	header('Content-Disposition: attachment;filename="ReporteCasosdia.xlsx"');
+	header('Content-Disposition: attachment;filename="DetalladoArandaMes.xlsx"');
 	header('Cache-Control: max-age=0');
 	
 	$writer->save('php://output');

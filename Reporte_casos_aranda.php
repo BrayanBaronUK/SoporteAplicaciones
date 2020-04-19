@@ -475,7 +475,7 @@
                       <td><strong>Reporte casos por mes</strong></td>
                       <td>En este reporte podrá observar la cantidad de casos por especialista, tanto sus casos pendientes,
                         cerrados y total de casos durante el mes. Así mismo, el porcentaje de cumplimiento.</td>
-                      <td><input type='button' class="rep" value='Reporte' onclick="location.href='ExcelCasosMes.php'"></td>
+                      <td><input type='button' class="rep" value='Reporte' onclick="location.href='ExcelCasosMescp.php'"></td>
                     </tr>
                     <tr>
                       <td><strong>Reporte casos por Día</strong></td>
@@ -489,7 +489,7 @@
                         por gestionar, para los casos solucionados y cerrados podrá evidenciar la respuesta dada por el especialista,
                         de la misma forma el autor que lo genero y fecha de solución.
                       </td>
-                      <td><input type='button' class="rep" value='Reporte' onclick="location.href='ExcelCasosDetalleMes.php'"></td>
+                      <td><input type='button' class="rep" value='Reporte' onclick="location.href='ExcelCasosDetalleMescp.php'"></td>
                     </tr>
                     <tr>
                       <td><strong>Reporte Detallado casos por día</strong></td>
@@ -497,7 +497,7 @@
                         por gestionar, para los casos solucionados y cerrados podrá evidenciar la respuesta dada por el especialista,
                         de la misma forma el autor que lo genero y fecha de solución.
                       </td>
-                      <td><input type='button' class="rep" value='Reporte' onclick="location.href='ExcelCasosDetalleDia.php'"></td>
+                      <td><input type='button' class="rep" value='Reporte' onclick="location.href='ExcelCasosDetalleDiacp.php'"></td>
                     </tr>
                   </tbody>
                 </table>

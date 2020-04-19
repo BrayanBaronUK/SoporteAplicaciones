@@ -9,10 +9,10 @@ require 'Classes/PHPExcel/IOFactory.php';
 
 
 //Consulta
-    include_once("conexion_aranda.php");
+    include_once("conexion.php");
     $conex2 = oci_connect($user, $pass, $db);
 
-    $sql = "SELECT ID_GRUPO,RESPONSABLE,PENDIENTE,CERRADOS,TOTAL,CUMPLIMIENTO  FROM V_GESTION_DIA";
+    $sql = "SELECT USUARIO, ESPECIALISTA, FECHA_CREADO,FECHA_INICIO,FECHA_FIN FROM SOPORTE_UNIDAD";
     $resultado_set = oci_parse($conex2, $sql);
     oci_execute($resultado_set);
 
@@ -26,11 +26,11 @@ require 'Classes/PHPExcel/IOFactory.php';
 
     //propiedades del documento
     $objPHPExcel->getProperties()->setCreator("Brayan Baron")->
-    setDescription("Reporte de Casos");
+    setDescription("Reporte de soporte unidad");
 
     //Establecemos la pestaña activa y nombre a la pestaña
 	$objPHPExcel->setActiveSheetIndex(0);
-    $objPHPExcel->getActiveSheet()->setTitle("CasosAranda");
+    $objPHPExcel->getActiveSheet()->setTitle("SoporteUnidad");
 
     $objDrawing = new PHPExcel_Worksheet_MemoryDrawing();
 	$objDrawing->setName('Logotipo');
@@ -111,25 +111,23 @@ require 'Classes/PHPExcel/IOFactory.php';
         ));
 
         
-	$objPHPExcel->getActiveSheet()->getStyle('A1:F4')->applyFromArray($estiloTituloReporte);
-    $objPHPExcel->getActiveSheet()->getStyle('A6:F6')->applyFromArray($estiloTituloColumnas);
+	$objPHPExcel->getActiveSheet()->getStyle('A1:E4')->applyFromArray($estiloTituloReporte);
+    $objPHPExcel->getActiveSheet()->getStyle('A6:E6')->applyFromArray($estiloTituloColumnas);
     
-    $objPHPExcel->getActiveSheet()->setCellValue('B3', 'REPORTE CASOS DEL DIA');
+    $objPHPExcel->getActiveSheet()->setCellValue('B3', 'REPORTE SOPORTE UNIDAD');
     $objPHPExcel->getActiveSheet()->mergeCells('B3:D3');
     
     
 	$objPHPExcel->getActiveSheet()->getColumnDimension('A')->setWidth(10);
-	$objPHPExcel->getActiveSheet()->setCellValue('A6', 'GRUPO ID');
+	$objPHPExcel->getActiveSheet()->setCellValue('A6', 'USUARIO');
 	$objPHPExcel->getActiveSheet()->getColumnDimension('B')->setWidth(30);
-	$objPHPExcel->getActiveSheet()->setCellValue('B6', 'RESPONSABLE');
+	$objPHPExcel->getActiveSheet()->setCellValue('B6', 'ESPECIALISTA');
 	$objPHPExcel->getActiveSheet()->getColumnDimension('C')->setWidth(10);
-	$objPHPExcel->getActiveSheet()->setCellValue('C6', 'CASOS PENDIENTES');
+	$objPHPExcel->getActiveSheet()->setCellValue('C6', 'FECHA REGISTRO');
 	$objPHPExcel->getActiveSheet()->getColumnDimension('D')->setWidth(10);
-	$objPHPExcel->getActiveSheet()->setCellValue('D6', 'CASOS CERRADOS');
-	$objPHPExcel->getActiveSheet()->getColumnDimension('E')->setWidth(10);
-    $objPHPExcel->getActiveSheet()->setCellValue('E6', 'TOTAL CASOS');
-    $objPHPExcel->getActiveSheet()->getColumnDimension('F')->setWidth(10);
-	$objPHPExcel->getActiveSheet()->setCellValue('F6', 'CUMPLIMIENTO');
+    $objPHPExcel->getActiveSheet()->setCellValue('D6', 'INICIO SOPORTE');
+    $objPHPExcel->getActiveSheet()->getColumnDimension('E')->setWidth(10);
+	$objPHPExcel->getActiveSheet()->setCellValue('E6', 'FIN SOPORTE');
     
 
     //Recorremos los resultados de la consulta y los imprimimos
@@ -140,13 +138,12 @@ require 'Classes/PHPExcel/IOFactory.php';
         $objPHPExcel->getActiveSheet()->setCellValue('C'.$fila, $row[2]);
         $objPHPExcel->getActiveSheet()->setCellValue('D'.$fila, $row[3]);
         $objPHPExcel->getActiveSheet()->setCellValue('E'.$fila, $row[4]);
-        $objPHPExcel->getActiveSheet()->setCellValue('F'.$fila, $row[5]);
 
         $fila++; //Sumamos 1 para pasar a la siguiente fila
     }
     $fila = $fila-1;
 	
-	$objPHPExcel->getActiveSheet()->setSharedStyle($estiloInformacion, "A7:F".$fila);
+	$objPHPExcel->getActiveSheet()->setSharedStyle($estiloInformacion, "A7:E".$fila);
 	
     $filaGrafica = $fila+2;  
     
@@ -177,12 +174,12 @@ require 'Classes/PHPExcel/IOFactory.php';
 	
 	// definir título de gráfico
 	$title = new PHPExcel_Chart_Title(null, $layout);
-    $title->setCaption('Gráfico Casos del dia');
+    $title->setCaption('Gráfico Soporte Unidad');
     
     	// definir posiciondo gráfico y título
 	$chart->setTopLeftPosition('B'.$filaGrafica);
 	$filaFinal = $filaGrafica + 10;
-	$chart->setBottomRightPosition('F'.$filaFinal);
+	$chart->setBottomRightPosition('E'.$filaFinal);
     $chart->setTitle($title);
     
     	// adicionar o gráfico à folha
@@ -200,7 +197,7 @@ require 'Classes/PHPExcel/IOFactory.php';
 
 
     header("Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
-	header('Content-Disposition: attachment;filename="ReporteCasosdia.xlsx"');
+	header('Content-Disposition: attachment;filename="ReporteSopUnidad.xlsx"');
 	header('Cache-Control: max-age=0');
 	
 	$writer->save('php://output');
