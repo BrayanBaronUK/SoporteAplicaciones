@@ -22,6 +22,9 @@
     function IngresoAdmin() {
         window.location = '/AvantelSoporte_Admin/index.php';
     }
+    function IngresoUser() {
+        window.location = '/AvantelSoporte_Users/index.php';
+    }
 </script>
 <?php
 include_once("conexion.php");
@@ -77,12 +80,11 @@ if (isset($_POST['user'], $_POST['pass'])) :
 
 
                 @session_start();
-                //  session_register('usuario');
                 $_SESSION['usuario'] = $_POST['user'];
-                //  echo "console.log('usuario','".$_SESSION['usuario']."');";    
+                
 
                 echo "<script>";
-                echo "MiFuncionJS();";
+                echo "IngresoUser();";
                 echo "</script>";
 
             else :
