@@ -19,6 +19,9 @@
     function NuevaClave() {
         window.location = 'Nueva_clave.php';
     }
+    function IngresoAdmin() {
+        window.location = '/AvantelSoporte_Admin/index.php';
+    }
 </script>
 <?php
 include_once("conexion.php");
@@ -29,7 +32,7 @@ if (isset($_POST['user'], $_POST['pass'])) :
             $var1 = $_POST['user'];
             $var2 = $_POST['pass'];
             $var3 = "A";
-            $ddl_qry = "select estado from usuarios_soporte_seg where usuario='$var1' and clave='$var2'";
+            $ddl_qry = "select estado, usuario from usuarios_soporte_seg where usuario='$var1' and clave='$var2'";
             //$consulta = "EXECUTE IMMEDIATE $ddl_qry";
             $consulta = "Update usuarios_soporte_seg set usuario='$var1' where usuario='$var1' and clave='$var2'";
             //$consulta = "select COUNT(*) from usuarios_soporte_seg";
@@ -42,7 +45,8 @@ if (isset($_POST['user'], $_POST['pass'])) :
             oci_commit($conex2);
             while (oci_fetch($queryg)) {
                 $estado = oci_result($queryg, "ESTADO");
-              }
+                $userad = oci_result($queryg, "USUARIO");
+              } 
             $filas = oci_num_rows($queryf);
             // echo ("filaaaaaaaaas: $filas");
             if ($filas > 0) :
@@ -62,6 +66,14 @@ if (isset($_POST['user'], $_POST['pass'])) :
                     echo "NuevaClave();";
                     echo "</script>";
                 endif;
+
+                if ($userad == 'LPINEROS'):
+
+                    echo "<script>";
+                    echo "IngresoAdmin();";
+                    echo "</script>";
+
+                endif;    
 
 
                 @session_start();

@@ -351,6 +351,8 @@
                 <option>INGENIERO SOPORTE WEB</option>
                 <option>DBA</option>
                 <option>INGENIERO DATA WARE HOUSE</option>
+                <option>DIRECTORA OPERACIONES TI</option>
+                <option>COORDINADORA GRUPO APLICACIONES</option>
               </datalist>
 
               <label for="phone_dotacion">Telefono dotación</label>
