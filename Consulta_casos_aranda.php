@@ -349,6 +349,8 @@
                   </tfoot>
                   <tbody>
                     <?php
+                    ini_set('max_execution_time', 300);
+                    set_time_limit(300);
                     $sql = "SELECT ID_GRUPO,RESPONSABLE,PENDIENTE,CERRADOS,TOTAL,CUMPLIMIENTO FROM V_GESTION_MES ORDER BY 5 DESC";
                     $resultado_set = oci_parse($conex2, $sql);
                     oci_execute($resultado_set);
@@ -403,6 +405,8 @@
                   </tfoot>
                   <tbody>
                     <?php
+                    ini_set('max_execution_time', 300);
+                    set_time_limit(300);
                     $sql = "SELECT ID_GRUPO,RESPONSABLE,PENDIENTE,CERRADOS,TOTAL,CUMPLIMIENTO FROM V_GESTION_DIA ORDER BY 5 DESC";
                     $resultado_set = oci_parse($conex2, $sql);
                     oci_execute($resultado_set);
