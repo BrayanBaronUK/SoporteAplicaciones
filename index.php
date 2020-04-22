@@ -66,8 +66,8 @@
             <?php
             include_once("conexion_aranda.php");
             $conex2 = oci_connect($user, $pass, $db);
-            ini_set('max_execution_time', 300);
-            set_time_limit(300);
+            ini_set('max_execution_time', 100);
+            set_time_limit(100);
             $sql = "SELECT GRP_ID,RESPONSABLE,count(*) as CANTIDAD FROM ARANDA.V_ARA_CASOS_2  WHERE GRP_ID IN (64,73)
             AND FECHA_SOLUCION  BETWEEN TO_DATE ( TO_CHAR(TRUNC(SYSDATE), 'DD')||'-'||TO_CHAR(TRUNC(SYSDATE), 'MON')||','||TO_CHAR(TRUNC(SYSDATE), 'YYYY')||'00:00:00', 'DD-MON-YYYY HH24:MI:SS' ) 
             AND TO_DATE ( TO_CHAR(TRUNC(SYSDATE), 'DD')||'-'||TO_CHAR(TRUNC(SYSDATE), 'MON')||','||TO_CHAR(TRUNC(SYSDATE), 'YYYY')||'23:59:59', 'DD-MON-YYYY HH24:MI:SS' )
@@ -127,8 +127,8 @@
             <?php
             include_once("conexion_aranda.php");
             $conex2 = oci_connect($user, $pass, $db);
-            ini_set('max_execution_time', 300);
-            set_time_limit(300);
+            ini_set('max_execution_time', 100);
+            set_time_limit(100);
             $sql = "SELECT GRP_ID, RESPONSABLE,COUNT(*) as CANTIDAD FROM ARANDA.V_ARA_CASOS_2
             WHERE GRP_ID IN (64,73) AND ESTADO  IN ('SOLUCIONADO','CERRADO') 
               AND TRUNC(FECHA_REGISTRO) BETWEEN TRUNC (SYSDATE,'MONTH')AND TRUNC(LAST_DAY (SYSDATE))
@@ -168,8 +168,8 @@
             <?php
             include_once("conexion_aranda.php");
             $conex2 = oci_connect($user, $pass, $db);
-            ini_set('max_execution_time', 300);
-            set_time_limit(300);
+            ini_set('max_execution_time', 100);
+            set_time_limit(100);
             $sql = "SELECT GRP_ID,RESPONSABLE,CANTIDAD,PENDIENTES FROM ARANDA.V_GESTION_MES_GRAF";
             $resultado_set = oci_parse($conex2, $sql);
             oci_execute($resultado_set);
@@ -228,8 +228,8 @@
             <?php
             include_once("conexion_aranda.php");
             $conex2 = oci_connect($user, $pass, $db);
-            ini_set('max_execution_time', 300);
-            set_time_limit(300);
+            ini_set('max_execution_time', 100);
+            set_time_limit(100);
             $sql = "SELECT GRP_ID,RESPONSABLE,CANTIDAD,PENDIENTES FROM ARANDA.V_GESTION_MES_GRAF";
             $resultado_set = oci_parse($conex2, $sql);
             oci_execute($resultado_set);
@@ -246,8 +246,8 @@
             <?php
             include_once("conexion_aranda.php");
             $conex2 = oci_connect($user, $pass, $db);
-            ini_set('max_execution_time', 300);
-            set_time_limit(300);
+            ini_set('max_execution_time', 100);
+            set_time_limit(100);
             $sql2 = "SELECT GRP_ID,RESPONSABLE,CANTIDAD,PENDIENTES FROM ARANDA.V_GESTION_MES_GRAF";
             $resultado_set = oci_parse($conex2, $sql2);
             oci_execute($resultado_set);
@@ -280,8 +280,8 @@
             <?php
             include_once("conexion_aranda.php");
             $conex2 = oci_connect($user, $pass, $db);
-            ini_set('max_execution_time', 300);
-            set_time_limit(300);
+            ini_set('max_execution_time', 100);
+            set_time_limit(100);
             $sql = "SELECT GRP_ID,RESPONSABLE,CANTIDAD,PENDIENTES FROM ARANDA.V_GESTION_DIA_GRAF";
             $resultado_set = oci_parse($conex2, $sql);
             oci_execute($resultado_set);
@@ -340,8 +340,8 @@
             <?php
             include_once("conexion_aranda.php");
             $conex2 = oci_connect($user, $pass, $db);
-            ini_set('max_execution_time', 300);
-            set_time_limit(300);
+            ini_set('max_execution_time', 100);
+            set_time_limit(100);
             $sql = "SELECT GRP_ID,RESPONSABLE,CANTIDAD,PENDIENTES FROM ARANDA.V_GESTION_DIA_GRAF";
             $resultado_set = oci_parse($conex2, $sql);
             oci_execute($resultado_set);
@@ -359,8 +359,8 @@
             <?php
             include_once("conexion_aranda.php");
             $conex2 = oci_connect($user, $pass, $db);
-            ini_set('max_execution_time', 300);
-            set_time_limit(300);
+            ini_set('max_execution_time', 100);
+            set_time_limit(100);
             $sql = "SELECT GRP_ID,RESPONSABLE,CANTIDAD,PENDIENTES FROM ARANDA.V_GESTION_DIA_GRAF";
             $resultado_set = oci_parse($conex2, $sql);
             oci_execute($resultado_set);
@@ -391,8 +391,8 @@
             <?php
             include_once("conexion_aranda.php");
             $conex2 = oci_connect($user, $pass, $db);
-            ini_set('max_execution_time', 300);
-            set_time_limit(300);
+            ini_set('max_execution_time', 100);
+            set_time_limit(100);
             $sql2 = "SELECT DISTINCT(RESPONSABLE) FROM ARANDA.V_ARA_CASOS_2 A
             INNER JOIN USUARIOS B ON B.UNAME = A.RESPONSABLE
             WHERE GRP_ID IN (64,73)
@@ -433,8 +433,8 @@
             <?php
             include_once("conexion_aranda.php");
             $conex2 = oci_connect($user, $pass, $db);
-            ini_set('max_execution_time', 300);
-            set_time_limit(300);
+            ini_set('max_execution_time', 100);
+            set_time_limit(100);
             $sql2 = "SELECT  RESPONSABLE,COUNT(*) AS CANTIDAD 
             FROM ARANDA.V_ARA_CASOS_2 A
             LEFT JOIN USUARIOS B ON B.UNAME = A.RESPONSABLE
@@ -472,8 +472,8 @@
           <?php
           include_once("conexion_aranda.php");
           $conex2 = oci_connect($user, $pass, $db);
-          ini_set('max_execution_time', 300);
-          set_time_limit(300);
+          ini_set('max_execution_time', 100);
+          set_time_limit(100);
           $sql2 = "SELECT MES FROM V_MES_ACTUAL";
           $resultado_set = oci_parse($conex2, $sql2);
           oci_execute($resultado_set);
@@ -489,8 +489,8 @@
             <?php
             include_once("conexion_aranda.php");
             $conex2 = oci_connect($user, $pass, $db);
-            ini_set('max_execution_time', 300);
-            set_time_limit(300);
+            ini_set('max_execution_time', 100);
+            set_time_limit(100);
             $sql2 = "SELECT RESPONSABLE,COUNT(*) as CANTIDAD FROM ARANDA.V_ARA_CASOS_2 A
             INNER JOIN USUARIOS B ON B.UNAME = A.RESPONSABLE
                 WHERE GRP_ID IN (64,73) AND ESTADO  IN ('SOLUCIONADO','CERRADO') 
@@ -515,8 +515,8 @@
             <?php
             include_once("conexion_aranda.php");
             $conex2 = oci_connect($user, $pass, $db);
-            ini_set('max_execution_time', 300);
-            set_time_limit(300);
+            ini_set('max_execution_time', 100);
+            set_time_limit(100);
             $sql2 = "SELECT RESPONSABLE,COUNT(*) as CANTIDAD FROM ARANDA.V_ARA_CASOS_2 A
             INNER JOIN USUARIOS B ON B.UNAME = A.RESPONSABLE
                 WHERE GRP_ID IN (64,73) AND ESTADO  IN ('SOLUCIONADO','CERRADO') 
@@ -841,7 +841,7 @@
         </div>
         <div id="linea_meses" style="width: 1300px; height: 400px; padding-top:15px; "></div>
 
-        <div id="tabla_analisis" style="width: 1300px; padding-top:15px;">
+       <div id="tabla_analisis" style="width: 1300px; padding-top:15px;">
           <p style="color: #C019A6;" align="center"><strong>Tabla de Analisis del día</strong></p>
           <table class="table table-bordered" id="dataTable_" width="100%" cellspacing="0">
             <thead>
@@ -860,8 +860,8 @@
               <?php
               include_once("conexion_aranda_2.php");
               $conex3 = oci_connect($user, $pass, $db);
-              ini_set('max_execution_time', 300);
-              set_time_limit(300);
+              ini_set('max_execution_time', 100);
+              set_time_limit(100);
               $consultap = 'SELECT MAXIMO,INGE_MAX,MINIMO,INGE_MIN,DIFERENCIA,PROMEDIO,CUMPLIMIENTO FROM ARANDA.V_ANALISIS_GES';
               $resultado_tab = oci_parse($conex3, $consultap);
               oci_execute($resultado_tab);
@@ -881,7 +881,7 @@
               ?>
             </tbody>
           </table>
-        </div>
+        </div> 
 
         <!-- End of Main Content -->
 
