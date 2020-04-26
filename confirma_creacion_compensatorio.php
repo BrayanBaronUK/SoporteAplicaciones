@@ -16,20 +16,44 @@ $conex2 = oci_connect($user, $pass, $db);
 //$filas = json_decode($_POST['dia'], true);
 //$filas = json_decode($_POST['especialista'], true);
 
-      
-     // $filas = json_decode($_POST['valores'], true);
-      $v_dia = $_POST["dia"];
-      $v_especialista = $_POST["especialista"];
-      $v_fecha_cre ="SYSDATE";
+$cedulas = "";
+$arrCedu = array();
+$arrDias = array();
 
-    //  $long = count($v_especialista);
-    
+foreach($_POST as $key => $value) {
+  // echo "<br>DEB: "."$key = $value";
+  if($key == 'especialista') {
+    $arrCedu = $value;
+  } else if($key == 'dia') {
+    $arrDias = $value;
+  }
+}
+
       
-    //   $sql = "INSERT INTO COMPENSATORIOS SELECT USUARIO, '$v_especialista[$i]',$v_fecha_cre,'$v_fecha_cre' FROM USUARIOS_SOPORTE WHERE (NOMBRES||' '||APELLIDOS) = '$v_especialista[$i]'";
-      $sql = "INSERT INTO COMPENSATORIOS SELECT USUARIO, '$v_especialista',$v_fecha_cre,'$v_dia' FROM USUARIOS_SOPORTE WHERE (NOMBRES||' '||APELLIDOS) = '$v_especialista'";
+    // BUSQUEDA DE USUARIOS
+    $sql = "SELECT CEDULA, USUARIO, (NOMBRES||' '||APELLIDOS) FROM  USUARIOS_SOPORTE WHERE CEDULA IN (". implode(',', $arrCedu). ")";
+    $queryf = oci_parse($conex2, $sql);
+    oci_execute($queryf);
+    oci_commit($conex2);
+
+    $especSql = "";
+    while ($row = oci_fetch_array($queryf)){
+      
+      //Buscar posicion del especialista
+      $posicionEsp = array_search($row[0],$arrCedu,false);
+      $especSql .= " INTO COMPENSATORIOS (USUARIO, ESPECIALISTA, FECHA_CREADO, FECHA_COMPENSATORIO) VALUES ('$row[1]', '$row[2]', SYSDATE, '$arrDias[$posicionEsp]')";
+    }
+   // $especSql = rtrim($especSql, ",");
+
+    
+  
+    $sql = "INSERT ALL $especSql SELECT * FROM DUAL";
+   //echo "CONSULTA ".$sql;
+   //  exit();
+    
       $queryf = oci_parse($conex2, $sql);
       oci_execute($queryf);
-      oci_commit($conex2);  
+      oci_commit($conex2);
     
 //    $sql = "INSERT INTO COMPENSATORIOS SELECT USUARIO, '$v_especialista',$v_fecha_cre,'$v_dia' FROM USUARIOS_SOPORTE WHERE (NOMBRES||' '||APELLIDOS) = '$v_especialista'";
 
