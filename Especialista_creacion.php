@@ -361,6 +361,13 @@
               <label for="ip">Ip Ingeniero</label>
               <input type="text" id="ip" name="ip">
 
+              <label for="tipo_user">Tipo de usuario</label>
+              <input type="text" id="tipo_user" name="tipo_user" list="items2">
+              <datalist id="items2">
+                <option>USER</option>
+                <option>ADMIN</option>
+              </datalist>
+
               <input type="submit" value="Crear" id="btnSend" class="botonestilo">
               <!--tipo button   id="btnSend"-->
             </div>

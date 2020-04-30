@@ -26,6 +26,7 @@ $v_email = $_POST["email"];
 $v_cargo = $_POST["cargo"];
 $v_phone_dotacion = $_POST["phone_dotacion"];
 $v_ip = $_POST["ip"];
+$v_tipo_usuario = $_POST["tipo_user"];
 $v_fecha_cre = "SYSDATE";
 
 $sql = "INSERT INTO USUARIOS_SOPORTE VALUES (SUBSTR('$v_names',1,1)||REPLACE(SUBSTR('$v_lastname',1,7),' ',''),'$v_names','$v_lastname',$v_cedula,$v_phone,'$v_email','$v_cargo',$v_phone_dotacion,'$v_ip',$v_fecha_cre)";
@@ -38,7 +39,7 @@ $filas = oci_num_rows($queryf);
 
 if ($filas > 0) :
 
-  $cons = "INSERT INTO USUARIOS_SOPORTE_SEG VALUES(SUBSTR('$v_names',1,1)||REPLACE(SUBSTR('$v_lastname',1,7),' ',''),'AVANTEL','A')";
+  $cons = "INSERT INTO USUARIOS_SOPORTE_SEG VALUES(SUBSTR('$v_names',1,1)||REPLACE(SUBSTR('$v_lastname',1,7),' ',''),'AVANTEL','A','$v_tipo_usuario')";
   $queryf = oci_parse($conex2, $cons);
   oci_execute($queryf);
   oci_commit($conex2);

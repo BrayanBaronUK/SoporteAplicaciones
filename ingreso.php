@@ -35,7 +35,7 @@ if (isset($_POST['user'], $_POST['pass'])) :
             $var1 = $_POST['user'];
             $var2 = $_POST['pass'];
             $var3 = "A";
-            $ddl_qry = "select estado, usuario from usuarios_soporte_seg where usuario='$var1' and clave='$var2'";
+            $ddl_qry = "select estado, TIPO_USUARIO from usuarios_soporte_seg where usuario='$var1' and clave='$var2'";
             //$consulta = "EXECUTE IMMEDIATE $ddl_qry";
             $consulta = "Update usuarios_soporte_seg set usuario='$var1' where usuario='$var1' and clave='$var2'";
             //$consulta = "select COUNT(*) from usuarios_soporte_seg";
@@ -48,7 +48,7 @@ if (isset($_POST['user'], $_POST['pass'])) :
             oci_commit($conex2);
             while (oci_fetch($queryg)) {
                 $estado = oci_result($queryg, "ESTADO");
-                $userad = oci_result($queryg, "USUARIO");
+                $tipouser = oci_result($queryg, "TIPO_USUARIO");
               } 
             $filas = oci_num_rows($queryf);
             // echo ("filaaaaaaaaas: $filas");
@@ -70,7 +70,7 @@ if (isset($_POST['user'], $_POST['pass'])) :
                     echo "</script>";
                 endif;
 
-                if ($userad == 'LPINEROS'):
+                if ($tipouser == 'ADMIN'):
 
                     echo "<script>";
                     echo "IngresoAdmin();";
