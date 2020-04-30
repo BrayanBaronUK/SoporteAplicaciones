@@ -13,16 +13,44 @@
 include_once("conexion.php");
 $conex2 = oci_connect($user, $pass, $db);
 
-$v_fechainiv = $_POST["diavi"];
-$v_fechafinv = $_POST["diavf"];
-$v_especialista = $_POST["especialista"];
-$v_fecha_cre ="SYSDATE";
+$cedulas = "";
+$arrCedu = array();
+$arrDiasi = array();
+$arrDiasf = array();
 
-//$sql = "INSERT INTO COMPENSATORIOS VALUES ('$v_especialista','$v_fecha')";
-$sql = "INSERT INTO VACACIONES SELECT USUARIO, '$v_especialista',$v_fecha_cre,'$v_fechainiv','$v_fechafinv'FROM USUARIOS_SOPORTE WHERE (NOMBRES||' '||APELLIDOS) = '$v_especialista'";
+foreach($_POST as $key => $value) {
+  // echo "<br>DEB: "."$key = $value";
+  if($key == 'especialista') {
+    $arrCedu = $value;
+  } else if($key == 'diavi') {
+    $arrDiasi = $value;
+  }else if($key == 'diavf') {
+    $arrDiasf = $value;
+  }
+}
+
+// BUSQUEDA DE USUARIOS
+$sql = "SELECT CEDULA, USUARIO, (NOMBRES||' '||APELLIDOS) FROM  USUARIOS_SOPORTE WHERE CEDULA IN (". implode(',', $arrCedu). ")";
 $queryf = oci_parse($conex2, $sql);
 oci_execute($queryf);
 oci_commit($conex2);
+
+$especSql = "";
+while ($row = oci_fetch_array($queryf)){
+  
+  //Buscar posicion del especialista
+  $posicionEsp = array_search($row[0],$arrCedu,false);
+  $especSql .= " INTO VACACIONES (USUARIO, ESPECIALISTA, FECHA_REGISTRADO, INICIO_VACACIONES,FIN_VACACIONES) VALUES ('$row[1]', '$row[2]', SYSDATE, '$arrDiasi[$posicionEsp]', '$arrDiasf[$posicionEsp]')";
+}
+
+    $sql = "INSERT ALL $especSql SELECT * FROM DUAL";
+  // echo "CONSULTA ".$sql;
+    // exit();
+    
+      $queryf = oci_parse($conex2, $sql);
+      oci_execute($queryf);
+      oci_commit($conex2);
+
 
 $filas = oci_num_rows($queryf);
 

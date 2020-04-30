@@ -35,9 +35,9 @@
        */
       $("#add").click(function() {
         var nuevaFila = `<tr> \
-        <td><input type='date' name='diavi'></td> \
-        <td><input type='date' name='diavf'></td> \
-        <td><select name='especialista' id='especialista'><?php $sql = "SELECT NOMBRES||' '||APELLIDOS FROM USUARIOS_SOPORTE"; $resultado_set = oci_parse($conex2, $sql); oci_execute($resultado_set); while ($row = oci_fetch_array($resultado_set)){ echo '<option value="'.$row[0].'">'.$row[0].'</option>'; } ?></select></td> \
+        <td><input type='date' name='diavi[]'></td> \
+        <td><input type='date' name='diavf[]'></td> \
+        <td><select name='especialista[]' id='especialista'><?php $sql = "SELECT NOMBRES||' '||APELLIDOS, CEDULA FROM USUARIOS_SOPORTE"; $resultado_set = oci_parse($conex2, $sql); oci_execute($resultado_set); while ($row = oci_fetch_array($resultado_set)){ echo '<option value="'.$row[1].'">'.$row[0].'</option>'; } ?></select></td> \
 				<td><input type='button' class='del' value='Eliminar Fila'></td> \
 			</tr>`;
         $("#tabla tbody").append(nuevaFila);
@@ -369,16 +369,16 @@
                       </thead>
                       <tbody>
                         <tr>
-                          <td><input type="date" name='diavi'></td>
-                          <td><input type="date" name='diavf'></td>
+                          <td><input type="date" name='diavi[]'></td>
+                          <td><input type="date" name='diavf[]'></td>
                           <td>
-                            <select name='especialista' id="especialista">
+                            <select name='especialista[]' id="especialista">
                               <?php
-                              $sql = "SELECT NOMBRES||' '||APELLIDOS FROM USUARIOS_SOPORTE";
+                              $sql = "SELECT NOMBRES||' '||APELLIDOS, CEDULA FROM USUARIOS_SOPORTE";
                               $resultado_set = oci_parse($conex2, $sql);
                               oci_execute($resultado_set);
                               while ($row = oci_fetch_array($resultado_set)) {
-                                echo '<option value="' . $row[0] . '">' . $row[0] . '</option>';
+                                echo '<option value="' . $row[1] . '">' . $row[0] . '</option>';
                               }
                               ?>
                             </select>

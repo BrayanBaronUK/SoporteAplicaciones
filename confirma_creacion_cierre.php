@@ -5,7 +5,7 @@
   }
 
   function AlertaNoCierre() {
-    alert('No se puso crear cierre...!');
+    alert('No se pudo crear cierre...!');
     window.location = 'Creacion_horarios_cierre.php';
   }
 </script>
@@ -13,31 +13,58 @@
 include_once("conexion.php");
 $conex2 = oci_connect($user, $pass, $db);
 
-$v_fecha = $_POST["dia"];
-$v_especialista = $_POST["especialista"];
-$v_fecha_cre ="SYSDATE";
+$cedulas = "";
+$arrCedu = array();
+$arrDias = array();
 
-//$sql = "INSERT INTO COMPENSATORIOS VALUES ('$v_especialista','$v_fecha')";
-$sql = "INSERT INTO CIERRES SELECT USUARIO, '$v_especialista',$v_fecha_cre,'$v_fecha' FROM USUARIOS_SOPORTE WHERE (NOMBRES||' '||APELLIDOS) = '$v_especialista'";
-$queryf = oci_parse($conex2, $sql);
-oci_execute($queryf);
-oci_commit($conex2);
+foreach($_POST as $key => $value) {
+  // echo "<br>DEB: "."$key = $value";
+  if($key == 'especialista') {
+    $arrCedu = $value;
+  } else if($key == 'dia') {
+    $arrDias = $value;
+  }
+}
 
-$filas = oci_num_rows($queryf);
+  
+    // BUSQUEDA DE USUARIOS
+    $sql = "SELECT CEDULA, USUARIO, (NOMBRES||' '||APELLIDOS) FROM  USUARIOS_SOPORTE WHERE CEDULA IN (". implode(',', $arrCedu). ")";
+    $queryf = oci_parse($conex2, $sql);
+    oci_execute($queryf);
+    oci_commit($conex2);
+    $especSql = "";
+    while ($row = oci_fetch_array($queryf)){
+      
+      //Buscar posicion del especialista
+      $posicionEsp = array_search($row[0],$arrCedu,false);
+      $especSql .= " INTO CIERRES (USUARIO, ESPECIALISTA, FECHA_CREADO, FECHA_CIERRE) VALUES ('$row[1]', '$row[2]', SYSDATE, '$arrDias[$posicionEsp]')";
+      }
 
-if ($filas > 0) :
+      $sql = "INSERT ALL $especSql SELECT * FROM DUAL";
+      //echo "CONSULTA ".$sql;
+      //  exit();
+    
+      $queryf = oci_parse($conex2, $sql);
+      oci_execute($queryf);
+      oci_commit($conex2);
 
-  echo "<script>";
-  echo "AlertaCreaCierre()";
-  echo "</script>";
 
 
-else :
+      $filas = oci_num_rows($queryf);
 
-  echo "<script>";
-  echo "AlertaNoCierre()";
-  echo "</script>";
+      if ($filas > 0) :
 
-endif;
+        echo "<script>";
+        echo "AlertaCreaCierre()";
+        echo "</script>";
 
-?>
+
+      else :
+
+        echo "<script>";
+        echo "AlertaNoCierre()";
+        echo "</script>";
+
+      endif;
+
+      ?>

@@ -5,7 +5,7 @@
   }
 
   function AlertaNoCompensatorio() {
-    alert('No se puso crear compensatorio...!');
+    alert('No se pudo crear compensatorio...!');
     window.location = 'Creacion_compensatorio.php';
   }
 </script>
