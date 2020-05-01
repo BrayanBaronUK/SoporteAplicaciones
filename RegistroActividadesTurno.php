@@ -1,5 +1,23 @@
+<?php
+  $actividades = array(
+    0 => array('name'=>"Verificación Procesos DWH", 'time'=>"2:30:00 a. m.", 'obser'=>""),
+    1 => array('name'=>"Modificacion Numeracion (Portabilidad)", 'time'=>"6:15:00 a. m.", 'obser'=>""),
+    2 => array('name'=>"Carga de archivos de operadores TIGO, MOVISTAR y CLARO", 'time'=>"11:00:00 a. m.", 'obser'=>""),
+    3 => array('name'=>"Reinicio BTF Venta Express (Sábados), 192.168.231.237 BTF12 192.168.231.238 BTF14-15 Probar acceso al aplicativo", 'time'=>"3:00:00 a. m.", 'obser'=>""),
+    4 => array('name'=>"Consulta de Abonados ONE NDS. (Sabados )", 'time'=>"3:00:00 p. m.", 'obser'=>""),
+    5 => array('name'=>"Revisión Proceso de Compensacion IDEN(11 de cada mes )", 'time'=>"4:00:00 p. m.", 'obser'=>""),
+    6 => array('name'=>"Revisión Proceso de Compensacion LTE (18,20,22 y 28 de cada mes )", 'time'=>"4:00:00 p. m.", 'obser'=>""),
+    7 => array('name'=>"Consulta de Abonados ONE NDS. (Domingos )", 'time'=>"3:00:00 p. m.", 'obser'=>""),
+    8 => array('name'=>"Modificacion Turnos Aranda de acuerdo al horario (Domingos )", 'time'=>"10:00:00 p. m.", 'obser'=>""),
+    9 => array('name'=>"Ejecución Query y Envio de Correo notificando ciclo enviado en el cierre. En caso de haberse enviado el incorrecto notificar inmediamentamente a la persona que esta ejecutando el cierre (15 y 1ro de cada mes a la madrugada), ", 'time'=>"1:15:00 a. m.", 'obser'=>""),
+    10 => array('name'=>"Monitoreo en OAS ", 'time'=>"Permanente", 'obser'=>""),
+    11 => array('name'=>"Atención Alarmas por correo", 'time'=>"Permanente", 'obser'=>""),
+    12 => array('name'=>"Arandas Pendientes", 'time'=>"Permanente", 'obser'=>"")
+  );
+?>
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
 
@@ -269,6 +287,7 @@
 
             <div class="topbar-divider d-none d-sm-block"></div>
             <?php @session_start();
+            
             include_once("conexion.php");
             $conex2 = oci_connect($user, $pass, $db);
             $elusuario = $_SESSION['usuario'];
@@ -276,6 +295,7 @@
             $resultado_set = oci_parse($conex2, $sql);
             oci_execute($resultado_set);
             while ($row = oci_fetch_array($resultado_set)) {
+            
             ?>
 
 
@@ -326,134 +346,59 @@
 
             <div class="card-body">
               <!--SELECCIONADOR DE CICLO-->
-              <div class="small mb-1">Indique el turno:</div>
+              <div class="small mb-1">Turno:</div>
               <div class="dropdown mb-4">
 
-                <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Turno</button>
-
-                <div class="dropdown-menu animated--fade-in" aria-labelledby="dropdownMenuButton">
-                  <a class="dropdown-item" href="#">Turno 1 -> 6am - 2pm</a>
-                  <a class="dropdown-item" href="#">Turno 2 -> 11am - 8pm</a>
-                  <a class="dropdown-item" href="#">Turno 3 -> 2pm - 10pm</a>
-                  <a class="dropdown-item" href="#">Turno 4 -> 10pm - 6am</a>
-                  <a class="dropdown-item" href="#">Turno 5 -> 8am - 5:30pm</a>
-
-                </div>
-                <div id="resultbox"></div>
+                <!--SELECCIONADOR DE AÑO-->
+                <select class="btn btn-primary" id="selectTurno">
+                  <option value="">Seleccione un turno</option>
+                  <option value="1">Turno 1 -> 6am - 2pm</option>
+                  <option value="2">Turno 2 -> 11am - 8pm</option>
+                  <option value="3">Turno 3 -> 2pm - 10pm</option>
+                  <option value="4">Turno 4 -> 10pm - 6am</option>
+                  <option value="5">Turno 5 -> 8am - 5:30pm</option>
+                </select>
               </div>
-              <div class="table-responsive">
+              <div class="table-responsive" id="divDataTable">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                   <thead>
                     <tr>
                       <td><strong>Actividad Cierre</strong></td>
                       <td><strong>Hora</strong></td>
-                      <td><strong>Realizado SI/NO</strong></td>
                       <td><strong>Observaciones</strong></td>
+                      <td><strong>Realizado SI/NO</strong></td>
                     </tr>
                   </thead>
 
                   <tbody>
-
-                    <tr>
-                      <td>Verificación Procesos DWH </td>
-                      <td>2:30:00 a. m.</td>
-                      <td><input type="checkbox" checked data-toggle="toggle" data-on="NO" data-off="SI" data-onstyle="danger" data-offstyle="success"></td>
-                      <td><input type="text" name="observaciones" style="height: 100px;"></td>
-                    </tr>
-                    <tr>
-                      <td>Modificacion Numeracion (Portabilidad)</td>
-                      <td>6:15:00 a. m.</td>
-                      <td><input type="checkbox" checked data-toggle="toggle" data-on="NO" data-off="SI" data-onstyle="danger" data-offstyle="success"></td>
-                      <td><input type="text" name="observaciones" style="height: 100px;"></td>
-                    </tr>
-                    <tr>
-                      <td>Carga de archivos de operadores TIGO, MOVISTAR y CLARO</td>
-                      <td>11:00:00 a. m.</td>
-                      <td><input type="checkbox" checked data-toggle="toggle" data-on="NO" data-off="SI" data-onstyle="danger" data-offstyle="success"></td>
-                      <td><input type="text" name="observaciones" style="height: 100px;"></td>
-                    </tr>
-                    <tr>
-                      <td>Reinicio BTF Venta Express (Sábados),
-                        192.168.231.237 BTF12
-                        192.168.231.238 BTF14-15
-                        Probar acceso al aplicativo</td>
-                      <td>3:00:00 a. m.</td>
-                      <td><input type="checkbox" checked data-toggle="toggle" data-on="NO" data-off="SI" data-onstyle="danger" data-offstyle="success"></td>
-                      <td><input type="text" name="observaciones" style="height: 100px;"></td>
-                    </tr>
-                    <tr>
-                      <td>Consulta de Abonados ONE NDS. (Sabados )</td>
-                      <td>3:00:00 p. m.</td>
-                      <td><input type="checkbox" checked data-toggle="toggle" data-on="NO" data-off="SI" data-onstyle="danger" data-offstyle="success"></td>
-                      <td><input type="text" name="observaciones" style="height: 100px;"></td>
-                    </tr>
-                    <tr>
-                      <td>Revisión Proceso de Compensacion IDEN(11 de cada mes )</td>
-                      <td>4:00:00 p. m.</td>
-                      <td><input type="checkbox" checked data-toggle="toggle" data-on="NO" data-off="SI" data-onstyle="danger" data-offstyle="success"></td>
-                      <td><input type="text" name="observaciones" style="height: 100px;"></td>
-                    </tr>
-                    <tr>
-                      <td>Revisión Proceso de Compensacion LTE (18,20,22 y 28 de cada mes )</td>
-                      <td>4:00:00 p. m.</td>
-                      <td><input type="checkbox" checked data-toggle="toggle" data-on="NO" data-off="SI" data-onstyle="danger" data-offstyle="success"></td>
-                      <td><input type="text" name="observaciones" style="height: 100px;"></td>
-                    </tr>
-                    <tr>
-                      <td>Consulta de Abonados ONE NDS. (Domingos )</td>
-                      <td>3:00:00 p. m.</td>
-                      <td><input type="checkbox" checked data-toggle="toggle" data-on="NO" data-off="SI" data-onstyle="danger" data-offstyle="success"></td>
-                      <td><input type="text" name="observaciones" style="height: 100px;"></td>
-                    </tr>
-                    <tr>
-                      <td>Modificacion Turnos Aranda de acuerdo al horario (Domingos )</td>
-                      <td>10:00:00 p. m.</td>
-                      <td><input type="checkbox" checked data-toggle="toggle" data-on="NO" data-off="SI" data-onstyle="danger" data-offstyle="success"></td>
-                      <td><input type="text" name="observaciones" style="height: 100px;"></td>
-                    </tr>
-                    <tr>
-                      <td>Ejecución Query y Envio de Correo notificando ciclo enviado en el cierre. En caso de haberse enviado el incorrecto notificar inmediamentamente a la persona que esta ejecutando el cierre (15 y 1ro de cada mes a la madrugada), </td>
-                      <td>1:15:00 a. m.</td>
-                      <td><input type="checkbox" checked data-toggle="toggle" data-on="NO" data-off="SI" data-onstyle="danger" data-offstyle="success"></td>
-                      <td><input type="text" name="observaciones" style="height: 100px;"></td>
-                    </tr>
-                    <tr>
-                      <td>Monitoreo en OAS </td>
-                      <td>Permanente</td>
-                      <td><input type="checkbox" checked data-toggle="toggle" data-on="NO" data-off="SI" data-onstyle="danger" data-offstyle="success"></td>
-                      <td><input type="text" name="observaciones" style="height: 100px;"></td>
-                    </tr>
-                    <tr>
-                      <td>Atención Alarmas por correo</td>
-                      <td>Permanente</td>
-                      <td><input type="checkbox" checked data-toggle="toggle" data-on="NO" data-off="SI" data-onstyle="danger" data-offstyle="success"></td>
-                      <td><input type="text" name="observaciones" style="height: 100px;"></td>
-                    </tr>
-                    <tr>
-                      <td>Arandas Pendientes</td>
-                      <td>Permanente</td>
-                      <td><input type="checkbox" checked data-toggle="toggle" data-on="NO" data-off="SI" data-onstyle="danger" data-offstyle="success"></td>
-                      <td><input type="text" name="observaciones" style="height: 100px;"></td>
-                    </tr>
+                    <?php
+                      foreach ($actividades as $clave => $valor) {
+                        echo '
+                        <tr>
+                          <td>'.$valor['name'].'</td>
+                          <td>'.$valor['time'].'</td>
+                          <td><input type="text" id="obser-'.$clave.'" name="observaciones" style="height: 100px;"></td>
+                          <td>
+                            <input type="checkbox" data-id="'.$clave.'" class="checkAct" data-toggle="toggle" data-on="SI" data-off="NO" data-onstyle="success" data-offstyle="danger">
+                          </td>
+                        </tr>
+                        ';
+                      }
+                    ?>
                   </tbody>
                 </table>
+
+                <div>
+                  <button id="btnSave" class="btn btn-primary btn-icon-split" style="float:right;">
+                    <span class="icon text-white-50">
+                      <i class="fas fa-flag"></i>
+                    </span>
+                    <span class="text">Terminar actividades</span>
+                  </button>
+                </div>
               </div>
-
-              <div>
-                <a href="#" class="btn btn-primary btn-icon-split" style="float:right;">
-                  <span class="icon text-white-50">
-                    <i class="fas fa-flag"></i>
-                  </span>
-                  <span class="text">Guardar</span>
-                </a>
-
-              </div>
-
-
-            </div>
-
+            </div>  
           </div>
-
         </div>
         <!-- /.container-fluid -->
 
@@ -512,17 +457,18 @@
 
     <!-- Page level plugins -->
     <!--<script src="vendor/datatables/jquery.dataTables.min.js"></script>-->
-    <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
     <!-- Page level custom scripts -->
     <script src="js/demo/datatables-demo.js"></script>
 
     <!-- js del dropdown -->
     <script src="js/demo/dropdown.js"></script>
-    <script src="bootstrap/js/bootstrap.min.js"></script>
 
     <!--JS Para el switch-->
     <script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/js/bootstrap4-toggle.min.js"></script>
+
+    <!-- js del dropdown -->
+    <script src="js/registro_actividades_turno.js"></script>
 
 </body>
 <!--COMETARIADAS
