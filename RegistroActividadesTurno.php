@@ -1,18 +1,19 @@
 <?php
   $actividades = array(
-    0 => array('name'=>"Verificación Procesos DWH", 'time'=>"2:30:00 a. m.", 'obser'=>""),
-    1 => array('name'=>"Modificacion Numeracion (Portabilidad)", 'time'=>"6:15:00 a. m.", 'obser'=>""),
-    2 => array('name'=>"Carga de archivos de operadores TIGO, MOVISTAR y CLARO", 'time'=>"11:00:00 a. m.", 'obser'=>""),
-    3 => array('name'=>"Reinicio BTF Venta Express (Sábados), 192.168.231.237 BTF12 192.168.231.238 BTF14-15 Probar acceso al aplicativo", 'time'=>"3:00:00 a. m.", 'obser'=>""),
-    4 => array('name'=>"Consulta de Abonados ONE NDS. (Sabados )", 'time'=>"3:00:00 p. m.", 'obser'=>""),
-    5 => array('name'=>"Revisión Proceso de Compensacion IDEN(11 de cada mes )", 'time'=>"4:00:00 p. m.", 'obser'=>""),
-    6 => array('name'=>"Revisión Proceso de Compensacion LTE (18,20,22 y 28 de cada mes )", 'time'=>"4:00:00 p. m.", 'obser'=>""),
-    7 => array('name'=>"Consulta de Abonados ONE NDS. (Domingos )", 'time'=>"3:00:00 p. m.", 'obser'=>""),
-    8 => array('name'=>"Modificacion Turnos Aranda de acuerdo al horario (Domingos )", 'time'=>"10:00:00 p. m.", 'obser'=>""),
-    9 => array('name'=>"Ejecución Query y Envio de Correo notificando ciclo enviado en el cierre. En caso de haberse enviado el incorrecto notificar inmediamentamente a la persona que esta ejecutando el cierre (15 y 1ro de cada mes a la madrugada), ", 'time'=>"1:15:00 a. m.", 'obser'=>""),
-    10 => array('name'=>"Monitoreo en OAS ", 'time'=>"Permanente", 'obser'=>""),
-    11 => array('name'=>"Atención Alarmas por correo", 'time'=>"Permanente", 'obser'=>""),
-    12 => array('name'=>"Arandas Pendientes", 'time'=>"Permanente", 'obser'=>"")
+    0 => array('name'=>"Consulta cambio de numero portabilidad", 'time'=>"5:55:00 a. m.", 'obser'=>""),
+    1 => array('name'=>"Verificación Procesos DWH", 'time'=>"2:30:00 a. m.", 'obser'=>""),
+    2 => array('name'=>"Modificacion Numeracion (Portabilidad)", 'time'=>"6:15:00 a. m.", 'obser'=>""),
+    3 => array('name'=>"Carga de archivos de operadores TIGO, MOVISTAR y CLARO", 'time'=>"11:00:00 a. m.", 'obser'=>""),
+    4 => array('name'=>"Reinicio BTF Venta Express (Sábados), 192.168.231.237 BTF12 192.168.231.238 BTF14-15 Probar acceso al aplicativo", 'time'=>"3:00:00 a. m.", 'obser'=>""),
+    5 => array('name'=>"Consulta de Abonados ONE NDS. (Sabados )", 'time'=>"3:00:00 p. m.", 'obser'=>""),
+    6 => array('name'=>"Revisión Proceso de Compensacion IDEN(11 de cada mes )", 'time'=>"4:00:00 p. m.", 'obser'=>""),
+    7 => array('name'=>"Revisión Proceso de Compensacion LTE (18,20,22 y 28 de cada mes )", 'time'=>"4:00:00 p. m.", 'obser'=>""),
+    8 => array('name'=>"Consulta de Abonados ONE NDS. (Domingos )", 'time'=>"3:00:00 p. m.", 'obser'=>""),
+    9 => array('name'=>"Modificacion Turnos Aranda de acuerdo al horario (Domingos )", 'time'=>"10:00:00 p. m.", 'obser'=>""),
+    10 => array('name'=>"Ejecución Query y Envio de Correo notificando ciclo enviado en el cierre. En caso de haberse enviado el incorrecto notificar inmediamentamente a la persona que esta ejecutando el cierre (15 y 1ro de cada mes a la madrugada)", 'time'=>"1:15:00 a. m.", 'obser'=>""),
+    11 => array('name'=>"Monitoreo en OAS ", 'time'=>"Permanente", 'obser'=>""),
+    12 => array('name'=>"Atención Alarmas por correo", 'time'=>"Permanente", 'obser'=>""),
+    13 => array('name'=>"Arandas Pendientes", 'time'=>"Permanente", 'obser'=>"")
   );
 ?>
 
@@ -377,7 +378,7 @@
                         <tr>
                           <td>'.$valor['name'].'</td>
                           <td>'.$valor['time'].'</td>
-                          <td><input type="text" id="obser-'.$clave.'" name="observaciones" style="height: 100px;"></td>
+                          <td><textarea id="obser-'.$clave.'" name="observaciones" style="height: 110px; width: 300px;"></textarea></td>
                           <td>
                             <input type="checkbox" data-id="'.$clave.'" class="checkAct" data-toggle="toggle" data-on="SI" data-off="NO" data-onstyle="success" data-offstyle="danger">
                           </td>

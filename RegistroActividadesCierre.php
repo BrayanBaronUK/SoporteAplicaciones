@@ -359,7 +359,7 @@
                       <td>4:00:00 p. m.</td>
                       <td><input type="checkbox" checked data-toggle="toggle" data-on="NO" data-off="SI" data-onstyle="danger" data-offstyle="success"></td>
                       <td>Plazo Maximo de ejecucion antes de las 4:30</td>
-                      <td><input type="text" name="observaciones" style="height: 100px;"></td>
+                      <td><textarea name="comentarios" style="height: 110px; width: 300px;"></textarea></td>
                     </tr>
                     <tr>
                       <td>Lanzamiento del Proceso de Paso de Postpago a Prepago.</td>
