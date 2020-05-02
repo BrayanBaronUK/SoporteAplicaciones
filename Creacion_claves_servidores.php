@@ -33,13 +33,12 @@
       /**
        * Funcion para añadir una nueva fila en la tabla
        */
-      //	<td><select name='especialista[]'><option>Carlos Palacios</option><option>Brayan Baron</option><option>Wilson Castro</option></select></td> \
       $("#add").click(function() {
         var nuevaFila = "<tr> \
-        <td><input type='text' id='nombreser'  name='nombreser'></td>\
-        <td><input type='text' name='ip' id='ip'></td>\
-        <td><input type='text' name='usua' id='usua'></td>\
-        <td><input type='text' name='clave' id='clave'></td>\
+        <td><input type='text' id='nombreser'  name='nombreser[]'></td>\
+        <td><input type='text' name='ip[]' id='ip'></td>\
+        <td><input type='text' name='usua[]' id='usua'></td>\
+        <td><input type='text' name='clave[]' id='clave'></td>\
         <td><input type='button' class='del' value='Eliminar Fila'></td>\
 			</tr>";
         $("#tabla tbody").append(nuevaFila);
@@ -368,10 +367,10 @@
                       </thead>
                       <tbody>
                         <tr>
-                          <td><input type="text" id="nombreser" name="nombreser"></td>
-                          <td><input type="text" name='ip' id="ip"></td>
-                          <td><input type="text" name='usua' id="usua"></td>
-                          <td><input type="text" name='clave' id="clave"></td>
+                          <td><input type="text" id="nombreser" name="nombreser[]"></td>
+                          <td><input type="text" name='ip[]' id="ip"></td>
+                          <td><input type="text" name='usua[]' id="usua"></td>
+                          <td><input type="text" name='clave[]' id="clave"></td>
                           <td><input type='button' class='del' value='Eliminar Fila'></td>
                         </tr>
                       </tbody>
