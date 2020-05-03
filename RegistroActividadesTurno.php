@@ -359,7 +359,7 @@ $conex2 = oci_connect($user, $pass, $db, 'AL32UTF8');
                   <tbody>
 
                     <?php
-                    $sql = "SELECT ID,NOMBRE_ACTIVIDAD,HORA_REALIZAR FROM  MTO_ACTIVIDADES WHERE TIPO_ACTIVIDAD = 0";
+                    $sql = "SELECT ID,NOMBRE_ACTIVIDAD,HORA_REALIZAR FROM  MTO_ACTIVIDADES_TURNO WHERE TIPO_ACTIVIDAD = 0";
                     $resultado_set = oci_parse($conex2, $sql);
                     oci_execute($resultado_set);
                     while ($row = oci_fetch_array($resultado_set)) {
@@ -417,7 +417,7 @@ $conex2 = oci_connect($user, $pass, $db, 'AL32UTF8');
 
                   <tbody>
                     <?php
-                    $sql = "SELECT ID,NOMBRE_ACTIVIDAD,HORA_REALIZAR FROM  MTO_ACTIVIDADES WHERE TIPO_ACTIVIDAD = 1";
+                    $sql = "SELECT ID,NOMBRE_ACTIVIDAD,HORA_REALIZAR FROM  MTO_ACTIVIDADES_TURNO";
                     $resultado_set = oci_parse($conex2, $sql);
                     oci_execute($resultado_set);
                     while ($row = oci_fetch_array($resultado_set)) {

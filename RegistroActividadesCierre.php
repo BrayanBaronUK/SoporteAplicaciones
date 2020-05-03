@@ -1,9 +1,15 @@
+<?php
+include_once("conexion.php");
+$conex2 = oci_connect($user, $pass, $db, 'AL32UTF8');
+?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
 
   <meta charset="utf-8">
+  <meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
@@ -39,6 +45,7 @@
         </div>
         <div class="sidebar-brand-text mx-3">SOPORTE IT<sup>1.0</sup></div>
       </a>
+
       <!-- Divider -->
       <hr class="sidebar-divider my-0">
 
@@ -90,7 +97,7 @@
             <a class="collapse-item" href="Especialista_creacion.php">Creación</a>
             <a class="collapse-item" href="Especialista_visualizacion.php">Visualización</a>
             <!--  <a class="collapse-item" href="buttons.html">Buttons</a>
-      <a class="collapse-item" href="cards.html">Cards</a> -->
+            <a class="collapse-item" href="cards.html">Cards</a> -->
           </div>
         </div>
       </li>
@@ -232,6 +239,7 @@
           <i class="fas fa-fw fa-chart-area"></i>
           <span>Reporte de Actividades</span></a>
       </li>
+
       <!-- Divider -->
       <hr class="sidebar-divider d-none d-md-block">
 
@@ -251,11 +259,11 @@
 
         <!-- Topbar -->
         <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-         <div style="width: 850px;"> 
-          <div style="float: right; width: 400px;">
-            <font size=4 style="color: #C019A6;">BIENVENIDO AL GESTOR DE SOPORTE IT</font>
+          <div style="width: 850px;">
+            <div style="float: right; width: 400px;">
+              <font size=4 style="color: #C019A6;">BIENVENIDO AL GESTOR DE SOPORTE IT</font>
+            </div>
           </div>
-         </div>
 
           <!-- Sidebar Toggle (Topbar) -->
           <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
@@ -267,13 +275,12 @@
 
             <div class="topbar-divider d-none d-sm-block"></div>
             <?php @session_start();
-            include_once("conexion.php");
-            $conex2 = oci_connect($user, $pass, $db);
             $elusuario = $_SESSION['usuario'];
             $sql = "SELECT NOMBRES||' '||APELLIDOS FROM USUARIOS_SOPORTE WHERE USUARIO = '$elusuario'";
             $resultado_set = oci_parse($conex2, $sql);
             oci_execute($resultado_set);
             while ($row = oci_fetch_array($resultado_set)) {
+
             ?>
 
 
@@ -318,207 +325,129 @@
           <!-- DataTales Example -->
           <div class="card shadow mb-4">
             <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">Registrar actividad de cierre</h6>
+              <h6 class="m-0 font-weight-bold text-primary">Registrar actividad de Cierre</h6>
             </div>
 
 
             <div class="card-body">
               <!--SELECCIONADOR DE CICLO-->
-              <div class="small mb-1">Seleccione un ciclo:</div>
+              <div class="small mb-1">Ciclo:</div>
               <div class="dropdown mb-4">
 
-                <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Ciclo</button>
-
-                <div class="dropdown-menu animated--fade-in" aria-labelledby="dropdownMenuButton">
-                  <a class="dropdown-item" href="#">Ciclo A - 1</a>
-                  <a class="dropdown-item" href="#">Ciclo B - 15</a>
-                  <a class="dropdown-item" href="#">Ciclo G - 05</a>
-                  <a class="dropdown-item" href="#">Ciclo H - 10</a>
-                  <a class="dropdown-item" href="#">Ciclo I - 20</a>
-                  <a class="dropdown-item" href="#">Ciclo J - 25</a>
-
-                </div>
-                <div id="resultbox"></div>
+                <!--SELECCIONADOR DE AÑO-->
+                <select class="btn btn-primary" id="selectCierre">
+                  <option value="">Seleccione un ciclo:</option>
+                  <option value="1">Ciclo A - 1</option>
+                  <option value="2">Ciclo B - 15</option>
+                  <option value="3">Ciclo G - 5</option>
+                  <option value="4">Ciclo H - 10</option>
+                  <option value="5">Ciclo I - 20</option>
+                  <option value="6">Ciclo J - 25</option>
+                </select>
               </div>
-              <div class="table-responsive">
+              <div class="table-responsive" id="divDataTable">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                   <thead>
                     <tr>
                       <td><strong>Actividad Cierre</strong></td>
                       <td><strong>Hora</strong></td>
-                      <td><strong>Realizado SI/NO</strong></td>
-                      <td><strong>Descripcion</strong></td>
                       <td><strong>Observaciones</strong></td>
+                      <td><strong>Realizado SI/NO</strong></td>
                     </tr>
                   </thead>
 
                   <tbody>
 
-                    <tr>
-                      <td>Lanzamiento del Proceso de Paso de Postpago a Prepago de Lotus</td>
-                      <td>4:00:00 p. m.</td>
-                      <td><input type="checkbox" checked data-toggle="toggle" data-on="NO" data-off="SI" data-onstyle="danger" data-offstyle="success"></td>
-                      <td>Plazo Maximo de ejecucion antes de las 4:30</td>
-                      <td><textarea name="comentarios" style="height: 110px; width: 300px;"></textarea></td>
-                    </tr>
-                    <tr>
-                      <td>Lanzamiento del Proceso de Paso de Postpago a Prepago.</td>
-                      <td>5:00:00 p. m.</td>
-                      <td><input type="checkbox" checked data-toggle="toggle" data-on="NO" data-off="SI" data-onstyle="danger" data-offstyle="success"></td>
-                      <td>Plazo Maximo de ejecución hasta las 18:30</td>
-                      <td><input type="text" name="observaciones" style="height: 100px;"></td>
-                    </tr>
-                    <tr>
-                      <td>Envio de correo con las lineas que se pasaron de Post a Pre.</td>
-                      <td>9:00:00 p. m.</td>
-                      <td><input type="checkbox" checked data-toggle="toggle" data-on="NO" data-off="SI" data-onstyle="danger" data-offstyle="success"></td>
-                      <td>Enviar correo adjuntando el archivo con la informacion de las lineas que se pasaron de post a Pre (enviar los tres archivos)
-                        1. Archivo de los anexos programados.
-                        2. Archivo con las cuentas que se crearon para los anexos que fueron pasados a prepago
-                        3. Anexos Virtuales que se dieron de baja</td>
-                      <td><input type="text" name="observaciones" style="height: 100px;"></td>
-                    </tr>
-                    <tr>
-                      <td>Validacion del inicio de las cargas de LTE FASE 1</td>
-                      <td>10:30:00 p. m.</td>
-                      <td><input type="checkbox" checked data-toggle="toggle" data-on="NO" data-off="SI" data-onstyle="danger" data-offstyle="success"></td>
-                      <td>Validar que las recargas de la fase 1 de Lte inicien en normalidady validar los logs de las recargas</td>
-                      <td><input type="text" name="observaciones" style="height: 100px;"></td>
-                    </tr>
-                    <tr>
-                      <td>Validacion del inicio de las cargas de LTE FASE 2</td>
-                      <td>12:02:00 a. m.</td>
-                      <td><input type="checkbox" checked data-toggle="toggle" data-on="NO" data-off="SI" data-onstyle="danger" data-offstyle="success"></td>
-                      <td>Validar que las recargas de la fase 2 de Lte inicien en normalidad y validar los logs de las recargas </td>
-                      <td><input type="text" name="observaciones" style="height: 100px;"></td>
-                    </tr>
-                    <tr>
-                      <td>Revisa Logs STC</td>
-                      <td>Permanente</td>
-                      <td><input type="checkbox" checked data-toggle="toggle" data-on="NO" data-off="SI" data-onstyle="danger" data-offstyle="success"></td>
-                      <td>Cada intervalo de 30 mins se deben estar revisando los logs. Primera validacion a la 24:00 </td>
-                      <td><input type="text" name="observaciones" style="height: 100px;"></td>
-                    </tr>
-                    <tr>
-                      <td>Configuracion de Cierre Maestra en la URL de Cierre</td>
-                      <td>12:30:00 a. m.</td>
-                      <td><input type="checkbox" checked data-toggle="toggle" data-on="NO" data-off="SI" data-onstyle="danger" data-offstyle="success"></td>
-                      <td>Revisar y configurar los procesos a ejecutar en el cierre.</td>
-                      <td><input type="text" name="observaciones" style="height: 100px;"></td>
-                    </tr>
-                    <tr>
-                      <td>Verificar procesos en el STCAPPSERVER</td>
-                      <td>Permanente</td>
-                      <td><input type="checkbox" checked data-toggle="toggle" data-on="NO" data-off="SI" data-onstyle="danger" data-offstyle="success"></td>
-                      <td>Cada intervalo de 30 mins se deben estar revisando la ejecucion de los procesos de STC. Primera validacion 24:00</td>
-                      <td><input type="text" name="observaciones" style="height: 100px;"></td>
-                    </tr>
-                    <tr>
-                      <td>Envíar Proceso Cierre de Maestra por la URL de Cierre</td>
-                      <td>12:45:00 a. m.</td>
-                      <td><input type="checkbox" checked data-toggle="toggle" data-on="NO" data-off="SI" data-onstyle="danger" data-offstyle="success"></td>
-                      <td>Enviar por STC el proceso de cierre. Verificando que se envie la fecha y ciclo correcto.</td>
-                      <td><input type="text" name="observaciones" style="height: 100px;"></td>
-                    </tr>
-                    <tr>
-                      <td>Verificar Correo de Alerta con notificacion confirmando el cierre enviado.</td>
-                      <td>12:46:00 a. m.</td>
-                      <td><input type="checkbox" checked data-toggle="toggle" data-on="NO" data-off="SI" data-onstyle="danger" data-offstyle="success"></td>
-                      <td>Verificar el correo para confirmar que el cierre configurado es el correcto.</td>
-                      <td><input type="text" name="observaciones" style="height: 100px;"></td>
-                    </tr>
-                    <tr>
-                      <td>Envío de Correo indicando Inicio del proceso de Cierre Maestra</td>
-                      <td>12:50:00 a. m.</td>
-                      <td><input type="checkbox" checked data-toggle="toggle" data-on="NO" data-off="SI" data-onstyle="danger" data-offstyle="success"></td>
-                      <td>Redactar el correo indicando el inicio de cierre maestra.</td>
-                      <td><input type="text" name="observaciones" style="height: 100px;"></td>
-                    </tr>
-                    <tr>
-                      <td>Notificar el inicio del proceso de Cierre Maestra al grupo de Facturacion</td>
-                      <td>12:50:00 a. m.</td>
-                      <td><input type="checkbox" checked data-toggle="toggle" data-on="NO" data-off="SI" data-onstyle="danger" data-offstyle="success"></td>
-                      <td>se notifica a las personas por medio de correo que se envia informando el incio de cierre maestra, por que no tienen grupo creado</td>
-                      <td><input type="text" name="observaciones" style="height: 100px;"></td>
-                    </tr>
-                    <tr>
-                      <td>Seguimiento proceso Cierre de Maestra</td>
-                      <td>Permanente</td>
-                      <td><input type="checkbox" checked data-toggle="toggle" data-on="NO" data-off="SI" data-onstyle="danger" data-offstyle="success"></td>
-                      <td>Realizar las validaciones de cada proceso del cierre con el fin de monitorear la ejecucion del mismo</td>
-                      <td><input type="text" name="observaciones" style="height: 100px;"></td>
-                    </tr>
-                    <tr>
-                      <td>Envio Correo notificando finalizacion de las recargas de Lte face 1 y fase 2</td>
-                      <td>2:00 a .m. - 3:00 a .m.</td>
-                      <td><input type="checkbox" checked data-toggle="toggle" data-on="NO" data-off="SI" data-onstyle="danger" data-offstyle="success"></td>
-                      <td>Enviar correo notificando la finalización del proceso de recargas despues de la validacion de los logs que se hayan realizado en normalidad </td>
-                      <td><input type="text" name="observaciones" style="height: 100px;"></td>
-                    </tr>
-                    <tr>
-                      <td>Validar las Exoneraciones</td>
-                      <td>4:45:00 a. m.</td>
-                      <td><input type="checkbox" checked data-toggle="toggle" data-on="NO" data-off="SI" data-onstyle="danger" data-offstyle="success"></td>
-                      <td>Revisar la correcta ejecucion del proceso de exoneraciones que se ejecuta finalizando el cierre maestra. Tener encuenta tambien los hilos de las exoneraciones en caso de fallas enviar correo y notificar inmediatamente a Byte.
-                        Nuevo paso para evidenciar que en el momento de la ejecución efectuó todas las actualizaciones de manera correcta.
-                        Ver archivo ""Exonerar anexos con bloqueo temporal.txt"" dentro de la carpeta de cierre maestra ciclo A y B ejecutar Query que hay que ejecutar y la instrucción a seguir.
-                      </td>
-                      <td><input type="text" name="observaciones" style="height: 100px;"></td>
-                    </tr>
-                    <tr>
-                      <td>Activacion Exoneracion por Mora</td>
-                      <td>4:46:00 a. m.</td>
-                      <td><input type="checkbox" checked data-toggle="toggle" data-on="NO" data-off="SI" data-onstyle="danger" data-offstyle="success"></td>
-                      <td>ejecutar el update UPDATE V4SERVI SET TCFLA2='S' , TCFLA4='S' WHERE TCCSER=808</td>
-                      <td><input type="text" name="observaciones" style="height: 100px;"></td>
-                    </tr>
-                    <tr>
-                      <td>Envío de Correo indicando Finalización del proceso de Cierre Maestra</td>
-                      <td>5:00:00 a. m.</td>
-                      <td><input type="checkbox" checked data-toggle="toggle" data-on="NO" data-off="SI" data-onstyle="danger" data-offstyle="success"></td>
-                      <td>Redactar y enviar el correo indicando la finalización de cierre maestra </td>
-                      <td><input type="text" name="observaciones" style="height: 100px;"></td>
-                    </tr>
-                    <tr>
-                      <td>Notificar la finalización del proceso de Cierre de Maestra al grupo de Facturacion</td>
-                      <td>5:15:00 a. m.</td>
-                      <td><input type="checkbox" checked data-toggle="toggle" data-on="NO" data-off="SI" data-onstyle="danger" data-offstyle="success"></td>
-                      <td>se notifica a las personas por medio de correo que se envia informando el fin del cierre maestra, por que no tienen grupo creado</td>
-                      <td><input type="text" name="observaciones" style="height: 100px;"></td>
-                    </tr>
-                    <tr>
-                      <td>Validacion de OAS</td>
-                      <td>Permanente</td>
-                      <td><input type="checkbox" checked data-toggle="toggle" data-on="NO" data-off="SI" data-onstyle="danger" data-offstyle="success"></td>
-                      <td>Validar el procesamiento de OAS.</td>
-                      <td><input type="text" name="observaciones" style="height: 100px;"></td>
-                    </tr>
-                    <tr>
-                      <td>Validacion de recargas IDEN y LTE, Hotbilling, eliminación de suplementarios</td>
-                      <td>5:30:00 a. m.</td>
-                      <td><input type="checkbox" checked data-toggle="toggle" data-on="NO" data-off="SI" data-onstyle="danger" data-offstyle="success"></td>
-                      <td>CICLO A Para IDEN Y LTE CICLO B Solo LTE</td>
-                      <td><input type="text" name="observaciones" style="height: 100px;"></td>
-                    </tr>
+                    <?php
+                    $sql = "SELECT ID,NOMBRE_ACTIVIDAD,HORA_REALIZAR FROM  MTO_ACTIVIDADES_CIERRE WHERE TIPO_ACTIVIDAD IN (0,1)";
+                    $resultado_set = oci_parse($conex2, $sql);
+                    oci_execute($resultado_set);
+                    while ($row = oci_fetch_array($resultado_set)) {
+                      $textAct =  wordwrap($row[1], 90, "\n", true);
+                      echo '
+                        <tr>
+                          <td>' . $textAct . '</td>
+                          <td>' . $row[2] . '</td>
+                          <td><textarea id="obser-' . $row[0] . '" name="observaciones" style="height: 110px; width: 300px;"></textarea></td>
+                          <td>
+                            <input type="checkbox" data-id="' . $row[0] . '" class="checkAct" data-toggle="toggle" data-on="SI" data-off="NO" data-onstyle="success" data-offstyle="danger">
+                          </td>
+                        </tr>
+                        ';
+                    }
+                    /*
+                       foreach ($actividades as $clave => $valor) {
+                        echo '
+                        <tr>
+                          <td>'.$valor['name'].'</td>
+                          <td>'.$valor['time'].'</td>
+                          <td><textarea id="obser-'.$clave.'" name="observaciones" style="height: 110px; width: 300px;"></textarea></td>
+                          <td>
+                            <input type="checkbox" data-id="'.$clave.'" class="checkAct" data-toggle="toggle" data-on="SI" data-off="NO" data-onstyle="success" data-offstyle="danger">
+                          </td>
+                        </tr>
+                        ';
+                      }
+                       */
+                    ?>
                   </tbody>
                 </table>
+
+                <div>
+                  <button id="btnSave" class="btn btn-primary btn-icon-split" style="float:right;">
+                    <span class="icon text-white-50">
+                      <i class="fas fa-flag"></i>
+                    </span>
+                    <span class="text">Terminar actividades</span>
+                  </button>
+                </div>
               </div>
 
-              <div>
-                <a href="#" class="btn btn-primary btn-icon-split" style="float:right;">
-                  <span class="icon text-white-50">
-                    <i class="fas fa-flag"></i>
-                  </span>
-                  <span class="text">Guardar</span>
-                </a>
+              <!--actividades cierre corto-->
+              <div class="table-responsive" id="divDataTableFin">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                  <thead>
+                    <tr>
+                      <td><strong>Actividad Cierre</strong></td>
+                      <td><strong>Hora</strong></td>
+                      <td><strong>Observaciones</strong></td>
+                      <td><strong>Realizado SI/NO</strong></td>
+                    </tr>
+                  </thead>
 
+                  <tbody>
+                    <?php
+                    $sql = "SELECT ID,NOMBRE_ACTIVIDAD,HORA_REALIZAR FROM  MTO_ACTIVIDADES_CIERRE WHERE TIPO_ACTIVIDAD IN (0,2)";
+                    $resultado_set = oci_parse($conex2, $sql);
+                    oci_execute($resultado_set);
+                    while ($row = oci_fetch_array($resultado_set)) {
+                      $textAct =  wordwrap($row[1], 90, "\n", true);
+                      echo '
+                       <tr>
+                         <td>' . $textAct . '</td>
+                         <td>' . $row[2] . '</td>
+                         <td><textarea id="obserf-' . $row[0] . '" name="observaciones" style="height: 110px; width: 300px;"></textarea></td>
+                         <td>
+                           <input type="checkbox" data-idf="' . $row[0] . '" class="checkActf" data-toggle="toggle" data-on="SI" data-off="NO" data-onstyle="success" data-offstyle="danger">
+                         </td>
+                       </tr>
+                       ';
+                    }
+                    ?>
+                  </tbody>
+                </table>
+
+                <div>
+                  <button id="btnSavef" class="btn btn-primary btn-icon-split" style="float:right;">
+                    <span class="icon text-white-50">
+                      <i class="fas fa-flag"></i>
+                    </span>
+                    <span class="text">Terminar actividades</span>
+                  </button>
+                </div>
               </div>
-
-
             </div>
-
           </div>
-
         </div>
         <!-- /.container-fluid -->
 
@@ -577,17 +506,18 @@
 
     <!-- Page level plugins -->
     <!--<script src="vendor/datatables/jquery.dataTables.min.js"></script>-->
-    <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
     <!-- Page level custom scripts -->
     <script src="js/demo/datatables-demo.js"></script>
 
     <!-- js del dropdown -->
     <script src="js/demo/dropdown.js"></script>
-    <script src="bootstrap/js/bootstrap.min.js"></script>
 
     <!--JS Para el switch-->
     <script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/js/bootstrap4-toggle.min.js"></script>
+
+    <!-- js del dropdown -->
+    <script src="js/registro_actividades_cierre.js"></script>
 
 </body>
 <!--COMETARIADAS
