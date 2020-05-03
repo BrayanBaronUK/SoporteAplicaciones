@@ -1,36 +1,15 @@
 <?php
-  $actividades = array(
-    0 => array('name'=>"Consulta cambio de numero portabilidad", 'time'=>"5:55:00 a. m.", 'obser'=>""),
-    1 => array('name'=>"Verificación Procesos DWH", 'time'=>"2:30:00 a. m.", 'obser'=>""),
-    2 => array('name'=>"Modificacion Numeracion (Portabilidad)", 'time'=>"6:15:00 a. m.", 'obser'=>""),
-    3 => array('name'=>"Carga de archivos de operadores TIGO, MOVISTAR y CLARO", 'time'=>"11:00:00 a. m.", 'obser'=>""),
-    4 => array('name'=>"Reinicio BTF Venta Express (Sábados), 192.168.231.237 BTF12 192.168.231.238 BTF14-15 Probar acceso al aplicativo", 'time'=>"3:00:00 a. m.", 'obser'=>""),
-    5 => array('name'=>"Consulta de Abonados ONE NDS. (Sabados )", 'time'=>"3:00:00 p. m.", 'obser'=>""),
-    6 => array('name'=>"Revisión Proceso de Compensacion IDEN(11 de cada mes )", 'time'=>"4:00:00 p. m.", 'obser'=>""),
-    7 => array('name'=>"Revisión Proceso de Compensacion LTE (18,20,22 y 28 de cada mes )", 'time'=>"4:00:00 p. m.", 'obser'=>""),
-    8 => array('name'=>"Consulta de Abonados ONE NDS. (Domingos )", 'time'=>"3:00:00 p. m.", 'obser'=>""),
-    9 => array('name'=>"Modificacion Turnos Aranda de acuerdo al horario (Domingos )", 'time'=>"10:00:00 p. m.", 'obser'=>""),
-    10 => array('name'=>"Ejecución Query y Envio de Correo notificando ciclo enviado en el cierre. En caso de haberse enviado el incorrecto notificar inmediamentamente a la persona que esta ejecutando el cierre (15 y 1ro de cada mes a la madrugada)", 'time'=>"1:15:00 a. m.", 'obser'=>""),
-    11 => array('name'=>"Monitoreo en OAS ", 'time'=>"Permanente", 'obser'=>""),
-    12 => array('name'=>"Atención Alarmas por correo", 'time'=>"Permanente", 'obser'=>""),
-    13 => array('name'=>"Arandas Pendientes", 'time'=>"Permanente", 'obser'=>"")
-  );
-
-  $actiFinSemana = array(
-  
-    4 => array('name'=>"Reinicio BTF Venta Express (Sábados), 192.168.231.237 BTF12 192.168.231.238 BTF14-15 Probar acceso al aplicativo", 'time'=>"3:00:00 a. m.", 'obser'=>""),
-    5 => array('name'=>"Consulta de Abonados ONE NDS. (Sabados )", 'time'=>"3:00:00 p. m.", 'obser'=>""),
-    8 => array('name'=>"Consulta de Abonados ONE NDS. (Domingos )", 'time'=>"3:00:00 p. m.", 'obser'=>""),
-    9 => array('name'=>"Modificacion Turnos Aranda de acuerdo al horario (Domingos )", 'time'=>"10:00:00 p. m.", 'obser'=>"")
-  );
+include_once("conexion.php");
+$conex2 = oci_connect($user, $pass, $db, 'AL32UTF8');
 ?>
-
 <!DOCTYPE html>
 <html lang="es">
 
 <head>
 
   <meta charset="utf-8">
+  <meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
@@ -280,11 +259,11 @@
 
         <!-- Topbar -->
         <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-         <div style="width: 850px;"> 
-          <div style="float: right; width: 400px;">
-            <font size=4 style="color: #C019A6;">BIENVENIDO AL GESTOR DE SOPORTE IT</font>
+          <div style="width: 850px;">
+            <div style="float: right; width: 400px;">
+              <font size=4 style="color: #C019A6;">BIENVENIDO AL GESTOR DE SOPORTE IT</font>
+            </div>
           </div>
-         </div>
 
           <!-- Sidebar Toggle (Topbar) -->
           <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
@@ -296,15 +275,12 @@
 
             <div class="topbar-divider d-none d-sm-block"></div>
             <?php @session_start();
-            
-            include_once("conexion.php");
-            $conex2 = oci_connect($user, $pass, $db);
             $elusuario = $_SESSION['usuario'];
             $sql = "SELECT NOMBRES||' '||APELLIDOS FROM USUARIOS_SOPORTE WHERE USUARIO = '$elusuario'";
             $resultado_set = oci_parse($conex2, $sql);
             oci_execute($resultado_set);
             while ($row = oci_fetch_array($resultado_set)) {
-            
+
             ?>
 
 
@@ -381,9 +357,26 @@
                   </thead>
 
                   <tbody>
-                    
+
                     <?php
-                      foreach ($actividades as $clave => $valor) {
+                    $sql = "SELECT ID,NOMBRE_ACTIVIDAD,HORA_REALIZAR FROM  MTO_ACTIVIDADES WHERE TIPO_ACTIVIDAD = 0";
+                    $resultado_set = oci_parse($conex2, $sql);
+                    oci_execute($resultado_set);
+                    while ($row = oci_fetch_array($resultado_set)) {
+                      $textAct =  wordwrap($row[1], 85, "\n", true);
+                      echo '
+                        <tr>
+                          <td>' . $textAct . '</td>
+                          <td>' . $row[2] . '</td>
+                          <td><textarea id="obser-' . $row[0] . '" name="observaciones" style="height: 110px; width: 300px;"></textarea></td>
+                          <td>
+                            <input type="checkbox" data-id="' . $row[0] . '" class="checkAct" data-toggle="toggle" data-on="SI" data-off="NO" data-onstyle="success" data-offstyle="danger">
+                          </td>
+                        </tr>
+                        ';
+                    }
+                    /*
+                       foreach ($actividades as $clave => $valor) {
                         echo '
                         <tr>
                           <td>'.$valor['name'].'</td>
@@ -395,6 +388,7 @@
                         </tr>
                         ';
                       }
+                       */
                     ?>
                   </tbody>
                 </table>
@@ -423,18 +417,22 @@
 
                   <tbody>
                     <?php
-                      foreach ($actiFinSemana as $clave => $valor) {
-                        echo '
-                        <tr>
-                          <td>'.$valor['name'].'</td>
-                          <td>'.$valor['time'].'</td>
-                          <td><textarea id="obserf-'.$clave.'" name="observaciones" style="height: 110px; width: 300px;"></textarea></td>
-                          <td>
-                            <input type="checkbox" data-idf="'.$clave.'" class="checkActf" data-toggle="toggle" data-on="SI" data-off="NO" data-onstyle="success" data-offstyle="danger">
-                          </td>
-                        </tr>
-                        ';
-                      }
+                    $sql = "SELECT ID,NOMBRE_ACTIVIDAD,HORA_REALIZAR FROM  MTO_ACTIVIDADES WHERE TIPO_ACTIVIDAD = 1";
+                    $resultado_set = oci_parse($conex2, $sql);
+                    oci_execute($resultado_set);
+                    while ($row = oci_fetch_array($resultado_set)) {
+                      $textAct =  wordwrap($row[1], 83, "\n", true);
+                      echo '
+                       <tr>
+                         <td>' . $textAct . '</td>
+                         <td>' . $row[2] . '</td>
+                         <td><textarea id="obserf-' . $row[0] . '" name="observaciones" style="height: 110px; width: 300px;"></textarea></td>
+                         <td>
+                           <input type="checkbox" data-idf="' . $row[0] . '" class="checkActf" data-toggle="toggle" data-on="SI" data-off="NO" data-onstyle="success" data-offstyle="danger">
+                         </td>
+                       </tr>
+                       ';
+                    }
                     ?>
                   </tbody>
                 </table>
@@ -448,7 +446,7 @@
                   </button>
                 </div>
               </div>
-            </div>  
+            </div>
           </div>
         </div>
         <!-- /.container-fluid -->

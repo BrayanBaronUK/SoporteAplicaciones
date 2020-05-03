@@ -162,27 +162,39 @@ SELECT TO_CHAR(SYSDATE, 'HH:MI:SS a.m.') FROM DUAL;
 CREATE TABLE MTO_ACTIVIDADES(
 ID NUMBER PRIMARY KEY NOT NULL,
 NOMBRE_ACTIVIDAD VARCHAR2(1000),
-HORA_REALIZAR VARCHAR2(30)
+HORA_REALIZAR VARCHAR2(30),
+TIPO_ACTIVIDAD NUMBER
 );
+ --drop table MTO_ACTIVIDADES;
 
-
-SELECT * FROM DELETE MTO_ACTIVIDADES;
+SELECT * FROM MTO_ACTIVIDADES;
 
 /*
-INSERT INTO MTO_ACTIVIDADES VALUES (0,'Consulta cambio de numero portabilidad','5:55:00 AM');
-INSERT INTO MTO_ACTIVIDADES VALUES (1,'Verificación Procesos DWH','2:30:00 AM');
-INSERT INTO MTO_ACTIVIDADES VALUES (2,'Modificacion Numeracion (Portabilidad)','6:15:00 AM');
-INSERT INTO MTO_ACTIVIDADES VALUES (3,'Carga de archivos de operadores TIGO, MOVISTAR y CLARO','11:00:00 AM');
-INSERT INTO MTO_ACTIVIDADES VALUES (4,'Reinicio BTF Venta Express (Sábados), 192.168.231.237 BTF12 192.168.231.238 BTF14-15 Probar acceso al aplicativo','3:00:00 AM');
-INSERT INTO MTO_ACTIVIDADES VALUES (5,'Consulta de Abonados ONE NDS. (Sabados )','3:00:00 PM');
-INSERT INTO MTO_ACTIVIDADES VALUES (6,'Revisión Proceso de Compensacion IDEN(11 de cada mes )','4:00:00 PM');
-INSERT INTO MTO_ACTIVIDADES VALUES (7,'Revisión Proceso de Compensacion LTE (18,20,22 y 28 de cada mes )','4:00:00 PM');
-INSERT INTO MTO_ACTIVIDADES VALUES (8,'Consulta de Abonados ONE NDS. (Domingos )','3:00:00 PM');
-INSERT INTO MTO_ACTIVIDADES VALUES (9,'Modificacion Turnos Aranda de acuerdo al horario (Domingos )','10:00:00 PM');
-INSERT INTO MTO_ACTIVIDADES VALUES (10,'Ejecución Query y Envio de Correo notificando ciclo enviado en el cierre. En caso de haberse enviado el incorrecto notificar inmediamentamente a la persona que esta ejecutando el cierre (15 y 1ro de cada mes a la madrugada), ','1:15:00 PM');
-INSERT INTO MTO_ACTIVIDADES VALUES (11,'Monitoreo en OAS ','Permanente');
-INSERT INTO MTO_ACTIVIDADES VALUES (12,'Atención Alarmas por correo','Permanente');
-INSERT INTO MTO_ACTIVIDADES VALUES (13,'Arandas Pendientes','Permanente');
+INSERT INTO MTO_ACTIVIDADES VALUES (0,'Consulta cambio de numero portabilidad','5:55:00 AM',0);
+INSERT INTO MTO_ACTIVIDADES VALUES (1,'Verificación Procesos DWH','2:30:00 AM',0);
+INSERT INTO MTO_ACTIVIDADES VALUES (2,'Modificacion Numeracion (Portabilidad)','6:15:00 AM',0);
+INSERT INTO MTO_ACTIVIDADES VALUES (3,'Carga de archivos de operadores TIGO, MOVISTAR y CLARO','11:00:00 AM',0);
+INSERT INTO MTO_ACTIVIDADES VALUES (4,'Reinicio BTF Venta Express (Sábados), 192.168.231.237 BTF12 192.168.231.238 BTF14-15 Probar acceso al aplicativo','3:00:00 AM',1);
+INSERT INTO MTO_ACTIVIDADES VALUES (5,'Consulta de Abonados ONE NDS. (Sabados )','3:00:00 PM',1);
+INSERT INTO MTO_ACTIVIDADES VALUES (6,'Revisión Proceso de Compensacion IDEN(11 de cada mes )','4:00:00 PM',0);
+INSERT INTO MTO_ACTIVIDADES VALUES (7,'Revisión Proceso de Compensacion LTE (18,20,22 y 28 de cada mes )','4:00:00 PM',0);
+INSERT INTO MTO_ACTIVIDADES VALUES (8,'Consulta de Abonados ONE NDS. (Domingos )','3:00:00 PM',1);
+INSERT INTO MTO_ACTIVIDADES VALUES (9,'Modificacion Turnos Aranda de acuerdo al horario (Domingos )','10:00:00 PM',1);
+INSERT INTO MTO_ACTIVIDADES VALUES (10,'Ejecución Query y Envio de Correo notificando ciclo enviado en el cierre. En caso de haberse enviado el incorrecto notificar inmediamentamente a la persona que esta ejecutando el cierre (15 y 1ro de cada mes a la madrugada)','1:15:00 PM',0);
+INSERT INTO MTO_ACTIVIDADES VALUES (11,'Monitoreo en OAS ','Permanente',1);
+INSERT INTO MTO_ACTIVIDADES VALUES (12,'Atención Alarmas por correo','Permanente',0);
+INSERT INTO MTO_ACTIVIDADES VALUES (13,'Arandas Pendientes','Permanente',0);
+*/
+---TIPOS CTIVIDADES
+CREATE TABLE TIPO_ACTIVIDADES(
+ID NUMBER PRIMARY KEY NOT NULL,
+TIPO_ACTIVIDAD VARCHAR2(50)
+);
+
+SELECT * FROM TIPO_ACTIVIDADES;
+/*
+INSERT INTO TIPO_ACTIVIDADES VALUES (0,'SEMANA');
+INSERT INTO TIPO_ACTIVIDADES VALUES (1,'FIN_SEMANA');
 */
 
 --MANTEMINIMIENTO TURNOS
