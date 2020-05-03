@@ -28,8 +28,8 @@ set_time_limit(100);
 
   <!-- Custom styles for this template-->
   <link href="css/sb-admin-2.min.css" rel="stylesheet">
- 
-   <!--estilos botones del dashboard-->
+
+  <!--estilos botones del dashboard-->
   <link href="tabla_dinamica/estilos_tab/botones_estilos.css" rel="stylesheet">
 
 </head>
@@ -324,22 +324,23 @@ set_time_limit(100);
 
         <!--<div class="container-fluid">-->
         <div style="width: 1300px; padding:3px;">
-          <div style="float: right; width: 640px; height: 40px;">
-            <form action="index2.php">
-              <input type="submit" style="float: right;" value="Analisis Mes" class="next_window"></input>
+          <div style="float: left; width: 640px; height: 50px;">
+            <form action="index.php">
+              <input type="submit" style="float: left;" value="Analisis Dia" class="next_window"></input>
             </form>
           </div>
-          <div style="float: left; width: 640px; height: 40px;">
+          <div style="float: right; width: 640px; height: 50px;">
+          <form action="index3.php">
+              <input type="submit" style="float: right;" value="Resumen" class="next_window"></input>
+            </form>
           </div>
         </div>
-        <br>
-
+         <br>
         <div style="width: 1300px; padding:3px;">
-          <div id="grafico_barras_dia" style="width: 640px;height: 500px;float:left;padding-bottom: 15px;"></div>
-          <div id="grafico_pie_dia" style="height: 500px; width: 640px; float:right; padding-bottom: 15px;"></div>
+          <div id="grafico_barras_mes" style=" width: 640px; height: 500px; float:left;"></div>
+          <div id="grafico_pie_mes" style="height: 500px; width: 640px; float:right;"></div>
         </div>
-        
-        
+
         <!-- End of Main Content -->
 
         <!-- Footer -->
@@ -412,14 +413,13 @@ set_time_limit(100);
 
     <script type="text/javascript">
       $(document).ready(function() {
-
-        // Insercion de barras dia
+        // Insercion de barras mes
         <?php
         $arrResp = array();
         $arrCant = array();
         $arrPend = array();
 
-        $sql = "SELECT GRP_ID,RESPONSABLE,CANTIDAD,PENDIENTES FROM ARANDA.V_GESTION_DIA_GRAF";
+        $sql = "SELECT GRP_ID,RESPONSABLE,CANTIDAD,PENDIENTES FROM ARANDA.V_GESTION_MES_GRAF";
         $resultado_set = oci_parse($conex2, $sql);
         oci_execute($resultado_set);
         while ($row = oci_fetch_array($resultado_set)) {
@@ -428,13 +428,14 @@ set_time_limit(100);
           array_push($arrPend, $row[3]);
         }
         ?>
+
         $(function() {
-          $('#grafico_barras_dia').highcharts({
+          $('#grafico_barras_mes').highcharts({
             chart: {
               type: 'bar'
             },
             title: {
-              text: 'Cantidad de Casos Aranda - Día'
+              text: 'Cantidad de Casos Aranda - Mes'
             },
             subtitle: {
               text: 'Cantidad de casos por especialista'
@@ -485,22 +486,22 @@ set_time_limit(100);
               data: [<?php echo implode(",", $arrCant); ?>],
             }, {
               name: 'pend',
-              align: 'left',
               data: [<?php echo implode(",", $arrPend); ?>],
             }]
           });
         });
 
-        // Insercion de pie casos Aranda
+
+        // Insercion pie mes
         $(function() {
-          $('#grafico_pie_dia').highcharts({
+          $('#grafico_pie_mes').highcharts({
             chart: {
               plotBackgroundColor: null,
               plotBorderWidth: null,
               plotShadow: false
             },
             title: {
-              text: 'Porcentaje de Casos Aranda - Día'
+              text: 'Porcentaje de Casos Aranda - Mes'
             },
             tooltip: {
               pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
@@ -514,7 +515,6 @@ set_time_limit(100);
                   format: '<b>{point.name}</b>: {point.percentage:.1f} %',
                   style: {
                     color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
-                    //  color: 'blue' || 'black'
                   }
                 }
               }
@@ -525,14 +525,17 @@ set_time_limit(100);
               data: [
 
                 <?php
-                $sql = "SELECT GRP_ID,RESPONSABLE,count(*) as CANTIDAD FROM ARANDA.V_ARA_CASOS_2  WHERE GRP_ID IN (64,73)
-            AND FECHA_SOLUCION  BETWEEN TO_DATE ( TO_CHAR(TRUNC(SYSDATE), 'DD')||'-'||TO_CHAR(TRUNC(SYSDATE), 'MON')||','||TO_CHAR(TRUNC(SYSDATE), 'YYYY')||'00:00:00', 'DD-MON-YYYY HH24:MI:SS' ) 
-            AND TO_DATE ( TO_CHAR(TRUNC(SYSDATE), 'DD')||'-'||TO_CHAR(TRUNC(SYSDATE), 'MON')||','||TO_CHAR(TRUNC(SYSDATE), 'YYYY')||'23:59:59', 'DD-MON-YYYY HH24:MI:SS' )
-            GROUP BY GRP_ID,RESPONSABLE ORDER BY 3 DESC";
+                $sql = "SELECT GRP_ID, RESPONSABLE,COUNT(*) as CANTIDAD FROM ARANDA.V_ARA_CASOS_2
+            WHERE GRP_ID IN (64,73) AND ESTADO  IN ('SOLUCIONADO','CERRADO') 
+              AND TRUNC(FECHA_REGISTRO) BETWEEN TRUNC (SYSDATE,'MONTH')AND TRUNC(LAST_DAY (SYSDATE))
+                GROUP BY GRP_ID,RESPONSABLE ORDER BY 3 DESC";
                 $resultado_set = oci_parse($conex2, $sql);
                 oci_execute($resultado_set);
                 while ($row = oci_fetch_array($resultado_set)) {
-                ?>['<?php echo $row[1] ?>', <?php echo $row[2] ?>],
+                ?>
+
+                  ['<?php echo $row[1] ?>', <?php echo $row[2] ?>],
+
                 <?php
                 }
                 ?>

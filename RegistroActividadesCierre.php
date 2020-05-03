@@ -446,6 +446,53 @@ $conex2 = oci_connect($user, $pass, $db, 'AL32UTF8');
                   </button>
                 </div>
               </div>
+
+              <!--cierre de 25 ciclo J-->
+              <div class="table-responsive" id="divDataTableJ">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                  <thead>
+                    <tr>
+                      <td><strong>Actividad Cierre</strong></td>
+                      <td><strong>Hora</strong></td>
+                      <td><strong>Observaciones</strong></td>
+                      <td><strong>Realizado SI/NO</strong></td>
+                    </tr>
+                  </thead>
+
+                  <tbody>
+                    <?php
+                    $sql = "SELECT ID,NOMBRE_ACTIVIDAD,HORA_REALIZAR FROM  MTO_ACTIVIDADES_CIERRE WHERE TIPO_ACTIVIDAD IN (0,2,3)";
+                    $resultado_set = oci_parse($conex2, $sql);
+                    oci_execute($resultado_set);
+                    while ($row = oci_fetch_array($resultado_set)) {
+                      $textAct =  wordwrap($row[1], 90, "\n", true);
+                      echo '
+                       <tr>
+                         <td>' . $textAct . '</td>
+                         <td>' . $row[2] . '</td>
+                         <td><textarea id="obserj-' . $row[0] . '" name="observaciones" style="height: 110px; width: 300px;"></textarea></td>
+                         <td>
+                           <input type="checkbox" data-idj="' . $row[0] . '" class="checkActj" data-toggle="toggle" data-on="SI" data-off="NO" data-onstyle="success" data-offstyle="danger">
+                         </td>
+                       </tr>
+                       ';
+                    }
+                    ?>
+                  </tbody>
+                </table>
+
+                <div>
+                  <button id="btnSavej" class="btn btn-primary btn-icon-split" style="float:right;">
+                    <span class="icon text-white-50">
+                      <i class="fas fa-flag"></i>
+                    </span>
+                    <span class="text">Terminar actividades</span>
+                  </button>
+                </div>
+              </div>
+
+
+
             </div>
           </div>
         </div>
