@@ -4,9 +4,9 @@
     window.location = 'cambio_contrasena.php';
   }
 
-  function AlertaCambioClave() {
+  function IngresoUser() {
     alert('Ok a realizado el cambio de su clave ...!');
-    window.location = 'index.php';
+    window.location = '/AvantelSoporte_Users/index.php';
   }
 
   function AlertaClaveAvantel() {
@@ -23,6 +23,10 @@
     alert('su clave no debe ser la misma que la actual...!');
     window.location = 'cambio_contrasena.php';
   }
+  function IngresoAdmin() {
+      alert('Ok a realizado el cambio de su clave ...!');
+        window.location = '/AvantelSoporte_Admin/index.php';
+    }
 </script>
 <?php
 @session_start();
@@ -39,6 +43,7 @@ $queryg = oci_parse($conex2, $sqlc);
 oci_execute($queryg);
 while (oci_fetch($queryg)) {
   $claveactual = oci_result($queryg, "CLAVE");
+  $tipouser = oci_result($queryg, "CLAVE");
 }
 if ($v_clave1 <> $v_clave2) :
 
@@ -65,15 +70,28 @@ else :
   //  echo "usuario:".$elusuario;
   //   $usuarito = $_GET['user'];
   $sql = "UPDATE USUARIOS_SOPORTE_SEG SET CLAVE = '$v_clave1' WHERE USUARIO = '$elusuario'";
+  $sqlc = "SELECT TIPO_USUARIO FROM USUARIOS_SOPORTE_SEG WHERE USUARIO = '$elusuario'";
 
   $queryf = oci_parse($conex2, $sql);
+  $queryg = oci_parse($conex2, $sqlc);
   oci_execute($queryf);
+  oci_execute($queryg);
   oci_commit($conex2);
-  //echo 'clave actual '.$claveactual.'hhhhhwhwh';
+  while (oci_fetch($queryg)) {
+    $tipouser = oci_result($queryg, "TIPO_USUARIO");
+  }
+  
+    if ($tipouser=='ADMIN'){
+      
+      echo "<script>";
+      echo "IngresoAdmin()";
+      echo "</script>";
+    }else{
+      echo "<script>";
+      echo "IngresoUser()";
+      echo "</script>";
+    }
 
-  echo "<script>";
-  echo "AlertaCambioClave()";
-  echo "</script>";
 
 endif;
 ?>

@@ -36,7 +36,9 @@
       //	<td><select name='especialista[]'><option>Carlos Palacios</option><option>Brayan Baron</option><option>Wilson Castro</option></select></td> \
       $("#add").click(function() {
         var nuevaFila = `<tr> \
-        <td><select name='especialista[]' id='especialista'><?php $sql = "SELECT NOMBRES||' '||APELLIDOS, CEDULA FROM USUARIOS_SOPORTE"; $resultado_set = oci_parse($conex2, $sql); oci_execute($resultado_set); while ($row = oci_fetch_array($resultado_set)){ echo '<option value="'.$row[1].'">'.$row[0].'</option>'; } ?></select></td> \
+        <td><select name='especialista[]' id='especialista'><?php $sql = "SELECT NOMBRES||' '||APELLIDOS, CEDULA 
+                              FROM USUARIOS_SOPORTE A INNER JOIN USUARIOS_SOPORTE_SEG B
+                              ON A.USUARIO = B.USUARIO WHERE B.TIPO_USUARIO = 'USER'"; $resultado_set = oci_parse($conex2, $sql); oci_execute($resultado_set); while ($row = oci_fetch_array($resultado_set)){ echo '<option value="'.$row[1].'">'.$row[0].'</option>'; } ?></select></td> \
 				<td><input type='date' name='dia[]'></td> \
 				<td><input type='button' class='del' value='Eliminar Fila'></td> \
 			</tr>`;
@@ -371,7 +373,9 @@
                           <td>
                            <select name='especialista[]' id="especialista">
                            <?php
-                           $sql = "SELECT NOMBRES||' '||APELLIDOS, CEDULA FROM USUARIOS_SOPORTE";
+                           $sql = "SELECT NOMBRES||' '||APELLIDOS, CEDULA 
+                           FROM USUARIOS_SOPORTE A INNER JOIN USUARIOS_SOPORTE_SEG B
+                           ON A.USUARIO = B.USUARIO WHERE B.TIPO_USUARIO = 'USER'";
                            $resultado_set = oci_parse($conex2, $sql);
                            oci_execute($resultado_set);
                            while ($row = oci_fetch_array($resultado_set)){

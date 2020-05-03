@@ -5,7 +5,7 @@
   }
 
   function AlertaNoCierre() {
-    alert('No se pudo crear cierre...!');
+    confirm('No se pudo crear cierre...!');
     window.location = 'Creacion_horarios_cierre.php';
   }
 </script>
