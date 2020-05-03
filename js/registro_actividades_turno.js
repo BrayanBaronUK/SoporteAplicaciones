@@ -1,9 +1,17 @@
-// Handler - Selector de Turnos
 $('#selectTurno').change(function() {
     if( $(this).val() != '' ) {
-        $('#divDataTable').show();
-    } else {
+        if($(this).val() == 6){
+        $('#divDataTable').hide();    
+        $('#divDataTableFin').show();
+        }
+        else{
+        $('#divDataTableFin').hide();    
+        $('#divDataTable').show();      
+        }
+    }
+    else {
         $('#divDataTable').hide();
+        $('#divDataTableFin').hide();
     }
 });
 
@@ -40,8 +48,52 @@ $(".checkAct").change(function(){
     }
 });
 
+// Handler - Selector SI/NO Fin semana
+$(".checkActf").change(function(){
+    if($(this).prop("checked") == true){
+        let idTurnf = $('#selectTurno').val();
+        let idActf = $(this).attr('data-idf');
+        let obserf = $('#obserf-'+idActf).val();
+        
+        $(this).attr('disabled', '');
+        $('#obserf-'+idActf).attr('disabled', '');
+        $('#selectTurno').attr('disabled', '');
+        
+        // Envio de información AJAX
+        let jsondata = { 
+            turn: idTurnf, 
+            idAct: idActf,
+            obser: obserf
+        };
+        $.post( "RegistroActividadesTurnoPost.php", jsondata, function(data) {
+            console.log("success: ", data );
+        })
+        .done(function() {
+            alert( "Actividad guardada exitosamente" );
+        })
+        .fail(function(err) {
+            alert( "Error al guardar la actividad" );
+            console.log( "Error al guardar la actividad", err );
+        })
+        .always(function() {
+            console.log( "finished" );
+        });
+    }
+});
+
+
 // Handler - Boton terminar
 $('#btnSave').on('click', function() {
+    var r = confirm("Estas seguro de terminar las actividades");
+    if (r == true) {
+        location.reload();
+    } else {
+        console.log('cancel');
+    }
+});
+
+// Handler - Boton terminar
+$('#btnSavef').on('click', function() {
     var r = confirm("Estas seguro de terminar las actividades");
     if (r == true) {
         location.reload();
@@ -53,4 +105,5 @@ $('#btnSave').on('click', function() {
 // Handler - DOM Ready
 $( document ).ready(function() {
     $('#divDataTable').hide();
+    $('#divDataTableFin').hide();
 });

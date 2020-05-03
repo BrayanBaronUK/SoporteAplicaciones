@@ -15,6 +15,14 @@
     12 => array('name'=>"Atención Alarmas por correo", 'time'=>"Permanente", 'obser'=>""),
     13 => array('name'=>"Arandas Pendientes", 'time'=>"Permanente", 'obser'=>"")
   );
+
+  $actiFinSemana = array(
+  
+    4 => array('name'=>"Reinicio BTF Venta Express (Sábados), 192.168.231.237 BTF12 192.168.231.238 BTF14-15 Probar acceso al aplicativo", 'time'=>"3:00:00 a. m.", 'obser'=>""),
+    5 => array('name'=>"Consulta de Abonados ONE NDS. (Sabados )", 'time'=>"3:00:00 p. m.", 'obser'=>""),
+    8 => array('name'=>"Consulta de Abonados ONE NDS. (Domingos )", 'time'=>"3:00:00 p. m.", 'obser'=>""),
+    9 => array('name'=>"Modificacion Turnos Aranda de acuerdo al horario (Domingos )", 'time'=>"10:00:00 p. m.", 'obser'=>"")
+  );
 ?>
 
 <!DOCTYPE html>
@@ -358,6 +366,7 @@
                   <option value="3">Turno 3 -> 2pm - 10pm</option>
                   <option value="4">Turno 4 -> 10pm - 6am</option>
                   <option value="5">Turno 5 -> 8am - 5:30pm</option>
+                  <option value="6">Sabados - Domingos</option>
                 </select>
               </div>
               <div class="table-responsive" id="divDataTable">
@@ -372,6 +381,7 @@
                   </thead>
 
                   <tbody>
+                    
                     <?php
                       foreach ($actividades as $clave => $valor) {
                         echo '
@@ -391,6 +401,46 @@
 
                 <div>
                   <button id="btnSave" class="btn btn-primary btn-icon-split" style="float:right;">
+                    <span class="icon text-white-50">
+                      <i class="fas fa-flag"></i>
+                    </span>
+                    <span class="text">Terminar actividades</span>
+                  </button>
+                </div>
+              </div>
+
+              <!--actividades fines de semana-->
+              <div class="table-responsive" id="divDataTableFin">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                  <thead>
+                    <tr>
+                      <td><strong>Actividad Cierre</strong></td>
+                      <td><strong>Hora</strong></td>
+                      <td><strong>Observaciones</strong></td>
+                      <td><strong>Realizado SI/NO</strong></td>
+                    </tr>
+                  </thead>
+
+                  <tbody>
+                    <?php
+                      foreach ($actiFinSemana as $clave => $valor) {
+                        echo '
+                        <tr>
+                          <td>'.$valor['name'].'</td>
+                          <td>'.$valor['time'].'</td>
+                          <td><textarea id="obserf-'.$clave.'" name="observaciones" style="height: 110px; width: 300px;"></textarea></td>
+                          <td>
+                            <input type="checkbox" data-idf="'.$clave.'" class="checkActf" data-toggle="toggle" data-on="SI" data-off="NO" data-onstyle="success" data-offstyle="danger">
+                          </td>
+                        </tr>
+                        ';
+                      }
+                    ?>
+                  </tbody>
+                </table>
+
+                <div>
+                  <button id="btnSavef" class="btn btn-primary btn-icon-split" style="float:right;">
                     <span class="icon text-white-50">
                       <i class="fas fa-flag"></i>
                     </span>

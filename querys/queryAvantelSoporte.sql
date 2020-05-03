@@ -155,6 +155,9 @@ DELETE ACTIVIDADES_TURNO;
 
 INSERT INTO ACTIVIDADES_TURNO VALUES (4, 7,TRUNC(SYSDATE),TO_CHAR(SYSDATE, 'HH24:MI:SS'),'SI','prueba3','BBARONA');
 
+
+SELECT TO_CHAR(SYSDATE, 'HH:MI:SS a.m.') FROM DUAL;
+
 --ACTIVIDADES TURNO MANTENIMIENTO
 CREATE TABLE MTO_ACTIVIDADES(
 ID NUMBER PRIMARY KEY NOT NULL,
@@ -163,21 +166,23 @@ HORA_REALIZAR VARCHAR2(30)
 );
 
 
-SELECT * FROM MTO_ACTIVIDADES;
+SELECT * FROM DELETE MTO_ACTIVIDADES;
+
 /*
-INSERT INTO MTO_ACTIVIDADES VALUES (0,'Verificación Procesos DWH','2:30:00 a. m.');
-INSERT INTO MTO_ACTIVIDADES VALUES (1,'Modificacion Numeracion (Portabilidad)','6:15:00 a. m.');
-INSERT INTO MTO_ACTIVIDADES VALUES (2,'Carga de archivos de operadores TIGO, MOVISTAR y CLARO','11:00:00 a. m.');
-INSERT INTO MTO_ACTIVIDADES VALUES (3,'Reinicio BTF Venta Express (Sábados), 192.168.231.237 BTF12 192.168.231.238 BTF14-15 Probar acceso al aplicativo','3:00:00 a. m.');
-INSERT INTO MTO_ACTIVIDADES VALUES (4,'Consulta de Abonados ONE NDS. (Sabados )','3:00:00 p. m.');
-INSERT INTO MTO_ACTIVIDADES VALUES (5,'Revisión Proceso de Compensacion IDEN(11 de cada mes )','4:00:00 p. m.');
-INSERT INTO MTO_ACTIVIDADES VALUES (6,'Revisión Proceso de Compensacion LTE (18,20,22 y 28 de cada mes )','4:00:00 p. m.');
-INSERT INTO MTO_ACTIVIDADES VALUES (7,'Consulta de Abonados ONE NDS. (Domingos )','3:00:00 p. m.');
-INSERT INTO MTO_ACTIVIDADES VALUES (8,'Modificacion Turnos Aranda de acuerdo al horario (Domingos )','10:00:00 p. m.');
-INSERT INTO MTO_ACTIVIDADES VALUES (9,'Ejecución Query y Envio de Correo notificando ciclo enviado en el cierre. En caso de haberse enviado el incorrecto notificar inmediamentamente a la persona que esta ejecutando el cierre (15 y 1ro de cada mes a la madrugada), ','1:15:00 a. m.');
-INSERT INTO MTO_ACTIVIDADES VALUES (10,'Monitoreo en OAS ','Permanente');
-INSERT INTO MTO_ACTIVIDADES VALUES (11,'Atención Alarmas por correo','Permanente');
-INSERT INTO MTO_ACTIVIDADES VALUES (12,'Arandas Pendientes','Permanente');
+INSERT INTO MTO_ACTIVIDADES VALUES (0,'Consulta cambio de numero portabilidad','5:55:00 AM');
+INSERT INTO MTO_ACTIVIDADES VALUES (1,'Verificación Procesos DWH','2:30:00 AM');
+INSERT INTO MTO_ACTIVIDADES VALUES (2,'Modificacion Numeracion (Portabilidad)','6:15:00 AM');
+INSERT INTO MTO_ACTIVIDADES VALUES (3,'Carga de archivos de operadores TIGO, MOVISTAR y CLARO','11:00:00 AM');
+INSERT INTO MTO_ACTIVIDADES VALUES (4,'Reinicio BTF Venta Express (Sábados), 192.168.231.237 BTF12 192.168.231.238 BTF14-15 Probar acceso al aplicativo','3:00:00 AM');
+INSERT INTO MTO_ACTIVIDADES VALUES (5,'Consulta de Abonados ONE NDS. (Sabados )','3:00:00 PM');
+INSERT INTO MTO_ACTIVIDADES VALUES (6,'Revisión Proceso de Compensacion IDEN(11 de cada mes )','4:00:00 PM');
+INSERT INTO MTO_ACTIVIDADES VALUES (7,'Revisión Proceso de Compensacion LTE (18,20,22 y 28 de cada mes )','4:00:00 PM');
+INSERT INTO MTO_ACTIVIDADES VALUES (8,'Consulta de Abonados ONE NDS. (Domingos )','3:00:00 PM');
+INSERT INTO MTO_ACTIVIDADES VALUES (9,'Modificacion Turnos Aranda de acuerdo al horario (Domingos )','10:00:00 PM');
+INSERT INTO MTO_ACTIVIDADES VALUES (10,'Ejecución Query y Envio de Correo notificando ciclo enviado en el cierre. En caso de haberse enviado el incorrecto notificar inmediamentamente a la persona que esta ejecutando el cierre (15 y 1ro de cada mes a la madrugada), ','1:15:00 PM');
+INSERT INTO MTO_ACTIVIDADES VALUES (11,'Monitoreo en OAS ','Permanente');
+INSERT INTO MTO_ACTIVIDADES VALUES (12,'Atención Alarmas por correo','Permanente');
+INSERT INTO MTO_ACTIVIDADES VALUES (13,'Arandas Pendientes','Permanente');
 */
 
 --MANTEMINIMIENTO TURNOS
@@ -186,18 +191,20 @@ ID NUMBER PRIMARY KEY NOT NULL,
 NOMBRE_TURNO VARCHAR2(100)
 );
 --DROP TABLE MTO_TURNOS;
-SELECT * FROM MTO_TURNOS;
+SELECT * FROM  MTO_TURNOS;
 /*
 INSERT INTO MTO_TURNOS VALUES (1,'Turno 1 -> 6am - 2pm');
 INSERT INTO MTO_TURNOS VALUES (2,'Turno 2 -> 11am - 8pm');
 INSERT INTO MTO_TURNOS VALUES (3,'Turno 3 -> 2pm - 10pm');
 INSERT INTO MTO_TURNOS VALUES (4,'Turno 4 -> 10pm - 6am');
-INSERT INTO MTO_TURNOS VALUES (5,'Turno 5 -> 8am - 5:30pm');*/
+INSERT INTO MTO_TURNOS VALUES (5,'Turno 5 -> 8am - 5:30pm');
+INSERT INTO MTO_TURNOS VALUES (6,'Sabados - Domingos');*/
 
 --CONSULTA DE REGISTRO DE ACTIVIDADES DEL TURNO
-SELECT * FROM ACTIVIDADES_TURNO;
+SELECT * FROM    ACTIVIDADES_TURNO;
 
-SELECT C.NOMBRE_TURNO,B.NOMBRE_ACTIVIDAD,A.FECHA,A.HORA,A.REALIZADO_SI_NO,A.OBSERVACIONES,A.USUARIO,D.NOMBRES||''||D.APELLIDOS AS NOMBRE_USUARIO
+SELECT C.NOMBRE_TURNO,B.NOMBRE_ACTIVIDAD,A.FECHA,B.HORA_REALIZAR,A.HORA AS HORA_REALIZADO,A.REALIZADO_SI_NO,A.OBSERVACIONES,
+A.USUARIO,D.NOMBRES||' '||D.APELLIDOS AS NOMBRE_USUARIO
 FROM ACTIVIDADES_TURNO A
 INNER JOIN MTO_ACTIVIDADES B ON B.ID = A.ID_ACTIVIDAD_TURNO
 INNER JOIN MTO_TURNOS C ON C.ID = A.ID_TURNO
