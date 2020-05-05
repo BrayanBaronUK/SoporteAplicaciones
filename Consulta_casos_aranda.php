@@ -334,7 +334,8 @@
                       <th>Casos pendientes</th>
                       <th>Casos cerrados</th>
                       <th>Total Casos</th>
-                      <th>Cumplimiento</th>
+                      <th>Cump. Individual</th>
+                      <th>Cump. Grupal</th>
                     </tr>
                   </thead>
                   <tfoot>
@@ -344,14 +345,16 @@
                       <th>Casos pendientes</th>
                       <th>Casos cerrados</th>
                       <th>Total Casos</th>
-                      <th>Cumplimiento</th>
+                      <th>Cump. Individual</th>
+                      <th>Cump. Grupal</th>
                     </tr>
                   </tfoot>
                   <tbody>
                     <?php
                     ini_set('max_execution_time', 300);
                     set_time_limit(300);
-                    $sql = "SELECT ID_GRUPO,RESPONSABLE,PENDIENTE,CERRADOS,TOTAL,CUMPLIMIENTO FROM V_GESTION_MES ORDER BY 5 DESC";
+                    $sql = "SELECT ID_GRUPO,RESPONSABLE,PENDIENTE,CERRADOS,TOTAL,CUMPLIMIENTO_IND,CUMPLIMIENTO_GRP
+                    FROM V_GESTION_MES ORDER BY 5 DESC";
                     $resultado_set = oci_parse($conex2, $sql);
                     oci_execute($resultado_set);
                     while ($row = oci_fetch_array($resultado_set)) {
@@ -363,6 +366,7 @@
                         <td><?php echo $row[3] ?></td>
                         <td><?php echo $row[4] ?></td>
                         <td><?php echo $row[5] ?></td>
+                        <td><?php echo $row[6] ?></td>
 
                       </tr>
                     <?php

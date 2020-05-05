@@ -326,12 +326,12 @@ set_time_limit(100);
         <div style="width: 1300px; padding:3px;">
           <div style="float: left; width: 640px; height: 50px;">
             <form action="index.php">
-              <input type="submit" style="float: left;" value="Analisis Dia" class="next_window"></input>
+              <input type="submit" style="float: left;" value="Resumen Día" class="next_window"></input>
             </form>
           </div>
           <div style="float: right; width: 640px; height: 50px;">
           <form action="index3.php">
-              <input type="submit" style="float: right;" value="Resumen" class="next_window"></input>
+              <input type="submit" style="float: right;" value="Analisis" class="next_window"></input>
             </form>
           </div>
         </div>
@@ -527,7 +527,7 @@ set_time_limit(100);
                 <?php
                 $sql = "SELECT GRP_ID, RESPONSABLE,COUNT(*) as CANTIDAD FROM ARANDA.V_ARA_CASOS_2
             WHERE GRP_ID IN (64,73) AND ESTADO  IN ('SOLUCIONADO','CERRADO') 
-              AND TRUNC(FECHA_REGISTRO) BETWEEN TRUNC (SYSDATE,'MONTH')AND TRUNC(LAST_DAY (SYSDATE))
+              AND TRUNC(FECHA_SOLUCION) BETWEEN TRUNC (SYSDATE,'MONTH')AND TRUNC(LAST_DAY (SYSDATE))
                 GROUP BY GRP_ID,RESPONSABLE ORDER BY 3 DESC";
                 $resultado_set = oci_parse($conex2, $sql);
                 oci_execute($resultado_set);

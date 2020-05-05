@@ -326,7 +326,7 @@ set_time_limit(100);
         <div style="width: 1300px; padding:2px;">
           <div style="float: left; width: 640px; height: 20px;">
             <form action="index2.php">
-              <input type="submit" style="float: left;" value="Analisis Mes" class="next_window"></input>
+              <input type="submit" style="float: left;" value="Resumen Mes" class="next_window"></input>
             </form>
           </div>
           <div style="float: right; width: 640px; height: 20px;">
@@ -499,25 +499,25 @@ set_time_limit(100);
               data: [
                 <?php
                 $sql2 = "SELECT  RESPONSABLE,COUNT(*) AS CANTIDAD 
-            FROM ARANDA.V_ARA_CASOS_2 A
-            LEFT JOIN USUARIOS B ON B.UNAME = A.RESPONSABLE
-            WHERE GRP_ID IN (64,73) AND ESTADO  IN ('SOLUCIONADO','CERRADO')
-            AND CODUSUARIO NOT IN (687,10698,3277,3229,2236,3670,2786,2857,3066,3560,3218,2106,3323)
-            AND TRUNC(FECHA_REGISTRO) BETWEEN TRUNC (SYSDATE,'MONTH')AND TRUNC(LAST_DAY (SYSDATE))
-            GROUP BY RESPONSABLE
-            UNION ALL
-            SELECT DISTINCT(RESPONSABLE),0 FROM ARANDA.V_ARA_CASOS_2 A
-            INNER JOIN USUARIOS B ON B.UNAME = A.RESPONSABLE
-            WHERE GRP_ID IN (64,73)
-            AND CODUSUARIO NOT IN (687,10698,3277,3229,2236,3670,2786,2857,3066,3560,3218,2106,3323)
-            MINUS
-            SELECT  RESPONSABLE,0 
-            FROM ARANDA.V_ARA_CASOS_2 A
-            LEFT JOIN USUARIOS B ON B.UNAME = A.RESPONSABLE
-            WHERE GRP_ID IN (64,73) AND ESTADO  IN ('SOLUCIONADO','CERRADO')
-            AND CODUSUARIO NOT IN (687,10698,3277,3229,2236,3670,2786,2857,3066,3560,3218,2106,3323)
-            AND TRUNC(FECHA_REGISTRO) BETWEEN TRUNC (SYSDATE,'MONTH')AND TRUNC(LAST_DAY (SYSDATE))
-            GROUP BY RESPONSABLE ORDER BY 1 ASC";
+                FROM ARANDA.V_ARA_CASOS_2 A
+                LEFT JOIN USUARIOS B ON B.UNAME = A.RESPONSABLE
+                WHERE GRP_ID IN (64,73) AND ESTADO  IN ('SOLUCIONADO','CERRADO')
+                AND CODUSUARIO NOT IN (687,10698,3277,3229,2236,3670,2786,2857,3066,3560,3218,2106,3323)
+                AND TRUNC(FECHA_SOLUCION) BETWEEN TRUNC (SYSDATE,'MONTH')AND TRUNC(LAST_DAY (SYSDATE))
+                GROUP BY RESPONSABLE
+                UNION ALL
+                SELECT DISTINCT(RESPONSABLE),0 FROM ARANDA.V_ARA_CASOS_2 A
+                INNER JOIN USUARIOS B ON B.UNAME = A.RESPONSABLE
+                WHERE GRP_ID IN (64,73)
+                AND CODUSUARIO NOT IN (687,10698,3277,3229,2236,3670,2786,2857,3066,3560,3218,2106,3323)
+                MINUS
+                SELECT  RESPONSABLE,0 
+                FROM ARANDA.V_ARA_CASOS_2 A
+                LEFT JOIN USUARIOS B ON B.UNAME = A.RESPONSABLE
+                WHERE GRP_ID IN (64,73) AND ESTADO  IN ('SOLUCIONADO','CERRADO')
+                AND CODUSUARIO NOT IN (687,10698,3277,3229,2236,3670,2786,2857,3066,3560,3218,2106,3323)
+                AND TRUNC(FECHA_SOLUCION) BETWEEN TRUNC (SYSDATE,'MONTH')AND TRUNC(LAST_DAY (SYSDATE))
+                GROUP BY RESPONSABLE ORDER BY 1 ASC";
                 $resultado_set = oci_parse($conex2, $sql2);
                 oci_execute($resultado_set);
                 while ($row = oci_fetch_array($resultado_set)) {
@@ -534,10 +534,10 @@ set_time_limit(100);
               data: [
                 <?php
                 $sql2 = "SELECT RESPONSABLE,COUNT(*) as CANTIDAD FROM ARANDA.V_ARA_CASOS_2 A
-            INNER JOIN USUARIOS B ON B.UNAME = A.RESPONSABLE
+                INNER JOIN USUARIOS B ON B.UNAME = A.RESPONSABLE
                 WHERE GRP_ID IN (64,73) AND ESTADO  IN ('SOLUCIONADO','CERRADO') 
                 AND CODUSUARIO NOT IN (687,10698,3277,3229,2236,3670,2786,2857,3066,3560,3218,2106,3323)
-                AND TRUNC(FECHA_REGISTRO) BETWEEN TRUNC(ADD_MONTHS(SYSDATE,-1),'MONTH') AND TRUNC(LAST_DAY(ADD_MONTHS(SYSDATE,-1)))
+                AND TRUNC(FECHA_SOLUCION) BETWEEN TRUNC(ADD_MONTHS(SYSDATE,-1),'MONTH') AND TRUNC(LAST_DAY(ADD_MONTHS(SYSDATE,-1)))
                 GROUP BY RESPONSABLE ORDER BY 1 ASC";
                 $resultado_set = oci_parse($conex2, $sql2);
                 oci_execute($resultado_set);
@@ -556,10 +556,10 @@ set_time_limit(100);
               data: [
                 <?php
                 $sql2 = "SELECT RESPONSABLE,COUNT(*) as CANTIDAD FROM ARANDA.V_ARA_CASOS_2 A
-            INNER JOIN USUARIOS B ON B.UNAME = A.RESPONSABLE
+                INNER JOIN USUARIOS B ON B.UNAME = A.RESPONSABLE
                 WHERE GRP_ID IN (64,73) AND ESTADO  IN ('SOLUCIONADO','CERRADO') 
                 AND CODUSUARIO NOT IN (687,10698,3277,3229,2236,3670,2786,2857,3066,3560,3218,2106,3323)
-                AND TRUNC(FECHA_REGISTRO) BETWEEN TRUNC(ADD_MONTHS(SYSDATE,-2),'MONTH') AND TRUNC(LAST_DAY(ADD_MONTHS(SYSDATE,-2)))
+                AND TRUNC(FECHA_SOLUCION) BETWEEN TRUNC(ADD_MONTHS(SYSDATE,-2),'MONTH') AND TRUNC(LAST_DAY(ADD_MONTHS(SYSDATE,-2)))
                 GROUP BY RESPONSABLE ORDER BY 1 ASC";
                 $resultado_set = oci_parse($conex2, $sql2);
                 oci_execute($resultado_set);

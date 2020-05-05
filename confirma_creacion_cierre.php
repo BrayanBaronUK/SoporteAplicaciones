@@ -1,6 +1,6 @@
 <script language="javascript" type="text/javascript">
   function AlertaCreaCierre() {
-    alert('Ok se realizo registro de programacion de Cierre Maestra...!');
+    confirm('Ok se realizo registro de programacion de Cierre Maestra...!');
     window.location = 'Creacion_horarios_cierre.php';
   }
 

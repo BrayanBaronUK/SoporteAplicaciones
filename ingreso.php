@@ -20,10 +20,12 @@
         window.location = 'Nueva_clave.php';
     }
     function IngresoAdmin() {
-        window.location = '/AvantelSoporte_Admin/index.php';
+      //  window.location = '/AvantelSoporte_Admin/index.php';
+      window.location = '/AvantelSoporte/index.php';
     }
     function IngresoUser() {
-        window.location = '/AvantelSoporte_Users/index.php';
+      //  window.location = '/AvantelSoporte_Users/index.php';
+      window.location = '/AvantelSoporte/index.php';
     }
 </script>
 <?php

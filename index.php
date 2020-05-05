@@ -326,7 +326,7 @@ set_time_limit(100);
         <div style="width: 1300px; padding:3px;">
           <div style="float: right; width: 640px; height: 40px;">
             <form action="index2.php">
-              <input type="submit" style="float: right;" value="Analisis Mes" class="next_window"></input>
+              <input type="submit" style="float: right;" value="Resumen Mes" class="next_window"></input>
             </form>
           </div>
           <div style="float: left; width: 640px; height: 40px;">
