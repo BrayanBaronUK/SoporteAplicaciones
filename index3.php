@@ -345,6 +345,8 @@ set_time_limit(100);
                 <th>Diferencia de Max a Min</th>
                 <th>Prom Casos Grupo</th>
                 <th>Porcentaje Rend Grupo</th>
+                <th>Total Cerrados</th>
+                <th>Total Pendientes</th>
               </tr>
             </thead>
             <tbody>
@@ -354,7 +356,8 @@ set_time_limit(100);
               $conex3 = oci_connect($user, $pass, $db);
               //ini_set('max_execution_time', 100);
               //set_time_limit(100);
-              $consultap = 'SELECT MAXIMO,INGE_MAX,MINIMO,INGE_MIN,DIFERENCIA,PROMEDIO,CUMPLIMIENTO FROM ARANDA.V_ANALISIS_GES';
+              $consultap = 'SELECT MAXIMO,INGE_MAX,MINIMO,INGE_MIN,DIFERENCIA,PROMEDIO,CUMPLIMIENTO,CERRADOS_TOTAL,PENDIENTE_TOTAL
+              FROM ARANDA.V_ANALISIS_GES';
               $resultado_tab = oci_parse($conex3, $consultap);
               oci_execute($resultado_tab);
               while ($fila = oci_fetch_array($resultado_tab)) {
@@ -367,6 +370,8 @@ set_time_limit(100);
                   <td><?php echo $fila[4] ?></td>
                   <td><?php echo $fila[5] ?></td>
                   <td><?php echo $fila[6] ?></td>
+                  <td><?php echo $fila[7] ?></td>
+                  <td><?php echo $fila[8] ?></td>
                 </tr>
               <?php
               }

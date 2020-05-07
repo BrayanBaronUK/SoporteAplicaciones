@@ -2,7 +2,7 @@
   "id": "4ce06aa3-e561-445f-8728-67d43f76a220",
   "version": "2.0",
   "name": "Pruebas_Aplicacion_Avantel",
-  "url": "http://localhost/AvantelSoporte/Especialista_creacion.php",
+  "url": "http://localhost/AvantelSoporte/index3.php",
   "tests": [{
     "id": "880c9846-f7be-4253-8902-f215f59ab55d",
     "name": "Prueba_Login",
@@ -58,7 +58,7 @@
         ["xpath=//input[@id='pass']", "xpath:attributes"],
         ["xpath=//div[2]/input", "xpath:position"]
       ],
-      "value": "bogota"
+      "value": "colombia"
     }, {
       "id": "bd81d53b-7e05-4347-914e-09c9123953c8",
       "comment": "",
@@ -2018,6 +2018,953 @@
       ],
       "value": ""
     }]
+  }, {
+    "id": "1f134285-f1c6-4e48-9913-47bc5d35c483",
+    "name": "Prueba_Registro_Act_turno",
+    "commands": [{
+      "id": "0e7438f3-ea0d-43a2-9204-80949a6261b5",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost/AvantelSoporte/RegistroActividadesTurno.php",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "c6b2cfd0-4a67-417d-97a5-92818b2f2a2f",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1366x718",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "620ee12c-f656-49c1-b70a-301dc0403499",
+      "comment": "",
+      "command": "click",
+      "target": "css=.card-body",
+      "targets": [
+        ["css=.card-body", "css:finder"],
+        ["xpath=//div[@id='content']/div/div/div[2]", "xpath:idRelative"],
+        ["xpath=//div/div[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "1f7ad9a9-d09d-40fb-8dc5-d8375a408893",
+      "comment": "",
+      "command": "click",
+      "target": "id=selectTurno",
+      "targets": [
+        ["id=selectTurno", "id"],
+        ["css=#selectTurno", "css:finder"],
+        ["xpath=//select[@id='selectTurno']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/div/div/div[2]/div[2]/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "033074ff-41ab-4c1b-ad08-e40711bf66ff",
+      "comment": "",
+      "command": "select",
+      "target": "id=selectTurno",
+      "targets": [],
+      "value": "label=Turno 2 -> 11am - 8pm"
+    }, {
+      "id": "5c3e715e-d2a1-461a-9de1-768d3b03def0",
+      "comment": "",
+      "command": "click",
+      "target": "id=selectTurno",
+      "targets": [
+        ["id=selectTurno", "id"],
+        ["css=#selectTurno", "css:finder"],
+        ["xpath=//select[@id='selectTurno']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/div/div/div[2]/div[2]/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "4449e686-fb63-409d-bf2f-af3ab0e87a87",
+      "comment": "",
+      "command": "mouseDownAt",
+      "target": "id=obser-0",
+      "targets": [
+        ["id=obser-0", "id"],
+        ["name=observaciones", "name"],
+        ["css=#obser-0", "css:finder"],
+        ["xpath=//textarea[@id='obser-0']", "xpath:attributes"],
+        ["xpath=//table[@id='dataTable']/tbody/tr/td[3]/textarea", "xpath:idRelative"],
+        ["xpath=//textarea", "xpath:position"]
+      ],
+      "value": "56,25"
+    }, {
+      "id": "2ecba75a-dc6d-4f93-ab66-f8a6fa2e9337",
+      "comment": "",
+      "command": "mouseMoveAt",
+      "target": "id=obser-0",
+      "targets": [
+        ["id=obser-0", "id"],
+        ["name=observaciones", "name"],
+        ["css=#obser-0", "css:finder"],
+        ["xpath=//textarea[@id='obser-0']", "xpath:attributes"],
+        ["xpath=//table[@id='dataTable']/tbody/tr/td[3]/textarea", "xpath:idRelative"],
+        ["xpath=//textarea", "xpath:position"]
+      ],
+      "value": "56,25"
+    }, {
+      "id": "8c49b056-764e-4e23-a8a3-f233aec60d57",
+      "comment": "",
+      "command": "mouseUpAt",
+      "target": "id=obser-0",
+      "targets": [
+        ["id=obser-0", "id"],
+        ["name=observaciones", "name"],
+        ["css=#obser-0", "css:finder"],
+        ["xpath=//textarea[@id='obser-0']", "xpath:attributes"],
+        ["xpath=//table[@id='dataTable']/tbody/tr/td[3]/textarea", "xpath:idRelative"],
+        ["xpath=//textarea", "xpath:position"]
+      ],
+      "value": "56,25"
+    }, {
+      "id": "cb866a07-0d9d-4ff5-848b-787972edd8b7",
+      "comment": "",
+      "command": "click",
+      "target": "id=obser-0",
+      "targets": [
+        ["id=obser-0", "id"],
+        ["name=observaciones", "name"],
+        ["css=#obser-0", "css:finder"],
+        ["xpath=//textarea[@id='obser-0']", "xpath:attributes"],
+        ["xpath=//table[@id='dataTable']/tbody/tr/td[3]/textarea", "xpath:idRelative"],
+        ["xpath=//textarea", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "754daf52-cbc2-48e9-9650-bdffa7ca1ffd",
+      "comment": "",
+      "command": "type",
+      "target": "id=obser-0",
+      "targets": [
+        ["id=obser-0", "id"],
+        ["name=observaciones", "name"],
+        ["css=#obser-0", "css:finder"],
+        ["xpath=//textarea[@id='obser-0']", "xpath:attributes"],
+        ["xpath=//table[@id='dataTable']/tbody/tr/td[3]/textarea", "xpath:idRelative"],
+        ["xpath=//textarea", "xpath:position"]
+      ],
+      "value": "tEST primer observacion"
+    }, {
+      "id": "6a333ff9-ac46-468c-82c2-14eb5e7a4f57",
+      "comment": "",
+      "command": "click",
+      "target": "css=#divDataTable > #dataTable tr:nth-child(1) .toggle .btn-danger",
+      "targets": [
+        ["css=#divDataTable > #dataTable tr:nth-child(1) .toggle .btn-danger", "css:finder"],
+        ["xpath=//table[@id='dataTable']/tbody/tr/td[4]/div/div/label[2]", "xpath:idRelative"],
+        ["xpath=//label[2]", "xpath:position"],
+        ["xpath=//label[contains(.,'NO')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "173b69a1-2c15-4175-bae9-84cd8d5b3974",
+      "comment": "",
+      "command": "assertAlert",
+      "target": "Actividad guardada exitosamente",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "4f19a0cf-7202-4a8b-98b5-79c3754eee4a",
+      "comment": "",
+      "command": "click",
+      "target": "id=obser-13",
+      "targets": [
+        ["id=obser-13", "id"],
+        ["css=#obser-13", "css:finder"],
+        ["xpath=//textarea[@id='obser-13']", "xpath:attributes"],
+        ["xpath=//table[@id='dataTable']/tbody/tr[9]/td[3]/textarea", "xpath:idRelative"],
+        ["xpath=//tr[9]/td[3]/textarea", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "eb646869-6e66-4df4-b7e0-b3f531a27500",
+      "comment": "",
+      "command": "type",
+      "target": "id=obser-13",
+      "targets": [
+        ["id=obser-13", "id"],
+        ["css=#obser-13", "css:finder"],
+        ["xpath=//textarea[@id='obser-13']", "xpath:attributes"],
+        ["xpath=//table[@id='dataTable']/tbody/tr[9]/td[3]/textarea", "xpath:idRelative"],
+        ["xpath=//tr[9]/td[3]/textarea", "xpath:position"]
+      ],
+      "value": "test ultima observacion"
+    }, {
+      "id": "b02988f3-3521-45dc-9637-66abc3362ca5",
+      "comment": "",
+      "command": "click",
+      "target": "css=#divDataTable > #dataTable tr:nth-child(9) .toggle .btn-danger",
+      "targets": [
+        ["css=#divDataTable > #dataTable tr:nth-child(9) .toggle .btn-danger", "css:finder"],
+        ["xpath=//table[@id='dataTable']/tbody/tr[9]/td[4]/div/div/label[2]", "xpath:idRelative"],
+        ["xpath=//tr[9]/td[4]/div/div/label[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "c99d05b4-daaf-47b9-8fbf-f06007e14f90",
+      "comment": "",
+      "command": "assertAlert",
+      "target": "Actividad guardada exitosamente",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "eb92b564-b7a6-4178-b36f-215cfee421a3",
+      "comment": "",
+      "command": "chooseOkOnNextConfirmation",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "8337d8d0-9a13-49d2-ba29-1929271a3ace",
+      "comment": "",
+      "command": "click",
+      "target": "css=#btnSave > .text",
+      "targets": [
+        ["css=#btnSave > .text", "css:finder"],
+        ["xpath=//button[@id='btnSave']/span[2]", "xpath:idRelative"],
+        ["xpath=//span[2]", "xpath:position"],
+        ["xpath=//span[contains(.,'Terminar actividades')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "ad0bf577-6a94-4caf-be5c-d86ef55a4d60",
+      "comment": "",
+      "command": "assertConfirmation",
+      "target": "Estas seguro de terminar las actividades",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "bd2bfcec-d045-49dc-b6b6-babe32b0cb3e",
+      "comment": "",
+      "command": "webdriverChooseOkOnVisibleConfirmation",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "0dc9dafd-040e-4fc1-8e07-f51c6d382c3f",
+    "name": "temp",
+    "commands": []
+  }, {
+    "id": "ca35bc89-8f31-4864-9de6-dbc92094eaa7",
+    "name": "Prueba_Registro_Act_cierre",
+    "commands": [{
+      "id": "eae589b9-6271-4990-91dc-354fbdfe3d9e",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost/AvantelSoporte/RegistroActividadesCierre.php",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "e0ac8c89-5c3c-49be-bde6-dba7aaa83fbe",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1366x718",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "486a796c-9735-4887-9c7d-b7a344a113a1",
+      "comment": "",
+      "command": "click",
+      "target": "id=selectCierre",
+      "targets": [
+        ["id=selectCierre", "id"],
+        ["css=#selectCierre", "css:finder"],
+        ["xpath=//select[@id='selectCierre']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/div/div/div[2]/div[2]/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "ca72b090-3ab8-4627-be10-7f4eaf66d60d",
+      "comment": "",
+      "command": "click",
+      "target": "id=selectCierre",
+      "targets": [
+        ["id=selectCierre", "id"],
+        ["css=#selectCierre", "css:finder"],
+        ["xpath=//select[@id='selectCierre']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/div/div/div[2]/div[2]/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "b34181c2-9969-4010-8711-e65fd031d0af",
+      "comment": "",
+      "command": "click",
+      "target": "id=selectCierre",
+      "targets": [
+        ["id=selectCierre", "id"],
+        ["css=#selectCierre", "css:finder"],
+        ["xpath=//select[@id='selectCierre']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/div/div/div[2]/div[2]/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "dbe233a1-54df-4b18-bcc6-659dd0c9ea84",
+      "comment": "",
+      "command": "select",
+      "target": "id=selectCierre",
+      "targets": [],
+      "value": "label=Ciclo A - 1"
+    }, {
+      "id": "04b0ffec-9492-481f-b73c-fe83f48f7259",
+      "comment": "",
+      "command": "click",
+      "target": "id=selectCierre",
+      "targets": [
+        ["id=selectCierre", "id"],
+        ["css=#selectCierre", "css:finder"],
+        ["xpath=//select[@id='selectCierre']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/div/div/div[2]/div[2]/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "b0ad1565-b5a2-4195-bfc1-e7caa7e627c2",
+      "comment": "",
+      "command": "click",
+      "target": "id=obser-0",
+      "targets": [
+        ["id=obser-0", "id"],
+        ["name=observaciones", "name"],
+        ["css=#obser-0", "css:finder"],
+        ["xpath=//textarea[@id='obser-0']", "xpath:attributes"],
+        ["xpath=//table[@id='dataTable']/tbody/tr/td[3]/textarea", "xpath:idRelative"],
+        ["xpath=//textarea", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "4588e8a5-7fe5-4b3b-a8f1-5bac96bbae46",
+      "comment": "",
+      "command": "type",
+      "target": "id=obser-0",
+      "targets": [
+        ["id=obser-0", "id"],
+        ["name=observaciones", "name"],
+        ["css=#obser-0", "css:finder"],
+        ["xpath=//textarea[@id='obser-0']", "xpath:attributes"],
+        ["xpath=//table[@id='dataTable']/tbody/tr/td[3]/textarea", "xpath:idRelative"],
+        ["xpath=//textarea", "xpath:position"]
+      ],
+      "value": "prueba test obserbacion cierre primer actividad"
+    }, {
+      "id": "976e2035-590f-4c34-af99-53bd1daa8bd1",
+      "comment": "",
+      "command": "click",
+      "target": "css=#divDataTable > #dataTable tr:nth-child(1) .toggle .btn-danger",
+      "targets": [
+        ["css=#divDataTable > #dataTable tr:nth-child(1) .toggle .btn-danger", "css:finder"],
+        ["xpath=//table[@id='dataTable']/tbody/tr/td[4]/div/div/label[2]", "xpath:idRelative"],
+        ["xpath=//label[2]", "xpath:position"],
+        ["xpath=//label[contains(.,'NO')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "09cad29c-728e-4b2a-becc-bb00777c20f2",
+      "comment": "",
+      "command": "assertAlert",
+      "target": "Actividad guardada exitosamente",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "e72cb866-c90f-47f0-86c7-0cd23137fe03",
+      "comment": "",
+      "command": "click",
+      "target": "id=obser-22",
+      "targets": [
+        ["id=obser-22", "id"],
+        ["css=#obser-22", "css:finder"],
+        ["xpath=//textarea[@id='obser-22']", "xpath:attributes"],
+        ["xpath=//table[@id='dataTable']/tbody/tr[22]/td[3]/textarea", "xpath:idRelative"],
+        ["xpath=//tr[22]/td[3]/textarea", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "8c8f4cec-0ef4-4711-95d1-5febf9933830",
+      "comment": "",
+      "command": "click",
+      "target": "css=#divDataTable > #dataTable tr:nth-child(22) .toggle .btn-danger",
+      "targets": [
+        ["css=#divDataTable > #dataTable tr:nth-child(22) .toggle .btn-danger", "css:finder"],
+        ["xpath=//table[@id='dataTable']/tbody/tr[22]/td[4]/div/div/label[2]", "xpath:idRelative"],
+        ["xpath=//tr[22]/td[4]/div/div/label[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "ef05ecd9-de1d-4649-9ce1-1a0565066ad4",
+      "comment": "",
+      "command": "assertAlert",
+      "target": "Actividad guardada exitosamente",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "5efe9aa8-a562-4836-b0f4-6776ba696a1e",
+      "comment": "",
+      "command": "click",
+      "target": "id=obser-24",
+      "targets": [
+        ["id=obser-24", "id"],
+        ["css=#obser-24", "css:finder"],
+        ["xpath=//textarea[@id='obser-24']", "xpath:attributes"],
+        ["xpath=//table[@id='dataTable']/tbody/tr[24]/td[3]/textarea", "xpath:idRelative"],
+        ["xpath=//tr[24]/td[3]/textarea", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "75454cf0-4403-4611-99e4-f998d203ed33",
+      "comment": "",
+      "command": "type",
+      "target": "id=obser-24",
+      "targets": [
+        ["id=obser-24", "id"],
+        ["css=#obser-24", "css:finder"],
+        ["xpath=//textarea[@id='obser-24']", "xpath:attributes"],
+        ["xpath=//table[@id='dataTable']/tbody/tr[24]/td[3]/textarea", "xpath:idRelative"],
+        ["xpath=//tr[24]/td[3]/textarea", "xpath:position"]
+      ],
+      "value": "test de ultima observacoion de la actividad de cierre"
+    }, {
+      "id": "d832f3d9-b468-428d-b8e7-3ee2ccdb63b5",
+      "comment": "",
+      "command": "click",
+      "target": "css=tr:nth-child(24) > td:nth-child(4)",
+      "targets": [
+        ["css=tr:nth-child(24) > td:nth-child(4)", "css:finder"],
+        ["xpath=//table[@id='dataTable']/tbody/tr[24]/td[4]", "xpath:idRelative"],
+        ["xpath=//tr[24]/td[4]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "d17963b5-e41d-4f42-8234-acd19f714a56",
+      "comment": "",
+      "command": "click",
+      "target": "css=tr:nth-child(24) .toggle .btn-danger",
+      "targets": [
+        ["css=tr:nth-child(24) .toggle .btn-danger", "css:finder"],
+        ["xpath=//table[@id='dataTable']/tbody/tr[24]/td[4]/div/div/label[2]", "xpath:idRelative"],
+        ["xpath=//tr[24]/td[4]/div/div/label[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "5892029a-9c78-49f2-9bbd-c42838d51e22",
+      "comment": "",
+      "command": "assertAlert",
+      "target": "Actividad guardada exitosamente",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "3de380a1-c6c8-4b36-aba6-907025ed966b",
+      "comment": "",
+      "command": "chooseOkOnNextConfirmation",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "170b19ae-399b-4226-9ff6-0001dce3be8c",
+      "comment": "",
+      "command": "click",
+      "target": "css=#btnSave > .text",
+      "targets": [
+        ["css=#btnSave > .text", "css:finder"],
+        ["xpath=//button[@id='btnSave']/span[2]", "xpath:idRelative"],
+        ["xpath=//span[2]", "xpath:position"],
+        ["xpath=//span[contains(.,'Terminar actividades')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "8ca24772-05d0-4684-9442-71fba6d8a5eb",
+      "comment": "",
+      "command": "assertConfirmation",
+      "target": "Estas seguro de terminar las actividades",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "5825d501-5a74-4a50-a86d-d25f8216f106",
+      "comment": "",
+      "command": "webdriverChooseOkOnVisibleConfirmation",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "a93c8295-eaab-457b-a887-bc61b0604817",
+    "name": "Prueba_Consulta_turnos",
+    "commands": [{
+      "id": "3606d7a8-9449-4418-a1e3-24f31b093954",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost/AvantelSoporte/Consulta_turnos.php",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "fd95acb0-1035-485d-872b-eaaf03516a31",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1366x718",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "a53ed0b7-6a68-4ba2-a4b5-1e42b3fe18fb",
+      "comment": "",
+      "command": "click",
+      "target": "id=selectYear",
+      "targets": [
+        ["id=selectYear", "id"],
+        ["css=#selectYear", "css:finder"],
+        ["xpath=//select[@id='selectYear']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/div/div/div[2]/div/div/div[2]/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "233b40fe-78e9-4dd3-9006-f923c22e3366",
+      "comment": "",
+      "command": "select",
+      "target": "id=selectYear",
+      "targets": [],
+      "value": "label=2020"
+    }, {
+      "id": "82e3ddce-2257-4845-9b72-5473bdb9dc5c",
+      "comment": "",
+      "command": "click",
+      "target": "id=selectYear",
+      "targets": [
+        ["id=selectYear", "id"],
+        ["css=#selectYear", "css:finder"],
+        ["xpath=//select[@id='selectYear']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/div/div/div[2]/div/div/div[2]/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "51125675-c849-48ed-a013-6c70dfa635df",
+      "comment": "",
+      "command": "click",
+      "target": "id=selectMonth",
+      "targets": [
+        ["id=selectMonth", "id"],
+        ["css=#selectMonth", "css:finder"],
+        ["xpath=//select[@id='selectMonth']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/div/div/div[2]/div/div[2]/div[2]/select", "xpath:idRelative"],
+        ["xpath=//div[2]/div[2]/select", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "f3b8b8a2-bab3-4a6a-889a-20ee7f73c30f",
+      "comment": "",
+      "command": "select",
+      "target": "id=selectMonth",
+      "targets": [],
+      "value": "label=Mayo"
+    }, {
+      "id": "9ec198b2-75b7-4feb-8193-c843c1fa4656",
+      "comment": "",
+      "command": "click",
+      "target": "id=selectMonth",
+      "targets": [
+        ["id=selectMonth", "id"],
+        ["css=#selectMonth", "css:finder"],
+        ["xpath=//select[@id='selectMonth']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/div/div/div[2]/div/div[2]/div[2]/select", "xpath:idRelative"],
+        ["xpath=//div[2]/div[2]/select", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "30feb1ca-455e-45b5-9854-c5821f75e8e0",
+      "comment": "",
+      "command": "click",
+      "target": "id=selectMonth",
+      "targets": [
+        ["id=selectMonth", "id"],
+        ["css=#selectMonth", "css:finder"],
+        ["xpath=//select[@id='selectMonth']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/div/div/div[2]/div/div[2]/div[2]/select", "xpath:idRelative"],
+        ["xpath=//div[2]/div[2]/select", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "e7c1ef6f-fa0c-4645-b6a5-f26d81442409",
+      "comment": "",
+      "command": "select",
+      "target": "id=selectMonth",
+      "targets": [],
+      "value": "label=Octubre"
+    }, {
+      "id": "a0e7bef6-5c52-4cee-8bc9-85136e16a9c2",
+      "comment": "",
+      "command": "click",
+      "target": "id=selectMonth",
+      "targets": [
+        ["id=selectMonth", "id"],
+        ["css=#selectMonth", "css:finder"],
+        ["xpath=//select[@id='selectMonth']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/div/div/div[2]/div/div[2]/div[2]/select", "xpath:idRelative"],
+        ["xpath=//div[2]/div[2]/select", "xpath:position"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "5e16dddc-85de-4081-ab55-761ed09ceb22",
+    "name": "Prueba_Consulta_repositorio",
+    "commands": [{
+      "id": "405104d5-88e7-456c-9e3c-17f94755b658",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost/AvantelSoporte/Consulta_claves_servidores.php",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "f91bce20-5da7-45f1-bc54-05f9ad3e12bb",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1366x718",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "8a616707-f502-44a1-a82b-a902fd808af9",
+      "comment": "",
+      "command": "click",
+      "target": "css=.even:nth-child(2) > td:nth-child(3)",
+      "targets": [
+        ["css=.even:nth-child(2) > td:nth-child(3)", "css:finder"],
+        ["xpath=//table[@id='dataTable']/tbody/tr[2]/td[3]", "xpath:idRelative"],
+        ["xpath=//tr[2]/td[3]", "xpath:position"],
+        ["xpath=//td[contains(.,'root')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "e886d83f-783c-44d5-9dc9-3a9b9c156718",
+      "comment": "",
+      "command": "click",
+      "target": "css=.odd:nth-child(1) input",
+      "targets": [
+        ["css=.odd:nth-child(1) input", "css:finder"],
+        ["xpath=//input[@value='pr3p4g0#']", "xpath:attributes"],
+        ["xpath=//table[@id='dataTable']/tbody/tr/td[4]/input", "xpath:idRelative"],
+        ["xpath=//td[4]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "08e751a4-2186-4d78-91de-7462684644e3",
+      "comment": "",
+      "command": "click",
+      "target": "css=.odd:nth-child(1) input",
+      "targets": [
+        ["css=.odd:nth-child(1) input", "css:finder"],
+        ["xpath=//input[@value='pr3p4g0#']", "xpath:attributes"],
+        ["xpath=//table[@id='dataTable']/tbody/tr/td[4]/input", "xpath:idRelative"],
+        ["xpath=//td[4]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "11565cf1-4792-4ddb-b272-5975d6889ac9",
+      "comment": "",
+      "command": "doubleClick",
+      "target": "css=.odd:nth-child(1) input",
+      "targets": [
+        ["css=.odd:nth-child(1) input", "css:finder"],
+        ["xpath=//input[@value='pr3p4g0#']", "xpath:attributes"],
+        ["xpath=//table[@id='dataTable']/tbody/tr/td[4]/input", "xpath:idRelative"],
+        ["xpath=//td[4]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "15a76ee5-c237-420c-8d7b-26719a2faf33",
+      "comment": "",
+      "command": "click",
+      "target": "css=.even:nth-child(2) input",
+      "targets": [
+        ["css=.even:nth-child(2) input", "css:finder"],
+        ["xpath=//input[@value='Rj1zMko8']", "xpath:attributes"],
+        ["xpath=//table[@id='dataTable']/tbody/tr[2]/td[4]/input", "xpath:idRelative"],
+        ["xpath=//tr[2]/td[4]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "959a9d29-5145-4713-a51c-7da067004277",
+      "comment": "",
+      "command": "click",
+      "target": "css=.even:nth-child(2) input",
+      "targets": [
+        ["css=.even:nth-child(2) input", "css:finder"],
+        ["xpath=//input[@value='Rj1zMko8']", "xpath:attributes"],
+        ["xpath=//table[@id='dataTable']/tbody/tr[2]/td[4]/input", "xpath:idRelative"],
+        ["xpath=//tr[2]/td[4]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "9155a401-7b3d-4dba-a9b1-b9df79cf421d",
+      "comment": "",
+      "command": "doubleClick",
+      "target": "css=.even:nth-child(2) input",
+      "targets": [
+        ["css=.even:nth-child(2) input", "css:finder"],
+        ["xpath=//input[@value='Rj1zMko8']", "xpath:attributes"],
+        ["xpath=//table[@id='dataTable']/tbody/tr[2]/td[4]/input", "xpath:idRelative"],
+        ["xpath=//tr[2]/td[4]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "55a46293-4b7a-40c0-b8f0-16635d32541d",
+      "comment": "",
+      "command": "click",
+      "target": "css=.odd:nth-child(3) input",
+      "targets": [
+        ["css=.odd:nth-child(3) input", "css:finder"],
+        ["xpath=//input[@value='Byt3203%']", "xpath:attributes"],
+        ["xpath=//table[@id='dataTable']/tbody/tr[3]/td[4]/input", "xpath:idRelative"],
+        ["xpath=//tr[3]/td[4]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "f0cfb854-6790-45bb-a977-307c68b7cd20",
+      "comment": "",
+      "command": "click",
+      "target": "css=.odd:nth-child(3) input",
+      "targets": [
+        ["css=.odd:nth-child(3) input", "css:finder"],
+        ["xpath=//input[@value='Byt3203%']", "xpath:attributes"],
+        ["xpath=//table[@id='dataTable']/tbody/tr[3]/td[4]/input", "xpath:idRelative"],
+        ["xpath=//tr[3]/td[4]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "7474a306-56bf-4e62-911e-d1331558644e",
+      "comment": "",
+      "command": "doubleClick",
+      "target": "css=.odd:nth-child(3) input",
+      "targets": [
+        ["css=.odd:nth-child(3) input", "css:finder"],
+        ["xpath=//input[@value='Byt3203%']", "xpath:attributes"],
+        ["xpath=//table[@id='dataTable']/tbody/tr[3]/td[4]/input", "xpath:idRelative"],
+        ["xpath=//tr[3]/td[4]/input", "xpath:position"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "9a178bd9-9c5d-4816-9805-e3f83aba98c0",
+    "name": "Prueba_Reporte_casos",
+    "commands": [{
+      "id": "3cb3abb5-010c-42f0-8450-847e37d1eed6",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost/AvantelSoporte/Reporte_casos_aranda.php",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "a2c51dde-c512-4c2c-af8e-e7fe39fce17e",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1366x718",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "797be43d-d9f1-45b1-b046-dda30535e812",
+      "comment": "",
+      "command": "click",
+      "target": "css=.odd:nth-child(1) .rep",
+      "targets": [
+        ["css=.odd:nth-child(1) .rep", "css:finder"],
+        ["xpath=//input[@value='Reporte']", "xpath:attributes"],
+        ["xpath=//table[@id='dataTable']/tbody/tr/td[3]/input", "xpath:idRelative"],
+        ["xpath=//td[3]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "97d11c0d-aa85-41e7-94dd-8c379f558535",
+      "comment": "",
+      "command": "click",
+      "target": "css=.odd:nth-child(3) .rep",
+      "targets": [
+        ["css=.odd:nth-child(3) .rep", "css:finder"],
+        ["xpath=(//input[@value='Reporte'])[3]", "xpath:attributes"],
+        ["xpath=//table[@id='dataTable']/tbody/tr[3]/td[3]/input", "xpath:idRelative"],
+        ["xpath=//tr[3]/td[3]/input", "xpath:position"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "c1a5b982-f2e6-4f0f-bd7f-5e7ef658af68",
+    "name": "Prueba_Reporte_actividades",
+    "commands": [{
+      "id": "18a60599-6ee5-4414-b0fc-e1aa1ecc3566",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost/AvantelSoporte/Reporte_actividades.php",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "68649f05-ff01-411c-b491-33ee180db6fb",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1366x718",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "98a3aac5-0a34-4449-928e-533f287e0cab",
+      "comment": "",
+      "command": "click",
+      "target": "css=.odd:nth-child(1) .rep",
+      "targets": [
+        ["css=.odd:nth-child(1) .rep", "css:finder"],
+        ["xpath=//input[@value='Reporte']", "xpath:attributes"],
+        ["xpath=//table[@id='dataTable']/tbody/tr/td[3]/input", "xpath:idRelative"],
+        ["xpath=//td[3]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "4a4ac46c-f88a-4a09-82c0-b467f170a526",
+      "comment": "",
+      "command": "click",
+      "target": "css=.even:nth-child(2) .rep",
+      "targets": [
+        ["css=.even:nth-child(2) .rep", "css:finder"],
+        ["xpath=(//input[@value='Reporte'])[2]", "xpath:attributes"],
+        ["xpath=//table[@id='dataTable']/tbody/tr[2]/td[3]/input", "xpath:idRelative"],
+        ["xpath=//tr[2]/td[3]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "702dd4e7-c9d2-434c-87d0-ea52d0979aba",
+      "comment": "",
+      "command": "click",
+      "target": "css=.odd:nth-child(3) .rep",
+      "targets": [
+        ["css=.odd:nth-child(3) .rep", "css:finder"],
+        ["xpath=(//input[@value='Reporte'])[3]", "xpath:attributes"],
+        ["xpath=//table[@id='dataTable']/tbody/tr[3]/td[3]/input", "xpath:idRelative"],
+        ["xpath=//tr[3]/td[3]/input", "xpath:position"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "ff1468a6-e22c-4b01-b4e3-b1c54e8d0c54",
+    "name": "Prueba_Dashboard_dias",
+    "commands": [{
+      "id": "6b28fe0e-9a57-4d28-b2d6-b70680b2d9f4",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost/AvantelSoporte/index.php",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "fa411e2d-0247-4637-b307-e61a5720b4f3",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1544x832",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "ad2c8610-118c-46de-ac17-41b84dae0bea",
+      "comment": "",
+      "command": "click",
+      "target": "css=.next_window",
+      "targets": [
+        ["css=.next_window", "css:finder"],
+        ["xpath=//input[@value='Resumen Mes']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/div/div/form/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "3146a646-2b57-4b02-8ec4-49fedecfdd95",
+    "name": "Prueba_Dashboard_Meses",
+    "commands": [{
+      "id": "dac7b623-1b27-43b0-89f5-fb54376cb481",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost/AvantelSoporte/index2.php",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "e97f1b57-23ed-4360-be2b-327e7ba5fd20",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1366x718",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "122a5538-0e4b-4a6e-b20b-5436ad1df2e9",
+      "comment": "",
+      "command": "runScript",
+      "target": "window.scrollTo(0,100)",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "494de12e-5cf4-4d9c-937a-38f05e6c3a09",
+      "comment": "",
+      "command": "click",
+      "target": "css=div:nth-child(2) > form > .next_window",
+      "targets": [
+        ["css=div:nth-child(2) > form > .next_window", "css:finder"],
+        ["xpath=//input[@value='Analisis']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/div/div[2]/form/input", "xpath:idRelative"],
+        ["xpath=//div[2]/form/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "0b1db664-145f-468c-ba69-6e61d78c8654",
+      "comment": "",
+      "command": "click",
+      "target": "css=.next_window",
+      "targets": [
+        ["css=.next_window", "css:finder"],
+        ["xpath=//input[@value='Resumen Mes']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/div/div/form/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "ead7d048-6fc6-4788-9dee-27e7b033359d",
+      "comment": "",
+      "command": "click",
+      "target": "css=div:nth-child(1) > form > .next_window",
+      "targets": [
+        ["css=div:nth-child(1) > form > .next_window", "css:finder"],
+        ["xpath=//input[@value='Resumen Día']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/div/div/form/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "fa4d965e-e0f1-4d94-95a7-661a2498b12f",
+    "name": "Prueba_Dashboard_Analisis",
+    "commands": [{
+      "id": "c0f8dd0b-2297-43c3-861f-65784b001005",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost/AvantelSoporte/index3.php",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "6be7f51b-ed07-438b-b32d-bc4cd6db2e8f",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1366x718",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "e5295e05-df10-4ec4-9bd9-645e17851fa6",
+      "comment": "",
+      "command": "click",
+      "target": "css=.next_window",
+      "targets": [
+        ["css=.next_window", "css:finder"],
+        ["xpath=//input[@value='Resumen Mes']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/div/div/form/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }]
   }],
   "suites": [{
     "id": "6c655961-736e-4dd1-b498-ec3e1382a10c",
@@ -2027,6 +2974,6 @@
     "timeout": 300,
     "tests": []
   }],
-  "urls": ["http://localhost/AvantelSoporte/login.php", "http://localhost/AvantelSoporte/index.php", "http://localhost/AvantelSoporte/Creacion_turnos.php", "http://localhost/AvantelSoporte/Creacion_horarios_cierre.php"],
+  "urls": ["http://localhost/AvantelSoporte/login.php", "http://localhost/AvantelSoporte/index.php", "http://localhost/AvantelSoporte/Creacion_turnos.php", "http://localhost/AvantelSoporte/Creacion_horarios_cierre.php", "http://localhost/AvantelSoporte/RegistroActividadesTurno.php", "http://localhost/AvantelSoporte/Reporte_actividades.php", "http://localhost/AvantelSoporte/index3.php"],
   "plugins": []
 }

@@ -28,8 +28,8 @@ set_time_limit(100);
 
   <!-- Custom styles for this template-->
   <link href="css/sb-admin-2.min.css" rel="stylesheet">
- 
-   <!--estilos botones del dashboard-->
+
+  <!--estilos botones del dashboard-->
   <link href="tabla_dinamica/estilos_tab/botones_estilos.css" rel="stylesheet">
 
 </head>
@@ -338,8 +338,39 @@ set_time_limit(100);
           <div id="grafico_barras_dia" style="width: 640px;height: 500px;float:left;padding-bottom: 15px;"></div>
           <div id="grafico_pie_dia" style="height: 500px; width: 640px; float:right; padding-bottom: 15px;"></div>
         </div>
-        
-        
+
+
+        <!-- DataTales Example -->
+        <div style="width: 1300px; padding:3px;">
+          <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" border=1>
+              <thead>
+                <tr>
+                  <th>Ingeniero</th>
+                  <th>Estado</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Usuario Turno</td>
+                  <td>Turno</td>
+                </tr>
+                <tr>
+                  <td>Usuario Compensatorio</td>
+                  <td>Compensatorio</td>
+                </tr>
+                <tr>
+                  <td>Usuario Vacaciones</td>
+                  <td>Vacaciones</td>
+                </tr>
+                <tr>
+                  <td>Usuario Cierre</td>
+                  <td>Cierre</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
         <!-- End of Main Content -->
 
         <!-- Footer -->
