@@ -8,6 +8,7 @@ $conex2 = oci_connect($user, $pass, $db, 'AL32UTF8');
 <head>
 
   <meta charset="utf-8">
+  <link rel="icon" href="./img/favicon2.ico">
   <meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
