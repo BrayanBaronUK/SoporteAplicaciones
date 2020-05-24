@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
 
@@ -30,218 +30,9 @@
   <div id="wrapper">
 
     <!-- Sidebar -->
-    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
-
-      <!-- Sidebar - Brand -->
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">
-        <div class="sidebar-brand-icon rotate-n-15">
-          <i class="fas fa-laugh-wink"></i>
-        </div>
-        <div class="sidebar-brand-text mx-3">SOPORTE IT<sup>1.0</sup></div>
-      </a>
-      <!-- Divider -->
-      <hr class="sidebar-divider my-0">
-
-      <!-- Nav Item - Dashboard -->
-      <li class="nav-item active">
-        <a class="nav-link" href="index.php">
-          <i class="fas fa-fw fa-tachometer-alt"></i>
-          <span>Inicio</span></a>
-      </li>
-
-      <li class="nav-item active">
-        <a class="nav-link" href="index.php" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
-          <i class="fas fa-fw fa-cog"></i>
-          <span>Contraseña</span></a>
-
-        <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Configuraciones:</h6>
-            <a class="collapse-item" href="cambio_contrasena.php">Cambiar contraseña</a>
-            <!-- <a class="collapse-item" href="login.php">Login</a>
-        <a class="collapse-item" href="register.html">Register</a>
-        <a class="collapse-item" href="forgot-password.html">Forgot Password</a>-->
-            <div class="collapse-divider"></div>
-            <!-- <h6 class="collapse-header">Other Pages:</h6>
-        <a class="collapse-item" href="404.html">404 Page</a>
-        <a class="collapse-item" href="blank.html">Blank Page</a> -->
-          </div>
-        </div>
-
-      </li>
-
-      <!-- Divider -->
-      <hr class="sidebar-divider">
-
-      <!-- Heading -->
-      <div class="sidebar-heading">
-        Parametrización
-      </div>
-
-      <!-- Nav Item - Pages Collapse Menu -->
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-          <i class="fas fa-fw fa-cog"></i>
-          <span>Creación de Especialista</span>
-        </a>
-        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Configuración:</h6>
-            <a class="collapse-item" href="Especialista_creacion.php">Creación</a>
-            <a class="collapse-item" href="Especialista_visualizacion.php">Visualización</a>
-            <!--  <a class="collapse-item" href="buttons.html">Buttons</a>
-      <a class="collapse-item" href="cards.html">Cards</a> -->
-          </div>
-        </div>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="Creacion_turnos.php">
-          <i class="fas fa-fw fa-cog"></i>
-          <span>Creación de Turnos</span>
-        </a>
-      </li>
-
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="Creacion_compensatorio.php">
-          <i class="fas fa-fw fa-cog"></i>
-          <span>Creación de compensatorio</span>
-        </a>
-      </li>
-
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="Creacion_horarios_cierre.php">
-          <i class="fas fa-fw fa-cog"></i>
-          <span>Creación de horarios de cierre</span>
-        </a>
-      </li>
-
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="Creacion_soporte_unidad.php">
-          <i class="fas fa-fw fa-cog"></i>
-          <span>Creación soporte de unidad</span>
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="Creacion_vacaciones.php">
-          <i class="fas fa-fw fa-cog"></i>
-          <span>Creación de vacaciones</span>
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="Creacion_claves_servidores.php">
-          <i class="fas fa-fw fa-cog"></i>
-          <span>Creación claves de servidores</span>
-        </a>
-      </li>
-
-
-      <!-- Divider -->
-      <hr class="sidebar-divider">
-
-      <!-- Heading -->
-      <div class="sidebar-heading">
-        ACTIVIDADES
-      </div>
-
-      <!-- Nav Item - Pages Collapse Menu -->
-      <li class="nav-item">
-        <!--  <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">-->
-        <a class="nav-link collapsed" href="RegistroActividadesTurno.php">
-
-          <i class="fas fa-fw fa-folder"></i>
-          <span>Registrar Actividad Turno</span>
-        </a>
-
-      </li>
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="RegistroActividadesCierre.php">
-
-          <i class="fas fa-fw fa-folder"></i>
-          <span>Registrar Actividad Cierre</span>
-        </a>
-      </li>
-
-      <!-- Divider -->
-      <hr class="sidebar-divider">
-
-      <!-- Heading -->
-      <div class="sidebar-heading">
-        CONSULTAS
-      </div>
-
-      <!-- Nav Item - Tables -->
-      <li class="nav-item">
-        <a class="nav-link" href="Consulta_turnos.php">
-          <i class="fas fa-fw fa-table"></i>
-          <span>Consulta de Turnos</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="Consulta_compensatorio.php">
-          <i class="fas fa-fw fa-table"></i>
-          <span>Consulta de Compensatorios</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="Consulta_horas_extra.php">
-          <i class="fas fa-fw fa-table"></i>
-          <span>Consulta de horas extra</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="Consulta_casos_aranda.php">
-          <i class="fas fa-fw fa-table"></i>
-          <span>Consulta de Variable</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="Consulta_cierres.php">
-          <i class="fas fa-fw fa-table"></i>
-          <span>Consulta de Cierres</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="Consulta_soporte_unidad.php">
-          <i class="fas fa-fw fa-table"></i>
-          <span>Consulta de Soporte Unidad</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="Consulta_vacaciones.php">
-          <i class="fas fa-fw fa-table"></i>
-          <span>Consulta de vacaciones</span></a>
-      </li>
-
-      <li class="nav-item">
-        <a class="nav-link" href="Consulta_claves_servidores.php">
-          <i class="fas fa-fw fa-table"></i>
-          <span>Repositorio de claves</span></a>
-      </li>
-
-      <!-- Divider -->
-      <hr class="sidebar-divider d-none d-md-block">
-
-      <!--REPORTES-->
-      <div class="sidebar-heading">
-        REPORTES
-      </div>
-
-      <li class="nav-item">
-        <a class="nav-link" href="Reporte_casos_aranda.php">
-          <!--<a class="nav-link" href="charts.html">-->
-          <i class="fas fa-fw fa-chart-area"></i>
-          <span>Reporte de Casos</span></a>
-      </li>
-
-      <li class="nav-item">
-        <a class="nav-link" href="Reporte_actividades.php">
-          <i class="fas fa-fw fa-chart-area"></i>
-          <span>Reporte de Actividades</span></a>
-      </li>
-
-      <!-- Divider -->
-      <hr class="sidebar-divider d-none d-md-block">
-
-      <!-- Sidebar Toggler (Sidebar) -->
-      <div class="text-center d-none d-md-inline">
-        <button class="rounded-circle border-0" id="sidebarToggle"></button>
-      </div>
-
-    </ul>
+    <?php
+    include_once("validador_menu.php");
+    ?>
     <!-- End of Sidebar -->
 
     <!-- Content Wrapper -->
@@ -317,7 +108,7 @@
 
           <?php
           include_once("conexion_aranda.php");
-          $conex2 = oci_connect($user, $pass, $db);
+          $conex2 = oci_connect($user, $pass, $db,'AL32UTF8');
           ?>
 
           <!-- DataTales Example -->
@@ -326,7 +117,25 @@
               <h6 class="m-0 font-weight-bold text-primary">Consulta casos por especialista por Mes</h6>
             </div>
             <div class="card-body">
-              <div class="table-responsive">
+               <!--SELECCIONADOR DE GRUPO-->
+               <div class="small mb-1">Seleccione un grupo:</div>
+              <div class="dropdown mb-4">
+
+                <!--SELECCIONADOR DE GRUPO-->
+                <select class="btn btn-primary" id="selectGrupo">
+                  <option value="">Seleccione un grupo:</option>
+                  <option value="1">Soporte Aplicaciones TI</option>
+                  <option value="2">Soporte Web</option>
+                  <option value="3">Soporte Aplicaciones Gestión</option>
+                  <option value="4">Soporte Financiero</option>
+                  <option value="5">Soporte Mesa primer Nivel</option>
+                  <option value="6">Soporte Soporte Prepago</option>
+                  <option value="7">Soporte DWH</option>
+                  <option value="8">Soporte DBA</option>
+                </select>
+              </div>
+              <!--Soporte Aplicaciones TI-->
+              <div class="table-responsive" id="divDataSoporteti">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                   <thead>
                     <tr>
@@ -355,7 +164,7 @@
                     ini_set('max_execution_time', 300);
                     set_time_limit(300);
                     $sql = "SELECT ID_GRUPO,RESPONSABLE,PENDIENTE,CERRADOS,TOTAL,CUMPLIMIENTO_IND,CUMPLIMIENTO_GRP
-                    FROM V_GESTION_MES ORDER BY 5 DESC";
+                    FROM V_GESTION_MES_TI ORDER BY 5 DESC";
                     $resultado_set = oci_parse($conex2, $sql);
                     oci_execute($resultado_set);
                     while ($row = oci_fetch_array($resultado_set)) {
@@ -376,6 +185,364 @@
                   </tbody>
                 </table>
               </div>
+              <!--Soporte Web-->
+              <div class="table-responsive" id="divDataSoporteweb">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                  <thead>
+                    <tr>
+                      <th>Codigo Grupo</th>
+                      <th>Especialista</th>
+                      <th>Casos pendientes</th>
+                      <th>Casos cerrados</th>
+                      <th>Total Casos</th>
+                      <th>Cump. Individual</th>
+                      <th>Cump. Grupal</th>
+                    </tr>
+                  </thead>
+                  <tfoot>
+                    <tr>
+                      <th>Codigo Grupo</th>
+                      <th>Especialista</th>
+                      <th>Casos pendientes</th>
+                      <th>Casos cerrados</th>
+                      <th>Total Casos</th>
+                      <th>Cump. Individual</th>
+                      <th>Cump. Grupal</th>
+                    </tr>
+                  </tfoot>
+                  <tbody>
+                    <?php
+                    ini_set('max_execution_time', 300);
+                    set_time_limit(300);
+                    $sql = "SELECT ID_GRUPO,RESPONSABLE,PENDIENTE,CERRADOS,TOTAL,CUMPLIMIENTO_IND,CUMPLIMIENTO_GRP
+                    FROM V_GESTION_MES_WEB ORDER BY 5 DESC";
+                    $resultado_set = oci_parse($conex2, $sql);
+                    oci_execute($resultado_set);
+                    while ($row = oci_fetch_array($resultado_set)) {
+                    ?>
+                      <tr>
+                        <td><?php echo $row[0] ?></td>
+                        <td><?php echo $row[1] ?></td>
+                        <td><?php echo $row[2] ?></td>
+                        <td><?php echo $row[3] ?></td>
+                        <td><?php echo $row[4] ?></td>
+                        <td><?php echo $row[5] ?></td>
+                        <td><?php echo $row[6] ?></td>
+
+                      </tr>
+                    <?php
+                    }
+                    ?>
+                  </tbody>
+                </table>
+              </div>
+              <!--soporte gestion-->
+              <div class="table-responsive" id="divDataSoporteGes">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                  <thead>
+                    <tr>
+                      <th>Codigo Grupo</th>
+                      <th>Especialista</th>
+                      <th>Casos pendientes</th>
+                      <th>Casos cerrados</th>
+                      <th>Total Casos</th>
+                      <th>Cump. Individual</th>
+                      <th>Cump. Grupal</th>
+                    </tr>
+                  </thead>
+                  <tfoot>
+                    <tr>
+                      <th>Codigo Grupo</th>
+                      <th>Especialista</th>
+                      <th>Casos pendientes</th>
+                      <th>Casos cerrados</th>
+                      <th>Total Casos</th>
+                      <th>Cump. Individual</th>
+                      <th>Cump. Grupal</th>
+                    </tr>
+                  </tfoot>
+                  <tbody>
+                    <?php
+                    ini_set('max_execution_time', 300);
+                    set_time_limit(300);
+                    $sql = "SELECT ID_GRUPO,RESPONSABLE,PENDIENTE,CERRADOS,TOTAL,CUMPLIMIENTO_IND,CUMPLIMIENTO_GRP
+                    FROM V_GESTION_MES_GESTION ORDER BY 5 DESC";
+                    $resultado_set = oci_parse($conex2, $sql);
+                    oci_execute($resultado_set);
+                    while ($row = oci_fetch_array($resultado_set)) {
+                    ?>
+                      <tr>
+                        <td><?php echo $row[0] ?></td>
+                        <td><?php echo $row[1] ?></td>
+                        <td><?php echo $row[2] ?></td>
+                        <td><?php echo $row[3] ?></td>
+                        <td><?php echo $row[4] ?></td>
+                        <td><?php echo $row[5] ?></td>
+                        <td><?php echo $row[6] ?></td>
+
+                      </tr>
+                    <?php
+                    }
+                    ?>
+                  </tbody>
+                </table>
+              </div>
+               <!--Soporte financiero-->
+               <div class="table-responsive" id="divDataSoportefin">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                  <thead>
+                    <tr>
+                      <th>Codigo Grupo</th>
+                      <th>Especialista</th>
+                      <th>Casos pendientes</th>
+                      <th>Casos cerrados</th>
+                      <th>Total Casos</th>
+                      <th>Cump. Individual</th>
+                      <th>Cump. Grupal</th>
+                    </tr>
+                  </thead>
+                  <tfoot>
+                    <tr>
+                      <th>Codigo Grupo</th>
+                      <th>Especialista</th>
+                      <th>Casos pendientes</th>
+                      <th>Casos cerrados</th>
+                      <th>Total Casos</th>
+                      <th>Cump. Individual</th>
+                      <th>Cump. Grupal</th>
+                    </tr>
+                  </tfoot>
+                  <tbody>
+                    <?php
+                    ini_set('max_execution_time', 300);
+                    set_time_limit(300);
+                    $sql = "SELECT ID_GRUPO,RESPONSABLE,PENDIENTE,CERRADOS,TOTAL,CUMPLIMIENTO_IND,CUMPLIMIENTO_GRP
+                    FROM V_GESTION_MES_FINANCIERA ORDER BY 5 DESC";
+                    $resultado_set = oci_parse($conex2, $sql);
+                    oci_execute($resultado_set);
+                    while ($row = oci_fetch_array($resultado_set)) {
+                    ?>
+                      <tr>
+                        <td><?php echo $row[0] ?></td>
+                        <td><?php echo $row[1] ?></td>
+                        <td><?php echo $row[2] ?></td>
+                        <td><?php echo $row[3] ?></td>
+                        <td><?php echo $row[4] ?></td>
+                        <td><?php echo $row[5] ?></td>
+                        <td><?php echo $row[6] ?></td>
+
+                      </tr>
+                    <?php
+                    }
+                    ?>
+                  </tbody>
+                </table>
+              </div>
+               <!--Soporte mesa primer nivel-->
+               <div class="table-responsive" id="divDataSoportenivel">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                  <thead>
+                    <tr>
+                      <th>Codigo Grupo</th>
+                      <th>Especialista</th>
+                      <th>Casos pendientes</th>
+                      <th>Casos cerrados</th>
+                      <th>Total Casos</th>
+                      <th>Cump. Individual</th>
+                      <th>Cump. Grupal</th>
+                    </tr>
+                  </thead>
+                  <tfoot>
+                    <tr>
+                      <th>Codigo Grupo</th>
+                      <th>Especialista</th>
+                      <th>Casos pendientes</th>
+                      <th>Casos cerrados</th>
+                      <th>Total Casos</th>
+                      <th>Cump. Individual</th>
+                      <th>Cump. Grupal</th>
+                    </tr>
+                  </tfoot>
+                  <tbody>
+                    <?php
+                    ini_set('max_execution_time', 300);
+                    set_time_limit(300);
+                    $sql = "SELECT ID_GRUPO,RESPONSABLE,PENDIENTE,CERRADOS,TOTAL,CUMPLIMIENTO_IND,CUMPLIMIENTO_GRP
+                    FROM V_GESTION_MES_PNIVEL ORDER BY 5 DESC";
+                    $resultado_set = oci_parse($conex2, $sql);
+                    oci_execute($resultado_set);
+                    while ($row = oci_fetch_array($resultado_set)) {
+                    ?>
+                      <tr>
+                        <td><?php echo $row[0] ?></td>
+                        <td><?php echo $row[1] ?></td>
+                        <td><?php echo $row[2] ?></td>
+                        <td><?php echo $row[3] ?></td>
+                        <td><?php echo $row[4] ?></td>
+                        <td><?php echo $row[5] ?></td>
+                        <td><?php echo $row[6] ?></td>
+
+                      </tr>
+                    <?php
+                    }
+                    ?>
+                  </tbody>
+                </table>
+              </div>
+              <!--Soporte prepago-->
+              <div class="table-responsive" id="divDataSoportepre">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                  <thead>
+                    <tr>
+                      <th>Codigo Grupo</th>
+                      <th>Especialista</th>
+                      <th>Casos pendientes</th>
+                      <th>Casos cerrados</th>
+                      <th>Total Casos</th>
+                      <th>Cump. Individual</th>
+                      <th>Cump. Grupal</th>
+                    </tr>
+                  </thead>
+                  <tfoot>
+                    <tr>
+                      <th>Codigo Grupo</th>
+                      <th>Especialista</th>
+                      <th>Casos pendientes</th>
+                      <th>Casos cerrados</th>
+                      <th>Total Casos</th>
+                      <th>Cump. Individual</th>
+                      <th>Cump. Grupal</th>
+                    </tr>
+                  </tfoot>
+                  <tbody>
+                    <?php
+                    ini_set('max_execution_time', 300);
+                    set_time_limit(300);
+                    $sql = "SELECT ID_GRUPO,RESPONSABLE,PENDIENTE,CERRADOS,TOTAL,CUMPLIMIENTO_IND,CUMPLIMIENTO_GRP
+                    FROM V_GESTION_MES_PREPAGO ORDER BY 5 DESC";
+                    $resultado_set = oci_parse($conex2, $sql);
+                    oci_execute($resultado_set);
+                    while ($row = oci_fetch_array($resultado_set)) {
+                    ?>
+                      <tr>
+                        <td><?php echo $row[0] ?></td>
+                        <td><?php echo $row[1] ?></td>
+                        <td><?php echo $row[2] ?></td>
+                        <td><?php echo $row[3] ?></td>
+                        <td><?php echo $row[4] ?></td>
+                        <td><?php echo $row[5] ?></td>
+                        <td><?php echo $row[6] ?></td>
+
+                      </tr>
+                    <?php
+                    }
+                    ?>
+                  </tbody>
+                </table>
+              </div>
+              <!--Soporte data ware house-->
+              <div class="table-responsive" id="divDataSoportedwh">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                  <thead>
+                    <tr>
+                      <th>Codigo Grupo</th>
+                      <th>Especialista</th>
+                      <th>Casos pendientes</th>
+                      <th>Casos cerrados</th>
+                      <th>Total Casos</th>
+                      <th>Cump. Individual</th>
+                      <th>Cump. Grupal</th>
+                    </tr>
+                  </thead>
+                  <tfoot>
+                    <tr>
+                      <th>Codigo Grupo</th>
+                      <th>Especialista</th>
+                      <th>Casos pendientes</th>
+                      <th>Casos cerrados</th>
+                      <th>Total Casos</th>
+                      <th>Cump. Individual</th>
+                      <th>Cump. Grupal</th>
+                    </tr>
+                  </tfoot>
+                  <tbody>
+                    <?php
+                    ini_set('max_execution_time', 300);
+                    set_time_limit(300);
+                    $sql = "SELECT ID_GRUPO,RESPONSABLE,PENDIENTE,CERRADOS,TOTAL,CUMPLIMIENTO_IND,CUMPLIMIENTO_GRP
+                    FROM V_GESTION_MES_DATA_WARE ORDER BY 5 DESC";
+                    $resultado_set = oci_parse($conex2, $sql);
+                    oci_execute($resultado_set);
+                    while ($row = oci_fetch_array($resultado_set)) {
+                    ?>
+                      <tr>
+                        <td><?php echo $row[0] ?></td>
+                        <td><?php echo $row[1] ?></td>
+                        <td><?php echo $row[2] ?></td>
+                        <td><?php echo $row[3] ?></td>
+                        <td><?php echo $row[4] ?></td>
+                        <td><?php echo $row[5] ?></td>
+                        <td><?php echo $row[6] ?></td>
+
+                      </tr>
+                    <?php
+                    }
+                    ?>
+                  </tbody>
+                </table>
+              </div>
+              <!--Soporte data ware house-->
+              <div class="table-responsive" id="divDataSoportedba">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                  <thead>
+                    <tr>
+                      <th>Codigo Grupo</th>
+                      <th>Especialista</th>
+                      <th>Casos pendientes</th>
+                      <th>Casos cerrados</th>
+                      <th>Total Casos</th>
+                      <th>Cump. Individual</th>
+                      <th>Cump. Grupal</th>
+                    </tr>
+                  </thead>
+                  <tfoot>
+                    <tr>
+                      <th>Codigo Grupo</th>
+                      <th>Especialista</th>
+                      <th>Casos pendientes</th>
+                      <th>Casos cerrados</th>
+                      <th>Total Casos</th>
+                      <th>Cump. Individual</th>
+                      <th>Cump. Grupal</th>
+                    </tr>
+                  </tfoot>
+                  <tbody>
+                    <?php
+                    ini_set('max_execution_time', 300);
+                    set_time_limit(300);
+                    $sql = "SELECT ID_GRUPO,RESPONSABLE,PENDIENTE,CERRADOS,TOTAL,CUMPLIMIENTO_IND,CUMPLIMIENTO_GRP
+                    FROM V_GESTION_MES_DBA ORDER BY 5 DESC";
+                    $resultado_set = oci_parse($conex2, $sql);
+                    oci_execute($resultado_set);
+                    while ($row = oci_fetch_array($resultado_set)) {
+                    ?>
+                      <tr>
+                        <td><?php echo $row[0] ?></td>
+                        <td><?php echo $row[1] ?></td>
+                        <td><?php echo $row[2] ?></td>
+                        <td><?php echo $row[3] ?></td>
+                        <td><?php echo $row[4] ?></td>
+                        <td><?php echo $row[5] ?></td>
+                        <td><?php echo $row[6] ?></td>
+
+                      </tr>
+                    <?php
+                    }
+                    ?>
+                  </tbody>
+                </table>
+              </div>
+
             </div>
           </div>
 
@@ -383,7 +550,7 @@
           <!--Consuta de casos por dia-->
           <div class="card shadow mb-4">
             <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">Consulta casos por especialista por Día</h6>
+              <h6 class="m-0 font-weight-bold text-primary">Consulta casos por especialista por Día - Soporte Aplicaciones TI</h6>
             </div>
             <div class="card-body">
               <div class="table-responsive">
@@ -497,6 +664,9 @@
 
     <!-- Page level custom scripts -->
     <script src="js/demo/datatables-demo.js"></script>
+
+    <!-- js del dropdown -->
+    <script src="js/consulta_aranda.js"></script>
 
 </body>
 <!--COMETARIADAS

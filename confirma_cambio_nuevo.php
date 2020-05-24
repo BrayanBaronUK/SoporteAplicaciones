@@ -5,11 +5,11 @@ function AlertaCamposDiferentes(){
 }
 function AlertaCambioClaveAdmin(){
     alert('Ok a realizado el cambio de su clave ...!');
-    window.location = '/AvantelSoporte_Admin/index.php';
+    window.location = '/AvantelSoporte/index.php';
 }
 function AlertaCambioClaveUser(){
     alert('Ok a realizado el cambio de su clave ...!');
-    window.location = '/AvantelSoporte_Users/index.php';
+    window.location = '/AvantelSoporte/index.php';
 }
 function AlertaClaveAvantel(){
     alert('Su clave no puede ser AVANTEL ingresar una nueva...!');
