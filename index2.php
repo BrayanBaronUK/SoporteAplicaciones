@@ -121,12 +121,12 @@ set_time_limit(100);
             </form>
           </div>
           <div style="float: right; width: 640px; height: 50px;">
-          <form action="index3.php">
+            <form action="index3.php">
               <input type="submit" style="float: right;" value="Analisis" class="next_window"></input>
             </form>
           </div>
         </div>
-         <br>
+        <br>
         <div style="width: 1300px; padding:3px;">
           <div id="grafico_barras_mes" style=" width: 640px; height: 500px; float:left;"></div>
           <div id="grafico_pie_mes" style="height: 500px; width: 640px; float:right;"></div>

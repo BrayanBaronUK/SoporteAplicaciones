@@ -114,65 +114,58 @@ set_time_limit(100);
 
 
         <!--<div class="container-fluid">-->
-        <div style="width: 1300px; padding:1px;">
-          <div style="float: left; width: 640px; height: 30px;">
-            <form action="index2.php">
-              <input type="submit" style="float: left;" value="Resumen Mes" class="next_window"></input>
+        <div style="width: 1300px; padding:2px;">
+          <div style="float: left; width: 640px; height: 20px;">
+            <form action="index3.php">
+              <input type="submit" style="float: left;" value="Analisis" class="next_window"></input>
             </form>
           </div>
-          <div style="float: right; width: 640px; height: 30px;">
-            <form action="index4.php">
-              <input type="submit" style="float: right;" value="Resumen Semana" class="next_window"></input>
-            </form>
+          <div style="float: right; width: 640px; height: 20px;">
           </div>
         </div>
-        <div id="linea_meses" style="width: 1300px; height: 400px; padding-top:2px; "></div>
-        <div id="tabla_analisis" style="width: 1300px; padding-top:15px;">
-          <p style="color: #C019A6;" align="center"><strong>Tabla de Analisis del día</strong></p>
-          <table class="table table-bordered" id="dataTable_" width="100%" cellspacing="0">
-            <thead>
-              <tr>
-                <th>Cantidad Max Casos</th>
-                <th>Ingeniero Max</th>
-                <th>Cantidad Min Casos</th>
-                <th>Ingeniero Min</th>
-                <th>Diferencia de Max a Min</th>
-                <th>Prom Casos Grupo</th>
-                <th>Porcentaje Rend Grupo</th>
-                <th>Total Cerrados</th>
-                <th>Total Pendientes</th>
-              </tr>
-            </thead>
-            <tbody>
 
-              <?php
-              include_once("conexion_aranda_2.php");
-              $conex3 = oci_connect($user, $pass, $db);
-              //ini_set('max_execution_time', 100);
-              //set_time_limit(100);
-              $consultap = 'SELECT MAXIMO,INGE_MAX,MINIMO,INGE_MIN,DIFERENCIA,PROMEDIO,CUMPLIMIENTO,CERRADOS_TOTAL,PENDIENTE_TOTAL
-              FROM ARANDA.V_ANALISIS_GES';
-              $resultado_tab = oci_parse($conex3, $consultap);
-              oci_execute($resultado_tab);
-              while ($fila = oci_fetch_array($resultado_tab)) {
-              ?>
-                <tr>
-                  <td><?php echo $fila[0] ?></td>
-                  <td><?php echo $fila[1] ?></td>
-                  <td><?php echo $fila[2] ?></td>
-                  <td><?php echo $fila[3] ?></td>
-                  <td><?php echo $fila[4] ?></td>
-                  <td><?php echo $fila[5] ?></td>
-                  <td><?php echo $fila[6] ?></td>
-                  <td><?php echo $fila[7] ?></td>
-                  <td><?php echo $fila[8] ?></td>
-                </tr>
-              <?php
-              }
-              ?>
-            </tbody>
-          </table>
-        </div>
+         <!--<div id="tabla_analisis" style="width: 1300px; padding-top:15px;">-->   
+        <!--Soporte Aplicaciones TI-->
+        <div class="table-responsive" id="tabla_analisis" style="width: 1300px; padding-top:15px;">
+        <p style="color: #C019A6;" align="center"><strong>Tabla Analisis Semanal - De hoy hace 8 dias</strong></p>
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                  <thead>
+                    <tr>
+                      <th>Codigo Grupo</th>
+                      <th>Especialista</th>
+                      <th>Casos pendientes</th>
+                      <th>Casos cerrados</th>
+                      <th>Total Casos</th>
+                      <th>Cump. Individual</th>
+                      <th>Cump. Grupal</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <?php
+                    ini_set('max_execution_time', 300);
+                    set_time_limit(300);
+                    $sql = "SELECT ID_GRUPO,RESPONSABLE,PENDIENTE,CERRADOS,TOTAL,CUMPLIMIENTO_IND,CUMPLIMIENTO_GRP
+                    FROM V_GESTION_SEMANA_TI ORDER BY 5 DESC";
+                    $resultado_set = oci_parse($conex2, $sql);
+                    oci_execute($resultado_set);
+                    while ($row = oci_fetch_array($resultado_set)) {
+                    ?>
+                      <tr>
+                        <td><?php echo $row[0] ?></td>
+                        <td><?php echo $row[1] ?></td>
+                        <td><?php echo $row[2] ?></td>
+                        <td><?php echo $row[3] ?></td>
+                        <td><?php echo $row[4] ?></td>
+                        <td><?php echo $row[5] ?></td>
+                        <td><?php echo $row[6] ?></td>
+
+                      </tr>
+                    <?php
+                    }
+                    ?>
+                  </tbody>
+                </table>
+              </div>
 
 
         <!-- End of Main Content -->
