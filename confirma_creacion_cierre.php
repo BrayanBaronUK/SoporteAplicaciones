@@ -17,54 +17,80 @@ $cedulas = "";
 $arrCedu = array();
 $arrDias = array();
 
-foreach($_POST as $key => $value) {
+foreach ($_POST as $key => $value) {
   // echo "<br>DEB: "."$key = $value";
-  if($key == 'especialista') {
+  if ($key == 'especialista') {
     $arrCedu = $value;
-  } else if($key == 'dia') {
+  } else if ($key == 'dia') {
     $arrDias = $value;
   }
 }
 
-  
-    // BUSQUEDA DE USUARIOS
-    $sql = "SELECT CEDULA, USUARIO, (NOMBRES||' '||APELLIDOS) FROM  USUARIOS_SOPORTE WHERE CEDULA IN (". implode(',', $arrCedu). ")";
-    $queryf = oci_parse($conex2, $sql);
-    oci_execute($queryf);
-    oci_commit($conex2);
-    $especSql = "";
-    while ($row = oci_fetch_array($queryf)){
-      
-      //Buscar posicion del especialista
-      $posicionEsp = array_search($row[0],$arrCedu,false);
-      $especSql .= " INTO CIERRES (USUARIO, ESPECIALISTA, FECHA_CREADO, FECHA_CIERRE) VALUES ('$row[1]', '$row[2]', SYSDATE, '$arrDias[$posicionEsp]')";
-      }
 
-      $sql = "INSERT ALL $especSql SELECT * FROM DUAL";
-      //echo "CONSULTA ".$sql;
-      //  exit();
-    
-      $queryf = oci_parse($conex2, $sql);
-      oci_execute($queryf);
-      oci_commit($conex2);
+// BUSQUEDA DE USUARIOS
+$sql = "SELECT CEDULA, USUARIO, (NOMBRES||' '||APELLIDOS) FROM  USUARIOS_SOPORTE WHERE CEDULA IN (" . implode(',', $arrCedu) . ")";
+$queryf = oci_parse($conex2, $sql);
+oci_execute($queryf);
+oci_commit($conex2);
+$especSql = "";
 
 
+//validar cantidad de registros de la consulta
+$sql2 = "SELECT count(*) as CANTIDAD FROM  USUARIOS_SOPORTE WHERE CEDULA IN (" . implode(',', $arrCedu) . ")";
+$queryg = oci_parse($conex2, $sql2);
+oci_execute($queryg);
+oci_commit($conex2);
+while (oci_fetch($queryg)) {
+  $cantidadReg = oci_result($queryg, "CANTIDAD");
+}
 
-      $filas = oci_num_rows($queryf);
-
-      if ($filas > 0) :
-
-        echo "<script>";
-        echo "AlertaCreaCierre()";
-        echo "</script>";
+$especSql = "";
+$cont = 0;
 
 
-      else :
+if ($cantidadReg != count($arrCedu)) {
+  while ($cont < count($arrCedu)) {
 
-        echo "<script>";
-        echo "AlertaNoCierre()";
-        echo "</script>";
+    $especSql .= " INTO CIERRES (USUARIO, ESPECIALISTA, FECHA_CREADO, FECHA_CIERRE)
+      VALUES ((SELECT USUARIO FROM USUARIOS_SOPORTE WHERE CEDULA IN ($arrCedu[$cont])), (SELECT (NOMBRES||' '||APELLIDOS) 
+      FROM USUARIOS_SOPORTE WHERE CEDULA IN ($arrCedu[$cont])), SYSDATE, '$arrDias[$cont]')";
+    $cont++;
+  }
+} else {
+  while ($row = oci_fetch_array($queryf)) {
 
-      endif;
+    //Buscar posicion del especialista
+    $posicionEsp = array_search($row[0], $arrCedu, false);
+    $especSql .= " INTO CIERRES (USUARIO, ESPECIALISTA, FECHA_CREADO, FECHA_CIERRE) 
+    VALUES ('$row[1]', '$row[2]', SYSDATE, '$arrDias[$posicionEsp]')";
+  }
+}
 
-      ?>
+$sql = "INSERT ALL $especSql SELECT * FROM DUAL";
+//echo "CONSULTA ".$sql;
+//  exit();
+
+$queryf = oci_parse($conex2, $sql);
+oci_execute($queryf);
+oci_commit($conex2);
+
+
+
+$filas = oci_num_rows($queryf);
+
+if ($filas > 0) :
+
+  echo "<script>";
+  echo "AlertaCreaCierre()";
+  echo "</script>";
+
+
+else :
+
+  echo "<script>";
+  echo "AlertaNoCierre()";
+  echo "</script>";
+
+endif;
+
+?>

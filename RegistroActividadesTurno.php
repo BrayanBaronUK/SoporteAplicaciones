@@ -133,7 +133,10 @@ $conex2 = oci_connect($user, $pass, $db, 'AL32UTF8');
                   <option value="3">Turno 3 -> 2pm - 10pm</option>
                   <option value="4">Turno 4 -> 10pm - 6am</option>
                   <option value="5">Turno 5 -> 8am - 5:30pm</option>
-                  <option value="6">Sabados - Domingos</option>
+                  <option value="6">Sabados - Domingos 6am - 2pm</option>
+                  <option value="7">Sabados - Domingos 2pm - 10pm</option>
+                  <option value="8">Sabados - Domingos 10pm - 6am</option>
+
                 </select>
               </div>
               <div class="table-responsive" id="divDataTable">
