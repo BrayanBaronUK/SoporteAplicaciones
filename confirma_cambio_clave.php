@@ -17,11 +17,11 @@ function AlertaClaveIgual() {
   }
   function IngresoUser() {
     alert('Ok a realizado el cambio de su clave ...!');
-    window.location = '/AvantelSoporte_Users/index.php';
+    window.location = '/AvantelSoporte/index.php';
   }
   function IngresoAdmin() {
       alert('Ok a realizado el cambio de su clave ...!');
-        window.location = '/AvantelSoporte_Admin/index.php';
+        window.location = '/AvantelSoporte/index.php';
     }
 </script>
 <?php
