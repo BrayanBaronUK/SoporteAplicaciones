@@ -1,3 +1,5 @@
+<?php //include_once("LoginValidate.php"); ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -58,7 +60,9 @@
           <ul class="navbar-nav ml-auto">
 
             <div class="topbar-divider d-none d-sm-block"></div>
-            <?php @session_start();
+            <?php 
+            /*
+            @session_start();
             include_once("conexion.php");
             $conex2 = oci_connect($user, $pass, $db);
             $elusuario = $_SESSION['usuario'];
@@ -76,7 +80,7 @@
                   <img class="img-profile rounded-circle" src="./img/imagenlogin.png">
                 </a>
               <?php
-            }
+            }*/
               ?>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
@@ -105,8 +109,10 @@
           <p class="mb-4"></p>
 
           <?php
+          /*
           include_once("conexion.php");
           $conex2 = oci_connect($user, $pass, $db);
+          */
           ?>
 
           <!-- DataTales Example -->
@@ -115,8 +121,41 @@
               <h6 class="m-0 font-weight-bold text-primary">Horas extra registradas</h6>
             </div>
             <div class="card-body">
+
+              <!--SELECCIONADOR DE AÑO-->
+              <div style="float: left;">
+                <div class="small mb-1">Seleccione un año:</div>
+                <div class="dropdown mb-4">
+                  <select class="btn btn-primary" id="selectYear">
+                    <option value="">Año</option>
+                  </select>
+                </div>
+              </div>
+
+              <!--SELECCIONADOR DE MES-->
+              <div style="float: left;">
+                <div class="small mb-1">Seleccione un mes:</div>
+                <div class="dropdown mb-4">
+                  <select class="btn btn-primary" id="selectMonth">
+                    <option value="">Mes</option>
+                    <option value="01">Enero</option>
+                    <option value="02">Febrero</option>
+                    <option value="03">Marzo</option>
+                    <option value="04">Abril</option>
+                    <option value="05">Mayo</option>
+                    <option value="06">Junio</option>
+                    <option value="07">Julio</option>
+                    <option value="08">Agosto</option>
+                    <option value="09">Septiembre</option>
+                    <option value="10">Octubre</option>
+                    <option value="11">Noviembre</option>
+                    <option value="12">Diciembre</option>
+                  </select>
+                </div>
+              </div>
+
               <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <table class="table table-bordered" id="" width="100%" cellspacing="0">
                   <thead>
                     <tr>
                       <th>Especialista</th>
@@ -124,34 +163,7 @@
                       <th>Valor a pagar</th>
                     </tr>
                   </thead>
-                  <tfoot>
-                    <tr>
-                      <th>Especialista</th>
-                      <th>Horas</th>
-                      <th>Valor a pagar</th>
-                    </tr>
-                  </tfoot>
-                  <tbody>
-
-                    <?php
-                    //   $sql    ="SELECT NOMBRES,APELLIDOS,CEDULA,TELEFONO,CORREO_ELECTRONICO,CARGO,TELEFONO_DOTACION,IP_INGENIERO,USUARIO FROM USUARIOS_SOPORTE";
-                    //   $resultado_set = oci_parse($conex2, $sql);
-                    //    oci_execute($resultado_set);
-                    //   while($row=oci_fetch_array($resultado_set)){            
-                    ?>
-                    <tr>
-                      <td>Brayan Baron Amaya</td>
-                      <td>5</td>
-                      <td>$120.000</td>
-                    </tr>
-                    <tr>
-                      <td>Carlos Fernando Palacios</td>
-                      <td>8</td>
-                      <td>$150.000</td>
-                    </tr>
-                    <?php
-                    //   }
-                    ?>
+                  <tbody id="metric_results">
                   </tbody>
                 </table>
               </div>
@@ -220,6 +232,8 @@
 
     <!-- Page level custom scripts -->
     <script src="js/demo/datatables-demo.js"></script>
+
+    <script src="js/consulta_horas_extra.js"></script>
 
 </body>
 <!--COMETARIADAS

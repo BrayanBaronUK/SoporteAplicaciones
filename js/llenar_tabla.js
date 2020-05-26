@@ -1,10 +1,38 @@
-var engineer = new Array()
-engineer[0] = "OSCAR RIOS"
-engineer[1] = "GUSTAVO ADOLFO"
-engineer[2] = "WILSON CASTRO"
-engineer[3] = "MAICOL BALLESTEROS"
-engineer[4] = "DANIEL MENDEZ"
-engineer[5] = "GUSTAVO SALAZAR"
+// Consulta de ingenieros
+var engineer = new Array();
+$.ajax({
+    type: "POST",
+    url: "./api/v1/user.php",
+    data: JSON.stringify({ 
+        action: "findAll" 
+    }),
+    contentType: "application/json; charset=utf-8",
+    dataType: "json",
+    success: function(data){
+        engineer = data.data;
+    },
+    failure: function(errMsg) {
+        alert(errMsg);
+    }
+});
+
+// Consulta de turnos
+var turns = new Array();
+$.ajax({
+    type: "POST",
+    url: "./api/v1/turn.php",
+    data: JSON.stringify({ 
+        action: "findAll" 
+    }),
+    contentType: "application/json; charset=utf-8",
+    dataType: "json",
+    success: function(data){
+        turns = data.data;
+    },
+    failure: function(errMsg) {
+        alert(errMsg);
+    }
+});
 
 var weekday = new Array(7);
     weekday[0] = "Dom";
@@ -65,18 +93,19 @@ function genera_tabla(year, month) {
     }
     HTML += `</tr>`;
 
+    // Construccion del string de options de turnos
+    var turnsStr = '';
+    for (i = 0; i < turns.length; i++) {
+        turnsStr += `<option value="`+turns[i].id+`">`+turns[i].code+`</option>`;
+    }
+
     // Construcción del cuerpo de la tabla
     for (h = 0; h < engineer.length; h++) {
-        HTML += `<tr><td>` + engineer[h] + `</td>`;
+        HTML += `<tr><td>` + engineer[h].NOMBRES +' '+ engineer[h].APELLIDOS + `</td>`;
         for(i = 1; i <= globalDaysOfMonth; i++) {
             HTML += `<td>
-                        <select data-day-name="` + getDayName(year, month, i) + `" id="turn-` + year + `-` + month + `-` + i + `-` + h +`">
-                            <option value="T">T</option>
-                            <option value="M">M</option>
-                            <option value="N">N</option>
-                            <option value="JL">JL</option>
-                            <option value="JL2">JL2</option>
-                            <option value="D">D</option>
+                        <select data-day-name="` + getDayName(year, month, i) + `" id="turn-` + year + `-` + month + `-` + i + `-` + engineer[h].CEDULA +`">
+                            `+turnsStr+`
                         </select>
                     </td>`;
         }
@@ -125,16 +154,35 @@ function guardar_turnos(){
         turns.push(optVal);
 
         if( globalDaysOfMonth == idSelect.split('-')[3] ) {
-            dataMonth.push({"engineerId":engineerId, "engineerName":engineer[engineerId], "days":days, "turns":turns});
+            dataMonth.push({
+                "engineerId":engineerId,
+                "year":globalYear,
+                "month":globalMonth,
+                "days":days, 
+                "turns":turns});
             days = [];
             turns = [];
         }
     });
 
-    localStorage.setItem(globalYear+"-"+globalMonth, JSON.stringify(dataMonth));
-
-    confirm("Datos guardados exitosamente!");
-    location.reload();
+    $.ajax({
+        type: "POST",
+        url: "./api/v1/turnHistory.php",
+        data: JSON.stringify({ 
+            action: "saveTurns",
+            data: dataMonth
+        }),
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function(data){
+            console.log('DEB', data);
+            alert("Datos guardados exitosamente!");
+            location.reload();
+        },
+        failure: function(errMsg) {
+            alert(errMsg);
+        }
+    });
 }
 
 // START - Detect change of selects
