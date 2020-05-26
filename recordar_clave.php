@@ -71,16 +71,6 @@
 
   <?php
   echo '<link href="botones_estilos.css" type="text/css" rel="stylesheet">';
-
-  use PHPMailer\PHPMailer\PHPMailer;
-  use PHPMailer\PHPMailer\Exception;
-
-  require './PHPMailer/Exception.php';
-  require './PHPMailer/PHPMailer.php';
-  require './PHPMailer/SMTP.php';
-  $mail = new PHPMailer();
-
-
   try {
     if (isset($_POST['email']) && !empty($_POST['email'])) {
       //Conexion con la base
@@ -104,7 +94,7 @@
         include_once("conexion.php");
         $conex2 = oci_connect($user, $pass, $db);
 
-        //$sql = "Update usuarios_soporte_seg set clave = '$var3'";
+        //aca actualiza la clave en la tabla de seguridad
         $sql = "Update usuarios_soporte_seg set clave = '$passw', estado='P' 
                       where usuario in (select usuario from usuarios_soporte where correo_electronico = '$maile')";
 
@@ -112,28 +102,12 @@
         oci_execute($query);
         oci_commit($conex2);
 
-
-        $mail->SMTPDebug = 0;                                 // Enable verbose debug output
-        $mail->isSMTP();                                            // Send using SMTP
-        $mail->Host       = 'smtp.office365.com';                     // Set the SMTP server to send through, dominio
-        $mail->SMTPAuth   =  true;                                   // Enable SMTP authentication
-        $mail->Username   = 'brayan.baron@hotmail.com';                    // SMTP username
-        $mail->Password   = 'skkiper9405';                               // SMTP password
-        $mail->SMTPSecure = 'tls';         // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` also accepted
-        $mail->Port       =  587;                                 // TCP port to connect to
-
-        //Recipients
-        $mail->setFrom('brayan.baron@hotmail.com', 'Soporte');
-        $mail->addAddress($_POST['email']);    // Add a recipient-- aca el destino
-
-
-        // Content
-        //$mail->isHTML(true);                               // Set email format to HTML
-        $mail->Subject = 'Correo muy importante!!';  //Asunto
-        $mail->Body    = "El sistema le asigno la siguiente clave " . $passw;
-
-        $mail->send();
-        //echo 'Correo enviado satisfactoriamente a ' . $_POST['email'];
+        $destino = $_POST['email'];
+        $contenido = "El sistema le asigno la siguiente clave " . $passw;
+        $Asunto = "Correo de recuperacion de clave - Aplicacion soporte IT";
+        
+        //Aca se envia el correo
+        mail($destino, $Asunto, $contenido);
         echo "<p class='avisoclave'style='color:#EEDAD5' align='center'>Correo enviado satisfactoriamente a $maile </p>";
 
         OCICommit($conex2);
