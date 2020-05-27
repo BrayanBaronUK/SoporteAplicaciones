@@ -1,3 +1,4 @@
+<?php include_once("LoginValidate.php"); ?>
 <?php
 include_once("conexion.php");
 $conex2 = oci_connect($user, $pass, $db, 'AL32UTF8');

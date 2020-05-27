@@ -1,3 +1,4 @@
+<?php include_once("LoginValidate.php"); ?>
 <!DOCTYPE html>
 <html lang="en">
 
