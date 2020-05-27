@@ -8,7 +8,8 @@ switch ($action) {
     case "findAll":
         $arrayResults = array();
 
-        $sql = "SELECT ID, CODIGO FROM MTO_TURNOS";
+        $sql = "SELECT ID, CODIGO FROM MTO_TURNOS
+        WHERE CODIGO NOT IN ('FSM','FST','FSN')";
         $resultado_set = oci_parse($conectionBd, $sql);
         oci_execute($resultado_set);
         while ($row = oci_fetch_array($resultado_set)) {

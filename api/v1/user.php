@@ -8,7 +8,8 @@ switch ($action) {
     case "findAll":
         $arrayResults = array();
 
-        $sql = "SELECT NOMBRES, APELLIDOS, CEDULA FROM USUARIOS_SOPORTE";
+        $sql = "SELECT NOMBRES, APELLIDOS, CEDULA FROM USUARIOS_SOPORTE A
+        INNER JOIN usuarios_soporte_seg B ON A.USUARIO = B.USUARIO WHERE TIPO_USUARIO = 'USER'";
         $resultado_set = oci_parse($conectionBd, $sql);
         oci_execute($resultado_set);
         while ($row = oci_fetch_array($resultado_set)) {
