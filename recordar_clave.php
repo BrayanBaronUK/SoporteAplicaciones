@@ -104,7 +104,7 @@
 
         $destino = $_POST['email'];
         $contenido = "El sistema le asigno la siguiente clave " . $passw;
-        $Asunto = "Correo de recuperacion de clave - Aplicacion soporte IT";
+        $Asunto = "Correo de recuperación de clave - Aplicación soporte IT";
         
         //Aca se envia el correo
         mail($destino, $Asunto, $contenido);
