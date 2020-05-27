@@ -3,6 +3,8 @@
 @session_start();
 
 if(! $_SESSION['usuario'] ) {
-    header("Location: /login.php");
+    header("Location: ./login.php");
     die();
 }
+
+?>

@@ -7,13 +7,16 @@ include_once("_api.php");
 switch ($action) {
     case "findAll":
         $arrayResults = array();
-        if ($result = $mysqli->query("SELECT id, code FROM turns")) {
-            while($row = $result->fetch_array(MYSQLI_ASSOC)) {
-                    $arrayResults[] = $row;
-            }
+
+        $sql = "SELECT ID, CODIGO FROM MTO_TURNOS";
+        $resultado_set = oci_parse($conectionBd, $sql);
+        oci_execute($resultado_set);
+        while ($row = oci_fetch_array($resultado_set)) {
+            $arrayResults[] = $row;
         }
         $responseObj['data'] = $arrayResults;
         break;
+
     default:
         $responseObj['status'] = 400;
         $responseObj['userMessage'] = "Acción no permitida.";
@@ -21,5 +24,4 @@ switch ($action) {
         break;
 }
 
-$mysqli->close();
 echo json_encode($responseObj);

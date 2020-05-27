@@ -14,12 +14,8 @@ if ( ($requestMethod !== 'POST') ) {
     exit();
 }
 
-$user = "root";
-$pass = "";
-$db = "//localhost:3306/avantelsoporteaplicaciones";
-//$conectionBd = oci_connect($user, $pass, $db);
-$mysqli = new mysqli("localhost", $user, $pass, "avantelsoporteaplicaciones");
-$mysqli->set_charset("utf8");
+include_once("../../conexion.php");
+$conectionBd = oci_connect($user, $pass, $db);
 
 $action = $dataResquest['action'];
 

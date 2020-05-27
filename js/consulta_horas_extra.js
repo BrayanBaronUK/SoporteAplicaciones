@@ -51,8 +51,8 @@ function getData(year, month) {
             for (h = 0; h < turnsHistory.length; h++) {
                 HTML += `<tr>`;
                 HTML += `<td>` + turnsHistory[h].NOMBRES +' '+ turnsHistory[h].APELLIDOS + `</td>`;
-                HTML += `<td>`+turnsHistory[h].horasExtras+`</td>`;
-                HTML += `<td>`+turnsHistory[h].pagoExtras+`</td>`;
+                HTML += `<td>`+turnsHistory[h].HORAS_EXTRA+`</td>`;
+                HTML += `<td>`+turnsHistory[h].PAGO_EXTRA+`</td>`;
                 HTML += `</tr>`;
             }
             tableResult.innerHTML = HTML;

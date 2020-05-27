@@ -1,5 +1,4 @@
 <?php
-/*
   @session_start();
   include_once("conexion.php");
   $conex1 = oci_connect($user, $pass, $db);
@@ -15,5 +14,4 @@
   }else{
       include_once("menu_user.php");
   }
-  */
 ?>

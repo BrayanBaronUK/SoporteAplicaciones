@@ -59,7 +59,6 @@
 
             <div class="topbar-divider d-none d-sm-block"></div>
             <?php 
-            /*
             @session_start();
             include_once("conexion.php");
             $conex2 = oci_connect($user, $pass, $db);
@@ -78,7 +77,7 @@
                   <img class="img-profile rounded-circle" src="./img/imagenlogin.png">
                 </a>
               <?php
-            }*/
+            }
               ?>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">

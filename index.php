@@ -1,10 +1,10 @@
+<?php include_once("LoginValidate.php"); ?>
+
 <?php
-/*
 include_once("conexion_aranda.php");
 $conex2 = oci_connect($user, $pass, $db);
 ini_set('max_execution_time', 100);
 set_time_limit(100);
-*/
 ?>
 
 <!DOCTYPE html>
@@ -74,7 +74,6 @@ set_time_limit(100);
 
             <div class="topbar-divider d-none d-sm-block"></div>
             <?php 
-            /*
             @session_start();
             include_once("conexion.php");
             $conex1 = oci_connect($user, $pass, $db);
@@ -93,7 +92,7 @@ set_time_limit(100);
                   <img class="img-profile rounded-circle" src="./img/imagenlogin.png">
                 </a>
               <?php
-            }*/
+            }
               ?>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
@@ -148,7 +147,7 @@ set_time_limit(100);
               <tbody>
                 <tr>
                   <td>Usuario Turno</td>
-                  <td>Turno</td>
+                  <td id="userTurn">Cargando...</td>
                 </tr>
                 <tr>
                   <td>Usuario Compensatorio</td>
@@ -202,7 +201,7 @@ set_time_limit(100);
           <div class="modal-body">Seleccione "Salir" si desea cerrar la aplicación si no seleccione "Cancelar"</div>
           <div class="modal-footer">
             <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-            <a class="btn btn-primary" href="login.php">Salir</a>
+            <a class="btn btn-primary" href="logout.php">Salir</a>
             <!--  <a class="btn btn-primary" href="login.php">Logout</a>-->
           </div>
         </div>
@@ -369,6 +368,8 @@ set_time_limit(100);
         });
       });
     </script>
+
+    <script src="js/index.js"></script>
 </body>
 
 </html>

@@ -7,42 +7,51 @@ include_once("_api.php");
 switch ($action) {
     case "findByYearAndMonth":
         $arrayResults = array();
-        $sql = "SELECT dateTurn, idTurn, idEngineer, SUM(pagoExtras) AS pagoExtras, SUM(horasExtras) AS horasExtras, us.NOMBRES, us.APELLIDOS FROM turns_history th INNER JOIN users us ON th.idEngineer=us.cedula WHERE YEAR(dateTurn) = '".$dataResquest['year']."' AND MONTH(dateTurn) = '".$dataResquest['month']."' AND pagoExtras>0 GROUP BY idEngineer";
-        if ($result = $mysqli->query($sql)) {
-            while($row = $result->fetch_array(MYSQLI_ASSOC)) {
-                    $arrayResults[] = $row;
-            }
+
+        $sql = "SELECT FECHA_TURNO, ID_TURNO, ID_USUARIO, SUM(PAGO_EXTRA) AS PAGO_EXTRA, SUM(HORAS_EXTRA) AS HORAS_EXTRA, us.NOMBRES, us.APELLIDOS FROM MTO_TURNOS_HS th INNER JOIN USUARIOS_SOPORTE us ON th.ID_USUARIO=us.CEDULA 
+            WHERE FECHA_TURNO>=TO_DATE('".$dataResquest['year']."-".$dataResquest['month']."-1','YYYY-MM-DD') AND FECHA_TURNO<TO_DATE('".$dataResquest['year']."-".($dataResquest['month']+1)."-1','YYYY-MM-DD')
+            AND PAGO_EXTRA>0 GROUP BY FECHA_TURNO, ID_TURNO, ID_USUARIO,us.NOMBRES, us.APELLIDOS";
+        
+        $resultado_set = oci_parse($conectionBd, $sql);
+        oci_execute($resultado_set);
+        while ($row = oci_fetch_array($resultado_set)) {
+            $arrayResults[] = $row;
         }
         $responseObj['data'] = $arrayResults;
         break;
     case "saveTurns":
         $dataArray = $dataResquest['data'];
-        $sqlInsert = "INSERT INTO turns_history (`dateTurn`, `idTurn`, `idEngineer`, `pagoExtras`, `horasExtras`) VALUES ";
+        $sqlInsert = "";
         foreach ($dataArray as $k1 => $engineer) {
             foreach ($engineer['days'] as $k2 => $day) {
-                $sqlInsert .= "('".$engineer['year']."-".$engineer['month']."-".$day."', '".$engineer['turns'][$k2]."', '".$engineer['engineerId']."'";
+
+                $sqlInsert .= " INTO MTO_TURNOS_HS (FECHA_TURNO, ID_TURNO, ID_USUARIO, PAGO_EXTRA, HORAS_EXTRA) VALUES (TO_DATE('".$engineer['year']."-".$engineer['month']."-".$day."','YYYY-MM-DD'), '".$engineer['turns'][$k2]."', '".$engineer['engineerId']."'";
 
                 //Calculo horas extra
-                if( $engineer['turns'][$k2] == '3' ) { // el id 3 equivale al turno N
-                    $valorHora = 50000;
-                    $cantidadHora = 4;
+                if( $engineer['turns'][$k2] == '4' ) { // el id 4 equivale al turno N
+                    $valorHora = 20000;
+                    $cantidadHora = 5;
                     $totalExtras = $valorHora * $cantidadHora;
-                    $sqlInsert .= ", '$totalExtras', '$cantidadHora'),";
+                    $sqlInsert .= ", '$totalExtras', '$cantidadHora')";
                 } else {
-                    $sqlInsert .= ", '0', '0'),";
+                    $sqlInsert .= ", '0', '0')";
                 }
             }
         }
-        $sqlInsert = substr($sqlInsert, 0, -1);
-        $result = $mysqli->query($sqlInsert);
+        $sql = "INSERT ALL $sqlInsert SELECT * FROM DUAL";
+        $queryf = oci_parse($conectionBd, $sql);
+        oci_execute($queryf);
+        oci_commit($conectionBd);
 
-        if( $result == false) {
+        $filas = oci_num_rows($queryf);
+
+        if( $filas == 0) {
             $responseObj['status'] = 400;
             $responseObj['userMessage'] = "Ha ocurrido un error.";
-            $responseObj['developerMessage'] = "Error al ejecutar el query: " . $mysqli->error;
+            $responseObj['developerMessage'] = "Error al ejecutar el query.";
         }
         
-        $responseObj['data'] = $result;
+        $responseObj['data'] = $filas;
         
         break;
     default:
@@ -56,5 +65,4 @@ function findAll() {
     
 }
 
-$mysqli->close();
 echo json_encode($responseObj);

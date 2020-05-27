@@ -60,7 +60,7 @@ $.each(years, function(key,value) {
 // END - Set de años
 
 var getDaysInMonth = function(month,year) {
-    return new Date(year, month+1, 0).getDate();
+    return new Date(year, month, 0).getDate();
 };
 
 var getDayName = function(year, month, day) {
@@ -96,7 +96,7 @@ function genera_tabla(year, month) {
     // Construccion del string de options de turnos
     var turnsStr = '';
     for (i = 0; i < turns.length; i++) {
-        turnsStr += `<option value="`+turns[i].id+`">`+turns[i].code+`</option>`;
+        turnsStr += `<option value="`+turns[i].ID+`">`+turns[i].CODIGO+`</option>`;
     }
 
     // Construcción del cuerpo de la tabla
@@ -165,6 +165,7 @@ function guardar_turnos(){
         }
     });
 
+    // Enviar info para guardar turnos
     $.ajax({
         type: "POST",
         url: "./api/v1/turnHistory.php",

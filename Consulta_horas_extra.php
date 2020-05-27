@@ -1,4 +1,4 @@
-<?php //include_once("LoginValidate.php"); ?>
+<?php include_once("LoginValidate.php"); ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -61,7 +61,6 @@
 
             <div class="topbar-divider d-none d-sm-block"></div>
             <?php 
-            /*
             @session_start();
             include_once("conexion.php");
             $conex2 = oci_connect($user, $pass, $db);
@@ -80,7 +79,7 @@
                   <img class="img-profile rounded-circle" src="./img/imagenlogin.png">
                 </a>
               <?php
-            }*/
+            }
               ?>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
@@ -109,10 +108,8 @@
           <p class="mb-4"></p>
 
           <?php
-          /*
           include_once("conexion.php");
           $conex2 = oci_connect($user, $pass, $db);
-          */
           ?>
 
           <!-- DataTales Example -->
@@ -208,7 +205,7 @@
           <div class="modal-body">Seleccione "Salir" si desea cerrar la aplicación si no seleccione "Cancelar"</div>
           <div class="modal-footer">
             <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-            <a class="btn btn-primary" href="login.php">Salir</a>
+            <a class="btn btn-primary" href="./logout.php">Salir</a>
             <!--  <a class="btn btn-primary" href="login.php">Logout</a>-->
           </div>
         </div>
