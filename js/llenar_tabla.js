@@ -171,7 +171,9 @@ function guardar_turnos(){
         url: "./api/v1/turnHistory.php",
         data: JSON.stringify({ 
             action: "saveTurns",
-            data: dataMonth
+            data: dataMonth,
+            year: globalYear,
+            month: globalMonth
         }),
         contentType: "application/json; charset=utf-8",
         dataType: "json",
