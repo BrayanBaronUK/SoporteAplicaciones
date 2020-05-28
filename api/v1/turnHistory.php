@@ -5,12 +5,16 @@ include_once("_api.php");
 // Para capturar la data se usa $dataResquest
 
 switch ($action) {
-    case "findByYearAndMonth":
+    case "findExtraByYearAndMonth":
         $arrayResults = array();
 
-        $sql = "SELECT FECHA_TURNO, ID_TURNO, ID_USUARIO, SUM(PAGO_EXTRA) AS PAGO_EXTRA, SUM(HORAS_EXTRA) AS HORAS_EXTRA, us.NOMBRES, us.APELLIDOS FROM MTO_TURNOS_HS th INNER JOIN USUARIOS_SOPORTE us ON th.ID_USUARIO=us.CEDULA 
-            WHERE FECHA_TURNO>=TO_DATE('" . $dataResquest['year'] . "-" . $dataResquest['month'] . "-1','YYYY-MM-DD') AND FECHA_TURNO<TO_DATE('" . $dataResquest['year'] . "-" . ($dataResquest['month'] + 1) . "-1','YYYY-MM-DD')
-            AND PAGO_EXTRA>0 GROUP BY FECHA_TURNO, ID_TURNO, ID_USUARIO,us.NOMBRES, us.APELLIDOS";
+        $sql = "SELECT FECHA_TURNO, ID_TURNO, ID_USUARIO, SUM(PAGO_EXTRA) AS PAGO_EXTRA, SUM(HORAS_EXTRA) AS HORAS_EXTRA, us.NOMBRES, us.APELLIDOS 
+            FROM MTO_TURNOS_HS th 
+            INNER JOIN USUARIOS_SOPORTE us ON th.ID_USUARIO=us.CEDULA 
+            WHERE FECHA_TURNO>=TO_DATE('" . $dataResquest['year'] . "-" . $dataResquest['month'] . "-1','YYYY-MM-DD') 
+                AND FECHA_TURNO<TO_DATE('" . $dataResquest['year'] . "-" . ($dataResquest['month'] + 1) . "-1','YYYY-MM-DD')
+                AND PAGO_EXTRA>0 
+            GROUP BY FECHA_TURNO, ID_TURNO, ID_USUARIO,us.NOMBRES, us.APELLIDOS";
 
         $resultado_set = oci_parse($conectionBd, $sql);
         oci_execute($resultado_set);
@@ -19,10 +23,32 @@ switch ($action) {
         }
         $responseObj['data'] = $arrayResults;
         break;
+    case "findByYearAndMonth":
+        $arrayResults = array();
+        $sql = "SELECT FECHA_TURNO, ID_TURNO, tr.CODIGO, ID_USUARIO, us.NOMBRES, us.APELLIDOS 
+                FROM MTO_TURNOS_HS th 
+                INNER JOIN USUARIOS_SOPORTE us ON th.ID_USUARIO=us.CEDULA 
+                INNER JOIN MTO_TURNOS tr ON tr.ID=th.ID_TURNO 
+                WHERE FECHA_TURNO>=TO_DATE('" . $dataResquest['year'] . "-" . $dataResquest['month'] . "-1','YYYY-MM-DD') 
+                    AND FECHA_TURNO<TO_DATE('" . $dataResquest['year'] . "-" . ($dataResquest['month'] + 1) . "-1','YYYY-MM-DD')
+                ORDER BY ID_USUARIO, FECHA_TURNO ASC";
+        
+        $resultado_set = oci_parse($conectionBd, $sql);
+        oci_execute($resultado_set);
+        while ($row = oci_fetch_array($resultado_set)) {
+            $arrayResults[] = $row;
+        }
+        $responseObj['data'] = $arrayResults;
+        break;
     case "saveTurns":
+        
         $dataArray = $dataResquest['data'];
         $sqlInsert = "";
-        $sql2 = "SELECT COUNT(*) AS CANTIDAD FROM MTO_TURNOS_HS";
+       // $validames=$dataResquest['month'];
+        $sql2 = "SELECT COUNT(*) AS CANTIDAD FROM MTO_TURNOS_HS
+        WHERE FECHA_TURNO =TO_DATE('" . $dataResquest['year'] . "-" . $dataResquest['month'] . "','YYYY-MM')"; // Busque turnos del mes que están añadiendo
+        echo " deb: ".$sql2;
+        exit();
         $queryv = oci_parse($conectionBd, $sql2);
         oci_execute($queryv);
         oci_commit($conectionBd);

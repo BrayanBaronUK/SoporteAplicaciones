@@ -64,7 +64,7 @@ var getDaysInMonth = function(month,year) {
 };
 
 var getDayName = function(year, month, day) {
-    var d = new Date(year, month, day);
+    var d = new Date(year, month-1, day);
     return weekday[d.getDay()];
 }
 

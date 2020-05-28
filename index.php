@@ -149,7 +149,7 @@ set_time_limit(100);
                   <td>Usuario Turno</td>
                   <td id="userTurn">Cargando...</td>
                 </tr>
-                <tr>
+               <!-- <tr>
                   <td>Usuario Compensatorio</td>
                   <td>Compensatorio</td>
                 </tr>
@@ -160,7 +160,7 @@ set_time_limit(100);
                 <tr>
                   <td>Usuario Cierre</td>
                   <td>Cierre</td>
-                </tr>
+                </tr>-->
               </tbody>
             </table>
           </div>

@@ -38,7 +38,7 @@ function getData(year, month) {
         type: "POST",
         url: "./api/v1/turnHistory.php",
         data: JSON.stringify({ 
-            action: "findByYearAndMonth",
+            action: "findExtraByYearAndMonth",
             year: year,
             month: month
         }),
