@@ -60,11 +60,11 @@ $.each(years, function(key,value) {
 // END - Set de años
 
 var getDaysInMonth = function(month,year) {
-    return new Date(year, month+1, 0).getDate();
+    return new Date(year, month, 0).getDate();
 };
 
 var getDayName = function(year, month, day) {
-    var d = new Date(year, month, day);
+    var d = new Date(year, month-1, day);
     return weekday[d.getDay()];
 }
 

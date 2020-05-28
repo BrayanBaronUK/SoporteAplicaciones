@@ -57,7 +57,9 @@
           <ul class="navbar-nav ml-auto">
 
             <div class="topbar-divider d-none d-sm-block"></div>
-            <?php @session_start();
+            <?php 
+            /*
+            @session_start();
             include_once("conexion.php");
             $conex2 = oci_connect($user, $pass, $db);
             $elusuario = $_SESSION['usuario'];
@@ -75,7 +77,7 @@
                   <img class="img-profile rounded-circle" src="./img/imagenlogin.png">
                 </a>
               <?php
-            }
+            }*/
               ?>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
@@ -130,18 +132,18 @@
                   <div class="dropdown mb-4">
                     <select class="btn btn-primary" id="selectMonth">
                       <option value="">Mes</option>
-                      <option value="0">Enero</option>
-                      <option value="1">Febrero</option>
-                      <option value="2">Marzo</option>
-                      <option value="3">Abril</option>
-                      <option value="4">Mayo</option>
-                      <option value="5">Junio</option>
-                      <option value="6">Julio</option>
-                      <option value="7">Agosto</option>
-                      <option value="8">Septiembre</option>
-                      <option value="9">Octubre</option>
-                      <option value="10">Noviembre</option>
-                      <option value="11">Diciembre</option>
+                      <option value="01">Enero</option>
+                      <option value="02">Febrero</option>
+                      <option value="03">Marzo</option>
+                      <option value="04">Abril</option>
+                      <option value="05">Mayo</option>
+                      <option value="06">Junio</option>
+                      <option value="07">Julio</option>
+                      <option value="08">Agosto</option>
+                      <option value="09">Septiembre</option>
+                      <option value="10">Octubre</option>
+                      <option value="11">Noviembre</option>
+                      <option value="12">Diciembre</option>
                     </select>
                   </div>
                 </div>

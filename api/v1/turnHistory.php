@@ -5,7 +5,7 @@ include_once("_api.php");
 // Para capturar la data se usa $dataResquest
 
 switch ($action) {
-    case "findByYearAndMonth":
+    case "findExtraByYearAndMonth":
         $arrayResults = array();
         $sql = "SELECT dateTurn, idTurn, idEngineer, SUM(pagoExtras) AS pagoExtras, SUM(horasExtras) AS horasExtras, us.NOMBRES, us.APELLIDOS FROM turns_history th INNER JOIN users us ON th.idEngineer=us.cedula WHERE YEAR(dateTurn) = '".$dataResquest['year']."' AND MONTH(dateTurn) = '".$dataResquest['month']."' AND pagoExtras>0 GROUP BY idEngineer";
         if ($result = $mysqli->query($sql)) {
@@ -15,6 +15,16 @@ switch ($action) {
         }
         $responseObj['data'] = $arrayResults;
         break;
+    case "findByYearAndMonth":
+            $arrayResults = array();
+            $sql = "SELECT dateTurn, idTurn, tr.code, idEngineer, pagoExtras, horasExtras, us.NOMBRES, us.APELLIDOS FROM turns_history th INNER JOIN users us ON th.idEngineer=us.cedula INNER JOIN turns tr ON tr.id=th.idTurn WHERE YEAR(dateTurn) = '".$dataResquest['year']."' AND MONTH(dateTurn) = '".$dataResquest['month']."'";
+            if ($result = $mysqli->query($sql)) {
+                while($row = $result->fetch_array(MYSQLI_ASSOC)) {
+                        $arrayResults[] = $row;
+                }
+            }
+            $responseObj['data'] = $arrayResults;
+            break;
     case "saveTurns":
         $dataArray = $dataResquest['data'];
         $sqlInsert = "INSERT INTO turns_history (`dateTurn`, `idTurn`, `idEngineer`, `pagoExtras`, `horasExtras`) VALUES ";
@@ -50,10 +60,6 @@ switch ($action) {
         $responseObj['userMessage'] = "Acción no permitida.";
         $responseObj['developerMessage'] = "No existe la acción: $action";
         break;
-}
-
-function findAll() {
-    
 }
 
 $mysqli->close();
