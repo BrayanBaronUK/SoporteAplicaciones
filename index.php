@@ -73,7 +73,7 @@ set_time_limit(100);
           <ul class="navbar-nav ml-auto">
 
             <div class="topbar-divider d-none d-sm-block"></div>
-            <?php 
+            <?php
             @session_start();
             include_once("conexion.php");
             $conex1 = oci_connect($user, $pass, $db);
@@ -140,8 +140,8 @@ set_time_limit(100);
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" border=1>
               <thead>
                 <tr>
-                  <th>Ingeniero</th>
                   <th>Estado</th>
+                  <th>Ingeniero</th>
                 </tr>
               </thead>
               <tbody>
@@ -149,18 +149,22 @@ set_time_limit(100);
                   <td>Usuario Turno</td>
                   <td id="userTurn">Cargando...</td>
                 </tr>
-               <!-- <tr>
+                <tr>
                   <td>Usuario Compensatorio</td>
-                  <td>Compensatorio</td>
+                  <td id="userComp">No hay en el momento</td>
                 </tr>
                 <tr>
                   <td>Usuario Vacaciones</td>
-                  <td>Vacaciones</td>
+                  <td id="userVaca">No hay en el momento</td>
                 </tr>
                 <tr>
                   <td>Usuario Cierre</td>
-                  <td>Cierre</td>
-                </tr>-->
+                  <td id="userCierre">No hay en el momento</td>
+                </tr>
+                <tr>
+                  <td>Usuario Unidad</td>
+                  <td id="userUnidad">No hay en el momento</td>
+                </tr>
               </tbody>
             </table>
           </div>
