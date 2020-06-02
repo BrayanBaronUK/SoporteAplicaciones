@@ -29,7 +29,7 @@
     }
 </script>
 <?php
-include_once("conexion.php");
+include_once("./conexion.php");
 $conex2 = oci_connect($user, $pass, $db);
 if (isset($_POST['user'], $_POST['pass'])) :
     if ($_POST['user'] != "") :
