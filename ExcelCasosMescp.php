@@ -12,7 +12,7 @@ require 'Classes/PHPExcel/IOFactory.php';
     include_once("conexion_aranda.php");
     $conex2 = oci_connect($user, $pass, $db);
 
-    $sql = "SELECT ID_GRUPO,RESPONSABLE,PENDIENTE,CERRADOS,TOTAL,CUMPLIMIENTO  FROM V_GESTION_MES";
+    $sql = "SELECT ID_GRUPO,RESPONSABLE,PENDIENTE,CERRADOS,TOTAL,CUMPLIMIENTO_GRP FROM V_GESTION_MES_TI";
     $resultado_set = oci_parse($conex2, $sql);
     oci_execute($resultado_set);
 
