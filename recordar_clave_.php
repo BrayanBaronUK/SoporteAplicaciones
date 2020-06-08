@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 
 <head>
 
@@ -71,15 +71,6 @@
 
   <?php
   echo '<link href="botones_estilos.css" type="text/css" rel="stylesheet">';
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\Exception;
-
-require './PHPMailer/Exception.php';
-require './PHPMailer/PHPMailer.php';
-require './PHPMailer/SMTP.php';
-//require 'PHPMailer/PHPMailerAutoload.php';
-// Instantiation and passing `true` enables exceptions
-$mail = new PHPMailer();
   try {
     if (isset($_POST['email']) && !empty($_POST['email'])) {
       //Conexion con la base
@@ -111,27 +102,12 @@ $mail = new PHPMailer();
         oci_execute($query);
         oci_commit($conex2);
 
-            //Server settings
-        $mail->SMTPDebug = 0;                                       // Enable verbose debug output
-        $mail->isSMTP();                                            // Send using SMTP
-        $mail->Host       = 'smtp.office365.com';                     // Set the SMTP server to send through, dominio
-        $mail->SMTPAuth   =  true;                                   // Enable SMTP authentication
-        $mail->Username   = 'brayan.baron@hotmail.com';                    // SMTP username
-        $mail->Password   = 'pitufo9405';                               // SMTP password
-        $mail->SMTPSecure = 'tls';         // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` also accepted
-        $mail->Port       =  587;                                 // TCP port to connect to
-
-        //Recipients
-        $mail->setFrom('brayan.baron@hotmail.com', 'Gestor Soporte TI');
-        $mail->addAddress($_POST['email']);     // Add a recipient-- aca el destino
-
-
-        // Content
-        //$mail->isHTML(true);                               // Set email format to HTML
-        $mail->Subject = 'Correo de recuperacion de clave - Avantel soporte IT';  //Asunto
-        $mail->Body    =  "El sistema le asigno la siguiente clave " . $passw;
-
-        $mail->send();
+        $destino = $_POST['email'];
+        $contenido = "El sistema le asigno la siguiente clave " . $passw;
+        $Asunto = "Correo de recuperación de clave - Aplicación soporte IT";
+        
+        //Aca se envia el correo
+        mail($destino, $Asunto, $contenido);
         echo "<p class='avisoclave'style='color:#EEDAD5' align='center'>Correo enviado satisfactoriamente a $maile </p>";
 
        // OCICommit($conex2);
