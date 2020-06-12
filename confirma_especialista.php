@@ -29,7 +29,7 @@ $v_ip = $_POST["ip"];
 $v_tipo_usuario = $_POST["tipo_user"];
 $v_fecha_cre = "SYSDATE";
 
-$sql = "INSERT INTO USUARIOS_SOPORTE VALUES (SUBSTR('$v_names',1,1)||REPLACE(SUBSTR('$v_lastname',1,7),' ',''),'$v_names','$v_lastname',$v_cedula,$v_phone,'$v_email','$v_cargo',$v_phone_dotacion,'$v_ip',$v_fecha_cre)";
+$sql = "INSERT INTO USUARIOS_SOPORTE VALUES (UPPER(SUBSTR('$v_names',1,1)||REPLACE(SUBSTR('$v_lastname',1,7),' ','')),UPPER('$v_names'),UPPER('$v_lastname'),$v_cedula,$v_phone,'$v_email','$v_cargo',$v_phone_dotacion,'$v_ip',$v_fecha_cre)";
 
 $queryf = oci_parse($conex2, $sql);
 oci_execute($queryf);
@@ -39,7 +39,7 @@ $filas = oci_num_rows($queryf);
 
 if ($filas > 0) :
 
-  $cons = "INSERT INTO USUARIOS_SOPORTE_SEG VALUES(SUBSTR('$v_names',1,1)||REPLACE(SUBSTR('$v_lastname',1,7),' ',''),'AVANTEL','A','$v_tipo_usuario')";
+  $cons = "INSERT INTO USUARIOS_SOPORTE_SEG VALUES(UPPER(SUBSTR('$v_names',1,1)||REPLACE(SUBSTR('$v_lastname',1,7),' ','')),'AVANTEL','A','$v_tipo_usuario')";
   $queryf = oci_parse($conex2, $cons);
   oci_execute($queryf);
   oci_commit($conex2);

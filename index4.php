@@ -115,19 +115,19 @@ set_time_limit(100);
 
 
         <!--<div class="container-fluid">-->
-        <div style="width: 1300px; padding:2px;">
-          <div style="float: left; width: 640px; height: 20px;">
+        <div style="width: 100%; padding:2px;">
+          <div style="float: left; width: 50%; height: 20px;">
             <form action="index3.php">
               <input type="submit" style="float: left;" value="Analisis" class="next_window"></input>
             </form>
           </div>
-          <div style="float: right; width: 640px; height: 20px;">
+          <div style="float: right; width: 50%; height: 20px;">
           </div>
         </div>
 
          <!--<div id="tabla_analisis" style="width: 1300px; padding-top:15px;">-->   
         <!--Soporte Aplicaciones TI-->
-        <div class="table-responsive" id="tabla_analisis" style="width: 1300px; padding-top:15px;">
+        <div class="table-responsive" id="tabla_analisis" style="width: 100%; padding-top:15px;">
         <p style="color: #C019A6;" align="center"><strong>Tabla Analisis Semanal - De hoy hace 8 dias</strong></p>
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                   <thead>

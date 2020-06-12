@@ -64,8 +64,8 @@ switch ($action) {
 
                     //Calculo horas extra
                     if ($engineer['turns'][$k2] == '4') { // el id 4 equivale al turno N
-                        $valorHora = 20000;
-                        $cantidadHora = 5;
+                        $valorHora = 9690*0.35;
+                        $cantidadHora = 8;
                         $totalExtras = $valorHora * $cantidadHora;
                         $sqlInsert .= ", '$totalExtras', '$cantidadHora')";
                     } else {

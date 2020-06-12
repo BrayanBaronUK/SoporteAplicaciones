@@ -58,8 +58,8 @@ set_time_limit(100);
 
         <!-- Topbar -->
         <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-          <div style="width: 850px;">
-            <div style="float: right; width: 400px;">
+          <div style="width: 53.125rem;">
+            <div style="float: right; width: 25rem;">
               <font SIZE=4 style="color: #C019A6;">BIENVENIDO AL GESTOR DE SOPORTE IT</font>
             </div>
           </div>
@@ -117,25 +117,25 @@ set_time_limit(100);
 
 
         <!--<div class="container-fluid">-->
-        <div style="width: 1300px; padding:3px;">
-          <div style="float: right; width: 640px; height: 30px;">
+        <div style="width: 100%; padding:0.188rem;">
+          <div style="float: right; width: 49%; height: 1.875rem;">
             <form action="index2.php">
               <input type="submit" style="float: right;" value="Resumen Mes" class="next_window"></input>
             </form>
           </div>
-          <div style="float: left; width: 640px; height: 30px;">
+          <div style="float: left; width: 49%; height: 1.875rem;">
           </div>
         </div>
         <br>
 
-        <div style="width: 1300px; padding:3px;">
-          <div id="grafico_barras_dia" style="width: 640px;height: 500px;float:left;padding-bottom: 15px;"></div>
-          <div id="grafico_pie_dia" style="height: 500px; width: 640px; float:right; padding-bottom: 15px;"></div>
+        <div style="width: 100%; padding:1%;">
+          <div id="grafico_barras_dia" style="width: 49%; height: 31.25rem;float:left;padding-bottom: 0.938rem;"></div>
+          <div id="grafico_pie_dia" style="height: 31.25rem; width: 49%; float:right; padding-bottom: 0.938rem;"></div>
         </div>
 
 
         <!-- DataTales Example -->
-        <div style="width: 1300px; padding:3px;">
+        <div style="width: 100%; padding:0.188rem;">
           <div class="table-responsive">
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" border=1>
               <thead>
@@ -147,7 +147,7 @@ set_time_limit(100);
               <tbody>
                 <tr>
                   <td>Usuario Turno</td>
-                  <td id="userTurn">Cargando...</td>
+                  <td id="userTurn">No hay en el momento</td>
                 </tr>
                 <tr>
                   <td>Usuario Compensatorio</td>

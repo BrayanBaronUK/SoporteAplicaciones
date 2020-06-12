@@ -24,7 +24,7 @@ body{
 /* FORMULARIO =================================== */
 
 .form_wrap{
-    width: 1050px;
+    width: 80%;
     height: 1000px;
     margin: 50px auto;
     display: flex;
@@ -51,7 +51,7 @@ body{
 }
 
 .cantact_info{
-    width: 38%;
+    width: 60%;
     position: relative;
 
     display: flex;
@@ -111,7 +111,7 @@ body{
 
 /* Formulario de contacto*/
 form.form_contact{
-    width: 62%;
+    width: 70%;
     padding: 30px 40px;
 }
 

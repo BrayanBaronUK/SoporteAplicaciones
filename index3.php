@@ -115,20 +115,20 @@ set_time_limit(100);
 
 
         <!--<div class="container-fluid">-->
-        <div style="width: 1300px; padding:1px;">
-          <div style="float: left; width: 640px; height: 30px;">
+        <div style="width: 100%; padding:1px;">
+          <div style="float: left; width: 50%; height: 30px;">
             <form action="index2.php">
               <input type="submit" style="float: left;" value="Resumen Mes" class="next_window"></input>
             </form>
           </div>
-          <div style="float: right; width: 640px; height: 30px;">
+          <div style="float: right; width: 50%; height: 30px;">
             <form action="index4.php">
               <input type="submit" style="float: right;" value="Resumen Semana" class="next_window"></input>
             </form>
           </div>
         </div>
-        <div id="linea_meses" style="width: 1300px; height: 400px; padding-top:2px; "></div>
-        <div id="tabla_analisis" style="width: 1300px; padding-top:15px;">
+        <div id="linea_meses" style="width: 100%; height: 400px; padding-top:2px; "></div>
+        <div id="tabla_analisis" style="width: 100%; padding-top:15px;">
           <p style="color: #C019A6;" align="center"><strong>Tabla de Analisis del día</strong></p>
           <table class="table table-bordered" id="dataTable_" width="100%" cellspacing="0">
             <thead>
